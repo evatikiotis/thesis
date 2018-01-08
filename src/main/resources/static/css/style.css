@@ -1,0 +1,42 @@
+/* Styles go here */
+html, body{
+
+    height:100%;
+    width:100%;
+}
+
+.container-fluid{
+    height:100%;
+}
+.column{
+    height:100%;
+    background-color: lightgrey;
+}
+.column{
+    height:100%;
+    background-color: lightgrey;
+}
+
+.nav-item{
+    margin-left:5%;
+}
+
+.nav-item:hover, .active{
+    background-color: green;
+    border-radius: 3px;
+}
+
+.spotsDirectory{
+    collapse: tr;
+}
+.home_interests_checkbox{
+    margin-left: 10px;
+}
+.home_collapse_checkbox{
+    margin-left: 28px;
+}
+
+.noBorder{
+    border-top: none; !important;
+}
+

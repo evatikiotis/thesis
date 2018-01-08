@@ -1,0 +1,49 @@
+<div>
+<div class="col-sm-6">
+    <h2>{{spot.name}}</h2>
+</div>
+<div class="col-sm-6" id="informationTable" style="background-color: lightcoral">
+    <table>
+        <tr>
+            <td class="information_attr">water environment:</td>
+            <td class="information_key">{{spotDetails.waterType}}</td>
+        </tr>
+        <tr>
+            <td class="information_attr">level:</td>
+            <td class="information_key">{{spotDetails.level}}</td>
+        </tr>
+        <tr>
+            <td class="information_attr">features:</td>
+            <td class="information_key">{{spotDetails.features}}</td>
+        </tr>
+
+    </table>
+</div>
+<div><br></div>
+
+<div>
+
+    <h3>{{error}}</h3>
+
+
+    <div class="col-sm-12" style="background-color: grey ">
+
+        <div class="col-sm-7" id="div_map_spot_details" style="background-color: darkblue">
+            <map center="[{{spot.latitude}}, {{spot.longitude}}]" zoom="6">
+                <marker position="[{{spot.latitude}}, {{spot.longitude}}]"></marker>
+            </map>
+        </div>
+        <div class="col-sm-5" style="background-color: darkblue">
+            <img id="spotImage" ng-src="/project_images/{{spot.id}}/0.png" >
+        </div>
+
+
+
+
+    </div>
+
+
+
+</div>
+
+</div>
