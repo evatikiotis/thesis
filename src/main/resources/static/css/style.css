@@ -39,4 +39,9 @@ html, body{
 .noBorder{
     border-top: none; !important;
 }
+/*windy api*/
+#windyty {    height: 500px; width: 1000px;
+    margin-left: auto; margin-right: auto;
+    position: relative;
+    margin-top: 50px; }
 

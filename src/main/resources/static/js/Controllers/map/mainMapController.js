@@ -44,7 +44,8 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                     $scope.spot = spot;
                     handleRequest.getKiteSpotImages(spot.id).then(placePhotos, onError);
                     infoWin.setContent("kitesurfing spot" + "<br >" + spot.name +"<br>"+
-                        "<a href='#!/map/kiteSpotDetails'>details</a>");
+                        "<a href='#!/map/kiteSpotDetails'>details</a>"+"<br>"+
+                    "<a href='#!/map/kiteSpotDetails'>add to personalMap</a>");
                     $rootScope.id = spot.id;
                     infoWin.open(mmc.mainMap, marker);
                 });
@@ -94,7 +95,8 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
             infoWin.setContent("kitesurfing spot" + "<br >" + $scope.spot.name + "<br>" +
                 "<img alt='kitesurfing spot Image' src='data:image/png;base64," +
                 kiteSpotImages[0].image + "' height=110px; width: 110px;>" + "<br>" +
-                "<a href='#!/map/kiteSpotDetails'>details</a>");
+                "<a href='#!/map/kiteSpotDetails'>details</a>"+"<br>"+
+                "<a href='#!/map/kiteSpotDetails'>add to personalMap</a>");
 
         }
 

@@ -27,7 +27,7 @@
             })
 
             .when("/weather_map",{
-                templateUrl: "html/toDevelop/weather_map.html"
+                templateUrl: "html/toDevelop/weather_map.html",
 
             })
             .when("/my_map",{
@@ -41,6 +41,12 @@
             .when("/about",{
                 templateUrl: "html/toDevelop/about.html"
 
+            })
+            .when("/login",{
+                templateUrl: "html/login.html"
+            })
+            .when("/register",{
+                templateUrl: "html/register.html"
             })
              .otherwise({redirectTo: "/home"});
     });

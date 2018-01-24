@@ -1,2 +1,38 @@
-<h3>weather map</h3>
-<img src="">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+
+<div id="windyty"></div>
+
+<p>Displayed parameters: <span id="state"></span></p>
+<input type="range" id="range" min="0" max="10" style="width:800px;">
+<br /><br />
+<script type="text/javascript">
+
+    var windytyInit = {
+        key: 'PsL-At-XpsPTZexBwUkO7Mx5I',
+        lat: 37.378306, lon: 23.642578, zoom: 6
+    };
+
+    function windytyMain(map) {
+
+        var
+            range = document.getElementById('range'),
+            state = document.getElementById('state');
+
+        // Set minimum and maximum timestamp value
+        // for current overlay. Do not forget to check
+        // time boundaries after changing overlay.
+        range.max = W.timeline.end;
+        range.min = W.timeline.start;
+
+        // Handle change of <input range>
+        range.onchange = function(event) {
+            W.setTimestamp(+event.target.value)
+        }
+
+        // Display actual state of a map
+        W.on('redrawFinished',function( displayedParams ) {
+            state.innerHTML = new Date( displayedParams.timestamp ).toString();
+        })
+    }
+</script>
+<script async defer src="https://api.windytv.com/v2.3/boot.js"></script>

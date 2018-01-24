@@ -1,11 +1,14 @@
 <div>
-    <button class="btn btn-primary btn-lg" type="button" data-toggle="collapse" data-target="#collapseColumn" aria-expanded="false" aria-controls="collapseExample">
-        bla
+    <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseColumn"
+            aria-expanded="true" aria-controls="collapseExample" style="float: right;">
+        <span class="mbri-menu"></span>
+        <!--<img src="/static/css/libs/30%20px/mobirise/menu.svg" alt="icon name">-->
     </button>
+
 </div>
+<br>
 
-
-<div class="" id="collapseColumn" ng-controller="leftColumnController" >
+<div class="collapse show" id="collapseColumn" ng-controller="leftColumnController" >
     <div class="form-check home_interests_checkbox">
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" ng-model="markerClustering"  ng-click="toggleMarkerClustering()" ><span>marker clustering</span>
@@ -22,7 +25,7 @@
     </div>
     <div class="form-check home_interests_checkbox">
         <label class="form-check-label">
-            <input type="checkbox" class="form-check-input"  value="">scuba-diving
+            <input type="checkbox" class="form-check-input" ng-checked="scuba_diving_spots || scuba_diving_schools" value="">scuba-diving
         </label>
     </div>
     <div class="form-check home_collapse_checkbox">
@@ -35,8 +38,8 @@
             <input type="checkbox" class="form-check-input" ng-model="scuba_diving_spots" ng-click="toggleScubaSpots()" value="">spots
         </label>
     </div>
-    <h4>kitesurfing: {{kitesurfing}}</h4>
-    <h4>scuba-diving schools: {{scuba_diving_schools}}</h4>
-    <h4>scuba-diving spots: {{scuba_diving_spots}}</h4>
+    <p>kitesurfing: {{kitesurfing}}</p>
+    <p>scuba-diving schools: {{scuba_diving_schools}}</p>
+    <p>scuba-diving spots: {{scuba_diving_spots}}</p>
 
 </div>
