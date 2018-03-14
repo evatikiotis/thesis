@@ -1,0 +1,150 @@
+<div ncy-breadcrumb></div>
+
+
+<table class="table">
+    <tbody>
+    <tr>
+        <th>level:</th>
+        <td>{{kiteSpot.level}}</td>
+    </tr>
+
+    </tbody>
+</table>
+<div align="center">
+    <ng-map center="[{{spot.latitude}}, {{spot.longitude}}]" zoom="10" map-type-id="HYBRID"
+         style="height: 300px; width: 100%">
+        <marker position="[{{spot.latitude}}, {{spot.longitude}}]" ></marker>
+    </ng-map>
+</div>
+<br/>
+
+<div class="container-fluid row">
+    <br/>
+    <div class="col-sm-6">
+        <table class="table"  >
+            <tbody>
+            <tr class="noTopBorder" >
+                <th>best Months:</th>
+                <td>{{kiteSpot.bestMonths}}</td>
+            </tr>
+            <tr>
+                <th>beach Months used:</th>
+                <td>{{kiteSpot.beachMonthsUsed}}</td>
+            </tr>
+            <tr>
+                <th>features:</th>
+                <td>{{kiteSpot.features}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col-sm-6">
+        <table class="table " >
+            <tbody>
+            <tr class="noTopBorder">
+                <th>beach type:</th>
+                <td>{{kiteSpot.beachType}}</td>
+            </tr>
+            <tr>
+                <th>beach size:</th>
+                <td>{{kiteSpot.beachSize}}</td>
+            </tr>
+            <tr>
+                <th>beach hazards:</th>
+                <td>{{kiteSpot.beachHazards}}</td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    <div class="col-sm-6">
+        <table class="table " >
+            <tbody>
+            <tr class="noTopBorder">
+                <th >water type:</th>
+                <td>{{kiteSpot.waterType}}</td>
+            </tr>
+            <tr>
+                <th>water hazards:</th>
+                <td>{{kiteSpot.waterHazards}}</td>
+            </tr>
+            <tr>
+                <th>water quality:</th>
+                <td>{{kiteSpot.waterCleanness}}</td>
+            </tr>
+            <tr>
+                <th>best tide:</th>
+                <td>{{kiteSpot.waterBestTide}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6">
+        <table class="table " >
+            <tbody>
+            <tr class="noTopBorder">
+                <th >wind type:</th>
+                <td>{{kiteSpot.windType}}</td>
+            </tr>
+            <tr>
+                <th>wind best direction:</th>
+                <td>{{kiteSpot.windBestDirection}}</td>
+            </tr>
+            <tr>
+                <th>wind main direction:</th>
+                <td>{{kiteSpot.windMainDirection}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div ng-if="{images}" align="center">
+    <div id="demo" class="carousel slide col-sm-6" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="{{$index}}" ng-class="{active: $index == 0}" ng-repeat="image in images"></li>
+
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+
+            <div class="carousel-item " ng-class="{active: $index == 0}"  ng-repeat="image in images">
+                <img src="data:image/png;base64,{{image.image}}" alt="kitesurfing spot">
+            </div>
+
+
+
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" data-target="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" data-target="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+
+    </div>
+
+</div>
+
+
+
+

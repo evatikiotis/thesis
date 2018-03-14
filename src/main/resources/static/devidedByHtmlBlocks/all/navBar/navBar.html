@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark col-sm-12" ng-controller="navbarController">
+    <div class="container-fluid">
+        <div class="col-sm-2>">
+            <a class="navbar-brand  mb-auto" href="#">
+                <div class="row" >
+                    <img src="https://lh4.ggpht.com/Tr5sntMif9qOPrKV_UVl7K8A_V3xQDgA7Sw_qweLUFlg76d_vGFA7q1xIKZ6IcmeGqg=w300" alt="logo" width="40px;" height="40px" />
+                    <h5 style="color: #996600; margin-top:14px; margin-left:-8px">Adventurer</h5>
+                </div>
+            </a>
+
+        </div>
+        <!--<input type="search" placeholder="search">-->
+        <!--<a href="" style="font-family: 'Bitstream Charter'">log in</a>-->
+        <!--<a href="" style="font-family: 'Bitstream Charter'">Register</a>-->
+        <ul class="navbar-nav  mr-auto ml-auto">
+            <li class="nav-item active mr-5" id="nav_home">
+                <a class="nav-link" href="#!/home" ng-click="nav_home_clicked()"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item mr-5" id="nav_map" >
+                <a class="nav-link" href="#!/map" ng-click="nav_map_clicked()"><i class="fa fa-map-marker" ></i> Spots</a>
+            </li>
+            <li class="nav-item mr-5" id="nav_weatherMap">
+                <a class="nav-link" href="#!/weather_map" ng-click="nav_weatherMap_clicked()"><i class="fa fa-cloud" ></i> Weather</a>
+            </li>
+            <li class="nav-item mr-5" id="nav_myMap">
+                <a class="nav-link " href="#!/my_map" ng-click="nav_myMap_clicked()"><i class="fa fa-map" ></i> MyMap</a>
+            </li>
+            <li class="nav-item mr-5" id="nav_adventureFinder">
+                <a class="nav-link " href="#!/adventure_finder" ng-click="nav_adventureFinder_clicked()"><i class="fa fa-road" ></i> Adventurer</a>
+            </li>
+            <!--<li class="nav-item mr-5" id="nav_about">-->
+                <!--<a class="nav-link " href="#!/about" ng-click="nav_about_clicked()">About</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item mr-5" id="nav_about">-->
+                <!--<a class="nav-link" data-toggle="modal" href="#!/login" >log in</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item mr-5" id="nav_about">-->
+                <!--<a class="nav-link" href="#!/register" >Register</a>-->
+            <!--</li>-->
+
+        </ul>
+        <div class="ml-auto">
+            <a id="loginLink" class="nav-link"  data-toggle="modal" href="#!/login">login</a>
+            <a id="registerLink" class="nav-link" href="#!/register">Register</a>
+        </div>
+
+
+    </div>
+
+
+
+
+
+</nav>

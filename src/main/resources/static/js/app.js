@@ -1,52 +1,86 @@
+﻿(function () {
+    'use strict';
+
+    angular
+        .module('myApp', [ 'ngMap','autocomplete', 'ui.router', 'ncy-angular-breadcrumb', 'ngCookies'])
+        .config(config)
+        .run(run);
 
 
-    var app = angular.module('myApp', ['ngRoute', 'ngMap']);
+    function config($stateProvider, $locationProvider) {
+        var home = {name: 'home', url:'/',
+            templateUrl:'home/home.view.html',
+            controller: 'HomeController',
+            controllerAs: 'vm',
+            ncyBreadcrumb:{ label: 'Home page'}};
 
-    app.config(function ($routeProvider) {
-        $routeProvider
-            .when("/home",{
-                templateUrl: "html/home/home.html"
+        var login = {name: 'login', url:'/login',
+            templateUrl:'login/login.view.html',
+            controller: 'LoginController',
+            controllerAs: 'vm',
+            ncyBreadcrumb:{ label: 'Login page'}};
 
-            })
-            .when("/map", {
-                templateUrl: "html/map/map.html",
-                controller: "mainMapController"
+        var register = {name: 'register', url:'/register',
+            templateUrl:'register/register.view.html',
+            controller: 'RegisterController',
+            controllerAs: 'vm',
+            ncyBreadcrumb:{ label: 'Register page'}};
 
-            })
-            .when("/map/kiteSpotDetails",{
-                templateUrl: "html/map/kitesurfing/kitespotDetails.html",
-                controller: "kiteSpotDetailsController"
-            })
-            .when("/map/scubaSpotDetails",{
-                templateUrl: "html/map/scuba_diving/diveSpotDetails.html",
-                controller: "diveSpotDetailsController"
-            })
-            .when("/map/scubadiving/school",{
-                templateUrl: "html/map/scuba_diving/diveSchoolDetails.html",
-                controller: "diveSchoolDetailsController"
-            })
+        // var home = {name: 'home', url:'/home', templateUrl:'devidedByHtmlBlocks/ngView/home/home.html',
+        //     ncyBreadcrumb:{ label: 'Home page'}};
 
-            .when("/weather_map",{
-                templateUrl: "html/toDevelop/weather_map.html",
+        var map = {name: 'map', url:'/map', templateUrl:'devidedByHtmlBlocks/ngView/map/map.html', controller: 'mainMapController',
+            controllerAs: 'mmc', ncyBreadcrumb:{ label: 'spots'}};
 
-            })
-            .when("/my_map",{
-                templateUrl: "html/toDevelop/my_map.html"
+        var kiteSpotDetails = {name: 'kiteSpotDetails',url: '/map/kiteSpotDetails',
+            templateUrl: 'devidedByHtmlBlocks/ngView/map/kitesurfing/kitespotDetails.html', controller: 'kiteSpotDetailsController',
+            ncyBreadcrumb:{ label: 'kitesurfing spot'}};
 
-            })
-            .when("/adventure_finder",{
-                templateUrl: "html/toDevelop/adventure_finder.html"
+        var scubaSpotDetails = {name: 'scubaSpotDetails',url: '/map/scubaSpotDetails',
+            templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSpotDetails.html', controller: 'diveSpotDetailsController'};
 
-            })
-            .when("/about",{
-                templateUrl: "html/toDevelop/about.html"
+        var scubaSchoolDetails = {name: 'scubaSchoolDetails',url: '/map/scubadiving/school',
+            templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSchoolDetails.html', controller: 'diveSchoolDetailsController'};
 
-            })
-            .when("/login",{
-                templateUrl: "html/login.html"
-            })
-            .when("/register",{
-                templateUrl: "html/register.html"
-            })
-             .otherwise({redirectTo: "/home"});
-    });
+        var weatherMap={name: 'weatherMap',url: '/weather_map', templateUrl: 'devidedByHtmlBlocks/ngView/weatherMap/weather_map.html'};
+
+        var myMap = {name: 'myMap',url: '/my_map', templateUrl: 'devidedByHtmlBlocks/ngView/toDevelop/my_map.html'};
+
+        var adventureFinder = {name: 'adventureFinder',url: '/adventure_finder', templateUrl: 'devidedByHtmlBlocks/ngView/toDevelop/adventure_finder.html'};
+
+        // var login = {name: 'login',url: '/login', templateUrl: 'devidedByHtmlBlocks/ngView/login/login.html'};
+        //
+        // var register = {name: 'register',url: '/register', templateUrl: 'devidedByHtmlBlocks/ngView/register/register.html'};
+
+        $stateProvider.state(home);
+        $stateProvider.state(login);
+        $stateProvider.state(register);
+        $stateProvider.state(map);
+        $stateProvider.state(kiteSpotDetails);
+        $stateProvider.state(scubaSpotDetails);
+        $stateProvider.state(scubaSchoolDetails);
+        $stateProvider.state(weatherMap);
+        $stateProvider.state(myMap);
+        $stateProvider.state(adventureFinder);
+
+    }
+
+    run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
+    function run($rootScope, $location, $cookies, $http) {
+        // keep user logged in after page refresh
+        $rootScope.globals = $cookies.getObject('globals') || {};
+        if ($rootScope.globals.currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+        }
+
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            // redirect to login page if not logged in and trying to access a restricted page
+            var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
+            var loggedIn = $rootScope.globals.currentUser;
+            if (restrictedPage && !loggedIn) {
+                $location.path('/login');
+            }
+        });
+    }
+
+})();

@@ -17,6 +17,12 @@ public class SpotService {
         return spots;
     }
 
+    public List<Spot> getKiteSpots() {
+        List<Spot> spots = new ArrayList<>();
+        spotRepository.selectKiteSpots().forEach(spots::add);
+        return spots;
+    }
+
     public void addSpot(Spot spot) {
         spotRepository.save(spot);
     }

@@ -1,0 +1,62 @@
+<!--<div ng-controller="allController">-->
+    <!--<header ng-include="'devidedByHtmlBlocks/all/navBar/navBar.html'"></header>-->
+    <!--<div class="row" style="height:100%;">-->
+
+        <!--<div class="offset-sm-2 col-sm-8 " id="angular_ngView" >-->
+            <!--<div ng-view style="">-->
+
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-2 ">-->
+            <!--<aside class="column" ng-include="'devidedByHtmlBlocks/all/leftColumn/leftColumn.html'"></aside>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div ng-controller="allController">
+    <header ng-include="'devidedByHtmlBlocks/all/navBar/navBar.html'"></header>
+    <main>
+        <div class="row" style="height: 100%">
+            <div class="col-sm-2 ">
+                <aside class="column" style="height: 100%; " ng-include="'devidedByHtmlBlocks/all/leftColumn/leftColumn.html'"></aside>
+            </div>
+            <!-- Sidebar -->
+
+
+
+            <div class="col-sm-8 " style="height: 100%" >
+                <!--<div ng-view >-->
+
+                <!--</div>-->
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <ui-view></ui-view>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <section><h3>This is the footer</h3></section>
+    </footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

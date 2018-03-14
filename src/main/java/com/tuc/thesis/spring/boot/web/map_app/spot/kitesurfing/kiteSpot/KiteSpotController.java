@@ -12,10 +12,10 @@ public class KiteSpotController {
     @Autowired
     private KiteSpotService kiteSpotService;
 
-    @RequestMapping("/spots/kite")
-    public List<KiteSpot> getAllSpots(){
-        return kiteSpotService.getAllSpots();
-    }
+//    @RequestMapping("/spots/kite")
+//    public List<KiteSpot> getAllSpots(){
+//        return kiteSpotService.getAllSpots();
+//    }
 
 
     @RequestMapping("/spots/kite/{id}")

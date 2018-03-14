@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface KiteSpotImageRepository extends JpaRepository<KiteSpotImage, Integer> {
-    @Query(value = "SELECT * FROM kite_spot_image WHERE id= :id",nativeQuery = true)
+
+    @Query(value = "SELECT * FROM spot_kitesurfing_image WHERE kite_spot_id= :id",nativeQuery = true)
     public List<KiteSpotImage> find(@Param("id") int id);
 
 

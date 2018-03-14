@@ -1,0 +1,63 @@
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>-->
+<p>Overlays: <span id="overlays"> <button>wind</button> <button>temp</button> <button>pressure</button> <button>clouds</button> <button>rh</button> <button>gust</button> <button>lclouds</button> <button>waves</button> <button>swell</button> <button>wwaves</button> <button>swellperiod</button> <button>sst</button> <button>sstanom</button> <button>currents</button> </span></p>
+
+
+<div id="windyty"></div>
+
+<p>Displayed parameters:<span id="state"></span></p>
+
+<p>Levels: <span id="levels"><a>surface</a> <a>975h</a> <a>950h</a> <a>925h</a> <a>900h</a> <a>850h</a> <a>750h</a> <a>700h</a> <a>550h</a> <a>450h</a> <a>350h</a> <a>300h</a> <a>250h</a> <a>200h</a> <a>150h</a> </span></p>
+<br />
+<input type="range" id="range" min="0" max="10" style="width:100%;"/>
+
+<script type="text/javascript">
+
+    var windytyInit = {
+        key: 'PsL-At-XpsPTZexBwUkO7Mx5I',
+        lat: 37.378306, lon: 23.642578, zoom: 6,
+    }
+
+    function windytyMain(map) {
+
+        // html elements
+        var
+            overlays = document.getElementById('overlays'),
+            levels = document.getElementById('levels'),
+            state = document.getElementById('state');
+
+        // Handle change of overlay
+        overlays.onclick = function(event) {
+            W.setOverlay(event.target.innerHTML)
+        }
+
+        // Handle change of level
+        levels.onclick = function(event) {
+            W.setLevel(event.target.innerHTML);
+        }
+        var
+            range = document.getElementById('range'),
+            state = document.getElementById('state');
+
+        // Set minimum and maximum timestamp value
+        // for current overlay. Do not forget to check
+        // time boundaries after changing overlay.
+        range.max = W.timeline.end;
+        range.min = W.timeline.start;
+
+        // Handle change of <input range>
+        range.onchange = function(event) {
+            W.setTimestamp(+event.target.value)
+        }
+
+        // Display actual state of a map
+        W.on('redrawFinished',function( displayedParams ) {
+            state.innerHTML = displayedParams.overlay + ', ' + displayedParams.level + ','+ new Date( displayedParams.timestamp ).toString();
+        })
+    }
+</script>
+
+
+<script defer src="https://api.windytv.com/v2.3/boot.js"></script>
+
+

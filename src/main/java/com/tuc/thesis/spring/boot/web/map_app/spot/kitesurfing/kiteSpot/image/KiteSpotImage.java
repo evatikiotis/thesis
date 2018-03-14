@@ -4,14 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "kite_spot_image")
+@Entity(name = "spot_kitesurfing_image")
 public class KiteSpotImage {
 
 
-    @Column(name = "id")
+    @Column(name = "kite_spot_id")
     private int id;
     @Id
-    @Column(name = "image_key")
+    @Column(name = "image_id")
     private int imageKey;
     @Column(name = "image")
     private byte[] image;

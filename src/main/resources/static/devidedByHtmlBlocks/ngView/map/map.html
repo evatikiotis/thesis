@@ -1,0 +1,45 @@
+
+
+<div ncy-breadcrumb></div>
+<div class="row ml-sm-3">
+    <p class="">search by: </p>
+
+    <div class="row col-sm-10">
+        <form class="col-sm-4">
+            <label class="radio-inline">
+                <input type="radio" ng-model="searchRadio" value="byLocation" name="optradio" ng-init="searchRadio='byLocation'"/>location</label> <br/>
+            <label class="radio-inline">
+                <input type="radio" ng-model="searchRadio" value="byName"  name="optradio"/>spot's name</label>
+        </form>
+        <div ng-switch="searchRadio" class="col-sm-6">
+            <div ng-switch-when="byLocation">
+                <input places-auto-complete style="height: 40px; overflow: visible; width: 100%; border-style: solid;  padding:0 15px;"
+                       ng-model="mmc.address"
+                       component-restrictions="{country:'GR'}"
+                       types="{{types}}"
+                       placeholder="Enter location"
+                       on-place-changed="mmc.placeChanged()"
+                       ng-show=true
+
+                       />
+            </div>
+            <div ng-switch-when="byName" ng-controller="searchByNameController">
+                <input type="text" name="country" id="country" ng-model="country" ng-focus="complete('A')" ng-keyup="complete(country)" class="form-control" />
+                <ul class="list-group" ng-model="hidethis" ng-hide="hidethis" style="height: 500px;  overflow: auto">
+                    <li class="list-group-item" ng-repeat="countrydata in filterCountry" ng-click="fillTextbox(countrydata)">{{countrydata}}</li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <br/>
+    </div>
+</div>
+
+address : {{mmc.address}}
+<div   id="mainMap" style="height: 380px; width: 100%; ">
+</div>
+
+
+

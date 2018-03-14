@@ -1,0 +1,26 @@
+<br/>
+<div align="center">
+    <map center="[{{spot.latitude}}, {{spot.longitude}}]" zoom="14" map-type-id="HYBRID"
+         style="height: 300px; width: 100%">
+        <marker position="[{{spot.latitude}}, {{spot.longitude}}]" ></marker>
+    </map>
+</div>
+<div class="container-fluid offset-sm-2 ml-auto mr-auto" style="border-style: ridge; border-radius: 5px;">
+    <h2 class="ml-sm-5">{{spot.name}}</h2>
+    <br/>
+
+    <div align="" class="row container">
+        <aside>
+            <img alt="" src="data:image/png;base64,{{scuba_diving_school.image}}" style="">
+        </aside>
+        <div class="">
+
+            <p>address: {{scuba_diving_school.address}}</p>
+            <p>contact: {{scuba_diving_school.contact}}</p>
+            <p>email:   {{scuba_diving_school.email}}</p>
+            <p>website: <a href="{{scuba_diving_school.website}}"> {{scuba_diving_school.website}}</a>
+        </div>
+    </div>
+</div>
+
+

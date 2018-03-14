@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "dive_school")
+@Entity(name = "spot_dive_school")
 public class DiveSchoolSpot {
     @Id
     @Column(name = "id")

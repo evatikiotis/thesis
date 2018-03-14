@@ -1,0 +1,39 @@
+<div align="center">
+    <map center="[{{spot.latitude}}, {{spot.longitude}}]" zoom="10" map-type-id="HYBRID"
+         style="height: 300px; width: 100%">
+        <marker position="[{{spot.latitude}}, {{spot.longitude}}]" ></marker>
+    </map>
+</div>
+<table class="table " >
+    <tbody>
+    <tr class="noTopBorder">
+        <th >rating:</th>
+        <td>{{diveSpot.rating}}</td>
+    </tr>
+    <tr>
+        <th>loggedDives:</th>
+        <td>{{diveSpot.loggedDives}}</td>
+    </tr>
+    <tr>
+        <th>max Depth:</th>
+        <td>{{diveSpot.maxDepth}}</td>
+    </tr>
+    <tr>
+        <th>entry type:</th>
+        <td>{{diveSpot.entryType}}</td>
+    </tr>
+    <tr>
+        <th>water environment:</th>
+        <td>{{diveSpot.waterEnvironmentType}}</td>
+    </tr>
+    <tr>
+        <th>salinity:</th>
+        <td>{{diveSpot.waterEnvironmentType}}</td>
+    </tr>
+    <tr>
+        <th>primary bottom type:</th>
+        <td>{{diveSpot.primaryBottomType}}</td>
+    </tr>
+    </tbody>
+</table>
+

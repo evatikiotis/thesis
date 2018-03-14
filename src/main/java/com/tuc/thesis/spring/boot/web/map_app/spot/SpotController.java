@@ -15,6 +15,9 @@ public class SpotController {
         return spotService.getAllSpots();
     }
 
+    @RequestMapping("/spots/kitesurfing")
+    public List<Spot> getKiteSpots(){return spotService.getKiteSpots();}
+
     @RequestMapping(value = "/spots/add", method = RequestMethod.POST)
     public void addSpot(@RequestBody Spot spot){
         spotService.addSpot(spot);
