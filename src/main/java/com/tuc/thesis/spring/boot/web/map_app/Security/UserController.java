@@ -1,31 +1,24 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security;
 
 import com.sun.net.httpserver.Authenticator;
-import com.tuc.thesis.spring.boot.web.map_app.Security.User;
-import com.tuc.thesis.spring.boot.web.map_app.Security.UserService;
-import jdk.nashorn.internal.runtime.regexp.joni.exception.ErrorMessages;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserService2 userService;
 
     @RequestMapping("/users")
-    public List<User> getAllUsers(){
+    public List<User2> getAllUsers(){
         return userService.getAllUsers();
     }
     @RequestMapping("/user/{username}")
-    public User getUser(@PathVariable String username){
+    public User2 getUser(@PathVariable String username){
         return userService.getUser(username);
     }
 
@@ -41,7 +34,7 @@ public class UserController {
 //        return response;
 //    }
     @RequestMapping(value = "/api/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> authenticateUser(@RequestBody User user){
+    public ResponseEntity<?> authenticateUser(@RequestBody User2 user){
         if(userService.authenticateUser(user) != null){
             return new ResponseEntity<Authenticator.Success>(HttpStatus.OK);
         }
@@ -53,7 +46,7 @@ public class UserController {
 //    public List<User> getKiteUsers(){return userService.getKiteUsers();}
 
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
-    public void addUser(@RequestBody User user){
+    public void addUser(@RequestBody User2 user){
         userService.addUser(user);
     }
 
