@@ -25,17 +25,9 @@ public class UserService {
         return userRepository.authenticateUser(user.getUsername(), user.getPassword());
     }
 
-//    public List<User> getKiteUsers() {
-//        List<User> users = new ArrayList<>();
-//        userRepository.selectKiteUsers().forEach(users::add);
-//        return users;
-//    }
-
     public void addUser(User  user) {
         userRepository.save(user);
     }
 
-//    public User getUser(int id) {
-//        return userRepository.findOne(id);
-//    }
+
 }

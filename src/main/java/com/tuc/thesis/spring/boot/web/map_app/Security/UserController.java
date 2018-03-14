@@ -11,30 +11,20 @@ import java.util.List;
 @RestController
 public class UserController {
     @Autowired
-    private UserService2 userService;
+    private UserService  userService;
 
     @RequestMapping("/users")
-    public List<User2> getAllUsers(){
+    public List<User > getAllUsers(){
         return userService.getAllUsers();
     }
+
     @RequestMapping("/user/{username}")
-    public User2 getUser(@PathVariable String username){
+    public User  getUser(@PathVariable String username){
         return userService.getUser(username);
     }
 
-//    @RequestMapping(value = "/api/authenticate", method = RequestMethod.POST)
-//    public Map<String, String> authenticateUser(@RequestBody User user){
-//        HashMap<String, String> response = new HashMap<>();
-//        if(userService.authenticateUser(user) != null){
-//            response.put("success", "'true'");
-//        }else{
-//            response.put("success", "'false'");
-//            response.put("message", "Username or password is incorrect");
-//        }
-//        return response;
-//    }
     @RequestMapping(value = "/api/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> authenticateUser(@RequestBody User2 user){
+    public ResponseEntity<?> authenticateUser(@RequestBody User  user){
         if(userService.authenticateUser(user) != null){
             return new ResponseEntity<Authenticator.Success>(HttpStatus.OK);
         }
@@ -42,18 +32,12 @@ public class UserController {
 
     }
 
-//    @RequestMapping("/users/kitesurfing")
-//    public List<User> getKiteUsers(){return userService.getKiteUsers();}
-
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
-    public void addUser(@RequestBody User2 user){
+    public void addUser(@RequestBody User  user){
         userService.addUser(user);
     }
 
-//    @RequestMapping("/users/{id}")
-//    public User getUser(@PathVariable int id){
-//        return userService.getUser(id);
-//    }
+
 
 
 }

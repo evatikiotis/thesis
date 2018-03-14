@@ -9,19 +9,19 @@
 
     function config($stateProvider, $locationProvider) {
         var home = {name: 'home', url:'/',
-            templateUrl:'home/home.view.html',
+            templateUrl:'devidedByHtmlBlocks/ngView/home/home.view.html',
             controller: 'HomeController',
             controllerAs: 'vm',
             ncyBreadcrumb:{ label: 'Home page'}};
 
         var login = {name: 'login', url:'/login',
-            templateUrl:'login/login.view.html',
+            templateUrl:'devidedByHtmlBlocks/ngView/login/login.view.html',
             controller: 'LoginController',
             controllerAs: 'vm',
             ncyBreadcrumb:{ label: 'Login page'}};
 
         var register = {name: 'register', url:'/register',
-            templateUrl:'register/register.view.html',
+            templateUrl:'devidedByHtmlBlocks/ngView/register/register.view.html',
             controller: 'RegisterController',
             controllerAs: 'vm',
             ncyBreadcrumb:{ label: 'Register page'}};
