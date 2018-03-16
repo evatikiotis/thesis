@@ -45,17 +45,7 @@
 
                    callback(response);
                });
-            // $http({
-            //     url: "/api/authenticate",
-            //     dataType: "json",
-            //     method: "POST",
-            //     data: JSON.stringify({"username": username, "password": password}),
-            //     headers: {
-            //         "Content-Type": "application/json; charset=utf-8"
-            //     }
-            // }).then(function(response) {
-            //     callback(response);
-            // });
+
 
         }
 
