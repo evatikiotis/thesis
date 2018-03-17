@@ -95,18 +95,22 @@ nav a::before {
 
 nav ul {
     list-style-type: none;
+    height: 50px;
+    margin-bottom: 0px;
 }
 
 .nav-link{
 
-    font-size: large;
+    font-size: 16px;
 
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.5px;
     margin: 10px;
     margin-left:40px;
+
     /*text-shadow: 0.05px 0.05px;*/
 }
+
 #login-register a {
     position: static;
     background-color: #4e555b;
@@ -115,6 +119,9 @@ nav ul {
     margin-top: 8px;
 }
 #login-register a:hover{
-    color: #A6B339;
+    color: #C0CC56; /*lightgreen*/
 
+}
+#nav-links{
+    margin-top: -20px;
 }

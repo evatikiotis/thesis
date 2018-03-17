@@ -3,10 +3,24 @@
     background-color: #3F3F3F; navbar ~black
     background-color: #C0CC56; navbar-links ~lightgreen
     background-color: #A6B339; ~green
-*/
+    backgroun-color: #C0CC56 buttons
+    backgroun-color: #8A9903 buttons  hover*/
+
+
 
 html, body{
     font-family: 'Ubuntu', sans-serif;
+    /*gradient!*/
+
+}
+
+.btn{
+    background-color: rgba(91, 114, 23, 0.61);
+    color: white;
+
+}
+.btn:hover{
+    background-color: #C0CC56;
 
 }
 

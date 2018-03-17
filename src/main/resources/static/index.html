@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="devidedByHtmlBlocks/all/navBar/navbar.css">
     <link rel="stylesheet" href="devidedByHtmlBlocks/all/leftColumn/leftColumn.css">
+    <link rel="stylesheet" href="devidedByHtmlBlocks/ngView/login/login.css">
+    <link rel="stylesheet" href="devidedByHtmlBlocks/all/all.css">
 
 
 
@@ -22,15 +24,15 @@
 </head>
 <body>
     <div ng-include="'devidedByHtmlBlocks/all/all.html'"></div>
-    <div class="jumbotron">
-        <div class="container">
-            <div class="col-sm-8 col-sm-offset-2">
-                <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
-                <!--<ui-view></ui-view>-->
+    <!--<div class="jumbotron">-->
+        <!--<div class="container">-->
+            <!--<div class="col-sm-8 col-sm-offset-2">-->
+                <!--<div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>-->
+                <!--&lt;!&ndash;<ui-view></ui-view>&ndash;&gt;-->
 
-            </div>
-        </div>
-    </div>
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <script src="vendor/angularjs/angular.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
