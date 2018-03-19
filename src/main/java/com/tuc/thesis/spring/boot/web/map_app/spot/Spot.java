@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
+
 @Entity(name = "spot")
 public class Spot {
     @Id
@@ -31,7 +33,7 @@ public class Spot {
 
     public Spot() {}
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
