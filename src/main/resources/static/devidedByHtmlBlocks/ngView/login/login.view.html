@@ -1,23 +1,28 @@
 ﻿<div class="col-md-6 col-md-offset-3">
-    <p>Login</p>
+
 
 </div>
-<div id="login-container" class="offset-sm-3 col-sm-6">
+<div id="login-container" class="offset-sm-4 col-sm-4 ui-header">
     <div >
-        <div class="card-header" id="login-header">
-            <h3>Login</h3>
+        <div class="card-header " id="login-header">
+            <h4>Login</h4>
         </div>
-        <div class="card-body">
+        <div class="card-body ui-container">
 
             <form name="form" ng-submit="vm.login()" role="form">
                 <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" class="form-control" ng-model="vm.username" required />
+                    <div class="col-sm-11">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" placeholder="username" class="form-control" ng-model="vm.username" required />
+                    </div>
                     <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
                 </div>
                 <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" ng-model="vm.password" required />
+
+                    <div class="col-sm-11">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="password" class="form-control" ng-model="vm.password" required />
+                    </div>
                     <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
                 </div>
                 <div class="form-actions">
@@ -29,3 +34,5 @@
         </div>
     </div>
 </div>
+
+

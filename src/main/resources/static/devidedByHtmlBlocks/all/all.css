@@ -1,16 +1,20 @@
 #ui-view-container{
-    background-color: rgba(91, 193, 111, 0.05);
+    background-color: rgba(64, 59, 52, 0.05);
     height: 800px;
     border-radius: 5px;
     border: 0.6px;
-    box-shadow: 1px 1px #faf3ec;
+    /*box-shadow: 1px 1px #faf3ec;*/
+    border: 1px solid rgba(204, 199, 186, 0.36);
+    padding: 0;
+    /*padding-left: 10px;*/
 }
 footer{
     height: 200px;
 }
 #everthing-container{
     height: 100%;
-    background-color: rgba(253, 252, 243, 0.04);
+
+    /*background-color: rgba(253, 252, 243, 0.04);*/
 
 
 }

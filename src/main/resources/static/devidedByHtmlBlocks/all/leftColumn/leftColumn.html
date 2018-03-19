@@ -1,7 +1,7 @@
 
 
 
-<article id="mySidebar" class="w3-sidebar w3-bar-block w3-border-right container" ng-controller="leftColumnController" >
+<div  class="" ng-controller="leftColumnController" >
     <h4>Spot Categories</h4>
 
 
@@ -33,20 +33,10 @@
         </label>
     </div>
 
-    <div style="">
-        <button id="btnCloseSidebar" onclick="w3_close()"  class="w3-bar-item w3-large"  >Close &times;</button>
-    </div>
-</article>
-<button  id="btnOpenSidebar"
-        class="w3-button w3-teal w3-large " onclick="w3_open()">☰</button>
+
+</div>
 
 
-<script>
-    function w3_open() {
-        document.getElementById("mySidebar").style.display = "block";
-    }
-    function w3_close() {
-        document.getElementById("mySidebar").style.display = "none";
-    }
-</script>
+
+
 
