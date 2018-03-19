@@ -25,7 +25,7 @@
 
 html, body{
     font-family: 'Ubuntu', sans-serif;
-    /*gradient!*/
+    height: 100%;
 }
 .btn{
     background-color: rgba(91, 114, 23, 0.61);

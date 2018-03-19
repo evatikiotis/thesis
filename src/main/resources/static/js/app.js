@@ -26,6 +26,12 @@
             controllerAs: 'vm',
             ncyBreadcrumb:{ label: 'Register page'}};
 
+        var myProfile = {name: 'myProfile', url:'/my-profile',
+            templateUrl:'devidedByHtmlBlocks/ngView/my-profile/my-profile.html',
+            // controller: 'RegisterController',
+            // controllerAs: 'vm',
+            ncyBreadcrumb:{ label: 'my prfile page'}};
+
         // var home = {name: 'home', url:'/home', templateUrl:'devidedByHtmlBlocks/ngView/home/home.html',
         //     ncyBreadcrumb:{ label: 'Home page'}};
 
@@ -62,6 +68,7 @@
         $stateProvider.state(weatherMap);
         $stateProvider.state(myMap);
         $stateProvider.state(adventureFinder);
+        $stateProvider.state(myProfile);
 
     }
 

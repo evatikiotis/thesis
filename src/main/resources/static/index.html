@@ -10,29 +10,24 @@
     <link rel="stylesheet" href="devidedByHtmlBlocks/all/leftColumn/leftColumn.css">
     <link rel="stylesheet" href="devidedByHtmlBlocks/ngView/login/login.css">
     <link rel="stylesheet" href="devidedByHtmlBlocks/all/all.css">
-
-
-
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="vendor/angularjs/autocomplete.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <link href="app-content/app.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet">
-
-
 </head>
-<body>
-    <div ng-include="'devidedByHtmlBlocks/all/all.html'"></div>
-    <!--<div class="jumbotron">-->
-        <!--<div class="container">-->
-            <!--<div class="col-sm-8 col-sm-offset-2">-->
-                <!--<div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>-->
-                <!--&lt;!&ndash;<ui-view></ui-view>&ndash;&gt;-->
+<body style="top: 0">
+    <div ng-include="'devidedByHtmlBlocks/all/navBar/navBar.html'"></div>
+    <main>
+        <div class="col-sm-10 offset-sm-1" ng-controller="allController" id="ui-view-container" >
+            <ui-view></ui-view>
+        </div>
+    </main>
+    <footer>
+        sadsad
 
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+    </footer>
 
     <script src="vendor/angularjs/angular.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
