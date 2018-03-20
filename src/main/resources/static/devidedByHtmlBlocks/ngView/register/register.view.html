@@ -1,8 +1,8 @@
-﻿<div id="register-container" class="offset-sm-3 col-sm-6 ui-header">
-    <div class="card-header " id="register-header">
+﻿<div id="register-container" class="offset-sm-3 col-sm-6 ">
+    <div class="ui-header row" >
         <h4>Register</h4>
     </div>
-    <div class="card-body ui-container">
+    <div class="  ui-container">
         <form name="form" ng-submit="vm.register()" role="form">
             <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
                 <label for="email">Email</label>
@@ -26,21 +26,44 @@
                 <!--<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>-->
             <!--</div>-->
 
-            <br>
-            <div class="ui-container"></div>
-            <br>
-            <h4>More information for better user experience</h4>
-            <div class="form-group row">
-                <label class="col-sm-3" >Interested in:</label>
-                <div class="col-sm-8 row">
-                    <label class="form-check-label col-sm-6">
-                        <input type="checkbox"  ><span> scuba-diving</span>
-                    </label>
-                    <label class="form-check-label col-sm-6">
-                        <input type="checkbox" class="form-check-input" ng-model="" ng-click="" ><span>kitesurfing</span>
-                    </label>
 
+            <hr >
+
+            <div  class="ui-header container-fluid" style="">
+                <h4>More information for better user experience</h4>
+            </div>
+            <div id="reg_moreInfo">
+
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" ng-model="reg_kitesurf"
+                               ng-click="" ><span>kitesurfing</span>
+                    </label>
+                    <span class="ml-sm-5" ng-show="reg_kitesurf">
+                        <label>level:</label>
+                        <select>
+                            <option value="beginner">Beginner</option>
+                            <option value="itermediate">Intermediate</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                    </span>
                 </div>
+                <br>
+                <div class="form-check ">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" ng-model="reg_scuba"
+                               ng-click="" ><span>scuba-diving</span>
+                    </label>
+                    <span class="ml-sm-5" ng-show="reg_scuba">
+                        <label>level:</label>
+                        <select>
+                            <option value="beginner">Beginner</option>
+                            <option value="itermediate">Intermediate</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                    </span>
+                </div>
+
                 <label class="col-sm-3" >Date of birth:</label>
                 <input type="date">
             </div>

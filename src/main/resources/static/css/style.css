@@ -39,18 +39,20 @@ a{
     color: white;
 }
 .ui-header{
-    background-color: #BFB09B;
+    background-color: #7F7567;
     border-radius: 2px;
     border: 0.5px solid rgba(207, 214, 74, 0.53);
     box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
-    padding: 0;
+    padding: 10px;
+    color: white;
 }
 .ui-container{
-    background-color: #FFEACF;
+    background-color: #E9E9E9;
     border-radius: 4px;
     border: 0.5px solid rgba(207, 214, 74, 0.53);
     box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
-    padding: 0;
+    padding: 40px;
+    color: black;
 
 }
 input{
@@ -58,6 +60,9 @@ input{
     box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
     padding: 5px;
     border-radius: 4px;
+}
+hr{
+    border-color: #BFB09B;
 }
 
 /*#windyty {    height: 500px; width: 1000px;*/
