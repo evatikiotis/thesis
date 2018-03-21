@@ -9,5 +9,6 @@
     /*padding-left: 10px;*/
 }
 footer{
-    height: 200px;
+    height: 100px;
+    background-color: rgba(174, 160, 141, 0.43);
 }

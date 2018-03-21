@@ -12,4 +12,12 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     @Query(value = "SELECT * FROM app_user WHERE username= :username AND password = :password",nativeQuery = true)
     public User authenticateUser(@Param("username") String username, @Param("password") String password);
+
+    @Query(value = "SELECT * FROM\n" +
+            "      app_user\n" +
+            "      JOIN app_user_interest\n" +
+            "      ON app_user.username = app_user_interest.app_user_username\n" +
+            "      JOIN interest\n" +
+            "        ON app_user_interest.interest_id = interest.id", nativeQuery = true)
+    public User getUserInfo();
 }

@@ -16,7 +16,7 @@
     var windytyInit = {
         key: 'PsL-At-XpsPTZexBwUkO7Mx5I',
         lat: 37.378306, lon: 23.642578, zoom: 6,
-    }
+    };
 
     function windytyMain(map) {
 
@@ -29,12 +29,12 @@
         // Handle change of overlay
         overlays.onclick = function(event) {
             W.setOverlay(event.target.innerHTML)
-        }
+        };
 
         // Handle change of level
         levels.onclick = function(event) {
             W.setLevel(event.target.innerHTML);
-        }
+        };
         var
             range = document.getElementById('range'),
             state = document.getElementById('state');

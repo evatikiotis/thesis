@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping("/user/{username}")
     public User  getUser(@PathVariable String username){
-        return userService.getUser(username);
+        return userService.getUserByUsername(username);
     }
 
     @RequestMapping(value = "/api/authenticate", method = RequestMethod.POST)
@@ -35,6 +35,11 @@ public class UserController {
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
     public void addUser(@RequestBody User  user){
         userService.addUser(user);
+    }
+
+    @RequestMapping("/user-info")
+    public User getUserInfo(){
+        return userService.getUserInfo();
     }
 
 
