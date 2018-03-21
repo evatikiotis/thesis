@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface UserRepository extends CrudRepository<User, Integer> {
 
 
@@ -19,5 +21,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
             "      ON app_user.username = app_user_interest.app_user_username\n" +
             "      JOIN interest\n" +
             "        ON app_user_interest.interest_id = interest.id", nativeQuery = true)
+
     public User getUserInfo();
 }

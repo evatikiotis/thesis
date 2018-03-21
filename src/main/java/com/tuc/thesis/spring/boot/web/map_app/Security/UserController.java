@@ -1,6 +1,7 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security;
 
 import com.sun.net.httpserver.Authenticator;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +38,14 @@ public class UserController {
         userService.addUser(user);
     }
 
-    @RequestMapping("/user-info")
-    public User getUserInfo(){
-        return userService.getUserInfo();
+    @RequestMapping(value = "/user-info", produces = "application/json")
+    public @ResponseBody
+    User getUserInfo() throws JSONException {
+
+        User user =  userService.getUserInfo();
+
+        return user;
+
     }
 
 

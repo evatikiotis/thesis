@@ -1,19 +1,26 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security;
 
+import jdk.nashorn.internal.ir.annotations.Reference;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity(name = "app_user")
-public class User {
+public class User implements Serializable {
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "app_user_interest",
             joinColumns = {@JoinColumn(name = "app_user_username")},
             inverseJoinColumns = {@JoinColumn(name = "interest_id")}
     )
-    Set<Interest> interests = new HashSet<>();
+    private List<Interest> interests;
+//    private List<Interest> interests;
 
     @Column(name = "id")
     private int id;
@@ -28,14 +35,19 @@ public class User {
     @Column(name = "email")
     private String email;
 
+
+
+
+
     public User() {
     }
 
-    public User(int id, String username, String password, String email) {
+    public User(int id, String username, String password, String email, List<String> interests) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
+
     }
 
     public String getEmail() {
@@ -70,6 +82,13 @@ public class User {
         this.password = password;
     }
 
+    public List<Interest> getInterests() {
+        return interests;
+    }
+
+    public void setInterests(List<Interest> interests) {
+        this.interests = interests;
+    }
 }
 
 
