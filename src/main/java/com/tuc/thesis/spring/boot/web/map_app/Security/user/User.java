@@ -10,14 +10,18 @@ import java.util.List;
 public class User implements Serializable {
 
 
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "app_user_interest",
             joinColumns = {@JoinColumn(name = "app_user_username")},
             inverseJoinColumns = {@JoinColumn(name = "interest_interest")}
+
+
     )
     private List<Interest> interests;
+
+
+
 //    private List<Interest> interests;
 
     @Column(name = "id")

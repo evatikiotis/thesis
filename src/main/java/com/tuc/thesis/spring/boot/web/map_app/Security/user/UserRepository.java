@@ -19,7 +19,8 @@ public interface UserRepository extends CrudRepository<User, Integer> {
             "      JOIN app_user_interest\n" +
             "      ON app_user.username = app_user_interest.app_user_username\n" +
             "      JOIN interest\n" +
-            "        ON app_user_interest.interest_interest = interest.interest", nativeQuery = true)
+            "        ON app_user_interest.interest_interest = interest.interest" +
+            "       WHERE username = :username", nativeQuery = true)
 
-    public User getUserInfo();
+    public User getUserInfo(@Param("username") String username);
 }

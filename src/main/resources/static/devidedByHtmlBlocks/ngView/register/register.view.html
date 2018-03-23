@@ -51,8 +51,8 @@
                 <br>
                 <div class="form-check ">
                     <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" ng-model="vm.user.interest"
-                               name="interest" ng-true-value="'scubadiving'" ><span>scuba-diving</span>
+                        <input type="checkbox" class="form-check-input" ng-model="vm.scubadiving"
+                               name="interest" ng-true-value="'scubadiving'" ng-click="vm.pushUserInterest('scubadiving')"><span>scuba-diving</span>
                     </label>
                     <span class="ml-sm-5" ng-show="vm.user.interest">
                         <label>level:</label>

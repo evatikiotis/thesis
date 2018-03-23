@@ -36,8 +36,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User getUserInfo() throws JSONException {
-        User user = userRepository.getUserInfo();
+    public User getUserInfo(String username) throws JSONException {
+        User user = userRepository.getUserInfo(username);
 
         return user;
 

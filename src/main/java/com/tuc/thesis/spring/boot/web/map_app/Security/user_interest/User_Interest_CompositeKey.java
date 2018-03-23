@@ -11,9 +11,10 @@ public class User_Interest_CompositeKey implements Serializable {
     private String user_interest;
 
 
-    public User_Interest_CompositeKey(String user_username, String user_interest) {
+    public User_Interest_CompositeKey(String user_username, String user_interest, String level) {
         this.user_username = user_username;
         this.user_interest = user_interest;
+
     }
 
     public User_Interest_CompositeKey() {
@@ -34,4 +35,6 @@ public class User_Interest_CompositeKey implements Serializable {
     public void setUser_interest(String user_interest) {
         this.user_interest = user_interest;
     }
+
+
 }

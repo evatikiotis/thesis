@@ -20,10 +20,10 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @RequestMapping("/user/{username}")
-    public User  getUser(@PathVariable String username){
-        return userService.getUserByUsername(username);
-    }
+//    @RequestMapping("/user/{username}")
+//    public User  getUser(@PathVariable String username){
+//        return userService.getUserByUsername(username);
+//    }
 
     @RequestMapping(value = "/api/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> authenticateUser(@RequestBody User  user){
@@ -40,11 +40,11 @@ public class UserController {
         userService.addUser(user);
     }
 
-    @RequestMapping(value = "/user-info", produces = "application/json")
+    @RequestMapping(value = "/user/{username}", produces = "application/json")
     public @ResponseBody
-    User getUserInfo() throws JSONException {
+    User getUserInfo(@PathVariable String username) throws JSONException {
 
-        User user =  userService.getUserInfo();
+        User user =  userService.getUserInfo(username);
 
         return user;
 
