@@ -10,15 +10,16 @@ import java.util.List;
 public class User implements Serializable {
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "app_user_interest",
-            joinColumns = {@JoinColumn(name = "app_user_username")},
-            inverseJoinColumns = {@JoinColumn(name = "interest_interest")}
 
-
-    )
-    private List<Interest> interests;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(
+//            name = "app_user_interest",
+//            joinColumns = {@JoinColumn(name = "app_user_username")},
+//            inverseJoinColumns = {@JoinColumn(name = "interest_interest")}
+//
+//
+//    )
+//    private List<Interest> interests;
 
 
 
@@ -44,8 +45,8 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(List<Interest> interests, int id, String username, String password, String email) {
-        this.interests = interests;
+    public User(/*List<Interest> interests,*/ int id, String username, String password, String email) {
+//        this.interests = interests;
         this.id = id;
         this.username = username;
         this.password = password;
@@ -83,14 +84,14 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public List<Interest> getInterests() {
-        return interests;
-    }
-
-    public void setInterests(List<Interest> interests) {
-        this.interests = interests;
-    }
+//
+//    public List<Interest> getInterests() {
+//        return interests;
+//    }
+//
+//    public void setInterests(List<Interest> interests) {
+//        this.interests = interests;
+//    }
 }
 
 
