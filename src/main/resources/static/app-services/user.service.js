@@ -31,7 +31,7 @@
         }
 
         function Create(user) {
-            return $http.post('/users/add', user).then(handleSuccess, handleError('Error creating user'));
+            return $http.post('/users/add', user ).then(handleSuccess, handleError('Error creating user'));
         }
 
         function Update(user) {

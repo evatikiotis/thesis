@@ -1,4 +1,4 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security;
+package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
 import com.sun.net.httpserver.Authenticator;
 import org.json.JSONException;
@@ -8,14 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserController {
     @Autowired
-    private UserService  userService;
+    private UserService userService;
 
     @RequestMapping("/users")
-    public List<User > getAllUsers(){
+    public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
 
@@ -34,7 +35,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
-    public void addUser(@RequestBody User  user){
+    public void addUser(@RequestBody User user){
+        System.out.print(user);
         userService.addUser(user);
     }
 

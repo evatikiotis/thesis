@@ -1,12 +1,10 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security;
+package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
-import jdk.nashorn.internal.ir.annotations.Reference;
+import com.tuc.thesis.spring.boot.web.map_app.Security.interest.Interest;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity(name = "app_user")
 public class User implements Serializable {
@@ -17,7 +15,7 @@ public class User implements Serializable {
     @JoinTable(
             name = "app_user_interest",
             joinColumns = {@JoinColumn(name = "app_user_username")},
-            inverseJoinColumns = {@JoinColumn(name = "interest_id")}
+            inverseJoinColumns = {@JoinColumn(name = "interest_interest")}
     )
     private List<Interest> interests;
 //    private List<Interest> interests;
@@ -42,12 +40,12 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(int id, String username, String password, String email, List<String> interests) {
+    public User(List<Interest> interests, int id, String username, String password, String email) {
+        this.interests = interests;
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-
     }
 
     public String getEmail() {

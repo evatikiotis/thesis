@@ -1,5 +1,6 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security;
+package com.tuc.thesis.spring.boot.web.map_app.Security.interest;
 
+import com.tuc.thesis.spring.boot.web.map_app.Security.interest.Interest;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

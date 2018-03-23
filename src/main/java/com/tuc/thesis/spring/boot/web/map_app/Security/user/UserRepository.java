@@ -1,10 +1,9 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security;
+package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
+import com.tuc.thesis.spring.boot.web.map_app.Security.user.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-
-import java.util.List;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
@@ -20,7 +19,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
             "      JOIN app_user_interest\n" +
             "      ON app_user.username = app_user_interest.app_user_username\n" +
             "      JOIN interest\n" +
-            "        ON app_user_interest.interest_id = interest.id", nativeQuery = true)
+            "        ON app_user_interest.interest_interest = interest.interest", nativeQuery = true)
 
     public User getUserInfo();
 }

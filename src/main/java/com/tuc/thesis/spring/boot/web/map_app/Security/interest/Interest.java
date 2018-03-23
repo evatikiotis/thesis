@@ -1,4 +1,4 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security;
+package com.tuc.thesis.spring.boot.web.map_app.Security.interest;
 
 import org.springframework.boot.jackson.JsonComponent;
 
@@ -11,9 +11,10 @@ import java.util.Set;
 @Entity
 @Table(name = "interest")
 public class Interest implements Serializable{
+
+    //    @Column(name = "id")
+//    private int id;
     @Id
-    @Column(name = "id")
-    private int id;
     @Column(name = "interest")
     private String interest;
 
@@ -28,18 +29,18 @@ public class Interest implements Serializable{
 
     }
 
-    public Interest(int id, String interest) {
-        this.id = id;
+    public Interest( String interest) {
+//        this.id = id;
         this.interest = interest;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public long getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getInterest() {
         return interest;
