@@ -1,7 +1,7 @@
 //$rootScope.spot: apo markersController showInfo!!
 
 var module = angular.module('myApp');
-module.controller('navbarController', function($scope) {
+module.controller('navbarController', function($scope, $location) {
     var nav_home = angular.element(document.querySelector('#nav_home'));
     var nav_map = angular.element(document.querySelector('#nav_map'));
     var nav_weatherMap = angular.element(document.querySelector('#nav_weatherMap'));

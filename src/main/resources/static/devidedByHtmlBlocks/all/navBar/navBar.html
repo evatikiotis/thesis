@@ -1,4 +1,4 @@
-<nav>
+<nav ng-controller="navbarController">
 
 
     <div class="">
@@ -35,17 +35,18 @@
     </div>
     <div class="col-sm-8 offset-sm-2" id="nav-links">
         <ul class="row">
+
             <li>
-                <a class="nav-link" href="#!/" ng-click="nav_home_clicked()" style="color: #C0CC56;"><i class="fa fa-home"></i> Home</a>
+                <a class="nav-link" href="#!/" id="nav_home"  ><i class="fa fa-home"></i> Home</a>
             </li>
             <li>
-                <a class="nav-link" href="#!/map" ng-click="nav_map_clicked()"><i class="fa fa-map-marker" ></i> Spots</a>
+                <a class="nav-link" href="#!/map" id="nav_map"><i class="fa fa-map-marker" ></i> Spots</a>
             </li>
             <li>
-                <a class="nav-link" href="#!/weather_map" ng-click="nav_weatherMap_clicked()"><i class="fa fa-cloud" ></i> Weather</a>
+                <a class="nav-link" href="#!/weather_map" id="nav_weatherMap"><i class="fa fa-cloud" ></i> Weather</a>
             </li>
             <li>
-                <a class="nav-link " href="#!/my_map" ng-click="nav_myMap_clicked()"><i class="fa fa-map" ></i> My Map</a>
+                <a class="nav-link " href="#!/my_map" id="nav_MyMap"><i class="fa fa-map" ></i> My Map</a>
             </li>
         </ul>
     </div>

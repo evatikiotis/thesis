@@ -32,6 +32,16 @@ html, body{
     color: white;
 
 }
+button{
+    background-color: rgba(91, 114, 23, 0.61);
+    color: white;
+    width: 100%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
 .btn:hover{
     background-color: #c0fa56;
 }

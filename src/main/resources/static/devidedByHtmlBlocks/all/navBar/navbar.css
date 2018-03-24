@@ -50,6 +50,9 @@
     /*height: 2px;*/
     /*background-color: #C0CC56;*/
 /*}*/
+.active{
+    color: #C0CC56;
+}
 #logo{
     color: #A6B339; /*greener*/
     font-family: "Century Schoolbook L";

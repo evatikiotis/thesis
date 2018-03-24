@@ -80,6 +80,8 @@
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
         }
 
+
+
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in and trying to access a restricted page
             // var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
@@ -87,7 +89,33 @@
             // if (restrictedPage && !loggedIn) {
             //     $location.path('/login');
             // }
+
+            var nav_home = angular.element(document.querySelector('#nav_home'));
+            var nav_map = angular.element(document.querySelector('#nav_map'));
+            var nav_weatherMap = angular.element(document.querySelector('#nav_weatherMap'));
+            var nav_myMap = angular.element(document.querySelector('#nav_myMap'));
+            var nav_adventureFinder = angular.element(document.querySelector('#nav_adventureFinder'));
+            var nav_about = angular.element(document.querySelector('#nav_about'));
+            if($location.url() == "/"){
+                nav_home.addClass('active');
+                nav_map.removeClass('active');
+                nav_weatherMap.removeClass('active');
+            }
+            if($location.url() == "/map"){
+                nav_map.addClass('active');
+                nav_home.removeClass('active');
+                nav_weatherMap.removeClass('active');
+            }
+            if($location.url() == "/weather_map"){
+                nav_weatherMap.addClass('active');
+                nav_map.removeClass('active');
+                nav_home.removeClass('active');
+
+            }
+
+
         });
+
     }
 
 })();
