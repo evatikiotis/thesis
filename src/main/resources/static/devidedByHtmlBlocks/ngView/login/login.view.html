@@ -31,30 +31,29 @@
         <!--</div>-->
     <!--</div>-->
 <!--</div>-->
+<p href="#/" class style="background-color: #a9a463; color: white; height: 20px; padding: 0" ncy-breadcrumb ></p>
 
-<div class="container col-sm-6">
-    <form action="/action_page.php">
-        <div class="imgcontainer">
-            <img src="images/user.svg" alt="Avatar" class="avatar" width="200" height="220">
-        </div>
+<form action="/action_page.php" class="container col-sm-6">
+    <!--<div class="imgcontainer ui-header " style="">-->
+        <!--<h3>Login</h3>-->
+        <!--<img src="images/user.svg" alt="Avatar" class="" height="60" width="65">-->
+    <!--</div>-->
 
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" id="uname" name="uname" required>
+    <div >
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" id="username" name="username" required>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="psw" name="psw" required>
-            <br>
-            <button type="submit">Login</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-        </div>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="password" name="password" required>
+        <label>
+            <input type="checkbox" name="remember"> Remember me
+        </label>
+        <button id="loginButton" style="margin-top:8px;" type="submit">Login</button>
 
-        <div class="container" style="background-color:#f1f1f1">
+    </div>
 
-            <a href="#">Forgot password?</a>
-        </div>
-    </form>
+    <div class="container" style="background-color:#f1f1f1">
 
-</div>
+       <a href="#">Forgot password?</a>
+    </div>
+</form>

@@ -1,0 +1,125 @@
+/* Styles go here */
+/*colour pallet
+    background-color: #3F3F3F; navbar ~black
+    background-color: #C0CC56; navbar-links ~lightgreen
+    background-color: #A6B339; ~green
+    backgroun-color: #C0CC56 buttons
+    backgroun-color: #8A9903 buttons  hover*/
+
+.my-colors{
+    background-color: #403B34;
+    background-color: #7F7567; /*navbar*/
+    background-color: #BFB09B; /*form header*/
+    background-color: #E5D3BA;
+    background-color: #FFEACF;
+}
+
+.my-colors{
+    background-color: #2A4035;
+    background-color: #547F69;
+    background-color: #7FBF9E;
+    background-color: #98E5BE;
+    background-color: #A9FFD3;
+}
+
+
+html, body{
+    font-family: 'Ubuntu', sans-serif;
+    height: 100%;
+
+}
+main{
+    background-color: #4e555b;
+}
+#ng-view-container{
+    background-color: lightgrey;
+    height: 800px;
+    border-radius: 5px;
+    border: 0.6px;
+    /*box-shadow: 1px 1px #faf3ec;*/
+    border: 1px solid rgba(204, 199, 186, 0.36);
+    /*padding: 0;*/
+    /*padding-left: 10px;*/
+}
+footer{
+    height: 100px;
+    background-color: #403B34;
+}
+
+
+form {
+    border: 1px solid #d3d3d3;
+    border-radius: 2px;
+    background-color: whitesmoke;
+    box-shadow: 2px 2px #a2a2a2;
+}
+
+form label{margin-bot:0; margin-top: 15px;}
+
+.btn{
+    background-color: rgba(91, 114, 23, 0.61);
+    color: white;
+
+}
+
+.btn:hover{
+    background-color: #c0fa56;
+}
+
+button {
+    background-color: rgba(15, 119, 28, 0.73);
+    color: white;
+    padding: 10px 15px;
+    /*margin: 8px 0;*/
+    border: none;
+    cursor: pointer;
+
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+a{
+    color: white;
+}
+.ui-header{
+    background-color: #7F7567;
+    border-radius: 2px;
+    border: 0.5px solid rgba(207, 214, 74, 0.53);
+    box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
+    padding: 10px;
+    color: white;
+}
+.ui-container{
+    background-color: #E9E9E9;
+    border-radius: 4px;
+    border: 0.5px solid rgba(207, 214, 74, 0.53);
+    box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
+    padding: 40px;
+    color: black;
+
+}
+/*ng-view*/
+
+
+
+input{
+    border: 0.5px solid rgba(207, 214, 74, 0.53);
+    box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
+    /*padding: 5px;*/
+    border-radius: 4px;
+    padding: 5px 15px;
+}
+hr{
+    border-color: #BFB09B;
+}
+
+#windyty {    height: 500px; width: 1000px;
+    margin-left: auto; margin-right: auto;
+    position: relative;
+    margin-top: 50px; }
+
+
+
+
