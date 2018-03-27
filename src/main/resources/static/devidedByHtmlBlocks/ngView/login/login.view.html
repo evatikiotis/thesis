@@ -33,27 +33,35 @@
 <!--</div>-->
 <p href="#/" class style="background-color: #a9a463; color: white; height: 20px; padding: 0" ncy-breadcrumb ></p>
 
-<form action="/action_page.php" class="container col-sm-6">
-    <!--<div class="imgcontainer ui-header " style="">-->
-        <!--<h3>Login</h3>-->
+<div class="container-fluid col-sm-6 ">
+    <div class="container-fluid ui-header">
+        <h3>Login</h3>
         <!--<img src="images/user.svg" alt="Avatar" class="" height="60" width="65">-->
-    <!--</div>-->
-
-    <div >
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" id="username" name="username" required>
-
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" id="password" name="password" required>
-        <label>
-            <input type="checkbox" name="remember"> Remember me
-        </label>
-        <button id="loginButton" style="margin-top:8px;" type="submit">Login</button>
-
     </div>
+    <form name="form" ng-submit="vm.login()" role="form" class="container" >
 
-    <div class="container" style="background-color:#f1f1f1">
 
-       <a href="#">Forgot password?</a>
-    </div>
-</form>
+        <div class="container-fluid">
+            <label for="username"><b>Username</b></label>
+            <input ng-model="vm.username" type="text" placeholder="Enter Username" id="username" name="username" required>
+
+            <label for="password"><b>Password</b></label>
+            <input ng-model="vm.password" type="password" placeholder="Enter Password" id="password" name="password" required>
+        </div>
+        <br>
+        <div class="container-fluid form-actions">
+            <label>
+                <input type="checkbox" name="remember"> Remember me
+            </label>
+            <button id="" class="mr-sm-3" style="float: right;" type="submit">Login</button>
+        </div>
+        <br>
+        <a class="btn btn-link" style="margin-left: 0; " href="#">Forgot password?</a>
+        <div class="container" style="background-color:#f1f1f1; padding-top: 0; padding-bottom: 2px; ">
+            <p>If you already have an account
+                <a href="#!/register" style="" class="btn btn-link">Register</a>
+            </p>
+        </div>
+    </form>
+
+</div>

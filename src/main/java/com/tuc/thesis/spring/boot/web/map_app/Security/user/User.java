@@ -40,9 +40,9 @@ public class User implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "birthdate")
-    private Date date;
+//    @Temporal(TemporalType.DATE)
+//    @Column(name = "birthdate")
+//    private Date date;
 
 
 
@@ -51,22 +51,22 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(List<Interest> interests, int id, String username, String password, String email, Date date) {
+    public User(List<Interest> interests, int id, String username, String password, String email) {
         this.interests = interests;
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.date = date;
+
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
+//    public Date getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(Date date) {
+//        this.date = date;
+//    }
 
     public String getEmail() {
         return email;

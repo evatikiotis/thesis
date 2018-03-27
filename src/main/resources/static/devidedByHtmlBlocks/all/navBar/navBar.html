@@ -3,7 +3,7 @@
 
     <div class="">
         <aside class="float-right mr-sm-1 ">
-            <div ng-if="globals.currentUser" class="" id="login-register">
+            <div ng-if="!globals.currentUser" class="" id="login-register">
                 <ul class="row">
                     <li id="login">
                         <a  data-toggle="modal" href="#!/login" >log in</a>
@@ -13,7 +13,7 @@
                     </li>
                 </ul>
             </div>
-            <div ng-if="!globals.currentUser" style="right: 0; top: 0" class="" id="">
+            <div ng-if="globals.currentUser" style="right: 0; top: 0" class="" id="">
 
                 <div class="dropdown">
                     <button type="button" style="background-color: lightgrey" class="btn dropdown-toggle" data-toggle="dropdown">

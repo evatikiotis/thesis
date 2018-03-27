@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class UserController {
@@ -20,10 +19,10 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-//    @RequestMapping("/user/{username}")
-//    public User  getUser(@PathVariable String username){
-//        return userService.getUserByUsername(username);
-//    }
+    @RequestMapping("/user/{username}")
+    public User  getUser(@PathVariable String username){
+        return userService.getUserByUsername(username);
+    }
 
     @RequestMapping(value = "/api/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> authenticateUser(@RequestBody User  user){
@@ -35,12 +34,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
-    public void addUser(@RequestBody User user){
+    public HttpStatus addUser(@RequestBody User user){
         System.out.print(user);
         userService.addUser(user);
+        return HttpStatus.OK;
     }
 
-    @RequestMapping(value = "/user/{username}", produces = "application/json")
+    @RequestMapping(value = "/user-info/{username}", produces = "application/json")
     public @ResponseBody
     User getUserInfo(@PathVariable String username) throws JSONException {
 

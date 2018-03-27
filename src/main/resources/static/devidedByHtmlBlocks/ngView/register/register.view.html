@@ -1,4 +1,89 @@
-﻿<div id="register-container" >
+﻿<!--<div class="container-fluid col-sm-6 ui">-->
+    <!--<div class="container-fluid ui-header">-->
+        <!--<h3>Register</h3>-->
+    <!--</div>-->
+    <!--<form ng-submit="vm.register()" role="form" class="container" >-->
+
+        <!--<div class="imgcontainer">-->
+            <!--<img src="images/user.svg" alt="Avatar" class="" height="60" width="65">-->
+        <!--</div>-->
+        <!--<div class="form-group" >-->
+            <!--<label for="email">Email</label>-->
+            <!--<input type="email" name="email" id="email" class="form-control" ng-model="vm.user.email" required />-->
+        <!--</div>-->
+
+        <!--<div class="form-group" >-->
+            <!--<label for="username">Username</label>-->
+            <!--<input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" required />-->
+        <!--</div>-->
+        <!--<div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">-->
+            <!--<label for="password">Password</label>-->
+            <!--<input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />-->
+        <!--</div>-->
+        <!--&lt;!&ndash;<div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">&ndash;&gt;-->
+            <!--&lt;!&ndash;<label for="password">Repeat password</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;<input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />&ndash;&gt;-->
+            <!--&lt;!&ndash;<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+        <!--<hr >-->
+
+
+        <!--<div id="reg_moreInfo">-->
+
+            <!--<div class="form-check">-->
+                <!--<label class="form-check-label">-->
+                    <!--<input type="checkbox" class="form-check-input" ng-model="vm.kitesurfing"-->
+                           <!--name="interest" ng-true-value="'kitesurfing'" ng-click="vm.pushUserInterest('kitesurfing')"  ><span>kitesurfing</span>-->
+                <!--</label>-->
+                <!--<span class="ml-sm-5" ng-show="vm.user.interest">-->
+                    <!--<label>level:</label>-->
+                    <!--<select ng-model="vm.user.kitesurfing_level" name="kitesurfing_level">-->
+                        <!--<option value="beginner">Beginner</option>-->
+                        <!--<option value="itermediate">Intermediate</option>-->
+                        <!--<option value="expert">Expert</option>-->
+                    <!--</select>-->
+                <!--</span>-->
+            <!--</div>-->
+            <!--<br>-->
+            <!--<div class="form-check ">-->
+                <!--<label class="form-check-label">-->
+                    <!--<input type="checkbox" class="form-check-input" ng-model="vm.scubadiving"-->
+                           <!--name="interest" ng-true-value="'scubadiving'" ng-click="vm.pushUserInterest('scubadiving')"><span>scuba-diving</span>-->
+                <!--</label>-->
+                <!--<span class="ml-sm-5" ng-show="vm.user.interest">-->
+                    <!--<label>level:</label>-->
+                    <!--<select>-->
+                        <!--<option value="beginner">Beginner</option>-->
+                        <!--<option value="itermediate">Intermediate</option>-->
+                        <!--<option value="expert">Expert</option>-->
+                    <!--</select>-->
+                <!--</span>-->
+            <!--</div>-->
+
+            <!--<label class="col-sm-3" >Date of birth:</label>-->
+            <!--<input type="date" >-->
+
+
+        <!--</div>-->
+        <!--<br>-->
+        <!--<div class="form-actions">-->
+            <!--<button type="submit"  >Register</button>-->
+            <!--<img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />-->
+
+        <!--</div>-->
+        <!--<div style="text-align: right" >-->
+            <!--<br>-->
+            <!--<a href="#!/login" class="btn btn-link">Cancel</a>-->
+        <!--</div>-->
+
+    <!--</form>-->
+    <!--</div>-->
+
+<!--</div>-->
+
+<div id="register-container" >
     <div class=" row" >
         <h4>Register</h4>
     </div>
@@ -24,9 +109,9 @@
                 <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
             </div>
             <!--<div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">-->
-                <!--<label for="password">Repeat password</label>-->
-                <!--<input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />-->
-                <!--<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>-->
+            <!--<label for="password">Repeat password</label>-->
+            <!--<input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />-->
+            <!--<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>-->
             <!--</div>-->
 
 
@@ -81,8 +166,6 @@
         </form>
     </div>
 </div>
-
-
 
 
 
