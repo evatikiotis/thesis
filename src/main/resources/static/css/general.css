@@ -33,7 +33,7 @@ main{
 }
 #ng-view-container{
     background-color: lightgrey;
-    height: 800px;
+    min-height: 800px;
     border-radius: 5px;
     border: 0.6px;
     /*box-shadow: 1px 1px #faf3ec;*/
@@ -74,6 +74,7 @@ button {
     /*margin: 8px 0;*/
     border: none;
     cursor: pointer;
+    height: 31px;
 
 
 }
