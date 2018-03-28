@@ -87,11 +87,11 @@ a{
 }
 .ui-header{
     background-color: rgba(35, 32, 29, 0.78);
-    border-radius: 2px;
-    border: 0.5px solid rgba(207, 214, 74, 0.53);
-    box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
     padding: 10px;
     color: white;
+    /*border: 1px solid #d3d3d3;*/
+    border-radius: 3px;
+    box-shadow: 2px 2px #a2a2a2;
 }
 .ui-container{
     background-color: whitesmoke;

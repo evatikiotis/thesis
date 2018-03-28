@@ -9,7 +9,7 @@
     function RegisterController(UserService, $location, $rootScope, AuthenticationService, FlashService, $scope) {
 
         var vm = this;
-        // vm.interests=[];
+        vm.interests=[];
         vm.register = register;
 
         vm.pushUserInterest = function(interest){
@@ -34,7 +34,7 @@
         function register() {
 
             vm.dataLoading = true;
-            // vm.user.interests = vm.interests
+            vm.user.interests = vm.interests
             UserService.Create(vm.user)
                 .then(function (response) {
                     if (response == "OK") {
