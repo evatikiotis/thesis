@@ -39,6 +39,12 @@
     border-color: transparent rgba(0, 0, 0, .05);
     top: 22px;
 }
+.comment-footer{
+    font-size: smaller;
+    color: rgba(119, 130, 139, 0.75);
+    position: absolute;
+    bottom: 4px;
+}
 
 
 /*/////////////  textArea  ////////////////*/
@@ -62,9 +68,5 @@ textarea:focus {
     box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
     margin-top: 4px;
 }
-#add-comment-box button{
 
-}
-#add-comment-box{
-    /*text-align: right;*/
-}
+

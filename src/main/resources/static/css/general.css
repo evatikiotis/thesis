@@ -82,6 +82,19 @@ button {
 button:hover {
     opacity: 0.8;
 }
+#report-button{
+
+    /*padding: 5px 8px;*/
+    /*margin: 8px 0;*/
+    border: none;
+    cursor: pointer;
+    height: 25px;
+    font-size: x-small;
+    padding-left: 2px;
+    padding-right: 2px;
+
+
+}
 
 a{
     color: white;
@@ -123,6 +136,13 @@ hr{
     position: relative;
     margin-top: 50px; }
 
+.table td:first-of-type{
+    border-top: none;
+}
+
+.table th:first-of-type{
+    border-top: none;
+}
 
 
 
