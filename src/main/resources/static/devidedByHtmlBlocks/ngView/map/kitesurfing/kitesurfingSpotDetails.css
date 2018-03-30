@@ -1,4 +1,22 @@
-#imagesContainer{
+.imagesContainer{
+    text-align: right;
+}
+.imagesContainer img{
     background-color: rgba(114, 124, 129, 0.68);
     padding: 1.5px;
+    /*height: 29px;*/
+}
+
+
+.table th{
+    border: none;
+    padding: 9px;
+    width: 150px;
+}
+.table td{
+    border: none;
+    font-size: small;
+}
+.name-level th{
+    width: 62px;
 }

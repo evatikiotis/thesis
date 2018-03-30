@@ -136,20 +136,6 @@ hr{
     position: relative;
     margin-top: 50px; }
 
-table td:first-of-type{
-    border-top: none;
-}
-
-table th:first-of-type{
-    border-top: none;
-
-}
-table{
-    text-align: left;
-}
-th{
-    padding-right: 0;
-}
 
 
 

@@ -1,8 +1,27 @@
 <!--<div ncy-breadcrumb></div>-->
-<div class="row">
-    <a data-toggle="modal" data-target="#carouselModal" id="imagesContainer"  ng-repeat="image in images">
-        <img src="data:image/png;base64,{{image.image}}" alt="kitesurfing spot" height="28" width="28">
-    </a>
+<pre><a href="#!/map">spots</a> >> kitesurfing spot</pre>
+<div class="row" >
+    <div class="row col-sm-6" >
+        <table class="name-level">
+            <tr>
+                <th>name: </th>
+                <td>{{spot.name}}</td>
+            </tr>
+
+        </table>
+        <table class="ml-sm-5 ">
+            <tr>
+                <th>level: </th>
+                <td>{{kiteSpot.level}}</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col-sm-6 imagesContainer" >
+        <a data-toggle="modal" data-target="#carouselModal"   ng-repeat="image in images">
+            <img src="data:image/png;base64,{{image.image}}" alt="kitesurfing spot" height="28" width="28">
+        </a>
+    </div>
 </div>
 <div class="modal fade" id="carouselModal">
     <div ng-if="{images}" align="center">
@@ -55,6 +74,123 @@
         <!--</div>-->
     <!--</div>-->
 </div>
+
+<hr style="margin-top: 4px; margin-bot: 0px;">
+
+<div class="row offset-sm-6 col-sm-6" style="font-size: small">
+    <table class="col-sm-6" >
+        <tr>
+            <th>latitude: </th>
+            <td>{{spot.latitude}}</td>
+        </tr>
+
+    </table>
+    <table class="col-sm-6">
+        <tr>
+            <th>longitude: </th>
+            <td>{{spot.longitude}}</td>
+        </tr>
+
+    </table>
+
+</div>
+<div class="row" style="margin-right:0; ">
+    <div class="col-sm-6 container-fluid ">
+        <div class="container-fluid" style="padding-top: 18px;">
+            <table class="table"  >
+                <tbody>
+                <tr>
+                    <th>best Months:</th>
+                    <td>{{kiteSpot.bestMonths}}</td>
+                </tr>
+                <tr>
+                    <th>crowded Months:</th>
+                    <td>{{kiteSpot.beachMonthsUsed}}</td>
+                </tr>
+                <tr>
+                    <th>features:</th>
+                    <td>{{kiteSpot.features}}</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th >beach type:</th>
+                    <td>{{kiteSpot.beachType}}</td>
+                </tr>
+                <tr>
+                    <th>beach size:</th>
+                    <td>{{kiteSpot.beachSize}}</td>
+                </tr>
+                <tr>
+                    <th>beach hazards:</th>
+                    <td>{{kiteSpot.beachHazards}}</td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="col-sm-6" style="padding: 0;">
+
+        <ng-map center="[{{spot.latitude}}, {{spot.longitude}}]" zoom="10" map-type-id="HYBRID">
+            <marker position="[{{spot.latitude}}, {{spot.longitude}}]" ></marker>
+        </ng-map>
+    </div>
+</div>
+<br/>
+
+<div class="container-fluid row">
+
+    <div class="col-sm-5">
+        <table class="table " >
+            <tbody>
+            <tr>
+                <th >water type:</th>
+                <td>{{kiteSpot.waterType}}</td>
+            </tr>
+            <tr>
+                <th>water hazards:</th>
+                <td>{{kiteSpot.waterHazards}}</td>
+            </tr>
+            <tr>
+                <th>water quality:</th>
+                <td>{{kiteSpot.waterCleanness}}</td>
+            </tr>
+            <tr>
+                <th>best tide:</th>
+                <td>{{kiteSpot.waterBestTide}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6">
+        <table class="table " >
+            <tbody>
+            <tr>
+                <th>wind type:</th>
+                <td>{{kiteSpot.windType}}</td>
+            </tr>
+            <tr>
+                <th style="width: 200px">wind best direction:</th>
+                <td>{{kiteSpot.windBestDirection}}</td>
+            </tr>
+            <tr>
+                <th>wind main direction:</th>
+                <td>{{kiteSpot.windMainDirection}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
 <div  style="text-align: right">
 
     <button id="report-button"
@@ -87,105 +223,7 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row container-fluid">
-    <p>name: {{spot.name}}</p>
-    <p>level: {{kiteSpot.level}}</p>
-</div>
-<div class="row container-fluid">
-    <div class="col-sm-5">
-        <table class="table"  >
-            <tbody>
-            <tr class="noTopBorder" >
-                <th>best Months:</th>
-                <td>{{kiteSpot.bestMonths}}</td>
-            </tr>
-            <tr>
-                <th>beach Months used:</th>
-                <td>{{kiteSpot.beachMonthsUsed}}</td>
-            </tr>
-            <tr>
-                <th>features:</th>
-                <td>{{kiteSpot.features}}</td>
-            </tr>
-            </tbody>
-        </table>
-        <table class="table " >
-            <tbody>
-            <tr class="noTopBorder">
-                <th>beach type:</th>
-                <td>{{kiteSpot.beachType}}</td>
-            </tr>
-            <tr>
-                <th>beach size:</th>
-                <td>{{kiteSpot.beachSize}}</td>
-            </tr>
-            <tr>
-                <th>beach hazards:</th>
-                <td>{{kiteSpot.beachHazards}}</td>
-            </tr>
-
-
-            </tbody>
-        </table>
-
-    </div>
-    <div class="offset-sm-1 col-sm-5">
-        <ng-map center="[{{spot.latitude}}, {{spot.longitude}}]" zoom="10" map-type-id="HYBRID"
-             >
-            <marker position="[{{spot.latitude}}, {{spot.longitude}}]" ></marker>
-        </ng-map>
-    </div>
-</div>
-<br/>
-
-<div class="container-fluid row">
-    <br/>
-    <div class="col-sm-5">
-        <table class="table " >
-            <tbody>
-            <tr class="noTopBorder">
-                <th >water type:</th>
-                <td>{{kiteSpot.waterType}}</td>
-            </tr>
-            <tr>
-                <th>water hazards:</th>
-                <td>{{kiteSpot.waterHazards}}</td>
-            </tr>
-            <tr>
-                <th>water quality:</th>
-                <td>{{kiteSpot.waterCleanness}}</td>
-            </tr>
-            <tr>
-                <th>best tide:</th>
-                <td>{{kiteSpot.waterBestTide}}</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-sm-6">
-        <table class="table " >
-            <tbody>
-            <tr class="noTopBorder">
-                <th >wind type:</th>
-                <td>{{kiteSpot.windType}}</td>
-            </tr>
-            <tr>
-                <th>wind best direction:</th>
-                <td>{{kiteSpot.windBestDirection}}</td>
-            </tr>
-            <tr>
-                <th>wind main direction:</th>
-                <td>{{kiteSpot.windMainDirection}}</td>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-
-
-</div>
-
+</div> <!--report button-->
 
 
 
