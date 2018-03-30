@@ -10,13 +10,34 @@
 
 .table th{
     border: none;
-    padding: 9px;
-    width: 150px;
+    padding: 3px;
+    width: 170px;
+    font-size: 17px;
+    font-family: 'IBM Plex Serif', serif;
+    word-spacing: 3.5px;
+    padding-top: 8px;
 }
 .table td{
     border: none;
-    font-size: small;
+    font-size: 14px;
+
+}
+.name-level{
+    margin-left: 20px;
 }
 .name-level th{
     width: 62px;
+    font-size: 18px;
+    font-family: 'IBM Plex Serif', serif;
+
+}
+.name-level td{
+
+    font-size: 15px;
+    /*font-family: 'IBM Plex Serif', serif;*/
+
+}
+#lat-long{
+    font-size: small;
+    font-family: 'IBM Plex Serif', serif;
 }
