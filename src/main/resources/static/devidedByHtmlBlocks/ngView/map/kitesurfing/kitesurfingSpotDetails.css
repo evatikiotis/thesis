@@ -11,7 +11,7 @@
 .table th{
     border: none;
     /*padding: 3px;*/
-    width: 200px;
+    /*width: 200px;*/
     /*font-size: 17px;*/
     /*font-family: 'IBM Plex Serif', serif;*/
     word-spacing: 3.5px;
@@ -22,9 +22,7 @@
     /*font-size: 14px;*/
 
 }
-.name-level{
-    margin-left: 20px;
-}
+
 .name-level th{
     width: 80px;
     font-size: 18px;
@@ -48,6 +46,9 @@
     box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
     /*padding: 40px;*/
     color: black;
+}
+.info th{
+    width:100px;
 }
 #scubaSpotInfo th{
     width: 240px;
