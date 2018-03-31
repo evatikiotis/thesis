@@ -36,8 +36,12 @@ public class UserController {
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
     public HttpStatus addUser(@RequestBody User user){
         System.out.print(user);
-        userService.addUser(user);
-        return HttpStatus.OK;
+        User user2 = userService.addUser(user);
+        if(user2 != null) {
+            return HttpStatus.OK;
+        }else {
+            return HttpStatus.FAILED_DEPENDENCY;
+        }
     }
 
     @RequestMapping(value = "/user-info/{username}", produces = "application/json")

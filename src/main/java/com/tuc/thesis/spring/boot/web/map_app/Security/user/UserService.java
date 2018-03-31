@@ -3,10 +3,14 @@ package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 import com.tuc.thesis.spring.boot.web.map_app.Security.interest.InterestRepository;
 import com.tuc.thesis.spring.boot.web.map_app.Security.user.User;
 import com.tuc.thesis.spring.boot.web.map_app.Security.user.UserRepository;
+import org.hibernate.jpa.event.internal.core.JpaPostInsertEventListener;
+import org.hibernate.jpa.event.internal.core.JpaSaveOrUpdateEventListener;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +36,11 @@ public class UserService {
         return userRepository.authenticateUser(user.getUsername(), user.getPassword());
     }
 
-    public void addUser(User  user) {
-        userRepository.save(user);
+    public User addUser(User  user) {
+        User user2 = userRepository.save(user);
+//        user.getUsername(), user.getPassword(), user.getEmail());
+        return user2;
+
     }
 
     public User getUserInfo(String username) throws JSONException {

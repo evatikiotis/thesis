@@ -27,8 +27,7 @@ public class User implements Serializable {
 
 //    private List<Interest> interests;
 
-    @Column(name = "id")
-    private int id;
+
 
     @Id
     @Column(name = "username")
@@ -51,9 +50,8 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(List<Interest> interests, int id, String username, String password, String email) {
+    public User(List<Interest> interests, String username, String password, String email) {
         this.interests = interests;
-        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -76,13 +74,7 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
