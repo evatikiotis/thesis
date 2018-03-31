@@ -136,6 +136,12 @@ hr{
     position: relative;
     margin-top: 50px; }
 
+a{
+    color: blue;
+}
+a:hover{
+    opacity: 0.8;
+}
 
 
 

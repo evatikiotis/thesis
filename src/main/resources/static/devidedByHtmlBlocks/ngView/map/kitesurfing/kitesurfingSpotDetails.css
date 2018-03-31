@@ -10,34 +10,46 @@
 
 .table th{
     border: none;
-    padding: 3px;
-    width: 170px;
-    font-size: 17px;
-    font-family: 'IBM Plex Serif', serif;
+    /*padding: 3px;*/
+    width: 200px;
+    /*font-size: 17px;*/
+    /*font-family: 'IBM Plex Serif', serif;*/
     word-spacing: 3.5px;
-    padding-top: 8px;
+    padding-top: 10px;
 }
 .table td{
     border: none;
-    font-size: 14px;
+    /*font-size: 14px;*/
 
 }
 .name-level{
     margin-left: 20px;
 }
 .name-level th{
-    width: 62px;
+    width: 80px;
     font-size: 18px;
-    font-family: 'IBM Plex Serif', serif;
+    /*font-family: 'IBM Plex Serif', serif;*/
 
 }
 .name-level td{
 
-    font-size: 15px;
+    font-size: 14px;
     /*font-family: 'IBM Plex Serif', serif;*/
 
 }
 #lat-long{
     font-size: small;
-    font-family: 'IBM Plex Serif', serif;
+    /*font-family: 'IBM Plex Serif', serif;*/
+}
+.info{
+    background-color: whitesmoke;
+    border-radius: 4px;
+    border: 0.5px solid rgba(207, 214, 74, 0.53);
+    box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
+    /*padding: 40px;*/
+    color: black;
+}
+#scubaSpotInfo th{
+    width: 240px;
+
 }
