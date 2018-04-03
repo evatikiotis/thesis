@@ -43,9 +43,6 @@
                         AuthenticateNewUser();
                         // $rootScope.globals.currentUser.username = vm.user.username;
 
-
-
-
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

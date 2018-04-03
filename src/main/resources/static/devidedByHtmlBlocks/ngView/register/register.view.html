@@ -2,7 +2,7 @@
     <div class="container-fluid ui-header">
         <h3>Register</h3>
     </div>
-    <form ng-submit="vm.register()" role="form" class="container" >
+    <form ng-submit="vm.register()"  class="container" name="registrationForm">
 
         <div class="imgcontainer">
             <img src="images/user.svg" alt="Avatar" class="" height="60" width="65">
@@ -10,15 +10,21 @@
         <div class="form-group" >
             <label for="email">Email</label>
             <input type="email" name="email" id="email" class="form-control" ng-model="vm.user.email" required />
+            <p class="validation" ng-show = "registrationForm.email.$pristine && registrationForm.email.$touched" >email is required</p>
+            <p class="validation" ng-show = "registrationForm.email.$dirty && registrationForm.email.$invalid "> wrong email example: awesomespots@gmail.com</p>
         </div>
 
         <div class="form-group" >
             <label for="username">Username</label>
             <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" required />
+            <p class="validation" ng-show = "!registrationForm.username.length && registrationForm.username.$touched " >username is required</p>
+            <p class="validation" ng-show = "!registrationForm.username.length && registrationForm.username.$touched " >username is required</p>
+            <p class="validation" ng-show = "registrationForm.username.$invalid && registrationForm.username.$touched " >username must be at least 3 characters long</p>
         </div>
         <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />
+            <p class="validation" ng-show = "registrationForm.password.$invalid && registrationForm.password.$touched " >password is required</p>
         </div>
         <!--<div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">-->
             <!--<label for="password">Repeat password</label>-->

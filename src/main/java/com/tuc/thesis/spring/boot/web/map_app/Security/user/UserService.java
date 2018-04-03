@@ -7,8 +7,10 @@ import org.hibernate.jpa.event.internal.core.JpaPostInsertEventListener;
 import org.hibernate.jpa.event.internal.core.JpaSaveOrUpdateEventListener;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -41,6 +43,13 @@ public class UserService {
 //        user.getUsername(), user.getPassword(), user.getEmail());
         return user2;
 
+    }
+
+    public HttpStatus checkUsenameAvailability(String username){
+        if(userRepository.findByUsername(username) != null){
+            return HttpStatus.OK;
+        }
+        return HttpStatus.CONFLICT;
     }
 
     public User getUserInfo(String username) throws JSONException {

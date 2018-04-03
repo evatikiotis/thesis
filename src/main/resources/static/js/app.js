@@ -1,10 +1,8 @@
 ﻿(function () {
-    'use strict';
 
-    angular
-        .module('myApp', [ 'ngMap','autocomplete', 'ui.router', 'ncy-angular-breadcrumb', 'ngCookies'])
-        .config(config)
-        .run(run);
+    var myApp = angular.module('myApp', [ 'ngMap','autocomplete', 'ui.router', 'ncy-angular-breadcrumb', 'ngCookies']);
+        myApp.config(config);
+        myApp.run(run);
 
 
     function config($stateProvider, $locationProvider) {
@@ -22,14 +20,14 @@
 
         var register = {name: 'register', url:'/register',
             templateUrl:'devidedByHtmlBlocks/ngView/register/register.view.html',
-            controller: 'RegisterController',
+            // controller: 'RegisterController',
             controllerAs: 'vm',
             ncyBreadcrumb:{ label: 'Register page'}};
 
         var myProfile = {name: 'myProfile', url:'/my-profile',
             templateUrl:'devidedByHtmlBlocks/ngView/my-profile/my-profile.html',
-            // controller: 'RegisterController',
-            // controllerAs: 'vm',
+            controller: 'RegisterController',
+            controllerAs: 'vm',
             ncyBreadcrumb:{ label: 'my prfile page'}};
 
         // var home = {name: 'home', url:'/home', templateUrl:'devidedByHtmlBlocks/ngView/home/home.html',
@@ -117,5 +115,7 @@
         });
 
     }
+
+
 
 })();

@@ -54,6 +54,13 @@ public class UserController {
 
     }
 
+    @RequestMapping("/check-username-availability/{username}")
+    public HttpStatus checkUsernameAvailability(@PathVariable String username){
+
+        return userService.checkUsenameAvailability(username);
+    }
+
+
 
 
 
