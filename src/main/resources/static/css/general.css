@@ -142,16 +142,17 @@ a{
 a:hover{
     opacity: 0.8;
 }
-/*.validation{*/
-    /*color: red;*/
-/*}*/
-/*input.ng-invalid.ng-touched {*/
-    /*border-color: red;*/
-/*}*/
+.validation{
+    color: red;
+    margin: 0;
+}
+input.ng-invalid.ng-touched {
+    border-color: red;
+}
 
-/*input.ng-valid.ng-touched {*/
-    /*border-color: green;*/
-/*}*/
+input.ng-valid.ng-touched {
+    border-color: green;
+}
 
 
 

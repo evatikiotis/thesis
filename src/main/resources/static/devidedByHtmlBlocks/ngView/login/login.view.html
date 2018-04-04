@@ -38,15 +38,17 @@
         <h3>Login</h3>
         <!--<img src="images/user.svg" alt="Avatar" class="" height="60" width="65">-->
     </div>
-    <form name="form" ng-submit="vm.login()" role="form" class="container" >
+    <form name="loginForm" ng-submit="vm.login()" role="form" class="container" >
 
 
         <div class="container-fluid">
             <label for="username"><b>Username</b></label>
-            <input ng-model="vm.username" type="text" placeholder="Enter Username" id="username" name="username" required>
-
+            <input ng-model="vm.username" class="form-control" type="text" placeholder="Enter Username" id="username" name="username" required>
+            <p class="validation" ng-show = "loginForm.username.$pristine && loginForm.username.$touched" >Username is required</p>
             <label for="password"><b>Password</b></label>
-            <input ng-model="vm.password" type="password" placeholder="Enter Password" id="password" name="password" required>
+            <input ng-model="vm.password" class="form-control" type="password" placeholder="Enter Password" id="password" name="password" required>
+            <p class="validation" ng-show = "loginForm.password.$pristine && loginForm.password.$touched" >Username is required</p>
+
         </div>
         <br>
         <div class="container-fluid form-actions">
