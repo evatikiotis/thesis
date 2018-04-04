@@ -5,8 +5,8 @@
         .module('myApp')
         .controller('RegisterController', RegisterController);
 
-    RegisterController.$inject = ['UserService', '$location', '$rootScope','AuthenticationService', 'FlashService' ];
-    function RegisterController(UserService, $location, $rootScope, AuthenticationService, FlashService, $scope) {
+    RegisterController.$inject = ['UserService', '$location', '$rootScope','AuthenticationService', 'FlashService'];
+    function RegisterController(UserService, $location, $rootScope, AuthenticationService, FlashService) {
 
         var vm = this;
         vm.interests=[];
@@ -51,6 +51,14 @@
 
 
         }
+        vm.confirmPassword = function(form){
+
+            if(vm.user.password == vm.repeat_password){
+                form.repeat_password.$setValidity("password", true);
+            }else{
+                form.repeat_password.$setValidity("password", false);
+            }
+        };
 
 
     }
