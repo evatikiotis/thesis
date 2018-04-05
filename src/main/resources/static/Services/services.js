@@ -5,21 +5,21 @@
     module.factory('handleRequest', function ($http) {
         //spot
         var getSpots = function () {
-            return $http.get("http://localhost:8090/spots")
+            return $http.get("/spots")
                 .then(function (response) {
                     return response.data;
 
                 });
         };
         var getKiteSpotImages = function (id) {
-            return $http.get("http://localhost:8090/spots/kite_image/"+id)
+            return $http.get("/spots/kite_image/"+id)
                 .then(function (response) {
                     return response.data;
                 });
 
         };
         var getKiteSurfingSpots = function () {
-            return $http.get("http://localhost:8090/spots/kitesurfing")
+            return $http.get("/spots/kitesurfing")
                 .then(function (response) {
                     return response.data;
                 });
@@ -34,7 +34,7 @@
 
 
         var getSpot = function(id){
-            return $http.get("http://localhost:8090/spots/"+id)
+            return $http.get("/spots/"+id)
                 .then(function (response) {
 
                     return response.data;
@@ -42,7 +42,7 @@
         };
         //kiteSpot
         var getKiteSpotDetails = function (id) {
-            return $http.get("http://localhost:8090/spots/kite/"+id)
+            return $http.get("/spots/kite/"+id)
                 .then(function (response) {
                     return response.data;
                 });
@@ -51,17 +51,31 @@
 
 
         var getDiveSpotDetails = function(id){
-            return $http.get("http://localhost:8090/spots/scubadiving/"+id)
+            return $http.get("/spots/scubadiving/"+id)
                 .then(function (response) {
                     return response.data;
                 });
         };
 
         var getDiveSchoolDetails = function(id){
-            return $http.get("http://localhost:8090/spots/scubadiving/school/"+id)
+            return $http.get("/spots/scubadiving/school/"+id)
                 .then(function (response) {
                     return response.data;
                 });
+        };
+
+        var getUserInfo = function (username){
+            return $http.get("/user/"+username)
+                .then(function(response){
+                    return response.data;
+            })
+        };
+
+        var getUserInterests = function(username){
+            return $http.get("/user/interests/"+username)
+                .then(function (response){
+                    return response.data;
+                })
         };
 
 
@@ -73,7 +87,10 @@
             getKiteSpotImages: getKiteSpotImages,
             getKiteSpotDetails: getKiteSpotDetails,
             getDiveSpotDetails: getDiveSpotDetails,
-            getDiveSchoolDetails: getDiveSchoolDetails
+            getDiveSchoolDetails: getDiveSchoolDetails,
+            getUserInfo: getUserInfo,
+            getUserInterests: getUserInterests
+
         };
 
 

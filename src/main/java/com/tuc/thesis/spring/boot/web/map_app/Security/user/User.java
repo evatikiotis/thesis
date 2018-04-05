@@ -1,36 +1,17 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
-import com.tuc.thesis.spring.boot.web.map_app.Security.interest.Interest;
+import com.tuc.thesis.spring.boot.web.map_app.Security.user_interest.User_Interest;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 
 @Entity(name = "app_user")
-public class User implements Serializable {
-
-
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "app_user_interest",
-            joinColumns = {@JoinColumn(name = "app_user_username")},
-            inverseJoinColumns = {@JoinColumn(name = "interest_interest")}
-
-
-    )
-    private List<Interest> interests;
-
-
-
-//    private List<Interest> interests;
-
-
+public class User {
 
     @Id
-    @Column(name = "username")
+    @Column(name = "username", nullable = false)
     private String username;
 
     @Column(name = "password")
@@ -39,9 +20,9 @@ public class User implements Serializable {
     @Column(name = "email")
     private String email;
 
-//    @Temporal(TemporalType.DATE)
-//    @Column(name = "birthdate")
-//    private Date date;
+    @Column(name = "address")
+    private String address;
+
 
 
 
@@ -50,21 +31,12 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(List<Interest> interests, String username, String password, String email) {
-        this.interests = interests;
+    public User(String username, String password, String email, String address) {
         this.username = username;
         this.password = password;
         this.email = email;
-
+        this.address = address;
     }
-
-//    public Date getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(Date date) {
-//        this.date = date;
-//    }
 
     public String getEmail() {
         return email;
@@ -92,12 +64,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public List<Interest> getInterests() {
-        return interests;
+    public String getAddress() {
+        return address;
     }
 
-    public void setInterests(List<Interest> interests) {
-        this.interests = interests;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
 

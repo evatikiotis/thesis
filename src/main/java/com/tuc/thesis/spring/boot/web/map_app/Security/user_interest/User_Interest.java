@@ -2,12 +2,15 @@ package com.tuc.thesis.spring.boot.web.map_app.Security.user_interest;
 
 
 
+import com.tuc.thesis.spring.boot.web.map_app.Security.user.User;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 
 @Entity(name = "app_user_interest")
-public class User_Interest implements Serializable{
+public class User_Interest{
+
 
     @EmbeddedId
     private User_Interest_CompositeKey user_interest_key;
@@ -15,12 +18,15 @@ public class User_Interest implements Serializable{
     @Column(name = "level")
     private String level;
 
+
+
     public User_Interest() {
     }
 
-    public User_Interest(User_Interest_CompositeKey user_interest_key, String level) {
+    public User_Interest(User_Interest_CompositeKey user_interest_key, String level, User user) {
         this.user_interest_key = user_interest_key;
         this.level = level;
+
     }
 
     public User_Interest_CompositeKey getUser_interest_key() {
@@ -38,4 +44,6 @@ public class User_Interest implements Serializable{
     public void setLevel(String level) {
         this.level = level;
     }
+
+
 }

@@ -22,12 +22,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     public User authenticateUser(@Param("username") String username, @Param("password") String password);
 
     @Query(value = "SELECT * FROM\n" +
-            "      app_user\n" +
-            "      JOIN app_user_interest\n" +
-            "      ON app_user.username = app_user_interest.app_user_username\n" +
-            "      JOIN interest\n" +
-            "        ON app_user_interest.interest_interest = interest.interest" +
-            "       WHERE username = :username", nativeQuery = true)
+            "  app_user\n" +
+            "  JOIN app_user_interest\n" +
+            "    ON app_user.username = app_user_interest.user_username\n" +
+            "  WHERE username = :username", nativeQuery = true)
 
     public User getUserInfo(@Param("username") String username);
 

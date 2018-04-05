@@ -26,29 +26,40 @@
 
         var myProfile = {name: 'myProfile', url:'/my-profile',
             templateUrl:'devidedByHtmlBlocks/ngView/my-profile/my-profile.html',
+            controller: 'myProfileController',
+            controllerAs: 'vm',
             ncyBreadcrumb:{ label: 'my prfile page'}};
 
         // var home = {name: 'home', url:'/home', templateUrl:'devidedByHtmlBlocks/ngView/home/home.html',
         //     ncyBreadcrumb:{ label: 'Home page'}};
 
-        var map = {name: 'map', url:'/map', templateUrl:'devidedByHtmlBlocks/ngView/map/map.html', controller: 'mainMapController',
+        var map = {name: 'map',
+            url:'/map',
+            templateUrl:'devidedByHtmlBlocks/ngView/map/map.html',
+            controller: 'mainMapController',
             controllerAs: 'mmc', ncyBreadcrumb:{ label: 'spots'}};
 
         var kiteSpotDetails = {name: 'kiteSpotDetails',url: '/map/kiteSpotDetails',
-            templateUrl: 'devidedByHtmlBlocks/ngView/map/kitesurfing/kitespotDetails.html', controller: 'kiteSpotDetailsController',
+            templateUrl: 'devidedByHtmlBlocks/ngView/map/kitesurfing/kitespotDetails.html',
+            controller: 'kiteSpotDetailsController',
             ncyBreadcrumb:{ label: 'kitesurfing spot'}};
 
         var scubaSpotDetails = {name: 'scubaSpotDetails',url: '/map/scubaSpotDetails',
-            templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSpotDetails.html', controller: 'diveSpotDetailsController'};
+            templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSpotDetails.html',
+            controller: 'diveSpotDetailsController'};
 
         var scubaSchoolDetails = {name: 'scubaSchoolDetails',url: '/map/scubadiving/school',
-            templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSchoolDetails.html', controller: 'diveSchoolDetailsController'};
+            templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSchoolDetails.html',
+            controller: 'diveSchoolDetailsController'};
 
-        var weatherMap={name: 'weatherMap',url: '/weather_map', templateUrl: 'devidedByHtmlBlocks/ngView/weatherMap/weather_map.html'};
+        var weatherMap={name: 'weatherMap',url: '/weather_map',
+            templateUrl: 'devidedByHtmlBlocks/ngView/weatherMap/weather_map.html'};
 
-        var myMap = {name: 'myMap',url: '/my_map', templateUrl: 'devidedByHtmlBlocks/ngView/toDevelop/my_map.html'};
+        var myMap = {name: 'myMap',url: '/my_map',
+            templateUrl: 'devidedByHtmlBlocks/ngView/toDevelop/my_map.html'};
 
-        var adventureFinder = {name: 'adventureFinder',url: '/adventure_finder', templateUrl: 'devidedByHtmlBlocks/ngView/toDevelop/adventure_finder.html'};
+        var adventureFinder = {name: 'adventureFinder',url: '/adventure_finder',
+            templateUrl: 'devidedByHtmlBlocks/ngView/toDevelop/adventure_finder.html'};
 
         // var login = {name: 'login',url: '/login', templateUrl: 'devidedByHtmlBlocks/ngView/login/login.html'};
         //

@@ -1,18 +1,10 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security.user;
-//sz
-import com.tuc.thesis.spring.boot.web.map_app.Security.interest.InterestRepository;
-import com.tuc.thesis.spring.boot.web.map_app.Security.user.User;
-import com.tuc.thesis.spring.boot.web.map_app.Security.user.UserRepository;
-import org.hibernate.jpa.event.internal.core.JpaPostInsertEventListener;
-import org.hibernate.jpa.event.internal.core.JpaSaveOrUpdateEventListener;
+
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +13,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private InterestRepository interestRepository;
+
 
     public List<User> getAllUsers() {
         List<User > users = new ArrayList<>();
