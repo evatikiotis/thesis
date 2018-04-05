@@ -185,9 +185,10 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <div ng-controller="UploadController">
-                    <form>
-                        <input type="file" ng-file-select="onFileSelect($files)" ng-model="imageSrc">
+                    <form ng-submit = "uploadImage()">
+                        <input type="file" ng-file-select="onFileSelect($files)" ng-model="imageSrc" required>
                         <!--  <input type="file" ng-file-select="onFileSelect($files)" multiple> -->
+                        <input type="submit">
                     </form>
 
                     <img ng-src="{{imageSrc}}" height="200" width="200"/>

@@ -1,10 +1,6 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
-import com.tuc.thesis.spring.boot.web.map_app.Security.user_interest.User_Interest;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
 
 
 @Entity(name = "app_user")
@@ -23,6 +19,9 @@ public class User {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "profile_image")
+    private byte[] image;
+
 
 
 
@@ -31,11 +30,12 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String email, String address) {
+    public User(String username, String password, String email, String address, byte[] image) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.address = address;
+        this.image = image;
     }
 
     public String getEmail() {
@@ -70,6 +70,14 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
 

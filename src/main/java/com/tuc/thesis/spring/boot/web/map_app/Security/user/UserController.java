@@ -59,7 +59,17 @@ public class UserController {
 
         return userService.checkUsenameAvailability(username);
     }
+    @RequestMapping(value = "/user/upload-profile-image/{username}", method = RequestMethod.POST)
+    public HttpStatus addUser(@RequestBody byte[] image, @PathVariable String username){
+        System.out.print(image);
 
+        if(image != null) {
+            userService.uploadProfileImage(image, username);
+            return HttpStatus.OK;
+        }else {
+            return HttpStatus.FAILED_DEPENDENCY;
+        }
+    }
 
 
 

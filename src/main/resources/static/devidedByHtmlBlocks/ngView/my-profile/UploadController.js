@@ -1,10 +1,13 @@
 var app = angular.module('myApp')
-app.controller('UploadController', function($scope, fileReader) {
+app.controller('UploadController', function($scope, fileReader, UserService,$rootScope) {
     $scope.imageSrc = "";
 
     $scope.$on("fileProgress", function(e, progress) {
         $scope.progress = progress.loaded / progress.total;
     });
+    $scope.uploadImage = function(){
+        UserService.uploadProfileImage($rootScope.globals.currentUser.username, $scope.imageSrc)
+    }
 });
 
 

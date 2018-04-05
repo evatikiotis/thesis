@@ -45,10 +45,11 @@ public class UserService {
 
     public User getUserInfo(String username) throws JSONException {
         User user = userRepository.getUserInfo(username);
-
         return user;
+    }
 
-
+    public void uploadProfileImage(byte[] image, String username){
+        userRepository.uploadProfileImage(image, username);
 
     }
 
