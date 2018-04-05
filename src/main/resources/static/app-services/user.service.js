@@ -15,6 +15,7 @@
         service.Create = Create;
         service.Update = Update;
         service.Delete = Delete;
+        service.uploadProfileImage = uploadProfileImage;
 
         return service;
 
@@ -52,6 +53,10 @@
             return function () {
                 return { success: false, message: error };
             };
+        }
+        //vv
+        function uploadProfileImage(username, image){
+            return $http.post('/user/upload-profile-image/'+username, image ).then(handleSuccess, handleError('Error creating user'));
         }
     }
 

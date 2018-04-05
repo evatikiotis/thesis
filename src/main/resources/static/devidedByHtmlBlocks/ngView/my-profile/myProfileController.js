@@ -1,7 +1,11 @@
 var module = angular.module('myApp');
-module.controller('myProfileController', function($rootScope, handleRequest) {
+module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope, fileReader) {
     vm = this;
-    // vm.interests = [];
+
+    vm.uploadImage = function(){
+        UserService.uploadImage($rootScope.globals.currentUser.username, $scope.profileImage)
+    };
+
     var placeUserinfo = function(data){
         vm.user = data;
     };
