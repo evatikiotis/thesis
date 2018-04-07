@@ -1,10 +1,13 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity(name = "app_user")
-public class User {
+public class User implements Serializable {
 
     @Id
     @Column(name = "username", nullable = false)
@@ -19,7 +22,9 @@ public class User {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "profile_image")
+    @Lob
+    @Type(type="org.hibernate.type.BinaryType")
+    @Column(name = "profile_image", columnDefinition = "bytea")
     private byte[] image;
 
 

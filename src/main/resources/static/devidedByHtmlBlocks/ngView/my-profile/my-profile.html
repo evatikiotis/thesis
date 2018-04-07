@@ -5,7 +5,14 @@
         <div class="col-sm-3">
             <div class="profile-image" align="center">
                 <h4 class=""><strong>{{globals.currentUser.username}}</strong></h4>
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                <img src="data:image/png;base64,{{vm.user.image}}" alt="kitesurfing spot" >
+                <img src="data:image/JPEG;base64,{{vm.user.image}}" alt="kitesurfing spot" >
+                <img src="data:image/JPEG;base64,[{{vm.user.image}}]" alt="kitesurfing spot" >
+                <img src="data:image/jpg;base64,{{vm.user.image}}" alt="kitesurfing spot" >
+                <img src="data:image/jpg;base64,[{{vm.user.image}}]" alt="kitesurfing spot" >
+                <img src="data:image/png;base64,[{{vm.user.image}}]" alt="kitesurfing spot" >
+                <img src="{{vm.user.image}}" alt="kitesurfing spot" >
+                <!--<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">-->
                 <a class="btn btn-link"
                         type="button"
                         data-toggle="modal"
@@ -100,14 +107,8 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <div ng-controller="UploadController">
-                    <form ng-submit = "uploadImage()">
-                        <input type="file" ng-file-select="onFileSelect($files)" ng-model="imageSrc" required>
-                        <!--  <input type="file" ng-file-select="onFileSelect($files)" multiple> -->
-                        <input type="submit">
-                    </form>
+                <div ng-include="'devidedByHtmlBlocks/ngView/my-profile/upload.html'">
 
-                    <img ng-src="{{imageSrc}}" height="200" width="200"/>
 
                 </div>
                 <!--<img ng-src="{{imageSrc}}" />-->
@@ -179,10 +180,10 @@
                             </label>
                             <span class="ml-sm-5" ng-show="vm.kitesurfing">
                                 <label>level:</label>
-                                <select ng-selected="vm.kitesurfing_level" name="kitesurfing_level">
-                                    <option value="beginner">Beginner</option>
-                                    <option value="itermediate">Intermediate</option>
-                                    <option value="expert">Expert</option>
+                                <select ng-model="vm.kitesurfing_level" name="kitesurfing_level">
+                                    <option value="beginner" ng-selected="vm.kitesurfing_level=='beginner'">Beginner</option>
+                                    <option value="itermediate" ng-selected="vm.kitesurfing_level=='intermediate'">Intermediate</option>
+                                    <option value="expert" ng-selected="vm.kitesurfing_level=='expert'">Expert</option>
                                 </select>
                             </span>
                         </div>
@@ -194,10 +195,10 @@
                             </label>
                             <span class="ml-sm-5" ng-show="vm.scubadiving">
                                 <label>level:</label>
-                                <select ng-selected="vm.scubadiving_level" name="scuba-diving_level">
-                                    <option value="beginner">Beginner</option>
-                                    <option value="itermediate">Intermediate</option>
-                                    <option value="expert">Expert</option>
+                                <select ng-model="vm.scubadiving_level" name="scuba-diving_level">
+                                    <option value="beginner" ng-selected="vm.scubadiving_level=='beginner'">Beginner</option>
+                                    <option value="itermediate" ng-selected="vm.scubadiving_level=='intermediate'">Intermediate</option>
+                                    <option value="expert" ng-selected="vm.scubadiving_level=='expert'">Expert</option>
                                 </select>
                             </span>
                         </div>

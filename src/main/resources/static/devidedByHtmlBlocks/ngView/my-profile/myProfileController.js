@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope, fileReader) {
+module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope) {
     vm = this;
     $scope.types = "['establishment']";
 
@@ -13,7 +13,7 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
         for(var i=0; i<vm.interests.length; i++) {
             if(vm.interests[i].user_interest_key.user_interest == "kitesurfing"){
                 vm.kitesurfing = "kitesurfing";
-                vm.kitesurfing_level = "'vm.interests[i].level'";
+                vm.kitesurfing_level = vm.interests[i].level;
             }
             if (vm.interests[i].user_interest_key.user_interest == "scuba-diving") {
                 vm.scubadiving = "scubadiving";
