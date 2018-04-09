@@ -14,4 +14,12 @@ module.controller('changePasswordController', function($rootScope, handleRequest
                 }
             })
     };
+    cp.confirmPassword = function(form){
+
+        if(cp.user.password == cp.repeat_password){
+            form.repeat_password.$setValidity("password", true);
+        }else{
+            form.repeat_password.$setValidity("password", false);
+        }
+    };
 })
