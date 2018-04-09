@@ -75,8 +75,29 @@
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body">
-                Modal body..
+            <div class="modal-body" ng-controller = "changePasswordController as cp">
+                <form class="container" name="changePasswordForm" ng-submit="changePasswordForm.$valid && cp.changePassword()">
+                    <div class="form-group" >
+                        <label for="password">Old Password</label>
+                        <input type="password" name="old_password" id="old_password" class="form-control" ng-minlength="4" ng-maxlength="10" ng-model="cp.user.oldPassword" ng-change="cp.checkOldPassword(changePasswordForm)" required />
+                        <p class="validation" ng-show = "changePasswordForm.old_password.$pristine && changePasswordForm.old_password.$touched " >Password is required</p>
+                        <p class="validation" ng-show = "changePasswordForm.old_password.$dirty && changePasswordForm.old_password.$invalid && changePasswordForm.old_password.$touched && cp.oldPassword_OK">Password must be between 4 and 10 characters long</p>
+                        <p class="validation" ng-show = "!cp.oldPassword_OK && !changePasswordForm.old_password.$pristine && changePasswordForm.old_password.$touched">Wrong Password. Please enter your current password</p>
+                    </div>
+                    <div class="form-group" >
+                        <label for="password">New Password</label>
+                        <input type="password" name="password" id="password" class="form-control" ng-minlength="4" ng-maxlength="10" ng-model="cp.user.password" required />
+                        <p class="validation" ng-show = "changePasswordForm.password.$pristine && changePasswordForm.password.$touched " >Password is required</p>
+                        <p class="validation" ng-show = "changePasswordForm.password.$dirty && changePasswordForm.password.$invalid && changePasswordForm.password.$touched">Password must be between 4 and 10 characters long</p>
+
+                    </div>
+                    <div class="form-group" >
+                        <label for="password">Repeat New Password</label>
+                        <input type="password" ng-model="cp.repeat_password" ng-change="cp.confirmPassword(changePasswordForm)" name="repeat_password" id="repeat-password" class="form-control" ng-minlength="4" ng-maxlength="10"   required />
+                        <p class="validation" ng-show = "changePasswordForm.repeat_password.$pristine && changePasswordForm.repeat_password.$touched " >Password repeatance is required</p>
+                        <p class="validation" ng-show = "changePasswordForm.repeat_password.$dirty && changePasswordForm.repeat_password.$invalid && changePasswordForm.repeat_password.$touched ">Password confirmation does not match </p>
+                    </div>
+                </form>
             </div>
 
             <!-- Modal footer -->

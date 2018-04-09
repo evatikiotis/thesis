@@ -17,6 +17,7 @@
         service.Delete = Delete;
         service.uploadProfileImage = uploadProfileImage;
         service.checkUsernameAvailability = checkUsernameAvailability;
+        service.checkOldPassword = checkOldPassword;
 
         return service;
 
@@ -62,6 +63,11 @@
 
         function checkUsernameAvailability(possible_username){
             return $http.get('/check-username-availability/'+possible_username);
+        }
+
+        function checkOldPassword(username, oldPassword){
+            return $http.get('/check-old-password/'+username + '/'+ oldPassword);
+
         }
     }
 

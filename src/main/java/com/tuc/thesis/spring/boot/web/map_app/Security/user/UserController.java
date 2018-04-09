@@ -51,15 +51,15 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/user-info/{username}", produces = "application/json")
-    public @ResponseBody
-    User getUserInfo(@PathVariable String username) throws JSONException {
-
-        User user =  userService.getUserInfo(username);
-
-        return user;
-
-    }
+//    @RequestMapping(value = "/user-info/{username}", produces = "application/json")
+//    public @ResponseBody
+//    User getUserInfo(@PathVariable String username) throws JSONException {
+//
+//        User user =  userService.getUserInfo(username);
+//
+//        return user;
+//
+//    }
 
     @RequestMapping("/check-username-availability/{username}")
     public HttpStatus checkUsernameAvailability(@PathVariable String username){
@@ -83,5 +83,23 @@ public class UserController {
 
 
     }
+
+    @RequestMapping("/check-old-password/{username}/{oldPassword}")
+    public HttpStatus checkOldPassword(@PathVariable String username, @PathVariable String oldPassword){
+
+        try {
+            User user = userService.getUserInfo(username);
+            if(user.getPassword().equals(oldPassword)){
+                return HttpStatus.OK;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        return HttpStatus.CONFLICT;
+    }
+
+
 
 }

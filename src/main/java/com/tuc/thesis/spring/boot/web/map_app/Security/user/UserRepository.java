@@ -25,8 +25,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query(value = "SELECT * FROM\n" +
             "  app_user\n" +
-            "  JOIN app_user_interest\n" +
-            "    ON app_user.username = app_user_interest.user_username\n" +
             "  WHERE username = :username", nativeQuery = true)
     public User getUserInfo(@Param("username") String username);
 
