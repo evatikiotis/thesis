@@ -100,6 +100,12 @@ public class UserController {
         return HttpStatus.CONFLICT;
     }
 
+    @RequestMapping(value = "/change-password/{username}", method = RequestMethod.POST)
+    public HttpStatus changePassword(@PathVariable String username, @RequestBody String newPassword) {
+        userService.changePassword(username, newPassword);
+        return HttpStatus.OK;
+    }
+
 
 
 }

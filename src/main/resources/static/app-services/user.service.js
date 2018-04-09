@@ -18,6 +18,7 @@
         service.uploadProfileImage = uploadProfileImage;
         service.checkUsernameAvailability = checkUsernameAvailability;
         service.checkOldPassword = checkOldPassword;
+        service.changePassword = changePassword;
 
         return service;
 
@@ -68,6 +69,10 @@
         function checkOldPassword(username, oldPassword){
             return $http.get('/check-old-password/'+username + '/'+ oldPassword);
 
+        }
+
+        function changePassword(username, password){
+            return $http.post('/change-password/'+username, password);
         }
     }
 

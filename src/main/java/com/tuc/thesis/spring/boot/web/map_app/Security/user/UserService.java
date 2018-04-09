@@ -53,5 +53,9 @@ public class UserService {
 
     }
 
+    public void changePassword(String username, String newPassword){
+        userRepository.changePassword(username, newPassword);
+    }
+
 
 }

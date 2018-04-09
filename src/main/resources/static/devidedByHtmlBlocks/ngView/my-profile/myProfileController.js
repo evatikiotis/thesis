@@ -1,7 +1,7 @@
 var module = angular.module('myApp');
 module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope) {
     vm = this;
-    $scope.types = "['establishment']";
+    $scope.types = "['address']";
 
 
     var placeUserinfo = function(data){

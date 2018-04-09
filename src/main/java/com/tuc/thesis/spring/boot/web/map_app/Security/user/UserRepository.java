@@ -36,4 +36,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Transactional
     @Query(value = "UPDATE app_user SET profile_image = :image WHERE username = :username", nativeQuery = true)
     public void uploadProfileImage(@Param("image") byte[] image, @Param("username") String username);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE app_user SET password = :password WHERE username = :username", nativeQuery = true)
+    public void changePassword(@Param("username") String username, @Param("password") String password);
+
 }

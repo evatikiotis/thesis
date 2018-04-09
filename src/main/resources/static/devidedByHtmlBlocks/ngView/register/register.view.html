@@ -41,46 +41,10 @@
         <!--</div>-->
 
 
-        <hr >
 
 
-        <div id="reg_moreInfo">
-
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" ng-model="vm.kitesurfing"
-                           name="interest" ng-true-value="'kitesurfing'" ng-click="vm.pushUserInterest('kitesurfing')"  ><span>kitesurfing</span>
-                </label>
-                <span class="ml-sm-5" ng-show="vm.user.interest">
-                    <label>level:</label>
-                    <select ng-model="vm.user.kitesurfing_level" name="kitesurfing_level">
-                        <option value="beginner">Beginner</option>
-                        <option value="itermediate">Intermediate</option>
-                        <option value="expert">Expert</option>
-                    </select>
-                </span>
-            </div>
-            <br>
-            <div class="form-check ">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" ng-model="vm.scubadiving"
-                           name="interest" ng-true-value="'scubadiving'" ng-click="vm.pushUserInterest('scubadiving')"><span>scuba-diving</span>
-                </label>
-                <span class="ml-sm-5" ng-show="vm.user.interest">
-                    <label>level:</label>
-                    <select>
-                        <option value="beginner">Beginner</option>
-                        <option value="itermediate">Intermediate</option>
-                        <option value="expert">Expert</option>
-                    </select>
-                </span>
-            </div>
-
-            <label class="col-sm-3" >Date of birth:</label>
-            <input type="date" >
 
 
-        </div>
         <br>
         <div class="form-actions">
             <button type="submit">Register</button>
