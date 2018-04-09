@@ -11,6 +11,7 @@
         var vm = this;
         vm.interests=[];
         vm.register = register;
+        vm.availableUsername = true;
 
         vm.pushUserInterest = function(interest){
             vm.interests.push(interest);
@@ -58,6 +59,19 @@
             }else{
                 form.repeat_password.$setValidity("password", false);
             }
+        };
+
+        vm.checkUsernameAvailability = function(form){
+            UserService.checkUsernameAvailability(vm.user.username)
+                .then(function(response){
+                    if(response.data == "OK"){
+                        form.username.$setValidity("text", true);
+                        vm.availableUsername = true;
+                    }else{
+                        form.username.$setValidity("text", false);
+                        vm.availableUsername = false;
+                    }
+                })
         };
 
 

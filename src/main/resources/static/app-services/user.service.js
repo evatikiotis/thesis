@@ -16,6 +16,7 @@
         service.Update = Update;
         service.Delete = Delete;
         service.uploadProfileImage = uploadProfileImage;
+        service.checkUsernameAvailability = checkUsernameAvailability;
 
         return service;
 
@@ -57,6 +58,10 @@
         //vv
         function uploadProfileImage(username, image){
             return $http.post('/user/upload-profile-image/'+username, image ).then(handleSuccess, handleError('Error creating user'));
+        }
+
+        function checkUsernameAvailability(possible_username){
+            return $http.get('/check-username-availability/'+possible_username);
         }
     }
 

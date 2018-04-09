@@ -37,11 +37,9 @@ public class UserService {
 
     }
 
-    public HttpStatus checkUsenameAvailability(String username){
-        if(userRepository.findByUsername(username) != null){
-            return HttpStatus.OK;
-        }
-        return HttpStatus.CONFLICT;
+    public User checkUsenameAvailability(String username){
+        return userRepository.findByUsername(username);
+
     }
 
     public User getUserInfo(String username) throws JSONException {

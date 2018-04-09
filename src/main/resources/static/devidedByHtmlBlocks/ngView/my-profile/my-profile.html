@@ -5,14 +5,8 @@
         <div class="col-sm-3">
             <div class="profile-image" align="center">
                 <h4 class=""><strong>{{globals.currentUser.username}}</strong></h4>
-                <img src="data:image/png;base64,{{vm.user.image}}" alt="kitesurfing spot" >
-                <img src="data:image/JPEG;base64,{{vm.user.image}}" alt="kitesurfing spot" >
-                <img src="data:image/JPEG;base64,[{{vm.user.image}}]" alt="kitesurfing spot" >
-                <img src="data:image/jpg;base64,{{vm.user.image}}" alt="kitesurfing spot" >
-                <img src="data:image/jpg;base64,[{{vm.user.image}}]" alt="kitesurfing spot" >
-                <img src="data:image/png;base64,[{{vm.user.image}}]" alt="kitesurfing spot" >
-                <img src="{{vm.user.image}}" alt="kitesurfing spot" >
-                <!--<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">-->
+                <img ng-if="vm.user.image" src="data:image/png;base64,{{vm.user.image}}" alt="kitesurfing spot" >
+                <img ng-if="!(vm.user.image)"src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
                 <a class="btn btn-link"
                         type="button"
                         data-toggle="modal"

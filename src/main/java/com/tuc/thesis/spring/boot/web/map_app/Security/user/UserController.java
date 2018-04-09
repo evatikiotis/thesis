@@ -63,8 +63,10 @@ public class UserController {
 
     @RequestMapping("/check-username-availability/{username}")
     public HttpStatus checkUsernameAvailability(@PathVariable String username){
-
-        return userService.checkUsenameAvailability(username);
+        if(userService.checkUsenameAvailability(username) == null){
+            return HttpStatus.OK;
+        }
+        return HttpStatus.CONFLICT;
     }
     @RequestMapping(value = "/user/upload-profile-image/{username}", method = RequestMethod.POST)
     public HttpStatus addUser(@RequestPart("file") MultipartFile image, @PathVariable String username){
