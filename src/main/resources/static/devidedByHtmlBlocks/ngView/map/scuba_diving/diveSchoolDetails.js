@@ -1,13 +1,7 @@
 var module = angular.module('myApp');
-module.controller('diveSchoolDetailsController', function($scope, $rootScope, handleRequest, NgMap) {
-
-    var initDiveSchoolDetails = function () {
-        handleRequest.getSpot($rootScope.id).then(placeSpotDetails,onError);
-        handleRequest.getDiveSchoolDetails($rootScope.id).then(placeDiveSchoolDetails, onError);
-        //handleRequest.getKiteSpotImages($rootScope.id).then(placeKiteSpotImages, onError);
+module.controller('diveSchoolDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies) {
 
 
-    };
 
     var placeSpotDetails = function(data){
         $scope.spot = data;
@@ -22,5 +16,14 @@ module.controller('diveSchoolDetailsController', function($scope, $rootScope, ha
 
     };
 
-    initDiveSchoolDetails();
+    if($rootScope.id) {
+
+        handleRequest.getSpot($rootScope.id).then(placeSpotDetails,onError);
+        handleRequest.getDiveSchoolDetails($rootScope.id).then(placeDiveSchoolDetails, onError);
+    }else {
+        var cookie_spot_id = $cookies.get('spot_id');
+        handleRequest.getSpot(cookie_spot_id).then(placeSpotDetails, onError);
+        handleRequest.getDiveSchoolDetails(cookie_spot_id).then(placeDiveSchoolDetails, onError);
+    }
+
 });

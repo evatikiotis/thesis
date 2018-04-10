@@ -1,6 +1,6 @@
 // initMainMap >> buildMarkers >> markerOnclick onclick open info window and place photos if they exist
 var module = angular.module('myApp');
-module.controller('mainMapController', function( $scope, $rootScope, NgMap, handleRequest, spotsModel) {
+module.controller('mainMapController', function( $scope, $rootScope, NgMap, handleRequest, $cookies) {
 
     var kiteSpotMarkers = [];
     var scubaSchoolsMarkers = [];
@@ -49,6 +49,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "<a href='#!/map/kiteSpotDetails'>details</a>"+"<br>"+
                         "<a href='#!/map/kiteSpotDetails'>add to personalMap</a>");
                     $rootScope.id = spot.id;
+                    $cookies.put('spot_id', $rootScope.id);
                     infoWin.open(mmc.mainMap, marker);
                 });
 
@@ -65,6 +66,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "<a href='#!/map/scubadiving/school'>details</a>");
                     infoWin.open(mmc.mainMap, marker);
                     $rootScope.id = spot.id;
+                    $cookies.put('spot_id', $rootScope.id);
                 });
                 scubaSchoolsMarkers.push(marker);
             }
@@ -87,6 +89,8 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "<br> <a href='#!/map/scubaSpotDetails'>details</a>");
                     infoWin.open(mmc.mainMap, marker);
                     $rootScope.id = spot.id;
+                    $cookies.put('spot_id', $rootScope.id);
+
 
                 });
                 scubaSiteMarkers.push(marker);

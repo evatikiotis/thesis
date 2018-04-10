@@ -2,6 +2,11 @@
 
 var module = angular.module('myApp');
 module.controller('leftColumnController', function($scope, $rootScope) {
+    $rootScope.kitesurfing = true;
+    $rootScope.scuba_diving=true;
+    $rootScope.scuba_diving_schools=true;
+    $rootScope.scuba_diving_spots=true;
+
     $rootScope.markerClustering = false;
     $scope.toggleKiteSurfing = function(){
         $rootScope.kitesurfing = $scope.kitesurfing;

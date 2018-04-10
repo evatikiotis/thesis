@@ -1,6 +1,8 @@
 var module = angular.module('myApp');
-module.controller('commentsController', function( $scope, $rootScope, handleRequest) {
+module.controller('commentsController', function( $scope, $rootScope, handleRequest, $cookies) {
     $scope.usersImage = [];
+
+
     $scope.addComment = function(){
         handleRequest.addComment($rootScope.globals.currentUser.username, $rootScope.id, $scope.newComment)
             .then(function(response){
@@ -33,9 +35,12 @@ module.controller('commentsController', function( $scope, $rootScope, handleRequ
     var onError = function (reason) {
         console.log(reason);
     };
-
-    handleRequest.getComments($rootScope.id).then(placeComments, onError)
-
+    if($rootScope.id) {
+        handleRequest.getComments($rootScope.id).then(placeComments, onError)
+    }else{
+        var cookie_spot_id = $cookies.get('spot_id');
+        handleRequest.getComments(cookie_spot_id).then(placeComments, onError)
+    }
 
 
 });
