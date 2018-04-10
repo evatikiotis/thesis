@@ -1,6 +1,7 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
 import com.sun.net.httpserver.Authenticator;
+import com.tuc.thesis.spring.boot.web.map_app.image.AppImage;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 @RestController
@@ -105,6 +107,12 @@ public class UserController {
         userService.changePassword(username, newPassword);
         return HttpStatus.OK;
     }
+
+    @RequestMapping(value = "/get-user-image/{username}")
+    public AppImage getUserImage(@PathVariable String username){
+        return userService.getUserImage(username);
+    }
+
 
 
 

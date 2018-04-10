@@ -1,7 +1,5 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot;
 
-import org.springframework.context.annotation.Bean;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

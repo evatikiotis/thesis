@@ -2,6 +2,7 @@ package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
 import ch.qos.logback.core.db.dialect.SQLDialect;
 import com.tuc.thesis.spring.boot.web.map_app.Security.user.User;
+import com.tuc.thesis.spring.boot.web.map_app.image.AppImage;
 import org.hibernate.jpa.event.internal.core.JpaPostInsertEventListener;
 import org.hibernate.jpa.event.internal.core.JpaSaveOrUpdateEventListener;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -41,5 +42,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Transactional
     @Query(value = "UPDATE app_user SET password = :password WHERE username = :username", nativeQuery = true)
     public void changePassword(@Param("username") String username, @Param("password") String password);
+
+    @Query(value = "SELECT profile_image FROM app_user WHERE username= :username", nativeQuery = true)
+    public AppImage getUserImage(@Param("username") String username);
 
 }

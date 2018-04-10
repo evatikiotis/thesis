@@ -1,38 +1,41 @@
 var module = angular.module('myApp');
-module.controller('CommentsController', function( $scope) {
+module.controller('commentsController', function( $scope, $rootScope, handleRequest) {
+    $scope.usersImage = [];
+    $scope.addComment = function(){
+        handleRequest.addComment($rootScope.globals.currentUser.username, $rootScope.id, $scope.newComment)
+            .then(function(response){
+                if(response=="OK"){}
+            })
+    };
 
+    var placeComments = function(response){
+        $scope.comments = response.data;
+        for(i=0; i<$scope.comments.length; i++){
+            handleRequest.getUserImage($scope.comments[i].spot_comment_key.user_username)
+                .then(function(response){
+                    // return response.image;
+                    $scope.usersImage.push(response.image);
 
-
-    // Declare CommentsController.
-    function CommentsController($scope) {
-        var vm = this;
-
-        // Current comment.
-        vm.comment = {};
-
-        // Array where comments will be.
-        vm.comments = [];
-
-        // Fires when form is submited.
-        vm.addComment = function () {
-            // Fixed img.
-            vm.comment.avatarSrc = 'http://lorempixel.com/200/200/people/';
-
-            // Add current date to the comment.
-            vm.comment.date = Date.now();
-
-            vm.comments.push(vm.comment);
-            vm.comment = {};
-
-            // Reset clases of the form after submit.
-            $scope.form.$setPristine();
+                })
         }
 
-        // Fires when the comment change the anonymous state.
-        vm.anonymousChanged = function () {
-            if (vm.comment.anonymous)
-                vm.comment.author = "";
-        }
-    }
 
-})
+    };
+
+    // $scope.getUserImage = function(username){
+    //     handleRequest.getUserImage(username)
+    //         .then(function(response){
+    //             $scope.userImage= response.image;
+    //         })
+    //
+    // };
+
+    var onError = function (reason) {
+        console.log(reason);
+    };
+
+    handleRequest.getComments($rootScope.id).then(placeComments, onError)
+
+
+
+});

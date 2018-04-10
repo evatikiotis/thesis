@@ -1,5 +1,6 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
+import com.tuc.thesis.spring.boot.web.map_app.image.AppImage;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,6 +56,10 @@ public class UserService {
 
     public void changePassword(String username, String newPassword){
         userRepository.changePassword(username, newPassword);
+    }
+
+    public AppImage getUserImage(String username){
+        return userRepository.getUserImage(username);
     }
 
 

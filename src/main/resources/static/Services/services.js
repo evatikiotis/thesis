@@ -64,6 +64,14 @@
                 });
         };
 
+        var addComment = function(username, spot_id, comment){
+            return $http.post("/add-comment/"+username+"/"+spot_id, comment);
+        };
+
+        var getComments = function(spot_id){
+            return $http.get("/get-comments/" + spot_id);
+        }
+
         var getUserInfo = function (username){
             return $http.get("/user/"+username)
                 .then(function(response){
@@ -77,6 +85,13 @@
                     return response.data;
                 })
         };
+        var getUserImage = function(username){
+            return $http.get("/get-user-image/"+username)
+                .then(function(response){
+                    return response.data;
+                })
+
+        }
 
 
 
@@ -89,7 +104,10 @@
             getDiveSpotDetails: getDiveSpotDetails,
             getDiveSchoolDetails: getDiveSchoolDetails,
             getUserInfo: getUserInfo,
-            getUserInterests: getUserInterests
+            getUserInterests: getUserInterests,
+            addComment: addComment,
+            getComments: getComments,
+            getUserImage: getUserImage
 
         };
 
