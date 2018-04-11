@@ -1,37 +1,46 @@
 
 
 
-<div  class="" ng-controller="leftColumnController" >
-    <h4>Spot Categories</h4>
+<div style="margin-top: 50px;"  ng-controller="leftColumnController" >
 
 
-    <br>
-    <h4> Edit your Interests: </h4>
+
+    <h5> Choose Categories </h5>
+
     <hr>
     <div class="form-check">
         <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" ng-model="all"
+                   ng-click="toggleAll()" ng-checked="scuba_diving_schools && scuba_diving_spots && kitesurfing"><span>All</span>
+        </label>
+    </div>
+    <div class="form-check">
+        <label class="form-check-label">
             <input type="checkbox" class="form-check-input" ng-model="kitesurfing"
-                   ng-click="toggleKiteSurfing()" ><span>kite surfing</span>
+                   ng-click="toggleKiteSurfing()" ><span>kitesurfing</span>
         </label>
     </div>
     <div class="form-check ">
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" ng-model="scuba_diving"
-                   ng-click="toggleScubaDiving()" value="">scuba-diving
+                   ng-click="toggleScubaDiving()" ng-checked="scuba_diving_schools || scuba_diving_spots">scuba-diving
         </label>
     </div>
-    <div class="form-check">
+    <div class="form-check ml-sm-3">
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" ng-model="scuba_diving_schools"
                    ng-click="toggleScubaSchools()" value="">schools
         </label>
     </div>
-    <div class="form-check">
+    <div class="form-check ml-sm-3">
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" ng-model="scuba_diving_spots"
                    ng-click="toggleScubaSpots()" value="">spots
         </label>
     </div>
+
+    <br>
+
 
 
 </div>

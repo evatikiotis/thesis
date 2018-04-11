@@ -2,45 +2,32 @@
 
 <p href="#/" class style="background-color: #a9a463; color: white; height: 20px; padding: 0" ncy-breadcrumb ></p>
 
-<div class="container col-sm-8 ui-container">
-    <p class="">search by: </p>
+<div class="container-fluid ui-header">
+    <div align="center" >
+        <div class="">
+            <h5 class="col-sm-2">Explore </h5>
 
-    <div class="row col-sm-10 ">
-        <form class="col-sm-4">
-            <label class="radio-inline">
-                <input type="radio" ng-model="searchRadio" value="byLocation" name="optradio" ng-init="searchRadio='byLocation'"/>location</label> <br/>
-            <label class="radio-inline">
-                <input type="radio" ng-model="searchRadio" value="byName"  name="optradio"/>spot's name</label>
-        </form>
-        <div ng-switch="searchRadio" class="col-sm-6">
-            <div ng-switch-when="byLocation">
-                <input places-auto-complete style=""
-                       ng-model="mmc.address"
-                       component-restrictions="{country:'GR'}"
-                       types="{{types}}"
-                       placeholder="Enter location"
-                       ng-show=true
-
-                       />
-            </div>
-            <div ng-switch-when="byName" ng-controller="searchByNameController">
-                <input type="text" name="country" id="country" ng-model="country" ng-focus="complete('A')" ng-keyup="complete(country)" class="" />
-                <ul class="list-group" ng-model="hidethis" ng-hide="hidethis" style="height: 500px;  overflow: auto">
-                    <li class="list-group-item" ng-repeat="countrydata in filterCountry" ng-click="fillTextbox(countrydata)">{{countrydata}}</li>
-                </ul>
-            </div>
+            <input places-auto-complete style="height: 30px; text-align: center"
+               ng-model="mmc.address"
+               component-restrictions="{country:'GR'}"
+               types="{{types}}"
+               placeholder="Enter location"
+               on-place-changed="mmc.placeChanged()"
+               ng-show=true
 
 
+            />
         </div>
-
-        <br/>
     </div>
+
+
+
 </div>
 
-address : {{mmc.address}}
-<div class="row container-fluid ml-1 ">
-    <div class="ui-header col-sm-2"  ng-include="'devidedByHtmlBlocks/all/leftColumn/leftColumn.html'"></div>
-    <div class="col-sm-10"  id="mainMap" style="height: 380px; width: 100%; ">
+<div class="row " style="padding-left: 15px; padding-right:15px;"  >
+    <div id="leftColumn" style=""
+         class="col-sm-2" ng-include="'devidedByHtmlBlocks/all/leftColumn/leftColumn.html'"></div>
+    <div class="col-sm-10"  id="mainMap" style="height: 460px; width: 100%; ">
     </div>
 </div>
 

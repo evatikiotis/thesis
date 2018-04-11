@@ -100,6 +100,7 @@ a{
     color: white;
 }
 .ui-header{
+
     background-color: rgba(35, 32, 29, 0.78);
     padding: 10px;
     color: white;
@@ -159,6 +160,16 @@ input.ng-invalid.ng-touched {
 input.ng-valid.ng-touched {
     border-color: green;
 }
+#leftColumn{
+    background-color: rgba(41,38,34,0.73);
+    color: white;
+}
+#leftColumn span{
+    letter-spacing: 0.5px;
 
+}
+#leftColumn .form-check{
+    margin-top: 5px;
+}
 
 

@@ -43,6 +43,29 @@ module.controller('leftColumnController', function($scope, $rootScope) {
             $rootScope.placeMarkers();
         }
     };
+    $scope.toggleAll = function(){
+        if($scope.all == true) {
+            $rootScope.kitesurfing = true;
+            $rootScope.scuba_diving = true;
+            $rootScope.scuba_diving_schools = true;
+            $rootScope.scuba_diving_spots = true;
+            $scope.kitesurfing = true;
+            $scope.scuba_diving = true;
+            $scope.scuba_diving_schools = true;
+            $scope.scuba_diving_spots = true;
+            $scope.placeMarkers();
+        }else{
+            $rootScope.kitesurfing = false;
+            $rootScope.scuba_diving = false;
+            $rootScope.scuba_diving_schools = false;
+            $rootScope.scuba_diving_spots = false;
+            $scope.kitesurfing = false;
+            $scope.scuba_diving = false;
+            $scope.scuba_diving_schools = false;
+            $scope.scuba_diving_spots = false;
+
+        }
+    }
 
 
 
