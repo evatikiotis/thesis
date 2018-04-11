@@ -26,7 +26,7 @@ module.controller('changePasswordController', function($rootScope, handleRequest
         UserService.changePassword($rootScope.globals.currentUser.username, cp.user.password)
             .then(function(response){
                 if (response.data == "OK") {
-                    FlashService.Success('Password Changed', true);
+                    FlashService.Success('Password Changed', false);
                 } else {
                     FlashService.Error(response.message);
                     vm.dataLoading = false;

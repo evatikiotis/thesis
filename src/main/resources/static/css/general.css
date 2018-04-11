@@ -146,6 +146,12 @@ a:hover{
     color: red;
     margin: 0;
 }
+.response-success{
+    color: green;
+}
+.response-error{
+    color: red;
+}
 input.ng-invalid.ng-touched {
     border-color: red;
 }

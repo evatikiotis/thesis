@@ -1,10 +1,9 @@
 <div ng-controller="uploadController">
-    <form name="myForm">
-        <fieldset>
-            <legend>Upload on form submit</legend>
-            Username:
-            <input type="text" name="userName" ng-model="username" size="31" required>
-            <i ng-show="myForm.userName.$error.required">*required</i>
+    <form name="myForm" style="border: none; box-shadow: none">
+        <fieldset class="profile-image">
+
+
+
             <br>Photo:
             <input type="file" ngf-select ng-model="picFile" name="file"
                    accept="image/*" ngf-max-size="2MB" required
@@ -12,19 +11,29 @@
 
 
 
-            <i ng-show="myForm.file.$error.required">*required</i><br>
+            <p class="validation" ng-show="myForm.file.$error.required && myForm.file.$touched">Please choose an image</p><br>
             <i ng-show="myForm.file.$error.maxSize">File too large
                 {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-            <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+
+            <div class="row container offset-sm-2">
+                <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" style="border-radius: 5%" >
+
+                <button class="btn btn-danger ml-sm-3 mt-auto" ng-click="picFile = null" ng-show="picFile">Remove</button>
+
+            </div>
             <br>
-            <button ng-disabled="!myForm.$valid"
+            <button
                     ng-click="uploadPic(picFile)">Submit</button>
-            <span class="progress" ng-show="picFile.progress >= 0">
-            <div style="width:{{picFile.progress}}%"
-                 ng-bind="picFile.progress + '%'"></div>
-          </span>
-            <span ng-show="picFile.result">Upload Successful</span>
-            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+            <!--<span class="progress" ng-show="picFile.progress >= 0">-->
+            <!--<div style="width:{{picFile.progress}}%"-->
+                 <!--ng-bind="picFile.progress + '%'"></div>-->
+            <!--</span>-->
+            <br>
+            <br>
+            <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }"
+                 ng-if="flash" ng-bind="flash.message"></div>
+            <p class="response-success" ng-show="picFile.result">Profile picture updated</p>
+            <p class="response-error" ng-show="errorMsg">{{errorMsg}}</p>
         </fieldset>
         <br>
     </form>
