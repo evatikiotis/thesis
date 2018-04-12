@@ -1,6 +1,7 @@
 var module = angular.module('myApp');
 module.controller('kiteSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, $location) {
-
+    alert();
+    $rootScope.id = $stateParams.id;
     // var url = $location.absUrl().split('?')[0];
     var url = $location.absUrl();
     alert(url);
