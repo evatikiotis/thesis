@@ -4,7 +4,7 @@
 
 <div class="container-fluid ui-header">
     <div align="center" >
-        <div class="">
+        <div style="height:80px;">
             <h5 class="col-sm-2">Explore </h5>
 
             <input places-auto-complete style="height: 30px; text-align: center"
@@ -31,4 +31,31 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="add-to-personalmap-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add {{id}} to personal Map</h4>
+
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" ng-controller = "">
+                <form class="container" name="changePasswordForm" ng-submit="changePasswordForm.$valid && cp.changePassword()">
+                    <input type="textarea">
+                </form>
+            </div>
+
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 

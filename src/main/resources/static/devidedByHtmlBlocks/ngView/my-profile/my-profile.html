@@ -7,11 +7,11 @@
                 <h4 class=""><strong>{{globals.currentUser.username}}</strong></h4>
                 <img ng-if="vm.user.image" src="data:image/png;base64,{{vm.user.image}}" alt="kitesurfing spot" >
                 <img ng-if="!(vm.user.image)"src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
-                <a class="btn btn-link"
+                <button class="btn btn-link"
                         type="button"
                         data-toggle="modal"
-                        href="#change-password-modal"> Change Password
-                </a>
+                        data-target="#change-password-modal"> Change Password
+                </button>
                 <a class="btn btn-link"
                    type="button"
                    data-toggle="modal"

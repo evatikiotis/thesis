@@ -1,6 +1,9 @@
 var module = angular.module('myApp');
-module.controller('kiteSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies) {
+module.controller('kiteSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, $location) {
 
+    // var url = $location.absUrl().split('?')[0];
+    var url = $location.absUrl();
+    alert(url);
     var placeSpotDetails = function (data) {
         $scope.spot = data;
     };
@@ -20,15 +23,10 @@ module.controller('kiteSpotDetailsController', function($scope, $rootScope, hand
         console.log(reason);
 
     };
-    if($rootScope.id) {
+    if($stateParams.id) {
 
-        handleRequest.getSpot($rootScope.id).then(placeSpotDetails, onError);
-        handleRequest.getKiteSpotDetails($rootScope.id).then(placeKiteSpotDetails, onError);
-        handleRequest.getKiteSpotImages($rootScope.id).then(placeKiteSpotImages, onError);
-    }else{
-        var cookie_spot_id = $cookies.get('spot_id');
-        handleRequest.getSpot(cookie_spot_id).then(placeSpotDetails, onError);
-        handleRequest.getKiteSpotDetails(cookie_spot_id).then(placeKiteSpotDetails, onError);
-        handleRequest.getKiteSpotImages(cookie_spot_id).then(placeKiteSpotImages, onError);
+        handleRequest.getSpot($stateParams.id).then(placeSpotDetails, onError);
+        handleRequest.getKiteSpotDetails($stateParams.id).then(placeKiteSpotDetails, onError);
+        handleRequest.getKiteSpotImages($stateParams.id).then(placeKiteSpotImages, onError);
     }
 });

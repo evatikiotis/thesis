@@ -1,6 +1,6 @@
 <!--<div ncy-breadcrumb></div>-->
 <p style="font-size: smaller"><a href="#!/map" class="btn btn-link">spots</a> >> kitesurfing spot</p>
-<div class="row" >
+<div class="row container-fluid" >
     <div class="row col-sm-8" >
         <table class="name-level">
             <tr>
@@ -136,6 +136,7 @@
 
         <ng-map style="height: 350px;" center="[{{spot.latitude}}, {{spot.longitude}}]" zoom="10" map-type-id="HYBRID" >
             <marker position="[{{spot.latitude}}, {{spot.longitude}}]" ></marker>
+
         </ng-map>
     </div>
 </div>

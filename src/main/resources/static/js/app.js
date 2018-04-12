@@ -39,7 +39,7 @@
             controller: 'mainMapController',
             controllerAs: 'mmc', ncyBreadcrumb:{ label: 'spots'}};
 
-        var kiteSpotDetails = {name: 'kiteSpotDetails',url: '/map/kiteSpotDetails',
+        var kiteSpotDetails = {name: 'kiteSpotDetails',url: '/map/kiteSpotDetails/:id',
             templateUrl: 'devidedByHtmlBlocks/ngView/map/kitesurfing/kitespotDetails.html',
             controller: 'kiteSpotDetailsController',
             ncyBreadcrumb:{ label: 'kitesurfing spot'}};
@@ -81,6 +81,13 @@
 
     run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
     function run($rootScope, $location, $cookies, $http) {
+
+        //init main map
+        $rootScope.kitesurfing = true;
+        $rootScope.scuba_diving=true;
+        $rootScope.scuba_diving_schools=true;
+        $rootScope.scuba_diving_spots=true;
+
         // keep user logged in after page refresh
         $rootScope.globals = $cookies.getObject('globals') || {};
         if ($rootScope.globals.currentUser) {

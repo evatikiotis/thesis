@@ -2,11 +2,12 @@
 
 var module = angular.module('myApp');
 module.controller('leftColumnController', function($scope, $rootScope) {
-    $rootScope.kitesurfing = true;
-    $rootScope.scuba_diving=true;
-    $rootScope.scuba_diving_schools=true;
-    $rootScope.scuba_diving_spots=true;
-
+    $scope.init = function() {
+        // $rootScope.kitesurfing = true;
+        // $rootScope.scuba_diving=true;
+        // $rootScope.scuba_diving_schools=true;
+        // $rootScope.scuba_diving_spots=true;
+    }
     $rootScope.markerClustering = false;
     $scope.toggleKiteSurfing = function(){
         $rootScope.kitesurfing = $scope.kitesurfing;
@@ -53,7 +54,7 @@ module.controller('leftColumnController', function($scope, $rootScope) {
             $scope.scuba_diving = true;
             $scope.scuba_diving_schools = true;
             $scope.scuba_diving_spots = true;
-            $scope.placeMarkers();
+            $rootScope.placeMarkers();
         }else{
             $rootScope.kitesurfing = false;
             $rootScope.scuba_diving = false;
@@ -63,6 +64,7 @@ module.controller('leftColumnController', function($scope, $rootScope) {
             $scope.scuba_diving = false;
             $scope.scuba_diving_schools = false;
             $scope.scuba_diving_spots = false;
+            $rootScope.placeMarkers();
 
         }
     }
