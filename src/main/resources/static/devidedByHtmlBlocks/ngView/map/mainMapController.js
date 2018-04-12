@@ -57,7 +57,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "<a href=\"#!/map/kiteSpotDetails/"+spot.id+"\">details</a>"+"<br>"+
 
                         // "<a href='#!/map/kiteSpotDetails'>details</a>"+"<br>"+document.cookie = "username=John Doe";
-                        "<a data-toggle=\"modal\" onclick=\"document.cookie = 'spot_id=42'\" data-target=\"#add-to-personalmap-modal\">add to personalMap</a>");
+                        "<a data-toggle=\"modal\" onclick=\"localStorage.setItem('spot_id', '"+spot.id+"')\" data-target=\"#add-to-personalmap-modal\">add to personalMap</a>");
                     // $rootScope.id = spot.id;
                     // $cookies.put('spot_id', $rootScope.id);
                     infoWindow.open(mmc.mainMap, marker);
