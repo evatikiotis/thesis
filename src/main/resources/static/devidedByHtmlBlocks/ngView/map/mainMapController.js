@@ -1,7 +1,11 @@
 // initMainMap >> buildMarkers >> markerOnclick onclick open info window and place photos if they exist
 var module = angular.module('myApp');
-module.controller('mainMapController', function( $scope, $rootScope, NgMap, handleRequest, $cookies) {
-
+module.controller('mainMapController', function( $scope, $rootScope, NgMap, handleRequest, $cookies, $compile, $window) {
+    $scope.clickTest = function() {
+        // spot id to add to personal map
+        $scope.sidpm = $window.localStorage.getItem("spot_id");
+        alert($scope.sidpm);
+    };
     var kiteSpotMarkers = [];
     var scubaSchoolsMarkers = [];
     var scubaSiteMarkers = [];
@@ -51,16 +55,20 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
 
 
                     $scope.spot = spot;
-                    var infoWindow = new google.maps.InfoWindow();
-                    // handleRequest.getKiteSpotImages(spot.id).then(placePhotos, onError);
-                    infoWindow.setContent("kitesurfing spot" + "<br >" + spot.name +"<br>"+
-                        "<a href=\"#!/map/kiteSpotDetails/"+spot.id+"\">details</a>"+"<br>"+
+                    var contentString = "<div><button data-toggle='modal' " +
+                        "data-target='#add-to-personalmap-modal' " +
+                        "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' )\"  " +
+                        "ng-click='clickTest()'>Click Me</button></div>";
+                    var compiled = $compile(contentString)($scope);
 
-                        // "<a href='#!/map/kiteSpotDetails'>details</a>"+"<br>"+document.cookie = "username=John Doe";
-                        "<a data-toggle=\"modal\" onclick=\"localStorage.setItem('spot_id', '"+spot.id+"')\" data-target=\"#add-to-personalmap-modal\">add to personalMap</a>");
+                    var infowindow = new google.maps.InfoWindow({
+                        content: compiled[0]
+                    });
+                    // var compiled = $compile(content)($scope);
+                    // infoWindow.setContent(compiled);
                     // $rootScope.id = spot.id;
                     // $cookies.put('spot_id', $rootScope.id);
-                    infoWindow.open(mmc.mainMap, marker);
+                    infowindow.open(mmc.mainMap, marker);
                 });
 
                 kiteSpotMarkers.push(marker);

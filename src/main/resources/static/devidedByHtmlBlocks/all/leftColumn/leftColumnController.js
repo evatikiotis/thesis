@@ -2,12 +2,12 @@
 
 var module = angular.module('myApp');
 module.controller('leftColumnController', function($scope, $rootScope) {
-    $scope.init = function() {
-        // $rootScope.kitesurfing = true;
-        // $rootScope.scuba_diving=true;
-        // $rootScope.scuba_diving_schools=true;
-        // $rootScope.scuba_diving_spots=true;
-    }
+
+    $rootScope.kitesurfing = false;
+    $rootScope.scuba_diving=false;
+    $rootScope.scuba_diving_schools=false;
+    $rootScope.scuba_diving_spots=false;
+
     $rootScope.markerClustering = false;
     $scope.toggleKiteSurfing = function(){
         $rootScope.kitesurfing = $scope.kitesurfing;
