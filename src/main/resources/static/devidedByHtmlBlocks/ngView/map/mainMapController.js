@@ -3,8 +3,11 @@ var module = angular.module('myApp');
 module.controller('mainMapController', function( $scope, $rootScope, NgMap, handleRequest, $cookies, $compile, $window) {
     $scope.clickTest = function() {
         // spot id to add to personal map
-        $scope.sidpm = $window.localStorage.getItem("spot_id");
-        alert($scope.sidpm);
+        $scope.spot_to_add_id = $window.localStorage.getItem("spot_id");
+        $scope.spot_to_add_name = $window.localStorage.getItem("spot_name");
+        handleRequest.addSpotPersonalMap($scope.spot_to_add_id);
+        // alert($scope.sidpm);
+
     };
     var kiteSpotMarkers = [];
     var scubaSchoolsMarkers = [];
@@ -57,7 +60,8 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                     $scope.spot = spot;
                     var contentString = "<div><button data-toggle='modal' " +
                         "data-target='#add-to-personalmap-modal' " +
-                        "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' )\"  " +
+                        "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
+                        "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
                         "ng-click='clickTest()'>Click Me</button></div>";
                     var compiled = $compile(contentString)($scope);
 

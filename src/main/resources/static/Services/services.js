@@ -91,7 +91,13 @@
                     return response.data;
                 })
 
-        }
+        };
+        var addSpotPersonalMap = function(spot_to_add_id){
+            return $http.get("/add-spot-to-personal-map/"+spot_to_add_id)
+                .then(function(response){
+                    return response.data;
+                })
+        };
 
 
 
@@ -107,7 +113,8 @@
             getUserInterests: getUserInterests,
             addComment: addComment,
             getComments: getComments,
-            getUserImage: getUserImage
+            getUserImage: getUserImage,
+            addSpotPersonalMap: addSpotPersonalMap
 
         };
 
