@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope) {
+module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope, $state) {
     vm = this;
     $scope.types = "['address']";
 
@@ -31,4 +31,7 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
 
     handleRequest.getUserInfo($rootScope.globals.currentUser.username).then(placeUserinfo, onError);
     handleRequest.getUserInterests($rootScope.globals.currentUser.username).then(placeUserInterests, onError);
+    $scope.reload = function(){
+        $state.reload();
+    };
 });

@@ -1,13 +1,23 @@
 // initMainMap >> buildMarkers >> markerOnclick onclick open info window and place photos if they exist
 var module = angular.module('myApp');
-module.controller('mainMapController', function( $scope, $rootScope, NgMap, handleRequest, $cookies, $compile, $window) {
+module.controller('mainMapController', function( $scope, $rootScope, NgMap, handleRequest, $cookies, $compile, $window, FlashService) {
     $scope.clickTest = function() {
         // spot id to add to personal map
         $scope.spot_to_add_id = $window.localStorage.getItem("spot_id");
         $scope.spot_to_add_name = $window.localStorage.getItem("spot_name");
         handleRequest.addSpotPersonalMap($scope.spot_to_add_id);
         // alert($scope.sidpm);
-
+    };
+    $scope.addSpotToPersonal = function(){
+        handleRequest.addSpotPersonalMap($scope.spot_to_add_id)
+            .then(function(response){
+                if (response == "OK") {
+                    FlashService.Success('Spot added to personal map successfully', false);
+                } else {
+                    FlashService.Error(response.message);
+                    vm.dataLoading = false;
+                }
+            });
     };
     var kiteSpotMarkers = [];
     var scubaSchoolsMarkers = [];

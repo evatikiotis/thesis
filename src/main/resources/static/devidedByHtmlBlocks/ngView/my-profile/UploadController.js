@@ -1,7 +1,7 @@
 //inject angular file upload directives and services.
 var app = angular.module('myApp');
 
-app.controller('uploadController',function ($scope, Upload, $timeout,$rootScope, FlashService) {
+app.controller('uploadController',function ($scope, Upload, $timeout,$rootScope, FlashService, $state) {
     uc = this;
     $scope.uploadPic = function(file) {
         file.upload = Upload.upload({
@@ -20,5 +20,6 @@ app.controller('uploadController',function ($scope, Upload, $timeout,$rootScope,
 
         file.upload.then(respond);
 
-    }
+    };
+
 });
