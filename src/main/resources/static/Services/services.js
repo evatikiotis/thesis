@@ -92,8 +92,8 @@
                 })
 
         };
-        var addSpotPersonalMap = function(spot_to_add_id){
-            return $http.get("/add-spot-to-personal-map/"+spot_to_add_id)
+        var addSpotPersonalMap = function(spot_to_add_id, notes, username){
+            return $http.post("/add-spot-to-personal-map/"+spot_to_add_id + "/"+username, notes)
                 .then(function(response){
                     return response.data;
                 })

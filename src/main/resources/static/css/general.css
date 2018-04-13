@@ -172,5 +172,17 @@ input.ng-valid.ng-touched {
 #leftColumn .form-check{
     margin-top: 5px;
 }
-
+.infoWindow{
+    height: 110px;
+    width: 215px;
+}
+.infoWindow button{
+    height: 25px;
+    margin: 3px;
+    background-color: rgba(128, 159, 57, 0.97);
+    font-size: medium;
+}
+.infoWindow hr{
+    margin: 1px;
+}
 

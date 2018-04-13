@@ -5,11 +5,11 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
         // spot id to add to personal map
         $scope.spot_to_add_id = $window.localStorage.getItem("spot_id");
         $scope.spot_to_add_name = $window.localStorage.getItem("spot_name");
-        handleRequest.addSpotPersonalMap($scope.spot_to_add_id);
+
         // alert($scope.sidpm);
     };
     $scope.addSpotToPersonal = function(){
-        handleRequest.addSpotPersonalMap($scope.spot_to_add_id)
+        handleRequest.addSpotPersonalMap($scope.spot_to_add_id, $scope.notes, $rootScope.globals.currentUser.username)
             .then(function(response){
                 if (response == "OK") {
                     FlashService.Success('Spot added to personal map successfully', false);
@@ -68,11 +68,32 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
 
 
                     $scope.spot = spot;
-                    var contentString = "<div><button data-toggle='modal' " +
-                        "data-target='#add-to-personalmap-modal' " +
-                        "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
-                        "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
-                        "ng-click='clickTest()'>Click Me</button></div>";
+                    var contentString =
+                        "<div class='infoWindow'>" +
+                            "<table>" +
+                                "<tr>" +
+                                    "<th>name:</th>"+
+                                    "<td>"+spot.name+"</td>"+
+                                "</tr>"+
+                                "<tr>" +
+                                    "<th>type:</th>"+
+                                    "<td>kitesurfing spot</td>"+
+                                "</tr>"+
+                            "</table>"+
+
+                            "<hr>"+
+                            "<a class='btn btn-link' href='#!/map/kiteSpotDetails/"+spot.id+"'>details</a>"+
+                            "<br>"+
+                            "<button " +
+                                    "data-toggle='modal' " +
+                                    "data-target='#add-to-personalmap-modal' " +
+                                    "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
+                                    "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
+                                    "ng-click='clickTest()'>Add to personal map" +
+                            "</button>" +
+                        "</div>";
+
+
                     var compiled = $compile(contentString)($scope);
 
                     var infowindow = new google.maps.InfoWindow({
