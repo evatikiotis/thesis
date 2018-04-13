@@ -23,7 +23,7 @@ public class User_Spot_FavouriteController {
     }
 
     @RequestMapping("/get-favourite-spots/{username}")
-    public List<Spot> getFavouriteSpots(@PathVariable String username){
+    public List<User_Spot_Favourite> getFavouriteSpots(@PathVariable String username){
         return user_spot_favouriteService.getFavouriteSpots((username));
     }
 

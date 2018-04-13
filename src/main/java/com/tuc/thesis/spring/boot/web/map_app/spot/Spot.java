@@ -3,10 +3,11 @@ package com.tuc.thesis.spring.boot.web.map_app.spot;
 import com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_favourite.User_Spot_Favourite;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity(name = "spot")
-public class Spot {
+public class Spot implements Serializable{
     @OneToOne(fetch = FetchType.LAZY,
             cascade =  CascadeType.ALL,
             mappedBy = "spot")

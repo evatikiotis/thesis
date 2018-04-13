@@ -2,6 +2,7 @@ package com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_favourite;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 @Embeddable
@@ -13,16 +14,13 @@ public class User_Spot_FavouriteCompositeKey implements Serializable{
     @Column(name = "spot_id")
     private int spot_id;
 
-    @Column(name = "notes")
-    private String notes;
-
     public User_Spot_FavouriteCompositeKey() {
     }
 
-    public User_Spot_FavouriteCompositeKey(String user_username, int spot_id, String notes) {
+    public User_Spot_FavouriteCompositeKey(String user_username, int spot_id) {
         this.user_username = user_username;
         this.spot_id = spot_id;
-        this.notes = notes;
+
     }
 
     public String getUser_username() {
@@ -41,11 +39,5 @@ public class User_Spot_FavouriteCompositeKey implements Serializable{
         this.spot_id = spot_id;
     }
 
-    public String getNotes() {
-        return notes;
-    }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
 }
