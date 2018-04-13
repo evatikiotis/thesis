@@ -1,5 +1,12 @@
 var module = angular.module('myApp');
-module.controller('myMapController', function($scope, handleRequest, $rootScope, $compile){
+module.controller('myMapController', function($scope, handleRequest, $rootScope, $compile, $window){
+    $scope.clickTest = function() {
+        // spot id to add to personal map
+        $scope.spot_id_personalMap = $window.localStorage.getItem("spot_id_personalMap");
+        $scope.spot_name_personalMap = $window.localStorage.getItem("spot_name_personalMap");
+        $scope.spot_notes_personalMap = $window.localStorage.getItem("spot_notes_personalMap");
+        // alert($scope.sidpm);
+    };
     var mm = this;
     mm.myMap = null;
     // var markerClusterer = null;
@@ -16,7 +23,8 @@ module.controller('myMapController', function($scope, handleRequest, $rootScope,
     var placeFavourites = function(response){
        var favouriteSpots = response;
        
-       favouriteSpots.map(function(spot){
+       favouriteSpots.map(function(favouriteSpot){
+           var spot = favouriteSpot.spot;
            if (spot.type == "kiteSpot") {
                var latLng = new google.maps.LatLng(spot.latitude, spot.longitude);
                var kitesurfingSpotIcon = {
@@ -36,29 +44,36 @@ module.controller('myMapController', function($scope, handleRequest, $rootScope,
 
                    $scope.spot = spot;
                    var contentString =
-                       "<div class='infoWindow'>" +
-                       "<table>" +
-                       "<tr>" +
-                       "<th>name:</th>"+
-                       "<td>"+spot.name+"</td>"+
-                       "</tr>"+
-                       "<tr>" +
-                       "<th>type:</th>"+
-                       "<td>kitesurfing spot</td>"+
-                       "</tr>"+
-                       "</table>"+
+                       "<div class='infoWindow-myMap'>" +
 
-                       "<hr>"+
-                       "<a class='btn btn-link' href='#!/map/kiteSpotDetails/"+spot.id+"'>details</a>"+
-                       "<br>"+
-                       "<button " +
-                       "data-toggle='modal' " +
-                       "data-target='#add-to-personalmap-modal' " +
-                       "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
-                       "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
-                       "ng-click='clickTest()'>Add to personal map" +
-                       "</button>" +
-                       "</div>";
+                           "<table>" +
+                           "<tr>" +
+                           "<th>name:</th>"+
+                           "<td>"+spot.name+"</td>"+
+                           "</tr>"+
+                           "<tr>" +
+                           "<th>type:</th>"+
+                           "<td>kitesurfing spot</td>"+
+                           "</tr>"+
+                           "<tr></tr>"+
+                           "<tr>" +
+                           "<th>notes:</th>"+
+                           "<td>"+favouriteSpot.notes+"</td>"+
+                           "</tr>"+
+                           "</table>"+
+
+                           "<hr>"+
+                           "<button " +
+                               "data-toggle='modal' " +
+                               "data-target='#edit-notes-modal' " +
+                               "onclick=\"localStorage.setItem('spot_id_personalMap','"+spot.id+"' );" +
+                               "localStorage.setItem('spot_name_personalMap','"+spot.name+"' );  " +
+                               "localStorage.setItem('spot_notes_personalMap','"+favouriteSpot.notes+"' );\"  " +
+
+                               "ng-click='clickTest()'>Edit notes" +
+                           "</button>" +
+                           "<a class='btn btn-link' href='#!/map/kiteSpotDetails/"+spot.id+"'>details</a>"+
+                       "</div>"
 
 
                    var compiled = $compile(contentString)($scope);

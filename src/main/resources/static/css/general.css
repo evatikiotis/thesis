@@ -186,3 +186,13 @@ input.ng-valid.ng-touched {
     margin: 1px;
 }
 
+.infoWindow-myMap hr{
+    margin: 1px;
+}
+.infoWindow-myMap button{
+    height: 25px;
+    margin: 3px;
+    background-color: rgba(128, 159, 57, 0.97);
+    font-size: medium;
+}
+
