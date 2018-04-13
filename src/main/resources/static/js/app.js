@@ -56,7 +56,9 @@
             templateUrl: 'devidedByHtmlBlocks/ngView/weatherMap/weather_map.html'};
 
         var myMap = {name: 'myMap',url: '/my_map',
-            templateUrl: 'devidedByHtmlBlocks/ngView/toDevelop/my_map.html'};
+            templateUrl: 'devidedByHtmlBlocks/ngView/my-map/myMap.html',
+            controller: 'myMapController'
+        };
 
         var adventureFinder = {name: 'adventureFinder',url: '/adventure_finder',
             templateUrl: 'devidedByHtmlBlocks/ngView/toDevelop/adventure_finder.html'};
@@ -114,14 +116,24 @@
                 nav_home.addClass('active');
                 nav_map.removeClass('active');
                 nav_weatherMap.removeClass('active');
+                nav_myMap.removeClass('active');
             }
             if($location.url() == "/map"){
                 nav_map.addClass('active');
                 nav_home.removeClass('active');
                 nav_weatherMap.removeClass('active');
+                nav_myMap.removeClass('active');
             }
             if($location.url() == "/weather_map"){
                 nav_weatherMap.addClass('active');
+                nav_map.removeClass('active');
+                nav_home.removeClass('active');
+                nav_myMap.removeClass('active');
+
+            }
+            if($location.url() == "/my_map"){
+                nav_myMap.addClass('active');
+                nav_weatherMap.removeClass('active');
                 nav_map.removeClass('active');
                 nav_home.removeClass('active');
 

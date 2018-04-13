@@ -99,6 +99,13 @@
                 })
         };
 
+        var getFavouriteSpots = function(username){
+            return $http.get("/get-favourite-spots/"+username)
+                .then(function(response){
+                return response.data;
+            })
+        };
+
 
 
         return {
@@ -114,7 +121,8 @@
             addComment: addComment,
             getComments: getComments,
             getUserImage: getUserImage,
-            addSpotPersonalMap: addSpotPersonalMap
+            addSpotPersonalMap: addSpotPersonalMap,
+            getFavouriteSpots: getFavouriteSpots
 
         };
 

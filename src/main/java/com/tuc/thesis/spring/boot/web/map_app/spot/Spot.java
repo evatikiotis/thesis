@@ -1,12 +1,17 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_favourite.User_Spot_Favourite;
+
+import javax.persistence.*;
 
 
 @Entity(name = "spot")
 public class Spot {
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy = "spot")
+    private User_Spot_Favourite user_spot_favourite;
+
     @Id
     @Column(name = "id")
     private int id;

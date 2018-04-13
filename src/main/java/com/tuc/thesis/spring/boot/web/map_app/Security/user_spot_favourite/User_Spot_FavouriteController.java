@@ -1,8 +1,11 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_favourite;
 
+import com.tuc.thesis.spring.boot.web.map_app.spot.Spot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class User_Spot_FavouriteController {
@@ -17,6 +20,11 @@ public class User_Spot_FavouriteController {
         return HttpStatus.OK;
 
 
+    }
+
+    @RequestMapping("/get-favourite-spots/{username}")
+    public List<Spot> getFavouriteSpots(@PathVariable String username){
+        return user_spot_favouriteService.getFavouriteSpots((username));
     }
 
 }
