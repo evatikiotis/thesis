@@ -24,7 +24,7 @@
     </div>
 </div>
 <div class="modal fade" id="carouselModal">
-    <div ng-if="{images}" align="center">
+    <div ng-if="images" align="center">
         <div id="demo" class="carousel slide col-sm-6" data-ride="carousel">
 
             <!-- Indicators -->
@@ -57,7 +57,6 @@
 <hr style="margin-top: 4px; margin-bot: 0px;">
 <div class="rating-div">
     <rating-stars ng-if="!globals.currentUser"
-                  ng-change="vm.ratingChange()"
                   ratings="vm.ratings"
                   average-rating="vm.averageRating"
                   ratings-position="{{vm.ratingsPosition}}">

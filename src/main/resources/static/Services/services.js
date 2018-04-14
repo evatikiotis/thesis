@@ -26,13 +26,6 @@
 
         };
 
-
-
-
-
-
-
-
         var getSpot = function(id){
             return $http.get("/spots/"+id)
                 .then(function (response) {
@@ -119,6 +112,21 @@
                 })
         };
 
+        var getUserRatingObject = function (spot_id, username){
+            return $http.get("/get-rating-object-user/"+username+"/"+spot_id)
+                .then(function(response){
+                    return response.data;
+                })
+
+        };
+
+        var userRateSpot = function(username, spot_id, rating){
+            return $http.post("/user-rate-spot/"+username+"/"+spot_id, rating)
+                .then(function(response){
+                    return response.data;
+                })
+        };
+
 
 
         return {
@@ -137,7 +145,9 @@
             addSpotPersonalMap: addSpotPersonalMap,
             getFavouriteSpots: getFavouriteSpots,
             editNotes: editNotes,
-            getGuestRatingObject: getGuestRatingObject
+            getGuestRatingObject: getGuestRatingObject,
+            getUserRatingObject: getUserRatingObject,
+            userRateSpot: userRateSpot
 
         };
 

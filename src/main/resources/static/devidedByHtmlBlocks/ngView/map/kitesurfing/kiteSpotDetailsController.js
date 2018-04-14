@@ -1,10 +1,7 @@
 var module = angular.module('myApp');
 module.controller('kiteSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, $location) {
-    alert();
     $rootScope.id = $stateParams.id;
     // var url = $location.absUrl().split('?')[0];
-    var url = $location.absUrl();
-    alert(url);
     var placeSpotDetails = function (data) {
         $scope.spot = data;
     };
@@ -21,8 +18,11 @@ module.controller('kiteSpotDetailsController', function($scope, $rootScope, hand
     ///////////////rating
 
     var vm = this;
+    vm.formData = {
+        myRating: 0
+    };
 
-    var placeSpotRating = function(response){
+    var placeGuestRating = function(response){
         vm.ratings = response.ratingsNumber;
         vm.averageRating = response.averageRating;
         vm.ratingsPosition = 'right';
@@ -31,8 +31,18 @@ module.controller('kiteSpotDetailsController', function($scope, $rootScope, hand
         };
     };
 
+    var placeUserRating = function(response){
+        vm.ratings = response.ratingsNumber;
+        vm.averageRating = response.averageRating;
+        vm.ratingsPosition = 'right';
+        vm.formData = {
+            myRating: response.userRating
+        };
+    };
+
     vm.ratingChange = function() {
         console.log('My rating changed to: ' + vm.formData.myRating);
+        handleRequest.userRateSpot($rootScope.globals.currentUser.username, $stateParams.id, vm.formData.myRating);
     };
     /////////////////////
     var onError = function (reason) {
@@ -44,7 +54,11 @@ module.controller('kiteSpotDetailsController', function($scope, $rootScope, hand
         handleRequest.getSpot($stateParams.id).then(placeSpotDetails, onError);
         handleRequest.getKiteSpotDetails($stateParams.id).then(placeKiteSpotDetails, onError);
         handleRequest.getKiteSpotImages($stateParams.id).then(placeKiteSpotImages, onError);
-        handleRequest.getGuestRatingObject($stateParams.id).then(placeSpotRating, onError);
+        if ($rootScope.globals.currentUser) {
+            handleRequest.getUserRatingObject($stateParams.id, $rootScope.globals.currentUser.username).then(placeUserRating, onError);
+        } else {
+            handleRequest.getGuestRatingObject($stateParams.id).then(placeGuestRating, onError);
+        }
     }
 
 

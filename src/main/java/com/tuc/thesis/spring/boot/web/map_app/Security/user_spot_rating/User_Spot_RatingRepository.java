@@ -16,4 +16,8 @@ public interface User_Spot_RatingRepository extends CrudRepository<User_Spot_Rat
             "    WHERE spot_id = :spot_id ", nativeQuery = true)
     public int selectCountRating(@Param("spot_id") int spot_id);
 
+    @Query(value = "SELECT rating FROM app_user_spot_rating\n" +
+            "    WHERE spot_id = :spot_id AND user_username= :username", nativeQuery = true)
+    public int selectUserRating(@Param("username") String username, @Param("spot_id") int spot_id);
+
 }
