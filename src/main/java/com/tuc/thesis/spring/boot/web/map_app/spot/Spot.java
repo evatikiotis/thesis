@@ -1,6 +1,7 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot;
 
 import com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_favourite.User_Spot_Favourite;
+import com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_rating.User_Spot_Rating;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,6 +13,8 @@ public class Spot implements Serializable{
             cascade =  CascadeType.ALL,
             mappedBy = "spot")
     private User_Spot_Favourite user_spot_favourite;
+
+
 
     @Id
     @Column(name = "id")

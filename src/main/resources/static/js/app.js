@@ -42,6 +42,7 @@
         var kiteSpotDetails = {name: 'kiteSpotDetails',url: '/map/kiteSpotDetails/:id',
             templateUrl: 'devidedByHtmlBlocks/ngView/map/kitesurfing/kitespotDetails.html',
             controller: 'kiteSpotDetailsController',
+            controllerAs: 'vm',
             ncyBreadcrumb:{ label: 'kitesurfing spot'}};
 
         var scubaSpotDetails = {name: 'scubaSpotDetails',url: '/map/scubaSpotDetails',

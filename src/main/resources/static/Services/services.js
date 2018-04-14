@@ -112,6 +112,12 @@
                     return response.data;
                 })
         };
+        var getGuestRatingObject = function(spot_id){
+            return $http.get("/get-rating-object-guest/"+spot_id)
+                .then(function(response){
+                    return response.data;
+                })
+        };
 
 
 
@@ -130,7 +136,8 @@
             getUserImage: getUserImage,
             addSpotPersonalMap: addSpotPersonalMap,
             getFavouriteSpots: getFavouriteSpots,
-            editNotes: editNotes
+            editNotes: editNotes,
+            getGuestRatingObject: getGuestRatingObject
 
         };
 

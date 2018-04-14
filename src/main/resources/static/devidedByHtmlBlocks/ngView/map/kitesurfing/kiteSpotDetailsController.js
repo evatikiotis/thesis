@@ -18,8 +18,23 @@ module.controller('kiteSpotDetailsController', function($scope, $rootScope, hand
         $scope.images = data;
 
     };
+    ///////////////rating
 
+    var vm = this;
 
+    var placeSpotRating = function(response){
+        vm.ratings = response.ratingsNumber;
+        vm.averageRating = response.averageRating;
+        vm.ratingsPosition = 'right';
+        vm.formData = {
+             myRating: 0
+        };
+    };
+
+    vm.ratingChange = function() {
+        console.log('My rating changed to: ' + vm.formData.myRating);
+    };
+    /////////////////////
     var onError = function (reason) {
         console.log(reason);
 
@@ -29,5 +44,13 @@ module.controller('kiteSpotDetailsController', function($scope, $rootScope, hand
         handleRequest.getSpot($stateParams.id).then(placeSpotDetails, onError);
         handleRequest.getKiteSpotDetails($stateParams.id).then(placeKiteSpotDetails, onError);
         handleRequest.getKiteSpotImages($stateParams.id).then(placeKiteSpotImages, onError);
+        handleRequest.getGuestRatingObject($stateParams.id).then(placeSpotRating, onError);
     }
+
+
+    // rating
+
+
+
+
 });

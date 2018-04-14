@@ -1,0 +1,59 @@
+@keyframes rating-stars-blink {
+    0% {
+        opacity: .8;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+rating-stars .mutable {
+    cursor: pointer;
+}
+rating-stars .hover .star {
+    position: relative;
+}
+rating-stars .hover .star:hover::after {
+    animation-name: rating-stars-blink;
+    animation-duration: .5s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+rating-stars .hover .star::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #4ec2cb;
+    content: 'star';
+    opacity: 0;
+}
+rating-stars .ratings-right,
+rating-stars .ratings-left {
+    vertical-align: middle;
+    color: #858585;
+}
+rating-stars .ratings-right {
+    margin-left: 5px;
+}
+rating-stars .ratings-left {
+    margin-right: 5px;
+}
+rating-stars .star {
+    color: #949494;
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    vertical-align: middle;
+}
+rating-stars .star::before {
+    content: 'star_border';
+}
+rating-stars .star.on, rating-stars .star.on-half {
+    color: #f7931e;
+}
+rating-stars .star.on.my, rating-stars .star.on-half.my {
+    color: #4ec2cb;
+}
+rating-stars .star.on::before {
+    content: 'star';
+}
+rating-stars .star.on-half::before {
+    content: 'star_half';
+}
