@@ -195,4 +195,16 @@ input.ng-valid.ng-touched {
     background-color: rgba(128, 159, 57, 0.97);
     font-size: medium;
 }
+.modal-dialog{
+    width:550px;
+    min-height: 550px;
+    text-align: center;
+    max-width: 600px;
+}
+
+.modal-dialog img{
+    vertical-align: middle;
+    height: 500px;
+    width: 550px;
+}
 
