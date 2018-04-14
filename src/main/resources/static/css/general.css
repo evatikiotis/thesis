@@ -29,15 +29,15 @@ html, body{
 
 }
 main{
-    background-color: #4e555b;
+    background-color: whitesmoke;
 }
 #ng-view-container{
-    background-color: lightgrey;
+    background-color: whitesmoke;
     min-height: 800px;
     border-radius: 5px;
-    border: 0.6px;
+    /*border: 0.6px;*/
     /*box-shadow: 1px 1px #faf3ec;*/
-    border: 1px solid rgba(204, 199, 186, 0.36);
+    /*border: 1px solid rgba(204, 199, 186, 0.36);*/
     /*padding: 0;*/
     /*padding-left: 10px;*/
 }

@@ -106,6 +106,13 @@
             })
         };
 
+        var editNotes = function(spot_id_personalMap, spot_notes_personalMap, username){
+            return $http.put("/edit-notes-personal-map-spot/"+spot_id_personalMap + "/"+username, spot_notes_personalMap)
+                .then(function(response){
+                    return response.data;
+                })
+        };
+
 
 
         return {
@@ -122,7 +129,8 @@
             getComments: getComments,
             getUserImage: getUserImage,
             addSpotPersonalMap: addSpotPersonalMap,
-            getFavouriteSpots: getFavouriteSpots
+            getFavouriteSpots: getFavouriteSpots,
+            editNotes: editNotes
 
         };
 

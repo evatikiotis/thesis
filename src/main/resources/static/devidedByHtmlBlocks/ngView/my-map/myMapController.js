@@ -1,11 +1,22 @@
 var module = angular.module('myApp');
-module.controller('myMapController', function($scope, handleRequest, $rootScope, $compile, $window){
+module.controller('myMapController', function($scope, handleRequest, $rootScope, $compile, $window, FlashService){
     $scope.clickTest = function() {
         // spot id to add to personal map
         $scope.spot_id_personalMap = $window.localStorage.getItem("spot_id_personalMap");
         $scope.spot_name_personalMap = $window.localStorage.getItem("spot_name_personalMap");
         $scope.spot_notes_personalMap = $window.localStorage.getItem("spot_notes_personalMap");
         // alert($scope.sidpm);
+    };
+    $scope.editNotes = function(){
+        handleRequest.editNotes($scope.spot_id_personalMap, $scope.spot_notes_personalMap, $rootScope.globals.currentUser.username)
+            .then(function(response){
+                if (response == "OK") {
+                    FlashService.Success('Spot added to personal map successfully', false);
+                } else {
+                    FlashService.Error(response.message);
+                    vm.dataLoading = false;
+                }
+            });
     };
     var mm = this;
     mm.myMap = null;

@@ -34,4 +34,8 @@ public class User_Spot_FavouriteService {
     public List<User_Spot_Favourite> getFavouriteSpots(String username){
         return user_spot_favouriteRepository.selectFavouriteSpots(username);
     }
+
+    public void editNotes(int spot_id, String username, String notes){
+        user_spot_favouriteRepository.editNotes(spot_id, username, notes);
+    }
 }

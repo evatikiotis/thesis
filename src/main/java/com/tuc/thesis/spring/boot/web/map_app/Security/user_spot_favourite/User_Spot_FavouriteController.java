@@ -26,5 +26,13 @@ public class User_Spot_FavouriteController {
     public List<User_Spot_Favourite> getFavouriteSpots(@PathVariable String username){
         return user_spot_favouriteService.getFavouriteSpots((username));
     }
+    @RequestMapping(value = "/edit-notes-personal-map-spot/{spot_id}/{username}", method = RequestMethod.PUT)
+    public HttpStatus editNotes(@PathVariable int spot_id, @PathVariable String username, @RequestBody String notes ){
+        User_Spot_Favourite user_spot_favourite = new User_Spot_Favourite();
 
+        user_spot_favouriteService.editNotes(spot_id, username, notes);
+        return HttpStatus.OK;
+
+
+    }
 }
