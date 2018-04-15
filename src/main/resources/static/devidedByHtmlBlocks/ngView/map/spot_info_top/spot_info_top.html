@@ -1,0 +1,38 @@
+<div class="row container-fluid" >
+    <div class="row col-sm-8" >
+        <table class="name-level">
+            <tr>
+                <th>Name: </th>
+                <td>{{spot.name}}</td>
+            </tr>
+
+        </table>
+        <table class="ml-sm-5 name-level">
+            <tr>
+                <th>Level: </th>
+                <td>{{kiteSpot.level}}</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col-sm-3 imagesContainer" >
+        <a data-toggle="modal" data-target="#carouselModal"   ng-repeat="image in images">
+            <img src="data:image/png;base64,{{image.image}}" alt="kitesurfing spot" height="28" width="28">
+        </a>
+    </div>
+</div>
+<hr style="margin-top: 4px; margin-bot: 0px;">
+<div class="rating-div">
+    <rating-stars ng-if="!globals.currentUser"
+                  ratings="vm.ratings"
+                  average-rating="vm.averageRating"
+                  ratings-position="{{vm.ratingsPosition}}">
+    </rating-stars>
+    <rating-stars ng-if="globals.currentUser"
+                  ng-model="vm.formData.myRating"
+                  ng-change="vm.ratingChange()"
+                  ratings="vm.ratings"
+                  average-rating="vm.averageRating"
+                  ratings-position="{{vm.ratingsPosition}}">
+    </rating-stars>
+</div>

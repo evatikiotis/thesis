@@ -25,8 +25,7 @@
                     + 'class="star hover material-icons"></i>';
             }).join('')
             + '<span ng-if="vm.ratingsPosition === \'right\'" class="ratings-right">({{vm.ratings}})</span>'
-            + '</div>'
-            + '<pre>{{vm | json}}</pre>',
+            + '</div>',
             scope: {
                 ratings: '<',
                 averageRating: '<',

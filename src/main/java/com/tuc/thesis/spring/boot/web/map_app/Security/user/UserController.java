@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.print.attribute.standard.Media;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -70,18 +71,26 @@ public class UserController {
         }
         return HttpStatus.CONFLICT;
     }
+//    @RequestMapping(value = "/user/upload-profile-image/{username}", method = RequestMethod.POST)
+//    public HttpStatus addUserImagePNG(@RequestPart("file") MultipartFile image, @PathVariable String username){
+//
+//        try {
+//            byte[] byteImage;
+//            byteImage = image.getBytes();
+//            userService.uploadProfileImage(byteImage, username);
+//            return HttpStatus.OK;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return HttpStatus.FAILED_DEPENDENCY;
+//        }
+//
+//
+//    }
     @RequestMapping(value = "/user/upload-profile-image/{username}", method = RequestMethod.POST)
-    public HttpStatus addUser(@RequestPart("file") MultipartFile image, @PathVariable String username){
+    public HttpStatus addUserImageJPEG(@RequestPart("file") byte[] image, @PathVariable String username){
+        userService.uploadProfileImage(image, username);
+        return HttpStatus.OK;
 
-        try {
-            byte[] byteImage;
-            byteImage = image.getBytes();
-            userService.uploadProfileImage(byteImage, username);
-            return HttpStatus.OK;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return HttpStatus.FAILED_DEPENDENCY;
-        }
 
 
     }
