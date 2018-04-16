@@ -150,7 +150,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                 google.maps.event.addListener(marker, 'click', function (evt) {
                     var infoWindow = new google.maps.InfoWindow();
                     infoWindow.setContent("scuba-diving site" + "<br >" + spot.name +"<br>"+
-                        "<a href=\"#!#!/map/scubaSpotDetails/"+spot.id+"\">details</a>"+"<br>"+
+                        "<a href=\"#!/map/scubaSpotDetails/"+spot.id+"\">details</a>"+"<br>"+
                         // "<br> <a href='#!/map/scubaSpotDetails'>details</a>"+ "<br>"+
                         "<button data-toggle=\"modal\" data-target=\"#add-to-personalmap-modal\"'>add to personalMap</button>");
                     infoWindow.open(mmc.mainMap, marker);

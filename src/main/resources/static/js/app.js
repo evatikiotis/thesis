@@ -45,11 +45,11 @@
             controllerAs: 'vm',
             ncyBreadcrumb:{ label: 'kitesurfing spot'}};
 
-        var scubaSpotDetails = {name: 'scubaSpotDetails',url: '/map/scubaSpotDetails',
+        var scubaSpotDetails = {name: 'scubaSpotDetails',url: '/map/scubaSpotDetails/:id',
             templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSpotDetails.html',
             controller: 'diveSpotDetailsController'};
 
-        var scubaSchoolDetails = {name: 'scubaSchoolDetails',url: '/map/scubadiving/school',
+        var scubaSchoolDetails = {name: 'scubaSchoolDetails',url: '/map/scubadiving/school/:id',
             templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSchoolDetails.html',
             controller: 'diveSchoolDetailsController'};
 

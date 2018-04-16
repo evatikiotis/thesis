@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-module.controller('diveSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies) {
+module.controller('diveSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams) {
 
 
     var placeSpotDetails = function(data){
@@ -15,10 +15,10 @@ module.controller('diveSpotDetailsController', function($scope, $rootScope, hand
 
     };
 
-    if($rootScope.id) {
+    if($stateParams.id) {
 
-        handleRequest.getSpot($rootScope.id).then(placeSpotDetails, onError);
-        handleRequest.getDiveSpotDetails($rootScope.id).then(placeDiveSpotDetails, onError);
+        handleRequest.getSpot($stateParams.id).then(placeSpotDetails, onError);
+        handleRequest.getDiveSpotDetails($stateParams.id).then(placeDiveSpotDetails, onError);
     }else {
         var cookie_spot_id = $cookies.get('spot_id');
         handleRequest.getSpot(cookie_spot_id).then(placeSpotDetails, onError);
