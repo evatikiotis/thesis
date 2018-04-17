@@ -67,7 +67,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                 google.maps.event.addListener(marker, 'click', function (evt) {
 
 
-                    $scope.spot = spot;
+
                     var contentString =
                         "<div class='infoWindow'>" +
                             "<table>" +
@@ -99,10 +99,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                     var infowindow = new google.maps.InfoWindow({
                         content: compiled[0]
                     });
-                    // var compiled = $compile(content)($scope);
-                    // infoWindow.setContent(compiled);
-                    // $rootScope.id = spot.id;
-                    // $cookies.put('spot_id', $rootScope.id);
+
                     infowindow.open(mmc.mainMap, marker);
                 });
 
@@ -110,7 +107,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
             }
             if (spot.type == "scuba-diving_school") {
                 var latLng = new google.maps.LatLng(spot.latitude, spot.longitude);
-                var kitesurfingSpotIcon = {
+                var scubaSchoolIcon = {
                     url: "images/scubaSchool.svg", // url
                     scaledSize: new google.maps.Size(40, 36), // scaled size
                     origin: new google.maps.Point(0,0), // origin
@@ -118,18 +115,45 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                 };
                 var marker = new google.maps.Marker({
                     position: latLng,
-                    icon: kitesurfingSpotIcon
+                    icon: scubaSchoolIcon
 
                 });
 
                 google.maps.event.addListener(marker, 'click', function (evt) {
-                    var infoWindow = new google.maps.InfoWindow();
-                    infoWindow.setContent("scuba-diving school" + "<br >" + spot.name+"<br> " +
-                        "<a href=\"#!/map/scubadiving/school/"+spot.id+"\">details</a>"+"<br>"+
-                        "<button data-toggle=\"modal\" data-target=\"#add-to-personalmap-modal\"'>add to personalMap</button>");
-                    infoWindow.open(mmc.mainMap, marker);
-                    $rootScope.id = spot.id;
-                    $cookies.put('spot_id', $rootScope.id);
+
+                    var contentString =
+                        "<div class='infoWindow'>" +
+                        "<table>" +
+                        "<tr>" +
+                        "<th>name:</th>"+
+                        "<td>"+spot.name+"</td>"+
+                        "</tr>"+
+                        "<tr>" +
+                        "<th>type:</th>"+
+                        "<td>scuba-diving school</td>"+
+                        "</tr>"+
+                        "</table>"+
+
+                        "<hr>"+
+                        "<a class='btn btn-link' href='#!/map/scubadiving/school/"+spot.id+"'>details</a>"+
+                        "<br>"+
+                        "<button " +
+                        "data-toggle='modal' " +
+                        "data-target='#add-to-personalmap-modal' " +
+                        "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
+                        "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
+                        "ng-click='clickTest()'>Add to personal map" +
+                        "</button>" +
+                        "</div>";
+
+
+                    var compiled = $compile(contentString)($scope);
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: compiled[0]
+                    });
+
+                    infowindow.open(mmc.mainMap, marker);
                 });
                 scubaSchoolsMarkers.push(marker);
             }
@@ -148,16 +172,40 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                 });
 
                 google.maps.event.addListener(marker, 'click', function (evt) {
-                    var infoWindow = new google.maps.InfoWindow();
-                    infoWindow.setContent("scuba-diving site" + "<br >" + spot.name +"<br>"+
-                        "<a href=\"#!/map/scubaSpotDetails/"+spot.id+"\">details</a>"+"<br>"+
-                        // "<br> <a href='#!/map/scubaSpotDetails'>details</a>"+ "<br>"+
-                        "<button data-toggle=\"modal\" data-target=\"#add-to-personalmap-modal\"'>add to personalMap</button>");
-                    infoWindow.open(mmc.mainMap, marker);
-                    $rootScope.id = spot.id;
-                    $cookies.put('spot_id', $rootScope.id);
+
+                    var contentString =
+                        "<div class='infoWindow'>" +
+                        "<table>" +
+                        "<tr>" +
+                        "<th>name:</th>"+
+                        "<td>"+spot.name+"</td>"+
+                        "</tr>"+
+                        "<tr>" +
+                        "<th>type:</th>"+
+                        "<td>scuba-diving spot</td>"+
+                        "</tr>"+
+                        "</table>"+
+
+                        "<hr>"+
+                        "<a class='btn btn-link' href='#!/map/scubaSpotDetails/"+spot.id+"'>details</a>"+
+                        "<br>"+
+                        "<button " +
+                        "data-toggle='modal' " +
+                        "data-target='#add-to-personalmap-modal' " +
+                        "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
+                        "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
+                        "ng-click='clickTest()'>Add to personal map" +
+                        "</button>" +
+                        "</div>";
 
 
+                    var compiled = $compile(contentString)($scope);
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: compiled[0]
+                    });
+
+                    infowindow.open(mmc.mainMap, marker);
                 });
                 scubaSiteMarkers.push(marker);
 
