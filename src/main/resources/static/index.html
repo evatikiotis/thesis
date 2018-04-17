@@ -2,6 +2,7 @@
 <html ng-app="myApp">
 <head>
     <meta charset="utf-8" />
+
     <title>Thesis Application</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/general.css" />
@@ -23,12 +24,12 @@
     <link rel="stylesheet" href="devidedByHtmlBlocks/ngView/my-profile/my-profile.css">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link rel="stylesheet" href="devidedByHtmlBlocks/ngView/map/rating.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <script type="text/javascript-lazy" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
 
 
 </head>
 <body>
-<base href="#!/login">
+<!--<base href="#!/login">-->
 
     <div ng-include="'devidedByHtmlBlocks/all/navBar/navBar.html'"></div>
     <main>
@@ -90,6 +91,8 @@
     <script src="devidedByHtmlBlocks/ngView/my-profile/UploadController.js"></script>
     <script src="devidedByHtmlBlocks/ngView/my-profile/changePasswordController.js"></script>
     <script src="devidedByHtmlBlocks/ngView/my-map/myMapController.js"></script>
+    <script src="devidedByHtmlBlocks/ngView/weatherMap/weatherMapController.js"></script>
+
 
 
 
