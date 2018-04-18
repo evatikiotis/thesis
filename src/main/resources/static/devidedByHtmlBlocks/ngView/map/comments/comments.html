@@ -1,28 +1,43 @@
 <div ng-controller="commentsController as cc">
-    comments
+    <h3>Comments</h3>
+    <div ng-if="angular.isDefined($rootScope.globals.currentUser)">
+        <hr>
 
+        <div id="add-comment-box" class=" col-sm-8" >
+            <div class="row ml-sm-3">
+                <!--<img class="mr-sm-1" height="50" width="50" src="http://lorempixel.com/200/200/people">-->
+                <!--<img src="data:image/png;base64,{{currentUserImage}}" alt="userImage" height="50" width="50">-->
+
+                <form ng-submit="addComment()">
+                    <textarea rows="3" cols="50" placeholder="Add a comment..." ng-model="newComment" required></textarea>
+                    <button class="ml-sm-1" type="submit" ng-show="newComment">Comment</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
     <hr>
-    <div class="container" ng-repeat="comment in comments">
-        <div class="comment col-sm-12 row">
-            <!-- Comment Avatar -->
-            <span class="comment-avatar" >
-                <img src="http://lorempixel.com/200/200/people">
-                <img src="data:image/png;base64,{{usersImage[$index]}}" alt="userImage" height="28" width="28">
+    <div id="comments-container">
+        <div class="container" ng-repeat="comment in comments">
+            <div class="comment col-sm-12 row">
+                <!-- Comment Avatar -->
+                <span class="comment-avatar" >
+                    <img  src="data:image/png;base64,{{usersImage[$index]}}" alt="userImage" height="28" width="28">
+                </span>
 
-            </span>
+                <!-- Comment Box -->
+                <span class="comment-box col-sm-9 ml-sm-3">
+                    <div class="comment-text">{{comment.spot_comment_key.comment}}</div>
+                    <div class="comment-footer">
 
-            <!-- Comment Box -->
-            <span class="comment-box col-sm-9 ml-sm-3">
-                <div class="comment-text">{{comment.spot_comment_key.comment}}</div>
-                <div class="comment-footer">
+                        <span class="comment-author">
+                          <a >{{comment.spot_comment_key.user_username}}</a>
+                        </span>
+                        <span class="comment-date">{{comment.date}}</span>
 
-                    <span class="comment-author">
-                      <a >{{comment.spot_comment_key.user_username}}</a>
-                    </span>
-                    <span class="comment-date">{{comment.date}}</span>
-
-                </div>
-            </span>
+                    </div>
+                </span>
+            </div>
         </div>
     </div>
 
@@ -30,17 +45,7 @@
 
     <!--<span>-->
         <!--<img src="http://lorempixel.com/200/200/people">-->
-    <div id="add-comment-box" class=" col-sm-8">
-        <div class="row ml-sm-3">
-            <img class="mr-sm-1" height="50" width="50" src="http://lorempixel.com/200/200/people">
 
-            <form ng-submit="addComment()">
-                <textarea rows="3" cols="50" placeholder="Add a comment..." ng-model="newComment" required></textarea>
-                <button class="ml-sm-1" type="submit" ng-show="newComment">Comment</button>
-            </form>
-        </div>
-
-    </div>
 </div>
 <!--</span>-->
 

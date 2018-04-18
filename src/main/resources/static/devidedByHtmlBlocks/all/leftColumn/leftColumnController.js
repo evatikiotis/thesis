@@ -3,10 +3,10 @@
 var module = angular.module('myApp');
 module.controller('leftColumnController', function($scope, $rootScope) {
 
-    $rootScope.kitesurfing = false;
-    $rootScope.scuba_diving=false;
-    $rootScope.scuba_diving_schools=false;
-    $rootScope.scuba_diving_spots=false;
+    // $rootScope.kitesurfing = false;
+    // $rootScope.scuba_diving=false;
+    // $rootScope.scuba_diving_schools=false;
+    // $rootScope.scuba_diving_spots=false;
 
     $rootScope.markerClustering = false;
     $scope.toggleKiteSurfing = function(){

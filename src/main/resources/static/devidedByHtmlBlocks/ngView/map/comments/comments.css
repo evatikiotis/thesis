@@ -68,5 +68,9 @@ textarea:focus {
     box-shadow: 1px 1px rgba(207, 214, 74, 0.37);
     margin-top: 4px;
 }
+#comments-container{
+    max-height: 500px;
+    overflow-y: scroll;
+}
 
 

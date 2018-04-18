@@ -1,6 +1,9 @@
 // initMainMap >> buildMarkers >> markerOnclick onclick open info window and place photos if they exist
 var module = angular.module('myApp');
 module.controller('mainMapController', function( $scope, $rootScope, NgMap, handleRequest, $cookies, $compile, $window, FlashService) {
+    var mmc = this;
+    mmc.favouriteSpots = [];
+
     $scope.clickTest = function() {
         // spot id to add to personal map
         $scope.spot_to_add_id = $window.localStorage.getItem("spot_id");
@@ -19,11 +22,15 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                 }
             });
     };
+    var placeFavouritesOnMainMap = function(response){
+        mmc.favouriteSpots = response;
+
+    };
     var kiteSpotMarkers = [];
     var scubaSchoolsMarkers = [];
     var scubaSiteMarkers = [];
 
-    var mmc = this;
+
     mmc.mainMap = null;
     // var markerClusterer = null;
     var infoWin = new google.maps.InfoWindow();
@@ -51,6 +58,12 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
 
 
         spots.map(function (spot) {
+            // for(var i=0; i < mmc.favouriteSpots.length; i++){
+            //     if(spot.id == mmc.favouriteSpots[i].spot.id){
+            //         // alert("ole");
+            //         break;
+            //     }
+            // }
             if (spot.type == "kiteSpot") {
                 var latLng = new google.maps.LatLng(spot.latitude, spot.longitude);
                 var kitesurfingSpotIcon = {
@@ -266,5 +279,6 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
     };
 
     handleRequest.getSpots().then(buildMarkers, onError).then($rootScope.placeMarkers);
+    // handleRequest.getFavouriteSpots($rootScope.globals.currentUser.username).then(placeFavouritesOnMainMap, onError)
 
 });

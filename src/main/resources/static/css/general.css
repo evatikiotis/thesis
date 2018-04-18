@@ -207,4 +207,7 @@ input.ng-valid.ng-touched {
     height: 500px;
     width: 550px;
 }
+.help-message{
+    font-size: x-small;
+}
 

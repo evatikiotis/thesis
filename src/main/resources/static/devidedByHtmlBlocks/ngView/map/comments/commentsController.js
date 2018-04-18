@@ -1,8 +1,6 @@
 var module = angular.module('myApp');
 module.controller('commentsController', function( $scope, $rootScope, handleRequest, $cookies) {
     $scope.usersImage = [];
-
-
     $scope.addComment = function(){
         handleRequest.addComment($rootScope.globals.currentUser.username, $rootScope.id, $scope.newComment)
             .then(function(response){
@@ -40,6 +38,12 @@ module.controller('commentsController', function( $scope, $rootScope, handleRequ
     }else{
         var cookie_spot_id = $cookies.get('spot_id');
         handleRequest.getComments(cookie_spot_id).then(placeComments, onError)
+    }
+    if(angular.isDefined($rootScope.globals.currentUser)) {
+        handleRequest.getUserImage($rootScope.globals.currentUser)
+            .then(function (response) {
+                $scope.currentUserImage = response.image;
+            });
     }
 
 
