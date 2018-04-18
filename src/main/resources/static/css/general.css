@@ -173,7 +173,8 @@ input.ng-valid.ng-touched {
     margin-top: 5px;
 }
 .infoWindow{
-    height: 110px;
+    max-height: 110px;
+    overflow-y: scroll;
     width: 215px;
 }
 .infoWindow button{
@@ -195,14 +196,15 @@ input.ng-valid.ng-touched {
     background-color: rgba(128, 159, 57, 0.97);
     font-size: medium;
 }
-.modal-dialog{
-    width:550px;
-    min-height: 550px;
-    /*text-align: center;*/
+#carousel-modal{
+    width:600px;
+    /*min-height: 550px;*/
+    text-align: center;
     max-width: 600px;
 }
 
-.modal-dialog img{
+
+#carousel-modal img{
     vertical-align: middle;
     height: 500px;
     width: 550px;

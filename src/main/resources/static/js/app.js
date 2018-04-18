@@ -92,6 +92,7 @@
         $rootScope.scuba_diving_spots=true;
         $rootScope.weatherEntrance = 0;
 
+
         // keep user logged in after page refresh
         $rootScope.globals = $cookies.getObject('globals') || {};
         if ($rootScope.globals.currentUser) {

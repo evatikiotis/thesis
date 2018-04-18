@@ -102,7 +102,9 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                                     "data-target='#add-to-personalmap-modal' " +
                                     "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
                                     "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
-                                    "ng-click='clickTest()'>Add to personal map" +
+                                    "ng-if='globals.currentUser' "+
+                                    "ng-click='clickTest()'>Add to personal map " +
+
                             "</button>" +
                         "</div>";
 
@@ -155,6 +157,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "data-target='#add-to-personalmap-modal' " +
                         "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
                         "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
+                        "ng-if='globals.currentUser' "+
                         "ng-click='clickTest()'>Add to personal map" +
                         "</button>" +
                         "</div>";
@@ -207,6 +210,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "data-target='#add-to-personalmap-modal' " +
                         "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
                         "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
+                        "ng-if='globals.currentUser' "+
                         "ng-click='clickTest()'>Add to personal map" +
                         "</button>" +
                         "</div>";

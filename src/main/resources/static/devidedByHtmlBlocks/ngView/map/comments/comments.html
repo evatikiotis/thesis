@@ -1,6 +1,6 @@
 <div ng-controller="commentsController as cc">
     <h3>Comments</h3>
-    <div ng-if="angular.isDefined($rootScope.globals.currentUser)">
+    <div ng-if="globals.currentUser">
         <hr>
 
         <div id="add-comment-box" class=" col-sm-8" >
