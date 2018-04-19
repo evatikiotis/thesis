@@ -183,6 +183,11 @@ input.ng-valid.ng-touched {
     background-color: rgba(128, 159, 57, 0.97);
     font-size: medium;
 }
+.infoWindow button:disabled{
+    background-color: #4e555b;
+    opacity: 1;
+
+}
 .infoWindow hr{
     margin: 1px;
 }

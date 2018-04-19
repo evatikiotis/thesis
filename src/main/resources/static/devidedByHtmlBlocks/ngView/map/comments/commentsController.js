@@ -1,13 +1,14 @@
 var module = angular.module('myApp');
-module.controller('commentsController', function( $scope, $rootScope, handleRequest, $cookies) {
+module.controller('commentsController', function( $scope, $rootScope, handleRequest, $cookies, $state, FlashService) {
     $scope.usersImage = [];
-    $scope.addComment = function(){
-        handleRequest.addComment($rootScope.globals.currentUser.username, $rootScope.id, $scope.newComment)
-            .then(function(response){
-                if(response=="OK"){}
-            })
-    };
+    cc= this;
 
+    if(angular.isDefined($rootScope.globals.currentUser)) {
+        handleRequest.getUserImage($rootScope.globals.currentUser.username)
+            .then(function (response) {
+                $scope.currentUserImage = response.image;
+            });
+    }
     var placeComments = function(response){
         $scope.comments = response.data;
         for(i=0; i<$scope.comments.length; i++){
@@ -30,6 +31,17 @@ module.controller('commentsController', function( $scope, $rootScope, handleRequ
     //
     // };
 
+    cc.addComment = function(){
+        handleRequest.addComment($rootScope.globals.currentUser.username, $rootScope.id, cc.new_comment)
+            .then(function(response){
+                if(response=="OK"){
+                    $state.reload();
+                }else{
+                    FlashService.Error("Oops, something unexpected happened. Please try again", false);
+                }
+            })
+    };
+
     var onError = function (reason) {
         console.log(reason);
     };
@@ -39,12 +51,7 @@ module.controller('commentsController', function( $scope, $rootScope, handleRequ
         var cookie_spot_id = $cookies.get('spot_id');
         handleRequest.getComments(cookie_spot_id).then(placeComments, onError)
     }
-    if(angular.isDefined($rootScope.globals.currentUser)) {
-        handleRequest.getUserImage($rootScope.globals.currentUser)
-            .then(function (response) {
-                $scope.currentUserImage = response.image;
-            });
-    }
+
 
 
 });

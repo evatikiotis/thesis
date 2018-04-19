@@ -58,7 +58,10 @@
         };
 
         var addComment = function(username, spot_id, comment){
-            return $http.post("/add-comment/"+username+"/"+spot_id, comment);
+            return $http.post("/add-comment/"+username+"/"+spot_id, comment)
+                .then(function(response){
+                    return response.data;
+                });
         };
 
         var getComments = function(spot_id){

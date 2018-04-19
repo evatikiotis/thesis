@@ -6,12 +6,14 @@
         <div id="add-comment-box" class=" col-sm-8" >
             <div class="row ml-sm-3">
                 <!--<img class="mr-sm-1" height="50" width="50" src="http://lorempixel.com/200/200/people">-->
-                <!--<img src="data:image/png;base64,{{currentUserImage}}" alt="userImage" height="50" width="50">-->
+                <img src="data:image/png;base64,{{currentUserImage}}" alt="userImage" height="65" width="60">
 
-                <form ng-submit="addComment()">
-                    <textarea rows="3" cols="50" placeholder="Add a comment..." ng-model="newComment" required></textarea>
-                    <button class="ml-sm-1" type="submit" ng-show="newComment">Comment</button>
+                <form ng-submit="cc.addComment()">
+                    <textarea ng-model="cc.new_comment" rows="3" cols="50" placeholder="Add a comment..."  required></textarea>
+                    <button class="ml-sm-1" type="submit" >Comment</button>
                 </form>
+                <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }"
+                     ng-if="flash" ng-bind="flash.message"></div>
             </div>
 
         </div>

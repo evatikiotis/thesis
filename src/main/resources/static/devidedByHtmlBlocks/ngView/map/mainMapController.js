@@ -3,7 +3,10 @@ var module = angular.module('myApp');
 module.controller('mainMapController', function( $scope, $rootScope, NgMap, handleRequest, $cookies, $compile, $window, FlashService) {
     var mmc = this;
     mmc.favouriteSpots = [];
-
+    mmc.disabled = true;
+    if(angular.isDefined($rootScope.globals.currentUser)) {
+        mmc.disabled = false;
+    }
     $scope.clickTest = function() {
         // spot id to add to personal map
         $scope.spot_to_add_id = $window.localStorage.getItem("spot_id");
@@ -96,17 +99,34 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
 
                             "<hr>"+
                             "<a class='btn btn-link' href='#!/map/kiteSpotDetails/"+spot.id+"'>details</a>"+
-                            "<br>"+
+                            "<br>";
+                    if(mmc.disabled){
+                        contentString = contentString +
                             "<button " +
-                                    "data-toggle='modal' " +
-                                    "data-target='#add-to-personalmap-modal' " +
-                                    "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
-                                    "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
-                                    "ng-if='globals.currentUser' "+
-                                    "ng-click='clickTest()'>Add to personal map " +
+                                "data-toggle='modal' " +
+                                "data-target='#add-to-personalmap-modal' " +
+                                "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
+                                "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
+                                "ng-click='clickTest()'" +
+                                "disabled>Add to personal map " +
 
                             "</button>" +
-                        "</div>";
+                            "</div>";
+                    }else{
+                        contentString = contentString +
+                            "<button " +
+                                "data-toggle='modal' " +
+                                "data-target='#add-to-personalmap-modal' " +
+                                "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
+                                "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
+                                "ng-click='clickTest()'" +
+                            ">Add to personal map " +
+
+                            "</button>" +
+                            "</div>";
+
+                    }
+
 
 
                     var compiled = $compile(contentString)($scope);
