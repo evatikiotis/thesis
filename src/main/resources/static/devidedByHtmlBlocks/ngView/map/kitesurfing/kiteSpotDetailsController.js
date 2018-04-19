@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-module.controller('kiteSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, $location) {
+module.controller('kiteSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, $state) {
     $rootScope.id = $stateParams.id;
     // var url = $location.absUrl().split('?')[0];
     var placeSpotDetails = function (data) {
@@ -35,14 +35,17 @@ module.controller('kiteSpotDetailsController', function($scope, $rootScope, hand
         vm.ratings = response.ratingsNumber;
         vm.averageRating = response.averageRating;
         vm.ratingsPosition = 'right';
+        vm.userRating = response.userRating;
         vm.formData = {
-            myRating: response.userRating
+            myRating: 0
         };
     };
 
     vm.ratingChange = function() {
         console.log('My rating changed to: ' + vm.formData.myRating);
+        vm.userRating = vm.formData.myRating;
         handleRequest.userRateSpot($rootScope.globals.currentUser.username, $stateParams.id, vm.formData.myRating);
+        $state.reload();
     };
     /////////////////////
     var onError = function (reason) {

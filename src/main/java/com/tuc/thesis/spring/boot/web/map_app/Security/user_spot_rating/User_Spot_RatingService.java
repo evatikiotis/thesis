@@ -20,9 +20,10 @@ public class User_Spot_RatingService {
     public RatingObject getRatingObject_user(String username, int spot_id){
 
         RatingObject ratingObject = new RatingObject();
-        ratingObject.setAverageRating(user_spot_ratingRepository.selectAverageRating(spot_id));
-        ratingObject.setRatingsNumber(user_spot_ratingRepository.selectCountRating(spot_id));
         try {
+            ratingObject.setAverageRating(user_spot_ratingRepository.selectAverageRating(spot_id));
+            ratingObject.setRatingsNumber(user_spot_ratingRepository.selectCountRating(spot_id));
+
             ratingObject.setUserRating(user_spot_ratingRepository.selectUserRating(username, spot_id));
             return ratingObject;
         }catch (RuntimeException s){

@@ -23,6 +23,7 @@
 </div>
 <hr style="margin-top: 4px; margin-bot: 0px;">
 <div class="rating-div">
+
     <rating-stars ng-if="!globals.currentUser"
                   ratings="vm.ratings"
                   average-rating="vm.averageRating"
@@ -35,4 +36,5 @@
                   average-rating="vm.averageRating"
                   ratings-position="{{vm.ratingsPosition}}">
     </rating-stars>
+    <p ng-if="vm.userRating">My Rating: {{vm.userRating}}/5</p>
 </div>
