@@ -61,12 +61,12 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
 
 
         spots.map(function (spot) {
-            // for(var i=0; i < mmc.favouriteSpots.length; i++){
-            //     if(spot.id == mmc.favouriteSpots[i].spot.id){
-            //         // alert("ole");
-            //         break;
-            //     }
-            // }
+            for(var i=0; i < mmc.favouriteSpots.length; i++){
+                if(spot.id == mmc.favouriteSpots[i].spot.id){
+                    // alert("ole");
+                    break;
+                }
+            }
             if (spot.type == "kiteSpot") {
                 var latLng = new google.maps.LatLng(spot.latitude, spot.longitude);
                 var kitesurfingSpotIcon = {

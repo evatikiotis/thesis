@@ -24,7 +24,7 @@
                     + 'ng-class="vm.getClass(' + num + ')" '
                     + 'class="star hover material-icons"></i>';
             }).join('')
-            + '<span ng-if="!vm.ratings==1 && vm.ratingsPosition  === \'right\'" class="ratings-right">({{vm.ratings}} Reviews)</span>'
+            + '<span ng-if="!(vm.ratings==1) && vm.ratingsPosition  === \'right\'" class="ratings-right">({{vm.ratings}} Reviews)</span>'
             + '<span ng-if="vm.ratings==1 && vm.ratingsPosition  === \'right\'" class="ratings-right">({{vm.ratings}} Review)</span>'
             + '</div>',
             scope: {

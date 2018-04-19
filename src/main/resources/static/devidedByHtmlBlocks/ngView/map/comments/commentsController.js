@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-module.controller('commentsController', function( $scope, $rootScope, handleRequest, $cookies, $state, FlashService) {
+module.controller('commentsController', function( $scope, $rootScope, handleRequest, $stateParams, $state, FlashService) {
     $scope.usersImage = [];
     cc= this;
 
@@ -45,11 +45,8 @@ module.controller('commentsController', function( $scope, $rootScope, handleRequ
     var onError = function (reason) {
         console.log(reason);
     };
-    if($rootScope.id) {
-        handleRequest.getComments($rootScope.id).then(placeComments, onError)
-    }else{
-        var cookie_spot_id = $cookies.get('spot_id');
-        handleRequest.getComments(cookie_spot_id).then(placeComments, onError)
+    if($stateParams.id) {
+        handleRequest.getComments($stateParams.id).then(placeComments, onError)
     }
 
 
