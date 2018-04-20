@@ -22,19 +22,19 @@
     </div>
 </div>
 <hr style="margin-top: 4px; margin-bot: 0px;">
-<div class="rating-div">
+<div class="rating-div" ng-controller="ratingController as rc">
 
     <rating-stars ng-if="!globals.currentUser"
-                  ratings="vm.ratings"
-                  average-rating="vm.averageRating"
-                  ratings-position="{{vm.ratingsPosition}}">
+                  ratings="rc.ratings"
+                  average-rating="rc.averageRating"
+                  ratings-position="{{rc.ratingsPosition}}">
     </rating-stars>
     <rating-stars ng-if="globals.currentUser"
-                  ng-model="vm.formData.myRating"
-                  ng-change="vm.ratingChange()"
-                  ratings="vm.ratings"
-                  average-rating="vm.averageRating"
-                  ratings-position="{{vm.ratingsPosition}}">
+                  ng-model="rc.formData.myRating"
+                  ng-change="rc.ratingChange()"
+                  ratings="rc.ratings"
+                  average-rating="rc.averageRating"
+                  ratings-position="{{rc.ratingsPosition}}">
     </rating-stars>
-    <p ng-if="vm.userRating">My Rating: {{vm.userRating}}/5</p>
+    <p ng-if="rc.userRating">My Rating: {{rc.userRating}}/5</p>
 </div>

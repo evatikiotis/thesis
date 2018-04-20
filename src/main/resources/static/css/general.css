@@ -54,6 +54,11 @@ form {
     box-shadow: 2px 2px #a2a2a2;
     /*margin-top: 5%;*/
 }
+.textarea-form{
+    border: none;
+    /*background-color: white;*/
+    box-shadow: none;
+}
 
 form label{margin-bot:0; margin-top: 15px;}
 

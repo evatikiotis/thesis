@@ -1,61 +1,62 @@
-<!--<div ncy-breadcrumb></div>-->
-<p href="#/" class="breadcrumb" ncy-breadcrumb ></p>
-<p style="font-size: smaller"><a href="#!/map" class="btn btn-link">spots</a> >> kitesurfing spot</p>
-<div class="row container-fluid" >
-    <div class="row col-sm-8" >
-        <table class="name-level">
-            <tr>
-                <th>Name: </th>
-                <td>{{spot.name}}</td>
-            </tr>
+<!--&lt;!&ndash;<div ncy-breadcrumb></div>&ndash;&gt;-->
+<!--<p href="#/" class="breadcrumb" ncy-breadcrumb ></p>-->
+<!--<p style="font-size: smaller"><a href="#!/map" class="btn btn-link">spots</a> >> kitesurfing spot</p>-->
+<!--<div class="row container-fluid" >-->
+    <!--<div class="row col-sm-8" >-->
+        <!--<table class="name-level">-->
+            <!--<tr>-->
+                <!--<th>Name: </th>-->
+                <!--<td>{{spot.name}}</td>-->
+            <!--</tr>-->
 
-        </table>
-        <table class="ml-sm-5 name-level">
-            <tr>
-                <th>Level: </th>
-                <td>{{kiteSpot.level}}</td>
-            </tr>
+        <!--</table>-->
+        <!--<table class="ml-sm-5 name-level">-->
+            <!--<tr>-->
+                <!--<th>Level: </th>-->
+                <!--<td>{{kiteSpot.level}}</td>-->
+            <!--</tr>-->
 
-        </table>
-    </div>
-    <div class="col-sm-3 imagesContainer" >
-        <a data-toggle="modal" data-target="#carouselModal"   ng-repeat="image in images">
-            <img src="data:image/png;base64,{{image.image}}" alt="kitesurfing spot" height="28" width="28">
-        </a>
-    </div>
-</div>
-<div class="modal fade" id="carouselModal">
-    <div ng-if="{images}" align="center">
-        <div id="demo" class="carousel slide col-sm-6" data-ride="carousel">
+        <!--</table>-->
+    <!--</div>-->
+    <!--<div class="col-sm-3 imagesContainer" >-->
+        <!--<a data-toggle="modal" data-target="#carouselModal"   ng-repeat="image in images">-->
+            <!--<img src="data:image/png;base64,{{image.image}}" alt="kitesurfing spot" height="28" width="28">-->
+        <!--</a>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="modal fade" id="carouselModal">-->
+    <!--<div ng-if="{images}" align="center">-->
+        <!--<div id="demo" class="carousel slide col-sm-6" data-ride="carousel">-->
 
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="{{$index}}" ng-class="{active: $index == 0}" ng-repeat="image in images"></li>
+            <!--&lt;!&ndash; Indicators &ndash;&gt;-->
+            <!--<ul class="carousel-indicators">-->
+                <!--<li data-target="#demo" data-slide-to="{{$index}}" ng-class="{active: $index == 0}" ng-repeat="image in images"></li>-->
 
-            </ul>
+            <!--</ul>-->
 
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                <div class="carousel-item " ng-class="{active: $index == 0}"  ng-repeat="image in images">
-                    <img src="data:image/png;base64,{{image.image}}" alt="kitesurfing spot">
-                </div>
-            </div>
+            <!--&lt;!&ndash; The slideshow &ndash;&gt;-->
+            <!--<div class="carousel-inner">-->
+                <!--<div class="carousel-item " ng-class="{active: $index == 0}"  ng-repeat="image in images">-->
+                    <!--<img src="data:image/png;base64,{{image.image}}" alt="kitesurfing spot">-->
+                <!--</div>-->
+            <!--</div>-->
 
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" data-target="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" data-target="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
+            <!--&lt;!&ndash; Left and right controls &ndash;&gt;-->
+            <!--<a class="carousel-control-prev" data-target="#demo" data-slide="prev">-->
+                <!--<span class="carousel-control-prev-icon"></span>-->
+            <!--</a>-->
+            <!--<a class="carousel-control-next" data-target="#demo" data-slide="next">-->
+                <!--<span class="carousel-control-next-icon"></span>-->
+            <!--</a>-->
 
-        </div>
+        <!--</div>-->
 
-    </div>
+    <!--</div>-->
 
-</div>
+<!--</div>-->
 
-<hr style="margin-top: 4px; margin-bot: 0px;">
+<!--<hr style="margin-top: 4px; margin-bot: 0px;">-->
+<div ng-include="'devidedByHtmlBlocks/ngView/map/spot_info_top/spot_info_top.html'"></div>
 
 <div class="row offset-sm-6 col-sm-6" id="lat-long">
     <table class="col-sm-6" >

@@ -32,7 +32,7 @@ module.controller('commentsController', function( $scope, $rootScope, handleRequ
     // };
 
     cc.addComment = function(){
-        handleRequest.addComment($rootScope.globals.currentUser.username, $rootScope.id, cc.new_comment)
+        handleRequest.addComment($rootScope.globals.currentUser.username, $stateParams.id, cc.new_comment)
             .then(function(response){
                 if(response=="OK"){
                     $state.reload();
