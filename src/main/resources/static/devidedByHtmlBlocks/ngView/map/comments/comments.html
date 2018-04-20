@@ -6,7 +6,8 @@
         <div id="add-comment-box" class=" col-sm-8" >
             <div class="row ml-sm-3">
                 <!--<img class="mr-sm-1" height="50" width="50" src="http://lorempixel.com/200/200/people">-->
-                <img src="data:image/png;base64,{{currentUserImage}}" alt="userImage" height="65" width="60">
+                <img ng-if="currentUserImage" src="data:image/png;base64,{{currentUserImage}}" alt="userImage" height="65" width="60">
+                <img ng-if="!currentUserImage" src="images/default-user.svg" height="65" width="60">
 
                 <form ng-submit="cc.addComment()" class="textarea-form">
                     <textarea ng-model="cc.new_comment" rows="3" cols="50" placeholder="Add a comment..."  required></textarea>
@@ -25,7 +26,8 @@
             <div class="comment col-sm-12 row">
                 <!-- Comment Avatar -->
                 <span class="comment-avatar" >
-                    <img  src="data:image/png;base64,{{usersImage[$index]}}" alt="userImage" height="28" width="28">
+                    <img ng-if="usersImage[$index]"  src="data:image/png;base64,{{usersImage[$index]}}" alt="userImage" height="28" width="28">
+                    <img ng-if="!(usersImage[$index])" src="images/default-user.svg" height="65" width="60">
                 </span>
 
                 <!-- Comment Box -->

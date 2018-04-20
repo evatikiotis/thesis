@@ -1,6 +1,7 @@
 var module = angular.module('myApp');
 module.controller('commentsController', function( $scope, $rootScope, handleRequest, $stateParams, $state, FlashService) {
     $scope.usersImage = [];
+    $scope.currentUserImage = null;
     cc= this;
 
     if(angular.isDefined($rootScope.globals.currentUser)) {
