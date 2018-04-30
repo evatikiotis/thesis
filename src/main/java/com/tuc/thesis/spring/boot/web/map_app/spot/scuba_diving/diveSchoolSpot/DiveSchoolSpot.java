@@ -7,7 +7,7 @@ import javax.persistence.Id;
 @Entity(name = "spot_dive_school")
 public class DiveSchoolSpot {
     @Id
-    @Column(name = "id")
+    @Column(name = "spot_id")
     private int id;
     @Column(name = "address")
     private String address;

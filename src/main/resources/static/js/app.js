@@ -61,8 +61,10 @@
             controller: 'myMapController'
         };
 
-        var adventureFinder = {name: 'adventureFinder',url: '/adventure_finder',
-            templateUrl: 'devidedByHtmlBlocks/ngView/toDevelop/adventure_finder.html'};
+        var adventureFinder = {name: 'adventureFinder',url: '/adventure-finder',
+            templateUrl: 'devidedByHtmlBlocks/ngView/adventure-finder/adventure_finder.html',
+            controller: 'adventureFinderController'
+        };
 
         // var login = {name: 'login',url: '/login', templateUrl: 'devidedByHtmlBlocks/ngView/login/login.html'};
         //
@@ -120,22 +122,33 @@
                 nav_map.removeClass('active');
                 nav_weatherMap.removeClass('active');
                 nav_myMap.removeClass('active');
+                nav_adventureFinder.removeClass('active');
             }
             if($location.url() == "/map"){
                 nav_map.addClass('active');
                 nav_home.removeClass('active');
                 nav_weatherMap.removeClass('active');
                 nav_myMap.removeClass('active');
+                nav_adventureFinder.removeClass('active');
             }
             if($location.url() == "/weather_map"){
                 nav_weatherMap.addClass('active');
                 nav_map.removeClass('active');
                 nav_home.removeClass('active');
                 nav_myMap.removeClass('active');
+                nav_adventureFinder.removeClass('active');
 
             }
             if($location.url() == "/my_map"){
                 nav_myMap.addClass('active');
+                nav_weatherMap.removeClass('active');
+                nav_map.removeClass('active');
+                nav_home.removeClass('active');
+                nav_adventureFinder.removeClass('active');
+            }
+            if($location.url() == "/adventure-finder"){
+                nav_adventureFinder.addClass('active');
+                nav_myMap.removeClass('active');
                 nav_weatherMap.removeClass('active');
                 nav_map.removeClass('active');
                 nav_home.removeClass('active');

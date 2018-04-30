@@ -3,7 +3,7 @@
 
     <div class="">
         <aside class="float-right mr-sm-1 ">
-            <div ng-if="!globals.currentUser" class="" id="login-register">
+            <div ng-if="!globals.currentUser" class="mr-sm-3" id="login-register">
                 <ul class="row">
                     <li id="login">
                         <a  data-toggle="modal" href="#!/login" >log in</a>
@@ -35,7 +35,7 @@
         </div>
 
     </div>
-    <div class="col-sm-8 offset-sm-2" id="nav-links">
+    <div class="col-sm-12 offset-sm-1" id="nav-links">
         <ul class="row">
 
             <li>
@@ -45,10 +45,13 @@
                 <a class="nav-link" href="#!/map" id="nav_map"><i class="fa fa-map-marker" ></i> Spots</a>
             </li>
             <li>
-                <a class="nav-link" href="#!/weather_map" id="nav_weatherMap"><i class="fa fa-cloud" ></i> Weather</a>
+                <a class="nav-link " href="#!/my_map" id="nav_myMap"><i class="fa fa-map" ></i> My Map</a>
+            </li>
+            <li >
+                <a class="nav-link" href="#!/adventure-finder" id="nav_adventureFinder" ><img class="fa" src="images/compass.svg" height="25" width="25" style="margin:0; padding:0;"> Adventure Finder</a>
             </li>
             <li>
-                <a class="nav-link " href="#!/my_map" id="nav_myMap"><i class="fa fa-map" ></i> My Map</a>
+                <a class="nav-link" href="#!/weather_map" id="nav_weatherMap"><i class="fa fa-cloud" ></i> Weather</a>
             </li>
         </ul>
     </div>
