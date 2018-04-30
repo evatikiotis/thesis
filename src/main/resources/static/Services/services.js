@@ -129,6 +129,12 @@
                     return response.data;
                 })
         };
+        var getScubaDivingSchoolsRecommendations = function(){
+            return $http.get("/get-scuba-diving-schools-recommendations")
+                .then(function(response){
+                    return response.data;
+                })
+        };
 
 
 
@@ -150,7 +156,8 @@
             editNotes: editNotes,
             getGuestRatingObject: getGuestRatingObject,
             getUserRatingObject: getUserRatingObject,
-            userRateSpot: userRateSpot
+            userRateSpot: userRateSpot,
+            getScubaDivingSchoolsRecommendations: getScubaDivingSchoolsRecommendations
 
         };
 
