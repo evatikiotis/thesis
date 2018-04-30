@@ -1,8 +1,8 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.tuc.thesis.spring.boot.web.map_app.spot.Spot;
+
+import javax.persistence.*;
 
 @Entity(name = "spot_dive_school")
 public class DiveSchoolSpot {
@@ -21,6 +21,10 @@ public class DiveSchoolSpot {
     @Column(name = "image")
     private byte[] image;
 
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "spot_id", nullable = false, insertable = false, updatable = false)
+    private Spot spot;
+
     public DiveSchoolSpot(int id, String address, String contact, String email, String website, byte[] image) {
         super();
         this.id = id;
@@ -29,6 +33,16 @@ public class DiveSchoolSpot {
         this.email = email;
         this.website = website;
         this.image = image;
+    }
+
+    public DiveSchoolSpot(int id, String address, String contact, String email, String website, byte[] image, Spot spot) {
+        this.id = id;
+        this.address = address;
+        this.contact = contact;
+        this.email = email;
+        this.website = website;
+        this.image = image;
+        this.spot = spot;
     }
 
     public DiveSchoolSpot() {
@@ -80,5 +94,13 @@ public class DiveSchoolSpot {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public Spot getSpot() {
+        return spot;
+    }
+
+    public void setSpot(Spot spot) {
+        this.spot = spot;
     }
 }
