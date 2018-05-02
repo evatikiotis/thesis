@@ -20,4 +20,10 @@ public interface User_Spot_FavouriteRepository extends CrudRepository<User_Spot_
             "      WHERE user_username = :username AND spot_id = :spot_id", nativeQuery = true)
     public void editNotes(@Param("spot_id") int spot_id, @Param("username") String username, @Param("notes") String notes);
 
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM app_user_spot_favourite WHERE user_username = :username AND spot_id = :spot_id", nativeQuery = true)
+    public void removeFromPersonalMap(@Param("spot_id") int spot_id, @Param("username") String username);
+
 }

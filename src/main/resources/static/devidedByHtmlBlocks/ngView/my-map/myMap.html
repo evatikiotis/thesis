@@ -1,5 +1,5 @@
 <!--<p href="#/" class style="background-color: #a9a463; color: white; height: 20px; padding: 0" ncy-breadcrumb ></p>-->
-<br>
+<script src="../../../js/app.js"></script><br>
 <br>
 <div class="col-sm-10 container"  id="myMap" style="height: 460px; width: 100%; ">
 </div>
@@ -31,6 +31,37 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--remove-from-personal-map-modal-->
+<div class="modal fade" id="remove-from-personal-map-modal" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Are you sure you want to remove {{spot_remove_name_personalMap}} from your personal Map?</h4>
+
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <button type="button" ng-click="removeFromPersonalMapConfirm()" class="btn btn-danger" >Yes</button>
+                    <button type="button" class="btn btn-primary">Cancel</button>
+                    <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }"
+                         ng-if="flash" ng-bind="flash.message"></div>
+                </div>
+            </div>
+
+            <!-- Modal body -->
+
+
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" ng-click="reloadPage()" data-dismiss="modal">Close</button>
             </div>
 
         </div>

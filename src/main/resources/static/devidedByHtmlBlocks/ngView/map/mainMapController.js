@@ -4,6 +4,14 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
     var mmc = this;
     mmc.favouriteSpots = [];
     mmc.disabled = true;
+    mmc.existsInPersonalMap = false;
+    var placeFavouritesOnMainMap = function(response){
+
+        var spotObjects = response;
+        spotObjects.map(function(spotObject){
+            mmc.favouriteSpots.push(spotObject.spot.id);
+        });
+    };
     if(angular.isDefined($rootScope.globals.currentUser)) {
         mmc.disabled = false;
     }
@@ -25,10 +33,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                 }
             });
     };
-    var placeFavouritesOnMainMap = function(response){
-        mmc.favouriteSpots = response;
 
-    };
     var kiteSpotMarkers = [];
     var scubaSchoolsMarkers = [];
     var scubaSiteMarkers = [];
@@ -56,17 +61,13 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
         mmc.mainMap.setZoom(mmc.mainMap.getZoom()+1);
     });
 
+
     var buildMarkers = function (data) {
         var spots = data;
 
 
         spots.map(function (spot) {
-            for(var i=0; i < mmc.favouriteSpots.length; i++){
-                if(spot.id == mmc.favouriteSpots[i].spot.id){
-                    // alert("ole");
-                    break;
-                }
-            }
+
             if (spot.type == "kiteSpot") {
                 var latLng = new google.maps.LatLng(spot.latitude, spot.longitude);
                 var kitesurfingSpotIcon = {
@@ -82,7 +83,15 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                 });
                 google.maps.event.addListener(marker, 'click', function (evt) {
 
-
+                    for(var i=0; i < mmc.favouriteSpots.length; i++){
+                        if(spot.id == mmc.favouriteSpots[i]){
+                            alert("ole");
+                            mmc.existsInPersonalMap = true;
+                            break;
+                        }else{
+                            mmc.existsInPersonalMap = false;
+                        }
+                    }
 
                     var contentString =
                         "<div class='infoWindow'>" +
@@ -98,8 +107,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                             "</table>"+
 
                             "<hr>"+
-                            "<a class='btn btn-link' href='#!/map/kiteSpotDetails/"+spot.id+"'>details</a>"+
-                            "<br>";
+                            "<a class='btn btn-link' href='#!/map/kiteSpotDetails/"+spot.id+"'>details</a>";
                     if(mmc.disabled){
 
                         contentString = contentString +
@@ -109,25 +117,34 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                                 "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
                                 "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
                                 "ng-click='clickTest()'" +
-                                "title='Login and save your favourite Spots'"+
-                                "disabled>Add to personal map " +
+                                "title='Login first'"+
+                                "disabled>Add to personal map "+
 
                             "</button>" +
                             "</div>";
+
+
                     }else{
-                        contentString = contentString +
-                            "<button " +
-                                "data-toggle='modal' " +
-                                "data-target='#add-to-personalmap-modal' " +
-                                "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
-                                "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
-                                "ng-click='clickTest()'" +
-                            ">Add to personal map " +
+                        if(!mmc.existsInPersonalMap) {
+                            contentString = contentString +
+                                "<button " +
+                                    "data-toggle='modal' " +
+                                    "data-target='#add-to-personalmap-modal' " +
+                                    "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
+                                    "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
+                                    "ng-click='clickTest()'" +
+                                    ">Add to personal map "+
 
-                            "</button>" +
-                            "</div>";
-
+                                "</button>" +
+                                "</div>";
+                        }
+                        else{
+                            contentString = contentString +
+                                "<img src='images/favourite.svg' class='favourite_spot' height='25' width='25' title='favourite'>"
+                                "</div>";
+                        }
                     }
+
 
 
 
@@ -333,6 +350,8 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
     };
 
     handleRequest.getSpots().then(buildMarkers, onError).then($rootScope.placeMarkers);
-    // handleRequest.getFavouriteSpots($rootScope.globals.currentUser.username).then(placeFavouritesOnMainMap, onError)
+    if(angular.isDefined($rootScope.globals.currentUser)) {
+        handleRequest.getFavouriteSpots($rootScope.globals.currentUser.username).then(placeFavouritesOnMainMap, onError)
+    }
 
 });

@@ -135,6 +135,12 @@
                     return response.data;
                 })
         };
+        var removeFromPersonalMap = function(remove_id, username){
+            return $http.delete("/remove-from-personal-map/"+remove_id+"/"+username)
+                .then(function(response){
+                    return response.data;
+                })
+        };
 
 
 
@@ -157,7 +163,8 @@
             getGuestRatingObject: getGuestRatingObject,
             getUserRatingObject: getUserRatingObject,
             userRateSpot: userRateSpot,
-            getScubaDivingSchoolsRecommendations: getScubaDivingSchoolsRecommendations
+            getScubaDivingSchoolsRecommendations: getScubaDivingSchoolsRecommendations,
+            removeFromPersonalMap:removeFromPersonalMap
 
         };
 

@@ -85,7 +85,7 @@
 
     }
 
-    run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
+    run.$inject = ['$rootScope', '$location', '$cookies', '$http', 'FlashService'];
     function run($rootScope, $location, $cookies, $http) {
 
         //init main map
@@ -111,7 +111,7 @@
             // if (restrictedPage && !loggedIn) {
             //     $location.path('/login');
             // }
-
+            // FlashService.
             var nav_home = angular.element(document.querySelector('#nav_home'));
             var nav_map = angular.element(document.querySelector('#nav_map'));
             var nav_weatherMap = angular.element(document.querySelector('#nav_weatherMap'));

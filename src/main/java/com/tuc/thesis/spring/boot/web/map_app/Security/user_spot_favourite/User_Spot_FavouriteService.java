@@ -38,4 +38,7 @@ public class User_Spot_FavouriteService {
     public void editNotes(int spot_id, String username, String notes){
         user_spot_favouriteRepository.editNotes(spot_id, username, notes);
     }
+    public void removeFromPersonalMap(int spot_id, String username){
+        user_spot_favouriteRepository.removeFromPersonalMap(spot_id, username);
+    }
 }

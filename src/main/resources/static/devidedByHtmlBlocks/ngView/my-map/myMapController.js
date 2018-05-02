@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-module.controller('myMapController', function($scope, handleRequest, $rootScope, $compile, $window, FlashService){
+module.controller('myMapController', function($scope, handleRequest, $rootScope, $compile, $window, FlashService, $state){
     $scope.clickTest = function() {
         // spot id to add to personal map
         $scope.spot_id_personalMap = $window.localStorage.getItem("spot_id_personalMap");
@@ -7,11 +7,33 @@ module.controller('myMapController', function($scope, handleRequest, $rootScope,
         $scope.spot_notes_personalMap = $window.localStorage.getItem("spot_notes_personalMap");
         // alert($scope.sidpm);
     };
+    $scope.removeFromPersonalMap = function(){
+        $scope.spot_remove_id_personalMap = $window.localStorage.getItem("spot_remove_id_personalMap");
+        $scope.spot_remove_name_personalMap = $window.localStorage.getItem("spot_remove_name_personalMap")
+    };
+    $scope.removeFromPersonalMapConfirm = function(){
+        handleRequest.removeFromPersonalMap($scope.spot_remove_id_personalMap, $rootScope.globals.currentUser.username)
+            .then(function(response){
+                if (response == "OK") {
+                    FlashService.Success('Spot removed successfully', false);
+
+                } else {
+                    FlashService.Error(response.message);
+                    vm.dataLoading = false;
+                }
+            });
+    };
+    $scope.reloadPage = function(){
+        $state.reload();
+        delete $rootScope.flash;
+
+    };
+
     $scope.editNotes = function(){
         handleRequest.editNotes($scope.spot_id_personalMap, $scope.spot_notes_personalMap, $rootScope.globals.currentUser.username)
             .then(function(response){
                 if (response == "OK") {
-                    FlashService.Success('Spot added to personal map successfully', false);
+                    FlashService.Success('Spot added to personal map successfully', true);
                 } else {
                     FlashService.Error(response.message);
                     vm.dataLoading = false;
@@ -84,7 +106,20 @@ module.controller('myMapController', function($scope, handleRequest, $rootScope,
                                "ng-click='clickTest()'>Edit notes" +
                            "</button>" +
                            "<a class='btn btn-link' href='#!/map/kiteSpotDetails/"+spot.id+"'>details</a>"+
-                       "</div>";
+
+
+                           "<button " +
+                               "class='btn btn-sm btn-danger'"+
+                                "id='remove_button'" +
+                               "data-toggle='modal' " +
+                               "data-target='#remove-from-personal-map-modal' " +
+                               "onclick=\"localStorage.setItem('spot_remove_id_personalMap','"+spot.id+"' );" +
+                                       "localStorage.setItem('spot_remove_name_personalMap','"+spot.name+"' );  " +
+                                       "\"  " +
+
+                               "ng-click='removeFromPersonalMap()'>remove" +
+                           "</button>" +
+                           "</div>";
 
 
                    var compiled = $compile(contentString)($scope);
@@ -147,6 +182,17 @@ module.controller('myMapController', function($scope, handleRequest, $rootScope,
                        "ng-click='clickTest()'>Edit notes" +
                        "</button>" +
                        "<a class='btn btn-link' href='#!/map/scubadiving/school/"+spot.id+"'>details</a>"+
+                       "<button " +
+                           "class='btn btn-sm btn-danger'"+
+                           "id='remove_button'" +
+                           "data-toggle='modal' " +
+                           "data-target='#remove-from-personal-map-modal' " +
+                           "onclick=\"localStorage.setItem('spot_remove_id_personalMap','"+spot.id+"' );" +
+                           "localStorage.setItem('spot_remove_name_personalMap','"+spot.name+"' );  " +
+                           "\"  " +
+
+                       "ng-click='removeFromPersonalMap()'>remove" +
+                       "</button>" +
                        "</div>";
 
 
@@ -209,6 +255,17 @@ module.controller('myMapController', function($scope, handleRequest, $rootScope,
                        "ng-click='clickTest()'>Edit notes" +
                        "</button>" +
                        "<a class='btn btn-link' href='#!/map/scubaSpotDetails/"+spot.id+"'>details</a>"+
+                       "<button " +
+                           "class='btn btn-sm btn-danger'"+
+                           "id='remove_button'" +
+                           "data-toggle='modal' " +
+                           "data-target='#remove-from-personal-map-modal' " +
+                           "onclick=\"localStorage.setItem('spot_remove_id_personalMap','"+spot.id+"' );" +
+                           "localStorage.setItem('spot_remove_name_personalMap','"+spot.name+"' );  " +
+                           "\"  " +
+
+                           "ng-click='removeFromPersonalMap()'>remove" +
+                       "</button>" +
                        "</div>";
 
 

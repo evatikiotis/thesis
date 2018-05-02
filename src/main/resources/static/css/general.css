@@ -183,6 +183,9 @@ input.ng-valid.ng-touched {
     overflow-y: scroll;
     width: 215px;
 }
+.favourite_spot{
+    float: right;
+}
 .infoWindow button{
     height: 25px;
     margin: 3px;
@@ -192,6 +195,10 @@ input.ng-valid.ng-touched {
 .infoWindow button:disabled{
     background-color: #4e555b;
     opacity: 1;
+
+}
+.infoWindow-myMap{
+    max-width: 300px;
 
 }
 .infoWindow hr{
@@ -223,4 +230,10 @@ input.ng-valid.ng-touched {
 .help-message{
     font-size: x-small;
 }
-
+#remove_button{
+    background-color: red;
+    font-size: small;
+    padding-bottom: 0;
+    padding-top: 0;
+    float: right;
+}
