@@ -24,7 +24,7 @@ public class User_Spot_FavouriteService {
         user_spot_favouriteCompositeKey.setSpot_id(spot_id);
         user_spot_favouriteCompositeKey.setUser_username(username);
 
-        //create actual object
+        //create actual object!
         User_Spot_Favourite user_spot_favourite = new User_Spot_Favourite();
         user_spot_favourite.setUser_spot_favouriteCompositeKey(user_spot_favouriteCompositeKey);
         user_spot_favourite.setNotes(notes);
