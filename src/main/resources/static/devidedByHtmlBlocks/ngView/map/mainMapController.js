@@ -2,6 +2,7 @@
 var module = angular.module('myApp');
 module.controller('mainMapController', function( $scope, $rootScope, NgMap, handleRequest, $cookies, $compile, $window, FlashService) {
     var mmc = this;
+    var markerCluster;
     mmc.favouriteSpots = [];
     mmc.disabled = true;
     mmc.existsInPersonalMap = false;
@@ -54,12 +55,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
     mmc.mainMap = new google.maps.Map(document.getElementById('mainMap'), options);
     // var markerCluster = new MarkerClusterer(mmc.mainMap, [], {});
 
-    var mcOptions = {gridSize: 40, maxZoom: 16, zoomOnClick: false, minimumClusterSize: 7};
-    var markerCluster = new MarkerClusterer(mmc.mainMap,[], mcOptions);
-    google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster){
-        mmc.mainMap.setCenter(cluster.getCenter());
-        mmc.mainMap.setZoom(mmc.mainMap.getZoom()+1);
-    });
+
 
 
     var buildMarkers = function (data) {
@@ -346,7 +342,6 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
         if(markerCluster) {
             markerCluster.clearMarkers();
         }
-
         var mergedMarkers = [];
         if ($rootScope.kitesurfing == true) {
             mergedMarkers = mergedMarkers.concat(kiteSpotMarkers);
@@ -357,7 +352,13 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
         if ($rootScope.scuba_diving_spots == true) {
             mergedMarkers = mergedMarkers.concat(scubaSiteMarkers);
         }
-        markerCluster.addMarkers(mergedMarkers);
+        var mcOptions = {gridSize: 40, maxZoom: 16, zoomOnClick: false, minimumClusterSize: 7};
+        markerCluster = new MarkerClusterer(mmc.mainMap,mergedMarkers, mcOptions);
+        google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster){
+            mmc.mainMap.setCenter(cluster.getCenter());
+            mmc.mainMap.setZoom(mmc.mainMap.getZoom()+1);
+        });
+
 
 
     };
