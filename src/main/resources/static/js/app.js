@@ -106,11 +106,11 @@
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in and trying to access a restricted page
-            var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
-
-            // if (restrictedPage && !loggedIn) {
-            //     $location.path('/login');
-            // }
+            var restrictedPage = $.inArray($location.path(), ['/login', '/register','/', '/map', '/weather_map', '/adventure-finder' ]) === -1;
+            var loggedIn = $rootScope.globals.currentUser;
+            if (restrictedPage && !loggedIn) {
+                $location.path('/login');
+            }
             // FlashService.
             var nav_home = angular.element(document.querySelector('#nav_home'));
             var nav_map = angular.element(document.querySelector('#nav_map'));
