@@ -85,7 +85,6 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
 
                     for(var i=0; i < mmc.favouriteSpots.length; i++){
                         if(spot.id == mmc.favouriteSpots[i]){
-                            alert("ole");
                             mmc.existsInPersonalMap = true;
                             break;
                         }else{
@@ -174,7 +173,14 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                 });
 
                 google.maps.event.addListener(marker, 'click', function (evt) {
-
+                    for(var i=0; i < mmc.favouriteSpots.length; i++){
+                        if(spot.id == mmc.favouriteSpots[i]){
+                            mmc.existsInPersonalMap = true;
+                            break;
+                        }else{
+                            mmc.existsInPersonalMap = false;
+                        }
+                    }
                     var contentString =
                         "<div class='infoWindow'>" +
                         "<table>" +
@@ -189,8 +195,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "</table>"+
 
                         "<hr>"+
-                        "<a class='btn btn-link' href='#!/map/scubadiving/school/"+spot.id+"'>details</a>"+
-                        "<br>";
+                        "<a class='btn btn-link' href='#!/map/scubadiving/school/"+spot.id+"'>details</a>";
                     if(mmc.disabled) {
                         contentString = contentString +
                         "<button " +
@@ -204,16 +209,24 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "</button>" +
                         "</div>";
                     }else{
-                        contentString = contentString +
-                            "<button " +
+                        if(!mmc.existsInPersonalMap) {
+                            contentString = contentString +
+                                "<button " +
                                 "data-toggle='modal' " +
                                 "data-target='#add-to-personalmap-modal' " +
                                 "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
                                 "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
                                 "ng-click='clickTest()'" +
-                                ">Add to personal map " +
-                            "</button>" +
+                                ">Add to personal map "+
+
+                                "</button>" +
+                                "</div>";
+                        }
+                        else{
+                            contentString = contentString +
+                                "<img src='images/favourite.svg' class='favourite_spot' height='25' width='25' title='favourite'>"
                             "</div>";
+                        }
                     }
 
                     var compiled = $compile(contentString)($scope);
@@ -241,7 +254,14 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                 });
 
                 google.maps.event.addListener(marker, 'click', function (evt) {
-
+                    for(var i=0; i < mmc.favouriteSpots.length; i++){
+                        if(spot.id == mmc.favouriteSpots[i]){
+                            mmc.existsInPersonalMap = true;
+                            break;
+                        }else{
+                            mmc.existsInPersonalMap = false;
+                        }
+                    }
                     var contentString =
                         "<div class='infoWindow'>" +
                         "<table>" +
@@ -256,8 +276,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "</table>"+
 
                         "<hr>"+
-                        "<a class='btn btn-link' href='#!/map/scubaSpotDetails/"+spot.id+"'>details</a>"+
-                        "<br>";
+                        "<a class='btn btn-link' href='#!/map/scubaSpotDetails/"+spot.id+"'>details</a>";
                     if(mmc.disabled) {
                         contentString = contentString +
                         "<button " +
@@ -271,16 +290,24 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "</button>" +
                         "</div>";
                     }else{
-                        contentString = contentString +
-                        "<button " +
-                            "data-toggle='modal' " +
-                            "data-target='#add-to-personalmap-modal' " +
-                            "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
-                            "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
-                            "ng-click='clickTest()'" +
-                            ">Add to personal map " +
-                        "</button>" +
-                        "</div>";
+                        if(!mmc.existsInPersonalMap) {
+                            contentString = contentString +
+                                "<button " +
+                                "data-toggle='modal' " +
+                                "data-target='#add-to-personalmap-modal' " +
+                                "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
+                                "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
+                                "ng-click='clickTest()'" +
+                                ">Add to personal map "+
+
+                                "</button>" +
+                                "</div>";
+                        }
+                        else{
+                            contentString = contentString +
+                                "<img src='images/favourite.svg' class='favourite_spot' height='25' width='25' title='favourite'>"
+                            "</div>";
+                        }
                     }
 
                     var compiled = $compile(contentString)($scope);
