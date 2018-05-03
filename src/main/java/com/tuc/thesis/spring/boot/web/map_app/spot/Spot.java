@@ -20,6 +20,8 @@ public class Spot implements Serializable{
             mappedBy = "spot")
     private DiveSchoolSpot diveSchoolSpot;
 
+
+
     @Id
     @Column(name = "id")
     private int id;

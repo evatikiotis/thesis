@@ -13,4 +13,8 @@ public class User_Interest_Service  {
     public List<User_Interest> getInterests(String username){
         return (List<User_Interest>) user_interest_repository.getInterests(username);
     }
+    public void updateUserInterests(List<User_Interest> user_interests){
+
+        user_interest_repository.save(user_interests);
+    }
 }

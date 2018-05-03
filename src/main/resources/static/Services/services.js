@@ -141,6 +141,14 @@
                     return response.data;
                 })
         };
+        var changeUserInfo = function(data){
+            console.log(data);
+            return $http.post("/change-user-info",data)
+                .then(function(response){
+                    return response.data;
+                });
+
+        };
 
 
 
@@ -164,7 +172,8 @@
             getUserRatingObject: getUserRatingObject,
             userRateSpot: userRateSpot,
             getScubaDivingSchoolsRecommendations: getScubaDivingSchoolsRecommendations,
-            removeFromPersonalMap:removeFromPersonalMap
+            removeFromPersonalMap:removeFromPersonalMap,
+            changeUserInfo: changeUserInfo
 
         };
 

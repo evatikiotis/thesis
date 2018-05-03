@@ -1,13 +1,20 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
+import com.tuc.thesis.spring.boot.web.map_app.Security.user_interest.User_Interest;
+import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpot;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity(name = "app_user")
 public class User implements Serializable {
+    @OneToMany(
+            cascade =  {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            mappedBy = "user")
+    private List<User_Interest> user_interests;
 
     @Id
     @Column(name = "username", nullable = false)
@@ -37,6 +44,15 @@ public class User implements Serializable {
 
 
     public User(String username, String password, String email, String address, byte[] image) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+        this.image = image;
+    }
+
+    public User(List<User_Interest> user_interests, String username, String password, String email, String address, byte[] image) {
+        this.user_interests = user_interests;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -84,6 +100,14 @@ public class User implements Serializable {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public List<User_Interest> getUser_interests() {
+        return user_interests;
+    }
+
+    public void setUser_interests(List<User_Interest> user_interests) {
+        this.user_interests = user_interests;
     }
 }
 

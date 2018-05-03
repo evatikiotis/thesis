@@ -12,12 +12,15 @@ public class User_Interest_CompositeKey implements Serializable {
     @Column(name = "interest")
     private String interest;
 
+    @Column(name = "level")
+    private String level;
 
 
 
     public User_Interest_CompositeKey(String user_username, String interest, String level) {
         this.user_username = user_username;
         this.interest = interest;
+        this.level = level;
 
     }
 
@@ -40,5 +43,19 @@ public class User_Interest_CompositeKey implements Serializable {
         this.interest = user_interest;
     }
 
+    public String getInterest() {
+        return interest;
+    }
 
+    public void setInterest(String interest) {
+        this.interest = interest;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
 }

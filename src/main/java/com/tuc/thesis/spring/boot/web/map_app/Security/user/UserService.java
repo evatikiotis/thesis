@@ -62,5 +62,9 @@ public class UserService {
         return userRepository.getUserImage(username);
     }
 
+    public void updateUserInfo(User user){
+        userRepository.save(user);
+    }
+
 
 }

@@ -1,6 +1,9 @@
 package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
 import com.sun.net.httpserver.Authenticator;
+import com.tuc.thesis.spring.boot.web.map_app.Security.user_interest.User_Interest;
+import com.tuc.thesis.spring.boot.web.map_app.Security.user_interest.User_Interest_Service;
+import com.tuc.thesis.spring.boot.web.map_app.Security.user_interest.User_interest_Repository;
 import com.tuc.thesis.spring.boot.web.map_app.image.AppImage;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    User_Interest_Service user_interest_service;
 
     @RequestMapping("/users")
     public List<User> getAllUsers(){
@@ -122,7 +128,12 @@ public class UserController {
         return userService.getUserImage(username);
     }
 
-
+    @RequestMapping(value = "/change-user-info", method = RequestMethod.POST)
+    public HttpStatus changeUserInfo(@RequestBody User user) {
+        userService.updateUserInfo(user);
+//        user_interest_service.updateUserInterests(user.getUser_interests());
+        return HttpStatus.OK;
+    }
 
 
 }
