@@ -237,3 +237,6 @@ input.ng-valid.ng-touched {
     padding-top: 0;
     float: right;
 }
+.display_none{
+    display: none;
+}

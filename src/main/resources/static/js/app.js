@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var myApp = angular.module('myApp', [ 'ngMap','autocomplete', 'ui.router', 'ncy-angular-breadcrumb', 'ngCookies', 'ngFileUpload',
+    var myApp = angular.module('myApp', [ 'ngMap','autocomplete', 'ui.router', 'ncy-angular-breadcrumb', 'ngCookies', 'ngFileUpload', 'ui.bootstrap',
                                 'ngMaterial', 'ngMessages', 'material.svgAssetsCache']);
         myApp.config(config);
         myApp.run(run);

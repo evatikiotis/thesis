@@ -36,10 +36,14 @@
                     <tr>
                         <th>Interests:</th>
                         <td>
-                            <p ng-repeat = "interestObj in vm.user.user_interests">
-                                {{interestObj.user_interest_key.interest}}, <i>{{interestObj.user_interest_key.level}}</i>
-                                <br>
-                            </p>
+                            <div ng-repeat = "interestObj in vm.user.user_interests">
+                                <p ng-if="interestObj.user_interest_key.interest != 'empty' &&
+                                        interestObj.user_interest_key.interest != 'kitesurfing_remove' &&
+                                        interestObj.user_interest_key.interest != 'scuba-dving_remove' ">
+                                    {{interestObj.user_interest_key.interest}}, <i>{{interestObj.level}}</i>
+                                </p>
+
+                            </div>
                             <!--<p>kitesurfing, <i>intermediate</i></p>-->
                         </td>
 
@@ -55,7 +59,7 @@
                 <a class="btn btn-link"
                    type="button"
                    data-toggle="modal"
-                   href="#edit-info"> Edit Info
+                   data-target="#edit-info"> Edit Info
                 </a>
 
 
@@ -149,7 +153,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="edit-info">
+<div class="modal fade" id="edit-info" >
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -201,42 +205,36 @@
 
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" ng-model="vm.user.user_interests[0].user_interest_key.interest " ng-model-options="{ getterSetter: true }"
-                                       name="interest" ng-true-value="'kitesurfing'" ng-false-value="'kitesurfing_false'"  ><span>kitesurfing</span>
+                                <input type="checkbox" class="form-check-input" ng-model="vm.kitesurfing"
+                                       name="interest" ng-true-value="'kitesurfing'" ng-false-value="'kitesurfing_remove'"  ><span>kitesurfing</span>
                             </label>
-                            <span class="ml-sm-5" ng-show="vm.user.user_interests[0].user_interest_key.interest && !vm.attention">
+                            <span class="ml-sm-5" ng-show="vm.kitesurfing">
                                 <label>level:</label>
-                                <select ng-model="vm.user.user_interests[0].user_interest_key.level" ng-model-options="{ getterSetter: true }" name="vm.user.user_interests[0].user_interest_key.level">
-                                    <option value="beginner" ng-selected="vm.user.user_interests[0].user_interest_key.level=='beginner'">Beginner</option>
-                                    <option value="itermediate" ng-selected="vm.user.user_interests[0].user_interest_key.level=='intermediate'">Intermediate</option>
-                                    <option value="expert" ng-selected="vm.user.user_interests[0].user_interest_key.level=='expert'">Expert</option>
+                                <select ng-model="vm.kitesurfing_level"  name="level">
+                                    <option value="beginner" ng-selected="vm.kitesurfing_level=='beginner'">Beginner</option>
+                                    <option value="itermediate" ng-selected="vm.kitesurfing_level=='intermediate'">Intermediate</option>
+                                    <option value="expert" ng-selected="vm.kitesurfing_level=='expert'">Expert</option>
                                 </select>
                             </span>
                         </div>
                         <br>
                         <div class="form-check ">
                             <label class="form-check-label">
-                                <input ng-if="!vm.attention" type="checkbox" class="form-check-input" ng-model="vm.user.user_interests[1].user_interest_key.interest" ng-model-options="{ getterSetter: true }"
-                                       name="interest" ng-true-value="'scuba-diving'" >
-                                <span ng-if="!vm.attention">scuba-diving</span>
-                                <input ng-if="vm.attention" type="checkbox" class="form-check-input" ng-model="vm.user.user_interests[0].user_interest_key.interest" ng-model-options="{ getterSetter: true }"
-                                       name="interest" ng-true-value="'scuba-diving'" >
-                                <span ng-if="vm.attention">scuba-diving</span>
+                                <input type="checkbox" class="form-check-input" ng-model="vm.scubadiving"
+                                       name="interest" ng-true-value="'scuba-diving'" ng-false-value="'scuba-diving_remove'" >
+                                <span >scuba-diving</span>
+
                             </label>
-                            <span ng-if="!vm.attention" class="ml-sm-5" ng-show="vm.user.user_interests[1].user_interest_key.interest"></span>
-                            <span ng-if="vm.attention" class="ml-sm-5" ng-show="vm.user.user_interests[0].user_interest_key.interest"></span>
+                            <span  class="ml-sm-5" ng-show="vm.scubadiving">
+
                                 <label>level:</label>
 
-                                <select ng-if="!vm.attention" ng-model="vm.user.user_interests[1].user_interest_key.level" ng-model-options="{ getterSetter: true }" name="vm.user.scuba-diving_level">
-                                    <option value="beginner" ng-selected="vm.user.user_interests[1].user_interest_key.level=='beginner'">Beginner</option>
-                                    <option value="itermediate" ng-selected="vm.user.user_interests[1].user_interest_key.level=='intermediate'">Intermediate</option>
-                                    <option value="expert" ng-selected="vm.user.user_interests[1].user_interest_key.level=='expert'">Expert</option>
+                                <select  ng-model="vm.scubadiving_level" name="level">
+                                    <option value="beginner" ng-selected="vm.scubadiving_level=='beginner'">Beginner</option>
+                                    <option value="itermediate" ng-selected="vm.scubadiving_level=='intermediate'">Intermediate</option>
+                                    <option value="expert" ng-selected="vm.scubadiving_level=='expert'">Expert</option>
                                 </select>
-                                <select ng-if="vm.attention" ng-model="vm.user.user_interests[0].user_interest_key.level" ng-model-options="{ getterSetter: true }" name="vm.user.scuba-diving_level">
-                                    <option value="beginner" ng-selected="vm.user.user_interests[0].user_interest_key.level=='beginner'">Beginner</option>
-                                    <option value="itermediate" ng-selected="vm.user.user_interests[0].user_interest_key.level=='intermediate'">Intermediate</option>
-                                    <option value="expert" ng-selected="vm.user.user_interests[0].user_interest_key.level=='expert'">Expert</option>
-                                </select>
+
 
                             </span>
                         </div>

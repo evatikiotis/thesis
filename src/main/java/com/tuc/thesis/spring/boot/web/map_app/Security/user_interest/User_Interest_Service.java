@@ -17,4 +17,12 @@ public class User_Interest_Service  {
 
         user_interest_repository.save(user_interests);
     }
+
+    public void deleteKiteSurfing(String username){
+        user_interest_repository.deleteKiteSurfing(username);
+    }
+
+    public void deleteScubaDiving(String username) {
+        user_interest_repository.deleteScubaDiving(username);
+    }
 }

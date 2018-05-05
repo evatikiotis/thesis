@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 
 @RestController
@@ -131,7 +132,19 @@ public class UserController {
     @RequestMapping(value = "/change-user-info", method = RequestMethod.POST)
     public HttpStatus changeUserInfo(@RequestBody User user) {
         userService.updateUserInfo(user);
+        for (Iterator<User_Interest> items = user.getUser_interests().iterator(); items.hasNext();) {
+            User_Interest item = items.next();
+            if(item.getUser_interest_key().getUser_interest().equals("kitesurfing_remove")){
+
+                user_interest_service.deleteKiteSurfing(item.getUser_interest_key().getUser_username());
+            }
+            if(item.getUser_interest_key().getUser_interest().equals("scuba-diving_remove")){
+                user_interest_service.deleteScubaDiving(item.getUser_interest_key().getUser_username());
+            }
+
+        }
 //        user_interest_service.updateUserInterests(user.getUser_interests());
+
         return HttpStatus.OK;
     }
 

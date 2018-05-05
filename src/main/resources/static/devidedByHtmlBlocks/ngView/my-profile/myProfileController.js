@@ -1,33 +1,54 @@
 var module = angular.module('myApp');
-module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope, $state) {
+module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope, $state, $window) {
     vm = this;
     $scope.types = "['address']";
     vm.attention = false;
 
-     vm.user = [];
+
+
+
+
+
 
     var placeUserinfo = function(data){
         vm.user = data;
-        if(vm.user.user_interests.length > 0) {
-            if (vm.user.user_interests[0].user_interest_key.interest === "scuba-diving") {
-                //we have a problem: first interest must be kitesurfing
-
-                if (vm.user.user_interests[1] && vm.user.user_interests[1].user_interest_key.interest === "kitesurfing") {
-                    //swap!
-                    var temp = [];
-                    temp = vm.user.user_interests[0];
-                    vm.user.user_interests[0] = vm.user.user_interests[1];
-                    vm.user.user_interests[1] = temp;
-                } else {
-                    vm.attention = true;
-                }
+        for(var i=0; i<vm.user.user_interests.length; i++){
+            if(vm.user.user_interests[i].user_interest_key.interest === "scuba-diving"){
+                vm.scubadiving = "scuba-diving";
+                vm.scubadiving_level = vm.user.user_interests[i].level;
+                vm.user.user_interests[i].user_interest_key.user_username = $rootScope.globals.currentUser.username;
             }
-
-            vm.user.user_interests[0].user_interest_key.user_username = $rootScope.globals.currentUser.username;
-            if (vm.user.user_interests.length === 2) {
-                vm.user.user_interests[1].user_interest_key.user_username = $rootScope.globals.currentUser.username;
+            if(vm.user.user_interests[i].user_interest_key.interest === "kitesurfing") {
+                vm.kitesurfing = "kitesurfing";
+                vm.kitesurfing_level = vm.user.user_interests[i].level;
+                vm.user.user_interests[i].user_interest_key.user_username = $rootScope.globals.currentUser.username;
             }
         }
+        if(!(vm.user.user_interests.length>0)){
+            vm.user.user_interests =[{
+                "user_interest_key":
+                    {"user_username":$rootScope.globals.currentUser.username,
+                        "interest":"empty",
+                        "user_interest":"empty"
+                    },
+                "level":"beginner"
+            },{"user_interest_key":
+                    {"user_username":$rootScope.globals.currentUser.username,
+                        "interest":"empty",
+                        "user_interest":"empty"
+                    },
+                "level":"empty"}];
+        }
+        if(vm.user.user_interests.length===1){
+            vm.user.user_interests.push({"user_interest_key":
+                    {"user_username":$rootScope.globals.currentUser.username,
+                        "interest":"empty",
+                        "user_interest":"empty"
+                    },
+                "level":"empty"});
+        }
+
+
 
     };
 
@@ -42,13 +63,69 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
     //    }
     // };
     vm.changeInfo = function(){
-        alert();
-        vm.user.user_interests[0].user_interest_key.user_username = $rootScope.globals.currentUser.username;
-        if (vm.user.user_interests.length === 2) {
+        var user_interest_key_new = [];
+        if(vm.scubadiving === "scuba-diving" && vm.kitesurfing === "kitesurfing" ){
+            vm.user.user_interests[0].user_interest_key.user_username = $rootScope.globals.currentUser.username;
+            vm.user.user_interests[0].user_interest_key.interest = "kitesurfing";
+            vm.user.user_interests[0].user_interest_key.user_interest = "kitesurfing";
+            vm.user.user_interests[0].level = vm.kitesurfing_level;
+
             vm.user.user_interests[1].user_interest_key.user_username = $rootScope.globals.currentUser.username;
+            vm.user.user_interests[1].user_interest_key.interest = "scuba-diving";
+            vm.user.user_interests[1].user_interest_key.user_interest = "scuba-diving";
+            vm.user.user_interests[1].level = vm.scubadiving_level;
+
         }
+        if(!(vm.scubadiving === "scuba-diving" && vm.kitesurfing === "kitesurfing")){
+            vm.user.user_interests[0].user_interest_key.user_username = $rootScope.globals.currentUser.username;
+            vm.user.user_interests[0].user_interest_key.interest = "kitesurfing_remove";
+            vm.user.user_interests[0].user_interest_key.user_interest = "kitesurfing_remove";
+            vm.user.user_interests[0].level = vm.kitesurfing_level;
+
+            vm.user.user_interests[1].user_interest_key.user_username = $rootScope.globals.currentUser.username;
+            vm.user.user_interests[1].user_interest_key.interest = "scuba-diving_remove";
+            vm.user.user_interests[1].user_interest_key.user_interest = "scuba-diving_remove";
+            vm.user.user_interests[1].level = vm.scubadiving_level;
+
+        }
+        if(!(vm.scubadiving === "scuba-diving") && vm.kitesurfing === "kitesurfing"){
+            vm.user.user_interests[0].user_interest_key.user_username = $rootScope.globals.currentUser.username;
+            vm.user.user_interests[0].user_interest_key.interest = "kitesurfing";
+            vm.user.user_interests[0].user_interest_key.user_interest = "kitesurfing";
+            vm.user.user_interests[0].level = vm.kitesurfing_level;
+
+            vm.user.user_interests[1].user_interest_key.user_username = $rootScope.globals.currentUser.username;
+            vm.user.user_interests[1].user_interest_key.interest = "scuba-diving_remove";
+            vm.user.user_interests[1].user_interest_key.user_interest = "scuba-diving_remove";
+            vm.user.user_interests[1].level = vm.scubadiving_level;
+
+        }
+        if(vm.scubadiving === "scuba-diving" && !(vm.kitesurfing === "kitesurfing")){
+            vm.user.user_interests[0].user_interest_key.user_username = $rootScope.globals.currentUser.username;
+            vm.user.user_interests[0].user_interest_key.interest = "kitesurfing_remove";
+            vm.user.user_interests[0].user_interest_key.user_interest = "kitesurfing_remove";
+            vm.user.user_interests[0].level = vm.kitesurfing_level;
+
+            vm.user.user_interests[1].user_interest_key.user_username = $rootScope.globals.currentUser.username;
+            vm.user.user_interests[1].user_interest_key.interest = "scuba-diving";
+            vm.user.user_interests[1].user_interest_key.user_interest = "scuba-diving";
+            vm.user.user_interests[1].level = vm.scubadiving_level;
+
+        }
+
+
+
+
+
         handleRequest.changeUserInfo(vm.user);
+        var editInfoModal = angular.element(document.querySelector('#edit-info'));
+        editInfoModal.removeClass('show');
+        editInfoModal.addClass('display_none');
+        $state.go('myProfile');
+        $window.location.reload();
+
     };
+
 
 
 
@@ -59,6 +136,6 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
     handleRequest.getUserInfo($rootScope.globals.currentUser.username).then(placeUserinfo, onError);
     // handleRequest.getUserInterests($rootScope.globals.currentUser.username).then(placeUserInterests, onError);
     $scope.reload = function(){
-        $state.reload();
+        $state.go('myProfile');
     };
 });
