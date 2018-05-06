@@ -26,8 +26,8 @@
             <div class="comment col-sm-12 row">
                 <!-- Comment Avatar -->
                 <span class="comment-avatar" >
-                    <img ng-if="usersImage[$index]"  src="data:image/png;base64,{{usersImage[$index]}}" alt="userImage" height="28" width="28">
-                    <img ng-if="!(usersImage[$index])" src="images/default-user.svg" height="65" width="60">
+                    <img ng-if="comment.user.image"  src="data:image/png;base64,{{comment.user.image}}" alt="userImage" height="28" width="28">
+                    <img ng-if="!(comment.user.image)" src="images/default-user.svg" height="65" width="60">
                 </span>
 
                 <!-- Comment Box -->

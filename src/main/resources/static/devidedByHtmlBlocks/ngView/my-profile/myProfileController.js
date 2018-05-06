@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope, $state, $window) {
+module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope, $state, $window, FlashService) {
     vm = this;
     $scope.types = "['address']";
     vm.attention = false;
@@ -117,12 +117,19 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
 
 
 
-        handleRequest.changeUserInfo(vm.user);
-        var editInfoModal = angular.element(document.querySelector('#edit-info'));
-        editInfoModal.removeClass('show');
-        editInfoModal.addClass('display_none');
-        $state.go('myProfile');
-        $window.location.reload();
+        handleRequest.changeUserInfo(vm.user)
+            .then(function(response){
+                if (response == "OK") {
+                    // uc.message =  "Profile image updated successfully";
+                    FlashService.Success('Profile info updated successfully', false);
+                    $window.location.reload();
+                } else {
+                    FlashService.Error("Oops, something unexpected happened. Please try again", false);
+                }
+            })
+
+        // $state.go('myProfile');
+        // $window.location.reload();
 
     };
 

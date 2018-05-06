@@ -12,15 +12,7 @@ module.controller('commentsController', function( $scope, $rootScope, handleRequ
     }
     var placeComments = function(response){
         $scope.comments = response.data;
-        for(i=0; i<$scope.comments.length; i++){
-            handleRequest.getUserImage($scope.comments[i].spot_comment_key.user_username)
-                .then(function(response){
-                    // return response.image;
-                    $scope.usersImage.push(response.image);
-
-                })
-        }
-
+        
 
     };
 

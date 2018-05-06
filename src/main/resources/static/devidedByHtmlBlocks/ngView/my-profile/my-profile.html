@@ -29,14 +29,18 @@
                         <th>Email:</th>
                         <td>{{vm.user.email}}</td>
                     </tr>
-                    <tr>
-                        <th>Address:</th>
-                        <td>{{vm.user.address}}</td>
-                    </tr>
+
                     <tr>
                         <th>Interests:</th>
                         <td>
+                            <p ng-if="!(vm.user.user_interests[0].user_interest_key.interest != 'empty' &&
+                                        vm.user.user_interests[0].user_interest_key.interest != 'kitesurfing_remove' &&
+                                        vm.user.user_interests[0].user_interest_key.interest != 'scuba-dving_remove') ">
+                                no interests registered yet.
+                            </p>
+
                             <div ng-repeat = "interestObj in vm.user.user_interests">
+
                                 <p ng-if="interestObj.user_interest_key.interest != 'empty' &&
                                         interestObj.user_interest_key.interest != 'kitesurfing_remove' &&
                                         interestObj.user_interest_key.interest != 'scuba-dving_remove' ">
@@ -248,6 +252,8 @@
                         <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
 
                     </div>
+                    <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }"
+                         ng-if="flash" ng-bind="flash.message"></div>
 
 
                 </form>

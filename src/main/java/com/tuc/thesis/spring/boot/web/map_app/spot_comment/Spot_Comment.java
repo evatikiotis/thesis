@@ -1,8 +1,8 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot_comment;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import com.tuc.thesis.spring.boot.web.map_app.Security.user.User;
+
+import javax.persistence.*;
 import java.sql.Date;
 
 
@@ -14,10 +14,19 @@ public class Spot_Comment  {
     @Column(name = "date")
     Date date;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_username", nullable = false, insertable = false, updatable = false)
+    private User user;
 
     public Spot_Comment(Spot_Comment_CompositeKey spot_comment_key, Date date) {
         this.spot_comment_key = spot_comment_key;
         this.date = date;
+    }
+
+    public Spot_Comment(Spot_Comment_CompositeKey spot_comment_key, Date date, User user) {
+        this.spot_comment_key = spot_comment_key;
+        this.date = date;
+        this.user = user;
     }
 
     public Spot_Comment() {
@@ -37,5 +46,13 @@ public class Spot_Comment  {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

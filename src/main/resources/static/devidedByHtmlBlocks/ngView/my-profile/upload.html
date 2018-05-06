@@ -6,14 +6,14 @@
 
             <br>Photo:
             <input type="file" ngf-select ng-model="picFile" name="file"
-                   accept="image/*" ngf-max-size="2MB" required
+                   accept="image/*" ngf-max-size="1048576B" required
                    ngf-model-invalid="errorFile">
 
 
 
             <p class="validation" ng-show="myForm.file.$error.required && myForm.file.$touched">Please choose an image</p><br>
             <i ng-show="myForm.file.$error.maxSize">File too large
-                {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                {{errorFile.size / 1000000|number:1}}MB: max 1.04MB</i>
 
             <div class="row container offset-sm-2">
                 <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" style="border-radius: 5%" >

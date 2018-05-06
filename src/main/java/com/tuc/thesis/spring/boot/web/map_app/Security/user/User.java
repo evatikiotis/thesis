@@ -2,6 +2,7 @@ package com.tuc.thesis.spring.boot.web.map_app.Security.user;
 
 import com.tuc.thesis.spring.boot.web.map_app.Security.user_interest.User_Interest;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpot;
+import com.tuc.thesis.spring.boot.web.map_app.spot_comment.Spot_Comment;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -15,6 +16,11 @@ public class User implements Serializable {
             cascade =  {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             mappedBy = "user")
     private List<User_Interest> user_interests;
+
+    @OneToMany(
+            cascade =  {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            mappedBy = "user")
+    private List<Spot_Comment> user_comments;
 
     @Id
     @Column(name = "username", nullable = false)
