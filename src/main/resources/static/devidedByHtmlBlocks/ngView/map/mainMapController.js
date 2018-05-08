@@ -28,6 +28,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
             .then(function(response){
                 if (response == "OK") {
                     FlashService.Success('Spot added to personal map successfully', false);
+                    $window.location.reload();
                 } else {
                     FlashService.Error(response.message);
                     vm.dataLoading = false;

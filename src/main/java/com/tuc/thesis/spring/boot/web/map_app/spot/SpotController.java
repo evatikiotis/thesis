@@ -28,5 +28,10 @@ public class SpotController {
         return spotService.getSpot(id);
     }
 
+    @RequestMapping("/spot-names")
+    public List <String> getAllSpotNames(){
+        return spotService.geAllSpotNames();
+    }
+
 
 }

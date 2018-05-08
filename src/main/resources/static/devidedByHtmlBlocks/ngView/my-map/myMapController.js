@@ -33,7 +33,8 @@ module.controller('myMapController', function($scope, handleRequest, $rootScope,
         handleRequest.editNotes($scope.spot_id_personalMap, $scope.spot_notes_personalMap, $rootScope.globals.currentUser.username)
             .then(function(response){
                 if (response == "OK") {
-                    FlashService.Success('Spot added to personal map successfully', true);
+                    FlashService.Success('Edited notes successfully', true);
+                    $window.location.reload();
                 } else {
                     FlashService.Error(response.message);
                     vm.dataLoading = false;

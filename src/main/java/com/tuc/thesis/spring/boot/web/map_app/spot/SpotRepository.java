@@ -17,4 +17,7 @@ public interface SpotRepository extends CrudRepository<Spot, Integer> {
                         ")",nativeQuery = true)
     public List<Spot> selectFavouriteSpots(@Param("username") String username);
 
+    @Query(value = "SELECT name FROM spot WHERE type='scuba-diving_school'")
+    public List<String> getAllSpotNames();
+
 }

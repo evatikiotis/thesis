@@ -80,10 +80,12 @@
     <div class="col-sm-6 ">
         <div class="" style="">
             <div class="ui-header container-fluid ">
-                <div class="row container-fluid">
+                <div ng-if="scuba_diving_school.image" class="row container-fluid">
                     <img alt="" src="data:image/png;base64,{{scuba_diving_school.image}}" height="100" width="100">
-                    <h2 class="ml-sm-5">{{spot.name}}</h2>
+                    <h5 class="ml-sm-5">{{spot.name}}</h5>
                 </div>
+                <h5 ng-if="!scuba_diving_school.image" class="ml-sm-5">{{spot.name}}</h5>
+
 
 
             </div>

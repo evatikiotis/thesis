@@ -7,6 +7,10 @@ app.controller('adventureFinderController', function($scope, handleRequest) {
     var onError = function (reason) {
         console.log(reason);
     };
+    var placeSearchValues = function(response){
+        $scope.items = response;
+    };
 
-    handleRequest.getScubaDivingSchoolsRecommendations().then(placeScubaDivingSchoolsRecommendations, onError)
+    handleRequest.getScubaDivingSchoolsRecommendations().then(placeScubaDivingSchoolsRecommendations, onError);
+    handleRequest.getSpotNames().then(placeSearchValues,onError);
 });

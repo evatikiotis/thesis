@@ -30,4 +30,8 @@ public class SpotService {
     public Spot getSpot(int id) {
         return spotRepository.findOne(id);
     }
+
+    public List<String> geAllSpotNames(){
+        return spotRepository.getAllSpotNames();
+    }
 }

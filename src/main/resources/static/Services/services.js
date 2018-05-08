@@ -150,6 +150,15 @@
 
         };
 
+        var getSpotNames = function(data){
+            console.log(data);
+            return $http.get("/spot-names")
+                .then(function(response){
+                    return response.data;
+                });
+
+        };
+
 
 
         return {
@@ -173,7 +182,8 @@
             userRateSpot: userRateSpot,
             getScubaDivingSchoolsRecommendations: getScubaDivingSchoolsRecommendations,
             removeFromPersonalMap:removeFromPersonalMap,
-            changeUserInfo: changeUserInfo
+            changeUserInfo: changeUserInfo,
+            getSpotNames: getSpotNames
 
         };
 

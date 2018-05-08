@@ -1,31 +1,45 @@
+<div>
+    <div>
+        <input type="search" id="search" ng-model="ngsearch" />
+        <ul>
+            <li ng-repeat="item in items | filter:ngsearch" data-content="{{item}}">{{item}}
+                <a href="/{{item}}">>></a>
+            </li>
+
+        </ul>
+</div>
+
 <div class="container">
     <div class="col-sm-6 ">
         <div class="" style="" ng-repeat="school in schools">
-            <div class="ui-header container-fluid ">
-                <div class="row container-fluid">
-                    <img alt="" src="data:image/png;base64,{{scuba_diving_school.image}}" height="50" width="50">
-                    <h2 class="ml-sm-5">{{school.spot.name}}</h2>
+            <div class="recommendations-div">
+                <div class="ui-header  ">
+                    <div class="row ">
+
+                        <img class="col-sm-4" ng-if="school.image" alt="" src="data:image/png;base64,{{school.image}}" height="100" width="100">
+                        <table class="table col-sm-8"  >
+                            <tbody>
+                            <tr>
+                                <th>Name:</th>
+                                <td>{{school.spot.name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Address:</th>
+                                <td>{{school.address}}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                     </div>
+
+
                 </div>
 
-
+                <div class="info"> <a class="btn btn-link" href="#/">details</a></div>
             </div>
 
 
-            <div align="" class="info container-fluid">
 
-                <div >
-                    <table class="table"  >
-                        <tbody>
-                        <tr>
-                            <th>Address:</th>
-                            <td>{{school.address}}</td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
         </div>
 
     </div>
