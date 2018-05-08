@@ -2,19 +2,35 @@
 .active{
     color: #C0CC56;
 }
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus{
+    color: #C0CC56;
+}
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+    color: #C0CC56;
+}
+@media only screen and (min-width: 1008px) {
+    #my-navbar {
+        height: 62px;
+    }
+}
 #logo{
     color: #A6B339; /*greener*/
     font-family: "Century Schoolbook L";
-    margin: 20px;
+    margin-top: -40px;
+    font-size: 25px;
 }
+#navbar-toggler{
+    background-color: white;
+    height: 35px;
+    float: right;
+}
+
 
 nav{
     background-color: #403B34; /*almost black*/
     height: 100%;
 }
-nav a{
-    color: white;
-}
+
 
 nav li:hover a::before {
     right: 0;
@@ -31,9 +47,7 @@ nav a {
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
-nav a:hover {
-    color: #C0CC56; /*lightgreen*/
-}
+
 nav a::before {
     content: "";
     -webkit-transition: all 0.4s ease-in-out;
@@ -48,33 +62,48 @@ nav a::before {
 
 nav ul {
     list-style-type: none;
-    height: 50px;
-    margin-bottom: 0px;
+
+
 }
 
-.nav-link{
-
+.navbar-light .navbar-nav .nav-link{
     font-size: 16px;
-
     font-weight: 500;
     letter-spacing: 0.5px;
     margin: 10px;
     margin-left:40px;
-
+    color: white; !important;
     /*text-shadow: 0.05px 0.05px;*/
 }
+.navbar-light .navbar-nav .nav-link:hover{
+    color: #C0CC56; /*lightgreen*/ !important;
+}
+
 
 #login-register a {
-    position: static;
-    background-color: #4e555b;
+
+    /*background-color: #4e555b;*/
     padding: 5px;
-    margin-left: 8px;
-    margin-top: 8px;
+
+    color: white;
 }
 #login-register a:hover{
-    color: #C0CC56; /*lightgreen*/
+    color: #C0CC56; /*lightgreen*/!important;
 
 }
-#nav-links{
-    margin-top: -20px;
+#user-functionality-navbar{
+    color: white;
+    background-color: #403B34;
+    margin: 0;
+    text-align: right;
+
 }
+#user-functionality-navbar a{
+    margin-right: 18px;
+}
+#user-functionality-navbar a:hover{
+    color: #C0CC56;
+}
+/*#nav-links{*/
+    /*margin-top: -20px;*/
+/*}*/

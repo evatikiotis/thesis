@@ -1,43 +1,105 @@
-<nav ng-controller="navbarController">
+<!--<nav class="" ng-controller="navbarController">-->
 
 
-    <div class="">
-        <aside class="float-right mr-sm-1 ">
-            <div ng-if="!globals.currentUser" class="mr-sm-3" id="login-register">
-                <ul class="row">
-                    <li id="login">
-                        <a  data-toggle="modal" href="#!/login" >log in</a>
-                    </li>
-                    <li id="register">
-                        <a  href="#!/register" >Register</a>
-                    </li>
-                </ul>
-            </div>
-            <div ng-if="globals.currentUser" style="right: 0; top: 0" class="" id="">
 
-                <div class="dropdown">
-                    <button type="button" style="background-color: lightgrey" class="btn dropdown-toggle" data-toggle="dropdown">
+    <!--<div class="">-->
+        <!--<aside class="float-right mr-sm-1 ">-->
+            <!--<div ng-if="!globals.currentUser" class="mr-sm-3" id="login-register">-->
+                <!--<ul class="row">-->
+                    <!--<li id="login">-->
+                        <!--<a  data-toggle="modal" href="#!/login" >log in</a>-->
+                    <!--</li>-->
+                    <!--<li id="register">-->
+                        <!--<a  href="#!/register" >Register</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div ng-if="globals.currentUser" style="right: 0; top: 0" class="" id="">-->
 
-                        <img src="images/user.svg" height="20" width="20">
-                        {{globals.currentUser.username}}
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" >
-                        <a style=""class="dropdown-item" href="#!/my-profile">my profile</a>
+                <!--<div class="dropdown">-->
+                    <!--<button type="button" style="background-color: lightgrey" class="btn dropdown-toggle" data-toggle="dropdown">-->
 
-                        <div class="dropdown-divider"></div>
-                        <a href="#!/login" class="dropdown-item">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <div class="col-sm-2" >
-            <h2 style="margin-top:0;" id="logo">Adventurer</h2>
-        </div>
+                        <!--<img src="images/user.svg" height="20" width="20">-->
+                        <!--{{globals.currentUser.username}}-->
+                    <!--</button>-->
+                    <!--<div class="dropdown-menu dropdown-menu-right" >-->
+                        <!--<a style=""class="dropdown-item" href="#!/my-profile">my profile</a>-->
+
+                        <!--<div class="dropdown-divider"></div>-->
+                        <!--<a href="#!/login" class="dropdown-item">Logout</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</aside>-->
+        <!--<div class="col-sm-2" >-->
+            <!--<h2 style="margin-top:0;" id="">Adventurer</h2>-->
+        <!--</div>-->
+
+    <!--</div>-->
+
+    <!--<div class="col-sm-11 offset-sm-1 " id="nav-links">-->
+        <!--<ul class="row">-->
+
+            <!--<li>-->
+                <!--<a class="nav-link" href="#!/" id="nav_home"  ><i class="fa fa-home"></i> Home</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a class="nav-link" href="#!/map" id="nav_map"><i class="fa fa-map-marker" ></i> Spots</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a class="nav-link " href="#!/my_map" id="nav_myMap"><i class="fa fa-map" ></i> My Map</a>-->
+            <!--</li>-->
+            <!--<li >-->
+                <!--<a class="nav-link" href="#!/adventure-finder" id="nav_adventureFinder" ><img class="fa" src="images/compass.svg" height="25" width="25" style="margin:0; padding:0;"> Adventure Finder</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a class="nav-link" href="#!/weather_map" id="nav_weatherMap"><i class="fa fa-cloud" ></i> Weather</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+
+
+<!--</nav>-->
+
+<div id="user-functionality-navbar">
+
+    <div ng-if="!globals.currentUser" class="" >
+        <a href="#!/login" >log in</a>
+        <a href="#!/register" >Register</a>
 
     </div>
-    <div class="col-sm-12 offset-sm-1" id="nav-links">
-        <ul class="row">
+    <div ng-if="globals.currentUser" style="right: 0; top: 0" class="" id="">
 
+        <div class="dropdown">
+            <button type="button" style="background-color: lightgrey" class="btn dropdown-toggle" data-toggle="dropdown">
+
+                <img src="images/user.svg" height="20" width="20">
+                {{globals.currentUser.username}}
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" >
+                <a style=""class="dropdown-item" href="#!/my-profile">my profile</a>
+
+                <div class="dropdown-divider"></div>
+                <a href="#!/login" class="dropdown-item">Logout</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<nav class="navbar navbar-expand-lg navbar-light" id="my-navbar" ng-controller="navbarController">
+
+
+    <a class="navbar-brand" href="#" id="logo">Adventurer</a>
+    <div id="navbar-toggler-div">
+        <button class="navbar-toggler" id="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <br>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav ml-sm-5">
             <li>
                 <a class="nav-link" href="#!/" id="nav_home"  ><i class="fa fa-home"></i> Home</a>
             </li>
@@ -53,8 +115,25 @@
             <li>
                 <a class="nav-link" href="#!/weather_map" id="nav_weatherMap"><i class="fa fa-cloud" ></i> Weather</a>
             </li>
+
         </ul>
+
+
     </div>
 
-
 </nav>
+
+
+
+
+<!--<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>-->
