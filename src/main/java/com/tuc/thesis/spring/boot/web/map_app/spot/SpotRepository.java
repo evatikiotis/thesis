@@ -1,12 +1,13 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface SpotRepository extends CrudRepository<Spot, Integer> {
+public interface SpotRepository extends JpaRepository<Spot, Integer> {
 
     @Query(value = "SELECT * FROM spot WHERE type='kiteSpot'",nativeQuery = true)
     public List<Spot> selectKiteSpots();
@@ -17,7 +18,7 @@ public interface SpotRepository extends CrudRepository<Spot, Integer> {
                         ")",nativeQuery = true)
     public List<Spot> selectFavouriteSpots(@Param("username") String username);
 
-    @Query(value = "SELECT name FROM spot WHERE type='scuba-diving_school'")
+    @Query(value = "SELECT name FROM spot WHERE type='scuba-diving_school'", nativeQuery = true)
     public List<String> getAllSpotNames();
 
 }

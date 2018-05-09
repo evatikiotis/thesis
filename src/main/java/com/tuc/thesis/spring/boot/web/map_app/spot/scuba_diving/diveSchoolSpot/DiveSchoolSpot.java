@@ -3,9 +3,11 @@ package com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.Spot;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity(name = "spot_dive_school")
-public class DiveSchoolSpot {
+@Entity
+@Table(name = "spot_dive_school")
+public class DiveSchoolSpot implements Serializable {
     @Id
     @Column(name = "spot_id")
     private int id;

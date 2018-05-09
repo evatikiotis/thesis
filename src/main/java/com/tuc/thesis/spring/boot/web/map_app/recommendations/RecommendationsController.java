@@ -17,4 +17,9 @@ public class RecommendationsController {
         return recommendationService.getScubaSchoolsRecommendations();
     }
 
+    @RequestMapping("/scuba-diving-dtos")
+    public List<ScubaDivingSchoolRatingsDTO> getScubaDivingSchoolRatingsDTOS(){
+        return recommendationService.getScubaDivingSchoolRatingsDTOS();
+    }
+
 }

@@ -8,16 +8,17 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 
-@Entity(name = "spot")
+@Entity
+@Table(name = "spot")
 public class Spot implements Serializable{
     @OneToOne(fetch = FetchType.LAZY,
             cascade =  CascadeType.ALL,
-            mappedBy = "spot")
+            mappedBy = "spot", optional = true)
     private User_Spot_Favourite user_spot_favourite;
 
     @OneToOne(fetch = FetchType.LAZY,
             cascade =  CascadeType.ALL,
-            mappedBy = "spot")
+            mappedBy = "spot", optional = true)
     private DiveSchoolSpot diveSchoolSpot;
 
 
@@ -43,6 +44,7 @@ public class Spot implements Serializable{
         this.longitude = longitude;
         this.type = type;
     }
+
 
     public Spot() {}
 
@@ -85,4 +87,6 @@ public class Spot implements Serializable{
     public void setType(String type) {
         this.type = type;
     }
+
+
 }

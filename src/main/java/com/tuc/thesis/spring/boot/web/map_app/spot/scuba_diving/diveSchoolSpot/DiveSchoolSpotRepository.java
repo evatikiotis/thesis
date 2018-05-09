@@ -1,11 +1,14 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot;
 
+import com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolRatingsDTO;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-public interface DiveSchoolSpotRepository extends CrudRepository<DiveSchoolSpot, Integer> {
+@Repository
+public interface DiveSchoolSpotRepository extends JpaRepository<DiveSchoolSpot, Integer> {
 
     @Query(value = "SELECT * FROM spot_dive_school JOIN(\n" +
             "  SELECT * FROM (spot JOIN (\n" +
@@ -14,6 +17,13 @@ public interface DiveSchoolSpotRepository extends CrudRepository<DiveSchoolSpot,
             "    ON spot_id = spot.id)) as foo2\n" +
             "ON foo2.spot_id=spot_dive_school.spot_id", nativeQuery = true)
     public List<DiveSchoolSpot> getScubaSchoolsRecommendations();
+
+    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolRatingsDTO" +
+            "( s.id ,  dss.email) FROM " +
+            " DiveSchoolSpot as dss  " +
+            " JOIN dss.spot as s" +
+            " WHERE dss.id = s.id ")
+    public List<ScubaDivingSchoolRatingsDTO> getScubaDivingSchoolRatingsDTOS();
 
 
 }

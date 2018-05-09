@@ -5,7 +5,8 @@ import com.tuc.thesis.spring.boot.web.map_app.spot.Spot;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity(name = "app_user_spot_favourite")
+@Entity
+@Table(name = "app_user_spot_favourite")
 public class User_Spot_Favourite implements Serializable{
 
     @EmbeddedId

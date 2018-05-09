@@ -65,6 +65,11 @@
 			<artifactId>jackson-databind</artifactId>
 			<scope>2.5.0</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-spatial</artifactId>
+			<version>5.2.0.Final</version>
+		</dependency>
 	</dependencies>
 
 	<build>

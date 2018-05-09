@@ -19,4 +19,8 @@ public class RecommendationService {
         return diveSchoolSpotRepository.getScubaSchoolsRecommendations();
     }
 
+    public List<ScubaDivingSchoolRatingsDTO> getScubaDivingSchoolRatingsDTOS(){
+        return diveSchoolSpotRepository.getScubaDivingSchoolRatingsDTOS();
+    }
+
 }
