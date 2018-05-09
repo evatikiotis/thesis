@@ -12,9 +12,8 @@ public class SpotService {
     private SpotRepository spotRepository;
 
     public List<Spot> getAllSpots() {
-        List<Spot> spots = new ArrayList<>();
-        spotRepository.findAll().forEach(spots::add);
-        return spots;
+
+        return spotRepository.getAllSpots();
     }
 
     public List<Spot> getKiteSpots() {

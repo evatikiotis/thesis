@@ -3,14 +3,19 @@ package com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_rating;
 import com.tuc.thesis.spring.boot.web.map_app.spot.Spot;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name="app_user_spot_rating")
-public class User_Spot_Rating {
+public class User_Spot_Rating implements Serializable{
     @EmbeddedId
     private User_Spot_RatingCompositeKey user_spot_ratingKey;
 
     @Column(name="rating")
     private int rating;
+
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "spot_id", referencedColumnName = "id",nullable = false, insertable = false, updatable = false)
+    private Spot spot;
 
 
     public User_Spot_Rating() {
@@ -21,7 +26,11 @@ public class User_Spot_Rating {
         this.rating = rating;
     }
 
-
+    public User_Spot_Rating(User_Spot_RatingCompositeKey user_spot_ratingKey, int rating, Spot spot) {
+        this.user_spot_ratingKey = user_spot_ratingKey;
+        this.rating = rating;
+        this.spot = spot;
+    }
 
     public User_Spot_RatingCompositeKey getUser_spot_ratingKey() {
         return user_spot_ratingKey;
@@ -39,5 +48,11 @@ public class User_Spot_Rating {
         this.rating = rating;
     }
 
+    public Spot getSpot() {
+        return spot;
+    }
 
+    public void setSpot(Spot spot) {
+        this.spot = spot;
+    }
 }
