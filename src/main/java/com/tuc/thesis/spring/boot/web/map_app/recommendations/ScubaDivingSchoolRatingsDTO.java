@@ -5,6 +5,7 @@ public class ScubaDivingSchoolRatingsDTO {
     private String name;
     private double averageRating;
     private long numberOfRatings;
+    private String type;
 
 
 
@@ -12,17 +13,21 @@ public class ScubaDivingSchoolRatingsDTO {
     public ScubaDivingSchoolRatingsDTO() {
     }
 
-    public ScubaDivingSchoolRatingsDTO(int id, String name, double averageRating, long numberOfRatings) {
+    public ScubaDivingSchoolRatingsDTO(int id, String name, String type, double averageRating, long numberOfRatings) {
         this.id = id;
         this.name = name;
+        this.type = type;
         this.averageRating = averageRating;
         this.numberOfRatings = numberOfRatings;
+
     }
 
-    public ScubaDivingSchoolRatingsDTO(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+//    public ScubaDivingSchoolRatingsDTO(int id, String name, double averageRating, long numberOfRatings) {
+//        this.id = id;
+//        this.name = name;
+//        this.averageRating = averageRating;
+//        this.numberOfRatings = numberOfRatings;
+//    }
 
     public int getId() {
         return id;
@@ -58,6 +63,12 @@ public class ScubaDivingSchoolRatingsDTO {
         this.numberOfRatings = numberOfRatings;
     }
 
+    public String getType() {
+        return type;
+    }
 
+    public void setType(String type) {
+        this.type = type;
+    }
 
 }

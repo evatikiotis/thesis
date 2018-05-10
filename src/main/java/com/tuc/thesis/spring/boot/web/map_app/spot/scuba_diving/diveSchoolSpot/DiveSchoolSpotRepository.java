@@ -17,13 +17,13 @@ public interface DiveSchoolSpotRepository extends JpaRepository<DiveSchoolSpot, 
             "    ON spot_id = spot.id)) as foo2\n" +
             "ON foo2.spot_id=spot_dive_school.spot_id", nativeQuery = true)
     public List<DiveSchoolSpot> getScubaSchoolsRecommendations();
-
-    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolRatingsDTO" +
-            "( s.id ,  dss.email) FROM " +
-            " DiveSchoolSpot as dss  " +
-            " JOIN dss.spot as s" +
-            " WHERE dss.id = s.id ")
-    public List<ScubaDivingSchoolRatingsDTO> getScubaDivingSchoolRatingsDTOS();
+//
+//    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolRatingsDTO" +
+//            "( s.id ,  dss.email) FROM " +
+//            " DiveSchoolSpot as dss  " +
+//            " JOIN dss.spot as s" +
+//            " WHERE dss.id = s.id ")
+//    public List<ScubaDivingSchoolRatingsDTO> getScubaDivingSchoolRatingsDTOS();
 
 
 }

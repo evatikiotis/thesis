@@ -158,6 +158,13 @@
                 });
 
         };
+        var getScubaDivingSearchDTO = function(data){
+            // console.log(data);
+            return $http.get("/scuba-diving-dtos")
+                .then(function(response){
+                    return response.data;
+                });
+        };
 
 
 
@@ -183,7 +190,8 @@
             getScubaDivingSchoolsRecommendations: getScubaDivingSchoolsRecommendations,
             removeFromPersonalMap:removeFromPersonalMap,
             changeUserInfo: changeUserInfo,
-            getSpotNames: getSpotNames
+            getSpotNames: getSpotNames,
+            getScubaDivingSearchDTO: getScubaDivingSearchDTO
 
         };
 
