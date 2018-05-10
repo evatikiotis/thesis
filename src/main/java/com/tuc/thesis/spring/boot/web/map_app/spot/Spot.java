@@ -12,10 +12,10 @@ import java.util.List;
 @Entity
 @Table(name = "spot")
 public class Spot implements Serializable{
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL,
-            mappedBy = "spot", optional = false)
-    private User_Spot_Favourite user_spot_favourite;
+//    @OneToMany(fetch = FetchType.LAZY,
+//            cascade =  CascadeType.ALL,
+//            mappedBy = "spot")
+//    private User_Spot_Favourite user_spot_favourite;
 
     @OneToOne(fetch = FetchType.LAZY,
             mappedBy = "spot", optional = false)
@@ -51,16 +51,7 @@ public class Spot implements Serializable{
         this.type = type;
     }
 
-    public Spot(User_Spot_Favourite user_spot_favourite, DiveSchoolSpot diveSchoolSpot, List<User_Spot_Rating> user_spot_ratings, int id, String name, double latitude, double longitude, String type) {
-        this.user_spot_favourite = user_spot_favourite;
-        this.diveSchoolSpot = diveSchoolSpot;
-        this.user_spot_ratings = user_spot_ratings;
-        this.id = id;
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.type = type;
-    }
+
 
     public Spot() {}
 

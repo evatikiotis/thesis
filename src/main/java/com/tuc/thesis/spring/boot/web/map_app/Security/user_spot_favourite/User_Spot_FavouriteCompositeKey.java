@@ -2,10 +2,12 @@ package com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_favourite;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 
 @Embeddable
+
 public class User_Spot_FavouriteCompositeKey implements Serializable{
 
     @Column(name = "user_username")

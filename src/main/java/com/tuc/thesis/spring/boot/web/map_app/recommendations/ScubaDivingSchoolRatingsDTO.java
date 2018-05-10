@@ -17,7 +17,6 @@ public class ScubaDivingSchoolRatingsDTO {
         this.name = name;
         this.averageRating = averageRating;
         this.numberOfRatings = numberOfRatings;
-
     }
 
     public ScubaDivingSchoolRatingsDTO(int id, String name) {
@@ -58,4 +57,7 @@ public class ScubaDivingSchoolRatingsDTO {
     public void setNumberOfRatings(long numberOfRatings) {
         this.numberOfRatings = numberOfRatings;
     }
+
+
+
 }

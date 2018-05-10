@@ -28,9 +28,9 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
     @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolRatingsDTO" +
             "( s.id ,  s.name, AVG(usr.rating), COUNT(usr.rating)) FROM " +
             " Spot as s  " +
-            " JOIN s.diveSchoolSpot as dss" +
-            " JOIN s.user_spot_ratings as usr"+
-            " WHERE dss.id = s.id AND usr.user_spot_ratingKey.spot_id = s.id " +
+
+            "  JOIN s.user_spot_ratings as usr"+
+            " WHERE usr.user_spot_ratingKey.spot_id = s.id " +
             " group by s.id")
     public List<ScubaDivingSchoolRatingsDTO> getScubaDivingSchoolRatingsDTOS();
 }
