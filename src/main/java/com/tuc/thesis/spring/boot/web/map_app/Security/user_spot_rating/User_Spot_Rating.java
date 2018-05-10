@@ -10,7 +10,7 @@ public class User_Spot_Rating implements Serializable{
     @EmbeddedId
     private User_Spot_RatingCompositeKey user_spot_ratingKey;
 
-    @Column(name="rating")
+    @Column(name="rating", nullable = true)
     private int rating;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false)

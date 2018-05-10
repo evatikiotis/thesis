@@ -3,8 +3,8 @@ package com.tuc.thesis.spring.boot.web.map_app.recommendations;
 public class ScubaDivingSchoolRatingsDTO {
     private int id;
     private String name;
-    private double averageRating;
-    private long numberOfRatings;
+    private double averageRating = 0.0;
+    private long numberOfRatings = 0;
     private String type;
 
 
@@ -22,12 +22,9 @@ public class ScubaDivingSchoolRatingsDTO {
 
     }
 
-//    public ScubaDivingSchoolRatingsDTO(int id, String name, double averageRating, long numberOfRatings) {
-//        this.id = id;
-//        this.name = name;
-//        this.averageRating = averageRating;
-//        this.numberOfRatings = numberOfRatings;
-//    }
+
+
+
 
     public int getId() {
         return id;

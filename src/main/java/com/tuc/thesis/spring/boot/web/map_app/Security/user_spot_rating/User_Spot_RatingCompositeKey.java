@@ -6,10 +6,10 @@ import java.io.Serializable;
 
 @Embeddable
 public class User_Spot_RatingCompositeKey implements Serializable {
-    @Column(name = "user_username")
+    @Column(name = "user_username", nullable = true)
     private String user_username;
 
-    @Column(name = "spot_id")
+    @Column(name = "spot_id", nullable = true)
     private int spot_id;
 
     public User_Spot_RatingCompositeKey() {
