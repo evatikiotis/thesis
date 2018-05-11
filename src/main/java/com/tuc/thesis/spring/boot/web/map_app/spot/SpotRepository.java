@@ -58,4 +58,13 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
             "and  (s.type='kiteSpot')"+
             " group by s.id")
     public List<ScubaDivingSchoolSearchDTO> getKitesurfingSearchDTOS();
+
+    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolSearchDTO" +
+            "( s.id ,  s.name, s.type, COALESCE(avg(usr.rating),0), count(usr.rating))" +
+            " from Spot as s  " +
+            "  left join  s.user_spot_ratings as usr " +
+            " where (s.id = usr.user_spot_ratingKey.spot_id or usr.user_spot_ratingKey.spot_id is null) " +
+            "and  (s.type='scuba-diving_spot')"+
+            " group by s.id")
+    public List<ScubaDivingSchoolSearchDTO> getScubaSpotsSearchDTOS();
 }

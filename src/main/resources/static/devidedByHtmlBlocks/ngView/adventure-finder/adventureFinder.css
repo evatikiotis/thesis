@@ -126,3 +126,7 @@ table tr:hover td {
     background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
 
+.md-padding{
+    max-height: 800px;
+    overflow-y: scroll;
+}

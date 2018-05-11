@@ -29,5 +29,9 @@ public class RecommendationService {
         return spotRepository.getKitesurfingSearchDTOS();
 //        return diveSchoolSpotRepository.getScubaDivingSchoolRatingsDTOS();
     }
+    public List<ScubaDivingSchoolSearchDTO> getScubaSpotsSearchDTOS(){
+            return spotRepository.getScubaSpotsSearchDTOS();
+    //        return diveSchoolSpotRepository.getScubaDivingSchoolRatingsDTOS();
+        }
 
 }

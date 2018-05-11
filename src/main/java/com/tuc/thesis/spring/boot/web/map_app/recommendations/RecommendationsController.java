@@ -26,4 +26,8 @@ public class RecommendationsController {
     public List<ScubaDivingSchoolSearchDTO> getKitesurfingSearchDTOS(){
         return recommendationService.getKitesurfingSearchDTOS();
     }
+    @RequestMapping("/get-scuba-spots-search-dtos")
+    public List<ScubaDivingSchoolSearchDTO> getScubaSpotsSearchDTOS(){
+        return recommendationService.getScubaSpotsSearchDTOS();
+    }
 }

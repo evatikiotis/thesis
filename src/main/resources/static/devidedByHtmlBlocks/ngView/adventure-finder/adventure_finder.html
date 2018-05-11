@@ -3,23 +3,24 @@
 <div ng-cloak="" class="tabsdemoDynamicHeight">
     <md-content>
         <md-tabs md-dynamic-height="" md-border-bottom="">
-            <md-tab label="Kitesurfing" md-on-select="getKitesurfingSearchDTO()">
+            <md-tab label="spots for kitesurfing" md-on-select="getKitesurfingSearchDTOs()">
                 <md-content class="md-padding">
-                    <h1 class="md-display-2">Kitesurfing</h1>
-                    <div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
+                    <div ng-if="!dataLoading" ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
+                    <div ng-if="dataLoading"  class="lds-roller"></div>
                 </md-content>
             </md-tab>
 
-            <md-tab label="Scuba-diving" md-on-select="getScubaSchoolSearchDTO()" >
+            <md-tab label="scuba-diving schools" md-on-select="getScubaSchoolSearchDTOs()" >
                 <md-content class="md-padding">
-                    <div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
+                    <div ng-if="!dataLoading" ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
+                    <img ng-if="dataLoading"  src="https://loading.io/spinner/comets/"></img>
                 </md-content>
             </md-tab>
 
-            <md-tab label="three">
+            <md-tab label="spots for scuba-diving" md-on-select="getScubaSpotSearchDTOs()">
                 <md-content class="md-padding">
-                    <h1 class="md-display-2">Tab Three</h1>
-                    <p>Integer</p>
+                    <div ng-if="!dataLoading" ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
+                    <div ng-if="dataLoading"  ng-include="'devidedByHtmlBlocks/all/loader.html'"></div>
                 </md-content>
             </md-tab>
         </md-tabs>

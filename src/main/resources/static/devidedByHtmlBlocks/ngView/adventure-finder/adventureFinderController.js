@@ -1,17 +1,15 @@
 var module = angular.module('myApp');
 app.controller('adventureFinderController', function($scope, handleRequest) {
 
-    // $scope.friends =[{sno:1, name:'Sourabh Somani', Marks:'75'},
-    //     {sno:2, name:'Shaili Dashora', Marks:'90'},
-    //     {sno:3, name:'Divya Sharma', Marks:'89'},
-    //     {sno:4, name:'Swati Soni', Marks:'78'},
-    //     {sno:5, name:'Ankit', Marks:'74'}];
 
     var placeScubaDivingSearchDTO = function(response){
         $scope.search_dtos = response;
     };
 
     var placeKitesurfingSearchDTO =function(response){
+        $scope.search_dtos = response;
+    };
+    var placeScubaSpotSearchDTO = function(response){
         $scope.search_dtos = response;
     };
 
@@ -24,12 +22,24 @@ app.controller('adventureFinderController', function($scope, handleRequest) {
     var placeSearchValues = function(response){
         $scope.items = response;
     };
-
-    $scope.getScubaSchoolSearchDTO = function(){
-        handleRequest.getScubaDivingSearchDTO().then(placeScubaDivingSearchDTO, onError);
+    var dataLoaded = function(){
+        $scope.dataLoading = false;
     };
-    $scope.getKitesurfingSearchDTO = function(){
-        handleRequest.getKitesurfingSearchDTO().then(placeKitesurfingSearchDTO, onError);
+
+    $scope.getScubaSchoolSearchDTOs = function(){
+        $scope.dataLoading = true;
+        $scope.search_dtos=[];
+        handleRequest.getScubaDivingSearchDTOs().then(placeScubaDivingSearchDTO, onError).then(dataLoaded,onError);
+    };
+    $scope.getKitesurfingSearchDTOs = function(){
+        $scope.search_dtos=[];
+        handleRequest.getKitesurfingSearchDTOs().then(placeKitesurfingSearchDTO, onError).then(dataLoaded,onError);
+    };
+    $scope.getScubaSpotSearchDTOs = function(){
+        $scope.dataLoading = true;
+
+        $scope.search_dtos=[];
+        handleRequest.getScubaDivingSpotsSearchDTOs().then(placeKitesurfingSearchDTO, onError).then(dataLoaded,onError);
     };
     // handleRequest.getScubaDivingSearchDTO().then(placeScubaDivingSearchDTO, onError);
     // handleRequest.getKitesurfingSearchDTO().then(placeKitesurfingSearchDTO, onError)

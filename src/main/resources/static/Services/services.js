@@ -66,7 +66,7 @@
 
         var getComments = function(spot_id){
             return $http.get("/get-comments/" + spot_id);
-        }
+        };
 
         var getUserInfo = function (username){
             return $http.get("/user/"+username)
@@ -158,7 +158,7 @@
                 });
 
         };
-        var getScubaDivingSearchDTO = function(data){
+        var getScubaDivingSearchDTOs = function(data){
             // console.log(data);
             return $http.get("/scuba-diving-dtos")
                 .then(function(response){
@@ -166,13 +166,24 @@
                 });
         };
 
-        var getKitesurfingSearchDTO = function(data){
+        var getKitesurfingSearchDTOs = function(data){
             // console.log(data);
             return $http.get("/get-kitesurfing-search-dtos")
                 .then(function(response){
                     return response.data;
                 });
         };
+        var getScubaDivingSpotsSearchDTOs = function(data){
+            // console.log(data);
+            return $http.get("/get-scuba-spots-search-dtos")
+                .then(function(response){
+                    return response.data;
+                });
+        };
+
+
+
+        
 
 
         return {
@@ -198,8 +209,9 @@
             removeFromPersonalMap:removeFromPersonalMap,
             changeUserInfo: changeUserInfo,
             getSpotNames: getSpotNames,
-            getScubaDivingSearchDTO: getScubaDivingSearchDTO,
-            getKitesurfingSearchDTO: getKitesurfingSearchDTO
+            getScubaDivingSearchDTOs: getScubaDivingSearchDTOs,
+            getKitesurfingSearchDTOs: getKitesurfingSearchDTOs,
+            getScubaDivingSpotsSearchDTOs: getScubaDivingSpotsSearchDTOs
 
         };
 
