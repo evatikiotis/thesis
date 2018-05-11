@@ -25,6 +25,10 @@ public class Spot implements Serializable{
             mappedBy = "spot")
     List<User_Spot_Rating> user_spot_ratings;
 
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "spot")
+    List<User_Spot_Favourite> user_spot_favourites;
+
 
 
 
@@ -95,27 +99,27 @@ public class Spot implements Serializable{
         this.type = type;
     }
 
-//    public User_Spot_Favourite getUser_spot_favourite() {
-//        return user_spot_favourite;
-//    }
-//
-//    public void setUser_spot_favourite(User_Spot_Favourite user_spot_favourite) {
-//        this.user_spot_favourite = user_spot_favourite;
-//    }
+    public DiveSchoolSpot getDiveSchoolSpot() {
+        return diveSchoolSpot;
+    }
 
-//    public DiveSchoolSpot getDiveSchoolSpot() {
-//        return diveSchoolSpot;
-//    }
-//
-//    public void setDiveSchoolSpot(DiveSchoolSpot diveSchoolSpot) {
-//        this.diveSchoolSpot = diveSchoolSpot;
-//    }
-//
-//    public List<User_Spot_Rating> getUser_spot_ratings() {
-//        return user_spot_ratings;
-//    }
-//
-//    public void setUser_spot_ratings(List<User_Spot_Rating> user_spot_ratings) {
-//        this.user_spot_ratings = user_spot_ratings;
-//    }
+    public void setDiveSchoolSpot(DiveSchoolSpot diveSchoolSpot) {
+        this.diveSchoolSpot = diveSchoolSpot;
+    }
+
+    public List<User_Spot_Rating> getUser_spot_ratings() {
+        return user_spot_ratings;
+    }
+
+    public void setUser_spot_ratings(List<User_Spot_Rating> user_spot_ratings) {
+        this.user_spot_ratings = user_spot_ratings;
+    }
+
+    public List<User_Spot_Favourite> getUser_spot_favourites() {
+        return user_spot_favourites;
+    }
+
+    public void setUser_spot_favourites(List<User_Spot_Favourite> user_spot_favourites) {
+        this.user_spot_favourites = user_spot_favourites;
+    }
 }

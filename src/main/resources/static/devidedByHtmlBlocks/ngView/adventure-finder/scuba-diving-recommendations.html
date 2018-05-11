@@ -7,7 +7,7 @@
             <!--<th><center><a href="" ng-click="predicate = 'sno'; reverse=!reverse">S.NO</a></center></th>-->
             <th><center><a href="" ng-click="predicate = 'name'; reverse=!reverse">NAMES</a></center></th>
             <th><center><a href="" ng-click="predicate = 'averageRating'; reverse=!reverse">STARS</a></center></th>
-            <th><center><a href="" ng-click="predicate = 'type'; reverse=!reverse">TYPE</a></center></th>
+            <th><center><a href="" ng-click="predicate = 'timesInFavourites'; reverse=!reverse">timesInFavourites</a></center></th>
         </tr>
         </thead>
         <tbody>
@@ -17,7 +17,7 @@
 
             <td ng-show="friend.numberOfRatings === 1 ">{{friend.averageRating}}/5 ({{friend.numberOfRatings}} rating)</td>
             <td ng-show="!(friend.numberOfRatings === 1)">{{friend.averageRating}}/5 ({{friend.numberOfRatings}} ratings)</td>
-            <td>{{friend.type}}</td>
+            <td>{{friend.timesInFavourites}}</td>
         </tr>
         </tbody>
     </table>

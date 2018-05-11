@@ -3,9 +3,12 @@ package com.tuc.thesis.spring.boot.web.map_app.recommendations;
 public class ScubaDivingSchoolRatingsDTO {
     private int id;
     private String name;
+    private String type;
     private double averageRating = 0.0;
     private long numberOfRatings = 0;
-    private String type;
+
+    private long timesInFavourites;
+    private int rating;
 
 
 
@@ -16,15 +19,11 @@ public class ScubaDivingSchoolRatingsDTO {
     public ScubaDivingSchoolRatingsDTO(int id, String name, String type, double averageRating, long numberOfRatings) {
         this.id = id;
         this.name = name;
-        this.type = type;
         this.averageRating = averageRating;
         this.numberOfRatings = numberOfRatings;
-
+        this.type = type;
+//        this.timesInFavourites = timesInFavourites;
     }
-
-
-
-
 
     public int getId() {
         return id;
@@ -68,4 +67,19 @@ public class ScubaDivingSchoolRatingsDTO {
         this.type = type;
     }
 
+    public long getTimesInFavourites() {
+        return timesInFavourites;
+    }
+
+    public void setTimesInFavourites(long timesInFavourites) {
+        this.timesInFavourites = timesInFavourites;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 }
