@@ -166,6 +166,13 @@
                 });
         };
 
+        var getKitesurfingSearchDTO = function(data){
+            // console.log(data);
+            return $http.get("/get-kitesurfing-search-dtos")
+                .then(function(response){
+                    return response.data;
+                });
+        };
 
 
         return {
@@ -191,7 +198,8 @@
             removeFromPersonalMap:removeFromPersonalMap,
             changeUserInfo: changeUserInfo,
             getSpotNames: getSpotNames,
-            getScubaDivingSearchDTO: getScubaDivingSearchDTO
+            getScubaDivingSearchDTO: getScubaDivingSearchDTO,
+            getKitesurfingSearchDTO: getKitesurfingSearchDTO
 
         };
 

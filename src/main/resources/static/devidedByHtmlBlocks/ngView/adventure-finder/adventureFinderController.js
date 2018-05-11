@@ -8,7 +8,11 @@ app.controller('adventureFinderController', function($scope, handleRequest) {
     //     {sno:5, name:'Ankit', Marks:'74'}];
 
     var placeScubaDivingSearchDTO = function(response){
-        $scope.friends = response;
+        $scope.search_dtos = response;
+    };
+
+    var placeKitesurfingSearchDTO =function(response){
+        $scope.search_dtos = response;
     };
 
     var placeScubaDivingSchoolsRecommendations = function(response){
@@ -20,9 +24,16 @@ app.controller('adventureFinderController', function($scope, handleRequest) {
     var placeSearchValues = function(response){
         $scope.items = response;
     };
-    handleRequest.getScubaDivingSearchDTO().then(placeScubaDivingSearchDTO, onError);
 
-    handleRequest.getScubaDivingSchoolsRecommendations().then(placeScubaDivingSchoolsRecommendations, onError);
-    handleRequest.getSpotNames().then(placeSearchValues,onError);
+    $scope.getScubaSchoolSearchDTO = function(){
+        handleRequest.getScubaDivingSearchDTO().then(placeScubaDivingSearchDTO, onError);
+    };
+    $scope.getKitesurfingSearchDTO = function(){
+        handleRequest.getKitesurfingSearchDTO().then(placeKitesurfingSearchDTO, onError);
+    };
+    // handleRequest.getScubaDivingSearchDTO().then(placeScubaDivingSearchDTO, onError);
+    // handleRequest.getKitesurfingSearchDTO().then(placeKitesurfingSearchDTO, onError)
+    // handleRequest.getScubaDivingSchoolsRecommendations().then(placeScubaDivingSchoolsRecommendations, onError);
+    // handleRequest.getSpotNames().then(placeSearchValues,onError);
 
 });

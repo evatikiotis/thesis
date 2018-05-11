@@ -11,13 +11,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="friend in friends | orderBy:predicate:reverse | filter:ngsearch" data-content="{{friend}}" >{{friend}}
-            <!--<td>{{friend.sno}}</td>-->
-            <td><a class="button button-link" href="#!/">{{friend.name}}</a></td>
+        <tr ng-repeat="search_dto in search_dtos | orderBy:predicate:reverse | filter:ngsearch" data-content="{{search_dto}}" >{{search_dto}}
+            <!--<td>{{search_dto.sno}}</td>-->
+            <td><a class="button button-link" href="#!/">{{search_dto.name}}</a></td>
 
-            <td ng-show="friend.numberOfRatings === 1 ">{{friend.averageRating}}/5 ({{friend.numberOfRatings}} rating)</td>
-            <td ng-show="!(friend.numberOfRatings === 1)">{{friend.averageRating}}/5 ({{friend.numberOfRatings}} ratings)</td>
-            <td>{{friend.timesInFavourites}}</td>
+            <td ng-show="search_dto.numberOfRatings === 1 ">{{search_dto.averageRating}}/5 ({{search_dto.numberOfRatings}} rating)</td>
+            <td ng-show="!(search_dto.numberOfRatings === 1)">{{search_dto.averageRating}}/5 ({{search_dto.numberOfRatings}} ratings)</td>
+            <td>{{search_dto.timesInFavourites}}</td>
         </tr>
         </tbody>
     </table>

@@ -2,6 +2,7 @@ package com.tuc.thesis.spring.boot.web.map_app.spot;
 
 import com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_favourite.User_Spot_Favourite;
 import com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_rating.User_Spot_Rating;
+import com.tuc.thesis.spring.boot.web.map_app.spot.kitesurfing.kiteSpot.KiteSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpot;
 
 import javax.persistence.*;
@@ -20,6 +21,10 @@ public class Spot implements Serializable{
     @OneToOne(fetch = FetchType.LAZY,
             mappedBy = "spot", optional = false)
     private DiveSchoolSpot diveSchoolSpot;
+
+    @OneToOne(fetch = FetchType.LAZY,
+            mappedBy = "spot", optional = false)
+    private KiteSpot kiteSpot;
 
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "spot")
@@ -99,27 +104,27 @@ public class Spot implements Serializable{
         this.type = type;
     }
 
-    public DiveSchoolSpot getDiveSchoolSpot() {
-        return diveSchoolSpot;
-    }
-
-    public void setDiveSchoolSpot(DiveSchoolSpot diveSchoolSpot) {
-        this.diveSchoolSpot = diveSchoolSpot;
-    }
-
-    public List<User_Spot_Rating> getUser_spot_ratings() {
-        return user_spot_ratings;
-    }
-
-    public void setUser_spot_ratings(List<User_Spot_Rating> user_spot_ratings) {
-        this.user_spot_ratings = user_spot_ratings;
-    }
-
-    public List<User_Spot_Favourite> getUser_spot_favourites() {
-        return user_spot_favourites;
-    }
-
-    public void setUser_spot_favourites(List<User_Spot_Favourite> user_spot_favourites) {
-        this.user_spot_favourites = user_spot_favourites;
-    }
+//    public DiveSchoolSpot getDiveSchoolSpot() {
+//        return diveSchoolSpot;
+//    }
+//
+//    public void setDiveSchoolSpot(DiveSchoolSpot diveSchoolSpot) {
+//        this.diveSchoolSpot = diveSchoolSpot;
+//    }
+//
+//    public List<User_Spot_Rating> getUser_spot_ratings() {
+//        return user_spot_ratings;
+//    }
+//
+//    public void setUser_spot_ratings(List<User_Spot_Rating> user_spot_ratings) {
+//        this.user_spot_ratings = user_spot_ratings;
+//    }
+//
+//    public List<User_Spot_Favourite> getUser_spot_favourites() {
+//        return user_spot_favourites;
+//    }
+//
+//    public void setUser_spot_favourites(List<User_Spot_Favourite> user_spot_favourites) {
+//        this.user_spot_favourites = user_spot_favourites;
+//    }
 }

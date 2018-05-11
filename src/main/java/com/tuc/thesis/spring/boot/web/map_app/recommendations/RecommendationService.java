@@ -1,13 +1,11 @@
 package com.tuc.thesis.spring.boot.web.map_app.recommendations;
 
-import com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_rating.User_Spot_Rating;
-import com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_rating.User_Spot_RatingRepository;
 import com.tuc.thesis.spring.boot.web.map_app.spot.SpotRepository;
+import com.tuc.thesis.spring.boot.web.map_app.spot.kitesurfing.kiteSpot.KiteSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -22,8 +20,13 @@ public class RecommendationService {
         return diveSchoolSpotRepository.getScubaSchoolsRecommendations();
     }
 
-    public List<ScubaDivingSchoolRatingsDTO> getScubaDivingSchoolRatingsDTOS(){
+    public List<ScubaDivingSchoolSearchDTO> getScubaDivingSchoolRatingsDTOS(){
         return spotRepository.getScubaDivingSchoolRatingsDTOS();
+//        return diveSchoolSpotRepository.getScubaDivingSchoolRatingsDTOS();
+    }
+
+    public List<ScubaDivingSchoolSearchDTO> getKitesurfingSearchDTOS(){
+        return spotRepository.getKitesurfingSearchDTOS();
 //        return diveSchoolSpotRepository.getScubaDivingSchoolRatingsDTOS();
     }
 

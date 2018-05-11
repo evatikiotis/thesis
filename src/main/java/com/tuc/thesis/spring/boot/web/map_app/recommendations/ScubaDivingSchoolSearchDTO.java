@@ -1,6 +1,6 @@
 package com.tuc.thesis.spring.boot.web.map_app.recommendations;
 
-public class ScubaDivingSchoolRatingsDTO {
+public class ScubaDivingSchoolSearchDTO {
     private int id;
     private String name;
     private String type;
@@ -13,10 +13,10 @@ public class ScubaDivingSchoolRatingsDTO {
 
 
 
-    public ScubaDivingSchoolRatingsDTO() {
+    public ScubaDivingSchoolSearchDTO() {
     }
 
-    public ScubaDivingSchoolRatingsDTO(int id, String name, String type, double averageRating, long numberOfRatings) {
+    public ScubaDivingSchoolSearchDTO(int id, String name, String type, double averageRating, long numberOfRatings) {
         this.id = id;
         this.name = name;
         this.averageRating = averageRating;

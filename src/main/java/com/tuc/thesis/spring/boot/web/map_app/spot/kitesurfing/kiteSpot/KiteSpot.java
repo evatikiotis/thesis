@@ -1,11 +1,15 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot.kitesurfing.kiteSpot;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.tuc.thesis.spring.boot.web.map_app.spot.Spot;
+
+import javax.persistence.*;
 
 @Entity(name = "spot_kitesurfing")
 public class KiteSpot {
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "spot_id", nullable = false, insertable = false, updatable = false)
+    private Spot spot;
+
     @Id
     @Column(name = "spot_id")
     private int id;
@@ -67,6 +71,27 @@ public class KiteSpot {
         this.windBestDirection = windBestDirection;
         this.windMainDirection = windMainDirection;
     }
+
+    public KiteSpot(Spot spot, int id, String waterType, String level, String features, String waveType, String waterHazards, String waterCleanness, String waterBestTide, String beachType, String beachSize, String beachHazards, String beachMonthsUsed, String bestMonths, String windType, String windBestDirection, String windMainDirection) {
+        this.spot = spot;
+        this.id = id;
+        this.waterType = waterType;
+        this.level = level;
+        this.features = features;
+        this.waveType = waveType;
+        this.waterHazards = waterHazards;
+        this.waterCleanness = waterCleanness;
+        this.waterBestTide = waterBestTide;
+        this.beachType = beachType;
+        this.beachSize = beachSize;
+        this.beachHazards = beachHazards;
+        this.beachMonthsUsed = beachMonthsUsed;
+        this.bestMonths = bestMonths;
+        this.windType = windType;
+        this.windBestDirection = windBestDirection;
+        this.windMainDirection = windMainDirection;
+    }
+
     public KiteSpot(){}
 
     public int getId() {
@@ -195,5 +220,13 @@ public class KiteSpot {
 
     public void setWindMainDirection(String windMainDirection) {
         this.windMainDirection = windMainDirection;
+    }
+
+    public Spot getSpot() {
+        return spot;
+    }
+
+    public void setSpot(Spot spot) {
+        this.spot = spot;
     }
 }

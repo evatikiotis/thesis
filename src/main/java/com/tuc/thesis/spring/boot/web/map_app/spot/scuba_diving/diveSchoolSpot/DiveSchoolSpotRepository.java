@@ -1,9 +1,7 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot;
 
-import com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolRatingsDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
