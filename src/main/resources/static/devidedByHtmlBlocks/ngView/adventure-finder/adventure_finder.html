@@ -1,33 +1,35 @@
 <br>
 <h3 class="ml-sm-5">Find what you need</h3>
 <div ng-cloak="" class="tabsdemoDynamicHeight">
-    <md-content>
+    <md-content class="modified-table">
+
         <md-tabs md-dynamic-height="" md-border-bottom="">
             <md-tab label="spots for kitesurfing" md-on-select="getKitesurfingSearchDTOs()">
                 <md-content class="md-padding">
-                    <div ng-if="!dataLoading" ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
-                    <div ng-if="dataLoading"  class="lds-roller"></div>
+                    <div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
                 </md-content>
             </md-tab>
 
             <md-tab label="scuba-diving schools" md-on-select="getScubaSchoolSearchDTOs()" >
                 <md-content class="md-padding">
-                    <div ng-if="!dataLoading" ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
-                    <img ng-if="dataLoading"  src="https://loading.io/spinner/comets/"></img>
+                    <div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
                 </md-content>
             </md-tab>
 
             <md-tab label="spots for scuba-diving" md-on-select="getScubaSpotSearchDTOs()">
+
                 <md-content class="md-padding">
-                    <div ng-if="!dataLoading" ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
-                    <div ng-if="dataLoading"  ng-include="'devidedByHtmlBlocks/all/loader.html'"></div>
+                    <div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
+
                 </md-content>
             </md-tab>
+
         </md-tabs>
+
     </md-content>
 </div>
 
-<!--
+<!--asd
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at https://material.angularjs.org/license.
 

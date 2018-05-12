@@ -1,60 +1,32 @@
+<div ng-if="dataLoading" ng-include="'devidedByHtmlBlocks/all/loader.html'" ></div>
+<div ng-if="!dataLoading" id="search-sortby-div">
+    <div class="offset-sm-2">
+        <label for="search-input"></label>
+        <input type="search" id="search-input" placeholder="Search for Spots" ng-model="ngsearch" />
+    </div>
+    <br>
 
-<div id="search-sortby-div">
-    <input type="search" id="search" ng-model="ngsearch" />
-    <table class="col-sm-8" cellspacing='0'>
+    <table class="col-md-8 col-sm-10 offset-sm-1 offset-md-2" cellspacing='0'>
         <thead>
         <tr>
             <!--<th><center><a href="" ng-click="predicate = 'sno'; reverse=!reverse">S.NO</a></center></th>-->
             <th><center><a href="" ng-click="predicate = 'name'; reverse=!reverse">NAMES</a></center></th>
             <th><center><a href="" ng-click="predicate = 'averageRating'; reverse=!reverse">STARS</a></center></th>
-            <th><center><a href="" ng-click="predicate = 'timesInFavourites'; reverse=!reverse">timesInFavourites</a></center></th>
+            <!--<th><center><a href="" ng-click="predicate = 'timesInFavourites'; reverse=!reverse">timesInFavourites</a></center></th>-->
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="search_dto in search_dtos | orderBy:predicate:reverse | filter:ngsearch" data-content="{{search_dto}}" >{{search_dto}}
             <!--<td>{{search_dto.sno}}</td>-->
-            <td><a class="button button-link" href="#!/">{{search_dto.name}}</a></td>
+            <td ng-if="search_dto.type==='scuba-diving_school'"><a class="" href="#!/map/scubadiving/school/{{search_dto.id}}">{{search_dto.name}}</a></td>
+            <td ng-if="search_dto.type==='scuba-diving_spot'"><a class="" href="#!/map/scubaSpotDetails/{{search_dto.id}}">{{search_dto.name}}</a></td>
+            <td ng-if="search_dto.type==='kiteSpot'"><a class="" href="#!/map/kiteSpotDetails/{{search_dto.id}}">{{search_dto.name}}</a></td>
 
             <td ng-show="search_dto.numberOfRatings === 1 ">{{search_dto.averageRating}}/5 ({{search_dto.numberOfRatings}} rating)</td>
             <td ng-show="!(search_dto.numberOfRatings === 1)">{{search_dto.averageRating}}/5 ({{search_dto.numberOfRatings}} ratings)</td>
-            <td>{{search_dto.timesInFavourites}}</td>
+            <!--<td>{{search_dto.timesInFavourites}}</td>-->
         </tr>
         </tbody>
     </table>
 </div>
 
-<div class="container">
-    <div class="col-sm-6 ">
-        <div class="" style="" ng-repeat="school in schools">
-            <div class="recommendations-div">
-                <div class="ui-header  ">
-                    <div class="row ">
-
-                        <img class="col-sm-4" ng-if="school.image" alt="" src="data:image/png;base64,{{school.image}}" height="100" width="100">
-                        <table class="table col-sm-8"  >
-                            <tbody>
-                            <tr>
-                                <th>Name:</th>
-                                <td>{{school.spot.name}}</td>
-                            </tr>
-                            <tr>
-                                <th>Address:</th>
-                                <td>{{school.address}}</td>
-                            </tr>
-
-                            </tbody>
-                        </table>
-                     </div>
-
-
-                </div>
-
-                <div class="info"> <a class="btn btn-link" href="#/">details</a></div>
-            </div>
-
-
-
-        </div>
-
-    </div>
-</div>

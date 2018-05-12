@@ -58,6 +58,7 @@ nav a::before {
     bottom: 0;
     height: 2px;
     background-color: #C0CC56; /*lightgreen*/
+    /*background-color: rgba(0, 163, 0, 0.92);*/
 }
 
 nav ul {

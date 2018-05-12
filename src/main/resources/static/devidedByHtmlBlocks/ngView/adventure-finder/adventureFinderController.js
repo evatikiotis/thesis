@@ -27,6 +27,7 @@ app.controller('adventureFinderController', function($scope, handleRequest) {
     };
 
     $scope.getScubaSchoolSearchDTOs = function(){
+
         $scope.dataLoading = true;
         $scope.search_dtos=[];
         handleRequest.getScubaDivingSearchDTOs().then(placeScubaDivingSearchDTO, onError).then(dataLoaded,onError);
