@@ -68,7 +68,9 @@
     <div class="col-sm-6" style="padding-left: 2px;">
 
         <ng-map style="height: 350px;" center="[{{spot.latitude}}, {{spot.longitude}}]" zoom="10" map-type-id="HYBRID" >
-            <marker position="[{{spot.latitude}}, {{spot.longitude}}]" ></marker>
+            <custom-marker position="[{{spot.latitude}}, {{spot.longitude}}]" >
+                <img src="images/scubaSchool.svg" height="40" width="36">
+            </custom-marker>
         </ng-map>
     </div>
 </div>

@@ -1,82 +1,4 @@
-<!--&lt;!&ndash;<div ncy-breadcrumb></div>&ndash;&gt;-->
-<!--<p href="#/" class="breadcrumb" ncy-breadcrumb ></p>-->
-<!--<p style="font-size: smaller"><a href="#!/map" class="btn btn-link">spots</a> >> kitesurfing spot</p>-->
-<!--<div class="row container-fluid" >-->
-    <!--<div class="row col-sm-8" >-->
-        <!--<table class="name-level">-->
-            <!--<tr>-->
-                <!--<th>Name: </th>-->
-                <!--<td>{{spot.name}}</td>-->
-            <!--</tr>-->
 
-        <!--</table>-->
-        <!--<table class="ml-sm-5 name-level">-->
-            <!--<tr>-->
-                <!--<th>Level: </th>-->
-                <!--<td>{{kiteSpot.level}}</td>-->
-            <!--</tr>-->
-
-        <!--</table>-->
-    <!--</div>-->
-    <!--<div class="col-sm-3 imagesContainer" >-->
-        <!--<a data-toggle="modal" data-target="#carouselModal"   ng-repeat="image in images">-->
-            <!--<img src="data:image/png;base64,{{image.image}}" alt="kitesurfing spot" height="28" width="28">-->
-        <!--</a>-->
-    <!--</div>-->
-<!--</div>-->
-<!--<div class="modal fade" id="carouselModal">-->
-    <!--<div ng-if="{images}" align="center">-->
-        <!--<div id="demo" class="carousel slide col-sm-6" data-ride="carousel">-->
-
-            <!--&lt;!&ndash; Indicators &ndash;&gt;-->
-            <!--<ul class="carousel-indicators">-->
-                <!--<li data-target="#demo" data-slide-to="{{$index}}" ng-class="{active: $index == 0}" ng-repeat="image in images"></li>-->
-
-            <!--</ul>-->
-
-            <!--&lt;!&ndash; The slideshow &ndash;&gt;-->
-            <!--<div class="carousel-inner">-->
-                <!--<div class="carousel-item " ng-class="{active: $index == 0}"  ng-repeat="image in images">-->
-                    <!--<img src="data:image/png;base64,{{image.image}}" alt="kitesurfing spot">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--&lt;!&ndash; Left and right controls &ndash;&gt;-->
-            <!--<a class="carousel-control-prev" data-target="#demo" data-slide="prev">-->
-                <!--<span class="carousel-control-prev-icon"></span>-->
-            <!--</a>-->
-            <!--<a class="carousel-control-next" data-target="#demo" data-slide="next">-->
-                <!--<span class="carousel-control-next-icon"></span>-->
-            <!--</a>-->
-
-        <!--</div>-->
-
-    <!--</div>-->
-    <!--&lt;!&ndash;<div class="modal-dialog">&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="modal-content">&ndash;&gt;-->
-
-    <!--&lt;!&ndash;&lt;!&ndash; Modal Header &ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="modal-header">&ndash;&gt;-->
-    <!--&lt;!&ndash;<h4 class="modal-title">Modal Heading</h4>&ndash;&gt;-->
-    <!--&lt;!&ndash;<button type="button" class="close" data-dismiss="modal">&times;</button>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;&lt;!&ndash; Modal body &ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="modal-body">&ndash;&gt;-->
-    <!--&lt;!&ndash;&ndash;&gt;-->
-    <!--&lt;!&ndash;&lt;!&ndash;<div ng-include="'devidedByHtmlBlocks/ngView/map/kitesurfing/carousel.html'" ng-controller="carouselController"></div>&ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;&lt;!&ndash; Modal footer &ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="modal-footer">&ndash;&gt;-->
-    <!--&lt;!&ndash;<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--</div>-->
-
-<!--<hr style="margin-top: 4px; margin-bot: 0px;">-->
 <p style="font-size: smaller"><a href="#!/map" class="btn btn-link">spots</a> >> scuba-diving spot</p>
 <div ng-include="'devidedByHtmlBlocks/ngView/map/spot_info_top/spot_info_top.html'"></div>
 <div class="row offset-sm-6 col-sm-6" id="lat-long">
@@ -138,7 +60,9 @@
     <div class="col-sm-6" style="padding-left: 2px;">
 
         <ng-map style="height: 350px;" center="[{{spot.latitude}}, {{spot.longitude}}]" zoom="10" map-type-id="HYBRID" >
-            <marker position="[{{spot.latitude}}, {{spot.longitude}}]" ></marker>
+            <custom-marker position="[{{spot.latitude}}, {{spot.longitude}}]" >
+                <img src="images/diveSpot.svg" height="40" width="36">
+            </custom-marker>
         </ng-map>
     </div>
 </div>

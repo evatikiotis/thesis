@@ -89,10 +89,6 @@
     function run($rootScope, $location, $cookies, $http) {
 
         //init main map
-        $rootScope.kitesurfing = true;
-        $rootScope.scuba_diving=true;
-        $rootScope.scuba_diving_schools=true;
-        $rootScope.scuba_diving_spots=true;
         $rootScope.weatherEntrance = 0;
 
 

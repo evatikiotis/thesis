@@ -1,12 +1,9 @@
 
 
 var module = angular.module('myApp');
-module.controller('leftColumnController', function($scope, $rootScope) {
+module.controller('leftColumnController', function($scope, $rootScope, handleRequest) {
 
-    // $rootScope.kitesurfing = false;
-    // $rootScope.scuba_diving=false;
-    // $rootScope.scuba_diving_schools=false;
-    // $rootScope.scuba_diving_spots=false;
+
 
     $rootScope.markerClustering = false;
     $scope.toggleKiteSurfing = function(){
@@ -67,6 +64,29 @@ module.controller('leftColumnController', function($scope, $rootScope) {
             $rootScope.placeMarkers();
 
         }
+    };
+    var placeSpotCategories = function(response){
+        response.user_interests.map(function(interest){
+            if(interest.user_interest_key.interest==="kitesurfing"){
+                $rootScope.kitesurfing = true;
+            }else if(interest.user_interest_key.interest==="scuba-diving"){
+                $rootScope.scuba_diving = true;
+                $rootScope.scuba_diving_schools = true;
+                $rootScope.scuba_diving_spots = true;
+            }
+        })
+    };
+    var onError = function (reason) {
+        console.log(reason);
+    };
+
+    if($rootScope.globals.currentUser){
+        handleRequest.getUserInfo($rootScope.globals.currentUser.username).then(placeSpotCategories,onError);
+    }else{
+        $rootScope.scuba_diving = true;
+        $rootScope.scuba_diving_schools = true;
+        $rootScope.scuba_diving_spots = true;
+        $rootScope.kitesurfing = true;
     }
 
 

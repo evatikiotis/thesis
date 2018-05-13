@@ -4,13 +4,13 @@
     <md-content class="modified-table">
 
         <md-tabs md-dynamic-height="" md-border-bottom="">
-            <md-tab label="spots for kitesurfing" md-on-select="getKitesurfingSearchDTOs()">
+            <md-tab label="spots for kitesurfing" md-on-select="getKitesurfingSearchDTOs()" >
                 <md-content class="md-padding">
                     <div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
                 </md-content>
             </md-tab>
 
-            <md-tab label="scuba-diving schools" md-on-select="getScubaSchoolSearchDTOs()" >
+            <md-tab label="scuba-diving schools" md-on-select="getScubaSchoolSearchDTOs()" md-active="only_interest_scuba">
                 <md-content class="md-padding">
                     <div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
                 </md-content>

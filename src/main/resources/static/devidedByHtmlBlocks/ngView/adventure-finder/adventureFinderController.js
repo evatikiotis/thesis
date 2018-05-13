@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-app.controller('adventureFinderController', function($scope, handleRequest) {
+app.controller('adventureFinderController', function($scope, handleRequest, $rootScope) {
 
 
     var placeScubaDivingSearchDTO = function(response){
@@ -42,6 +42,19 @@ app.controller('adventureFinderController', function($scope, handleRequest) {
         $scope.search_dtos=[];
         handleRequest.getScubaDivingSpotsSearchDTOs().then(placeKitesurfingSearchDTO, onError).then(dataLoaded,onError);
     };
+    $scope.only_interest_scuba = false;
+    var navigateFinder = function(response){
+        if(response.user_interests.length ==1 ){
+            if(response.user_interests[0].user_interest_key.interest==="scuba-diving"){
+                $scope.only_interest_scuba = true;
+            }
+
+        }
+    };
+
+    if($rootScope.globals.currentUser){
+        handleRequest.getUserInfo($rootScope.globals.currentUser.username).then(navigateFinder,onError);
+    }
     // handleRequest.getScubaDivingSearchDTO().then(placeScubaDivingSearchDTO, onError);
     // handleRequest.getKitesurfingSearchDTO().then(placeKitesurfingSearchDTO, onError)
     // handleRequest.getScubaDivingSchoolsRecommendations().then(placeScubaDivingSchoolsRecommendations, onError);

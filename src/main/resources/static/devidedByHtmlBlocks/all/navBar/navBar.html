@@ -61,14 +61,16 @@
 
 <!--</nav>-->
 
-<div id="user-functionality-navbar">
+<div id="user-functionality-navbar" class="row" >
 
-    <div ng-if="!globals.currentUser" class="" >
+    <a class="navbar-brand" href="#" id="logo">Adventurer</a>
+
+    <div ng-if="!globals.currentUser" class="user-navbar" >
         <a href="#!/login" >log in</a>
         <a href="#!/register" >Register</a>
 
     </div>
-    <div ng-if="globals.currentUser" style="right: 0; top: 0" class="" id="">
+    <div ng-if="globals.currentUser" style="right: 0; top: 0" class="user-navbar" id="">
 
         <div class="dropdown">
             <button type="button" style="background-color: lightgrey" class="btn dropdown-toggle" data-toggle="dropdown">
@@ -86,10 +88,10 @@
     </div>
 
 </div>
-<nav class="navbar navbar-expand-lg navbar-light" id="my-navbar" ng-controller="navbarController">
+<nav class="navbar navbar-expand-lg navbar-light" id="my-navbar"  ng-controller="navbarController">
 
 
-    <a class="navbar-brand" href="#" id="logo">Adventurer</a>
+    <!---->
     <div id="navbar-toggler-div">
         <button class="navbar-toggler" id="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -99,7 +101,7 @@
     </div>
     <br>
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
-        <ul class="navbar-nav ml-sm-5">
+        <ul class="navbar-nav mr-auto ml-auto">
             <li>
                 <a class="nav-link" href="#!/" id="nav_home"  ><i class="fa fa-home"></i> Home</a>
             </li>
