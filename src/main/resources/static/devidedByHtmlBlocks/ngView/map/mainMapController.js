@@ -323,20 +323,20 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
 
 
     };
-    var placePhotos = function (data) {
-
-        // var kiteSpotImage = data;
-        var kiteSpotImages = data;
-        if(kiteSpotImages.length>0) {
-            infoWin.setContent("kitesurfing spot" + "<br >" + $scope.spot.name + "<br>" +
-                "<img alt='kitesurfing spot Image' src='data:image/png;base64," +
-                kiteSpotImages[0].image + "' height=110px; width: 110px;>" + "<br>" +
-                "<a href='#!/map/kiteSpotDetails'>details</a>"+"<br>"+
-                "<a href='#!/map/kiteSpotDetails'>add to personalMap</a>");
-
-        }
-
-    };
+    // var placePhotos = function (data) {
+    //
+    //     // var kiteSpotImage = data;
+    //     var kiteSpotImages = data;
+    //     if(kiteSpotImages.length>0) {
+    //         infoWin.setContent("kitesurfing spot" + "<br >" + $scope.spot.name + "<br>" +
+    //             "<img alt='kitesurfing spot Image' src='data:image/png;base64," +
+    //             kiteSpotImages[0].image + "' height=110px; width: 110px;>" + "<br>" +
+    //             "<a href='#!/map/kiteSpotDetails'>details</a>"+"<br>"+
+    //             "<a href='#!/map/kiteSpotDetails'>add to personalMap</a>");
+    //
+    //     }
+    //
+    // };
 
 
     $rootScope.placeMarkers = function () {
@@ -353,6 +353,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
         if ($rootScope.scuba_diving_spots == true) {
             mergedMarkers = mergedMarkers.concat(scubaSiteMarkers);
         }
+
         var mcOptions = {gridSize: 40, maxZoom: 16, zoomOnClick: false, minimumClusterSize: 7};
         markerCluster = new MarkerClusterer(mmc.mainMap,mergedMarkers, mcOptions);
         google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster){
@@ -378,9 +379,25 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
         console.log(reason);
     };
 
-    handleRequest.getSpots().then(buildMarkers, onError).then($rootScope.placeMarkers);
+    $scope.closedModalPM = function(){
+        kiteSpotMarkers = [];
+        scubaSchoolsMarkers = [];
+        scubaSiteMarkers = [];
+        markerCluster.clearMarkers();
+        markerCluster = null;
+        $scope.notes = "";
+        FlashService.clearFlashMessage();
+        if(angular.isDefined($rootScope.globals.currentUser)) {
+            handleRequest.getFavouriteSpots($rootScope.globals.currentUser.username).then(placeFavouritesOnMainMap, onError)
+        }
+        handleRequest.getSpots().then(buildMarkers, onError).then($rootScope.placeMarkers);
+
+    };
+
+
     if(angular.isDefined($rootScope.globals.currentUser)) {
         handleRequest.getFavouriteSpots($rootScope.globals.currentUser.username).then(placeFavouritesOnMainMap, onError)
     }
+    handleRequest.getSpots().then(buildMarkers, onError).then($rootScope.placeMarkers);
 
 });

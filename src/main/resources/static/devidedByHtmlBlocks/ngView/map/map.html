@@ -32,13 +32,14 @@
 </div>
 
 
-<div class="modal fade" id="add-to-personalmap-modal" >
+<div class="modal fade" data-backdrop="static" id="add-to-personalmap-modal" >
     <div class="modal-dialog">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Add {{spot_to_add_name}}<br> to my personal Map</h4>
+                <h4 class="modal-title container-fluid">Add {{spot_to_add_name}}<br> to my personal Map</h4>
+                <button type="button" class="close" ng-click="closedModalPM()" data-dismiss="modal">x</button>
 
             </div>
             <div class="modal-body">
@@ -58,7 +59,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" ng-click="closedModalPM()" data-dismiss="modal">Close</button>
             </div>
 
         </div>

@@ -5,11 +5,6 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
     vm.attention = false;
 
 
-
-
-
-
-
     var placeUserinfo = function(data){
         vm.user = data;
         for(var i=0; i<vm.user.user_interests.length; i++){

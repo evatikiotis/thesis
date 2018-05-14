@@ -131,7 +131,7 @@ table a:hover {
     background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
 
-.modified-table .md-padding{
+.search-sortby-div{
     max-height: 800px;
     overflow-y: scroll;
     min-height: 500px;

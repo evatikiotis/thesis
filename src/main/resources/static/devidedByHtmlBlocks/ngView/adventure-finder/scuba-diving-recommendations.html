@@ -1,5 +1,5 @@
-<div ng-if="dataLoading" ng-include="'devidedByHtmlBlocks/all/loader.html'" ></div>
-<div ng-if="!dataLoading" id="search-sortby-div">
+<div ng-if="dataLoading" class="container" ng-include="'devidedByHtmlBlocks/all/loader.html'" ></div>
+<div ng-if="!dataLoading" class="search-sortby-div">
     <div class="offset-sm-1 offset-md-1">
         <label for="search-input"></label>
         <input type="search" id="search-input" placeholder="Search for Spots" ng-model="ngsearch" />
