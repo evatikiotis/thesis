@@ -63,7 +63,7 @@
 
 <div id="user-functionality-navbar" class="row" >
 
-    <a class="navbar-brand" href="#" id="logo">Adventurer</a>
+    <a class="navbar-brand" href="#!/" id="logo">Adventurer</a>
 
     <div ng-if="!globals.currentUser" class="user-navbar" >
         <a href="#!/login" >log in</a>
@@ -115,7 +115,7 @@
                 <a class="nav-link" href="#!/adventure-finder" id="nav_adventureFinder" ><i class="fa fa-search" ></i> Spot Finder</a>
             </li>
             <li>
-                <a class="nav-link" href="#!/weather_map" id="nav_weatherMap"><i class="fa fa-cloud" ></i> Weather</a>
+                <a class="nav-link" ng-click="reload();" href="#!/weather_map" id="nav_weatherMap"><i class="fa fa-cloud" ></i> Weather</a>
             </li>
 
         </ul>

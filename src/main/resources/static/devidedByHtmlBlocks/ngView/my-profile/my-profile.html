@@ -2,22 +2,23 @@
 <!--<p href="#/" class="breadcrumb" ncy-breadcrumb ></p>-->
 <div class="container col-sm-8" id="profileCard">
     <div class="row ui-container container ">
-        <div class="col-sm-3">
-            <div class="profile-image" align="center">
+        <div class="col-sm-10 col-md-5">
+            <div class="profile-image text-center" align="center">
                 <h4 class=""><strong>{{globals.currentUser.username}}</strong></h4>
                 <img ng-if="vm.user.image" src="data:image/png;base64,{{vm.user.image}}" alt="user Image" >
                 <img ng-if="!(vm.user.image)"src="images/default-user.svg" alt="user Image">
-                <button class="btn btn-link"
-                        type="button"
-                        data-toggle="modal"
-                        data-target="#change-password-modal"> Change Password
-                </button>
-                <a class="btn btn-link"
-                   type="button"
-                   data-toggle="modal"
-                   data-target="#upload-photo-modal"> Update Profile Picture
-                </a>
-
+                <div class="container">
+                    <button class="btn btn-link"
+                            type="button"
+                            data-toggle="modal"
+                            data-target="#change-password-modal"> Change Password
+                    </button>
+                    <button class="btn btn-link"
+                       type="button"
+                       data-toggle="modal"
+                       data-target="#upload-photo-modal"> Update Profile Picture
+                    </button>
+                </div>
 
             </div>
         </div>
@@ -72,6 +73,7 @@
         </div>
     </div>
 </div>
+
 
 
 

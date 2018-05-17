@@ -1,7 +1,7 @@
 //$rootScope.spot: apo markersController showInfo!!
 
 var module = angular.module('myApp');
-module.controller('navbarController', function($scope, $location, $rootScope, handleRequest) {
+module.controller('navbarController', function($scope, $state, $rootScope, handleRequest) {
     // var nav_home = angular.element(document.querySelector('#nav_home'));
     // var nav_map = angular.element(document.querySelector('#nav_map'));
     // var nav_weatherMap = angular.element(document.querySelector('#nav_weatherMap'));
@@ -61,6 +61,12 @@ module.controller('navbarController', function($scope, $location, $rootScope, ha
     //     nav_adventureFinder.removeClass('active');
     //     nav_about.addClass('active');
     // };
+
+
+    $scope.reload = function(){
+        $state.reload();
+    };
+
     var placeSpotCategories = function(response){
         response.user_interests.map(function(interest){
             if(interest.user_interest_key.interest==="kitesurfing"){
