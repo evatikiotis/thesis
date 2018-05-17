@@ -6,27 +6,11 @@
     backgroun-color: #C0CC56 buttons
     backgroun-color: #8A9903 buttons  hover*/
 
-.my-colors{
-    background-color: #403B34;
-    background-color: #7F7567; /*navbar*/
-    background-color: #BFB09B; /*form header*/
-    background-color: #E5D3BA;
-    background-color: #FFEACF;
-}
-
-.my-colors{
-    background-color: #2A4035;
-    background-color: #547F69;
-    background-color: #7FBF9E;
-    background-color: #98E5BE;
-    background-color: #A9FFD3;
-}
-
 
 html, body{
     font-family: 'Ubuntu', sans-serif;
     height: 100%;
-    background-color: whitesmoke;
+    background-color: whitesmoke !important;
 
 }
 main{
@@ -168,8 +152,7 @@ input.ng-valid.ng-touched {
     border-color: green;
 }
 #leftColumn{
-    background-color: rgba(41,38,34,0.73);
-    color: white;
+
 }
 #leftColumn span{
     letter-spacing: 0.5px;

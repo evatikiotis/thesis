@@ -6,6 +6,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
     mmc.favouriteSpots = [];
     mmc.disabled = true;
     mmc.existsInPersonalMap = false;
+
     var placeFavouritesOnMainMap = function(response){
 
         var spotObjects = response;
@@ -24,16 +25,29 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
         // alert($scope.sidpm);
     };
     $scope.addSpotToPersonal = function(){
-        handleRequest.addSpotPersonalMap($scope.spot_to_add_id, $scope.notes, $rootScope.globals.currentUser.username)
-            .then(function(response){
-                if (response == "OK") {
-                    FlashService.Success('Spot added to personal map successfully', false);
-                    // $window.location.reload();
-                } else {
-                    FlashService.Error(response.message);
-                    vm.dataLoading = false;
-                }
-            });
+        if($scope.notes) {
+            handleRequest.addSpotPersonalMap($scope.spot_to_add_id, $scope.notes, $rootScope.globals.currentUser.username)
+                .then(function (response) {
+                    if (response == "OK") {
+                        FlashService.Success('Spot added to personal map successfully', false);
+                        // $window.location.reload();
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }else{
+            handleRequest.addSpotPersonalMapWithoutNotes($scope.spot_to_add_id, $rootScope.globals.currentUser.username)
+                .then(function (response) {
+                    if (response == "OK") {
+                        FlashService.Success('Spot added to personal map successfully', false);
+                        // $window.location.reload();
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }
     };
 
     var kiteSpotMarkers = [];

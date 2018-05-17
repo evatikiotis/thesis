@@ -15,8 +15,19 @@ public class User_Spot_FavouriteController {
     @RequestMapping(value = "/add-spot-to-personal-map/{spot_id}/{username}", method = RequestMethod.POST)
     public HttpStatus addSpotToFavourites(@PathVariable int spot_id, @PathVariable String username, @RequestBody String notes ){
         User_Spot_Favourite user_spot_favourite = new User_Spot_Favourite();
-
+        if(notes.equals("nothing")){
+            notes = null;
+        }
         user_spot_favouriteService.addSpotToFavourites(spot_id, username, notes);
+        return HttpStatus.OK;
+
+
+    }
+
+    @RequestMapping(value = "/add-spot-to-personal-map-without-notes/{spot_id}/{username}", method = RequestMethod.POST)
+    public HttpStatus addSpotToFavouritesWithoutNotes(@PathVariable int spot_id, @PathVariable String username){
+
+        user_spot_favouriteService.addSpotToFavourites(spot_id, username, null);
         return HttpStatus.OK;
 
 

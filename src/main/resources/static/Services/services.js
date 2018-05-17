@@ -94,6 +94,12 @@
                     return response.data;
                 })
         };
+        var addSpotPersonalMapWithoutNotes = function(spot_to_add_id, username){
+            return $http.post("/add-spot-to-personal-map-without-notes/"+spot_to_add_id + "/"+username)
+                .then(function(response){
+                    return response.data;
+                })
+        };
 
         var getFavouriteSpots = function(username){
             return $http.get("/get-favourite-spots/"+username)
@@ -211,7 +217,8 @@
             getSpotNames: getSpotNames,
             getScubaDivingSearchDTOs: getScubaDivingSearchDTOs,
             getKitesurfingSearchDTOs: getKitesurfingSearchDTOs,
-            getScubaDivingSpotsSearchDTOs: getScubaDivingSpotsSearchDTOs
+            getScubaDivingSpotsSearchDTOs: getScubaDivingSpotsSearchDTOs,
+            addSpotPersonalMapWithoutNotes: addSpotPersonalMapWithoutNotes
 
         };
 

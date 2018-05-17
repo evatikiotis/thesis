@@ -12,7 +12,7 @@ public class User_Spot_Favourite implements Serializable{
     @EmbeddedId
     private User_Spot_FavouriteCompositeKey user_spot_favouriteCompositeKey;
 
-    @Column(name = "notes", updatable = false)
+    @Column(name = "notes", updatable = false, nullable = true)
     private String notes;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
