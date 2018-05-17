@@ -11,22 +11,24 @@
     <p class="help-message">Choose the categories you would like to see on the map</p>
 
 
-    <div class="form-check">
+    <div class="form-check spot-category">
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" ng-model="all"
-                   ng-click="toggleAll()" ng-checked="scuba_diving_schools && scuba_diving_spots && kitesurfing"><span>All</span>
+                   ng-click="toggleAll()" ng-checked="scuba_diving_schools && scuba_diving_spots && kitesurfing"><span>All categories</span>
         </label>
     </div>
-    <div class="form-check">
+
+    <div class="form-check spot-category">
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" ng-model="kitesurfing"
-                   ng-click="toggleKiteSurfing()" ><span><img src="images/kitesurfing.svg" height="20px" width="18">spots for kitesurfing</span>
+                   ng-click="toggleKiteSurfing()" ><span><img src="images/kitesurfing.svg" height="20px" width="18">kitesurfing</span>
         </label>
     </div>
-    <div class="form-check ">
+
+    <div class="form-check spot-category">
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" ng-model="scuba_diving"
-                   ng-click="toggleScubaDiving()" ng-checked="scuba_diving_schools || scuba_diving_spots"><img src="images/scuba-diving.svg" height="20px" width="18">spots for scuba-diving
+                   ng-click="toggleScubaDiving()" ng-checked="scuba_diving_schools || scuba_diving_spots"><img src="images/scuba-diving.svg" height="20px" width="18">scuba-diving
         </label>
     </div>
     <div class="form-check ml-sm-3">

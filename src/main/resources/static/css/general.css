@@ -226,5 +226,7 @@ input.ng-valid.ng-touched {
 .recommendations-div{
     margin: 28px;
 }
-
+.spot-category{
+    margin-top: 11px !important;
+}
 

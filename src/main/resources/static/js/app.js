@@ -88,8 +88,7 @@
     run.$inject = ['$rootScope', '$location', '$cookies', '$http', 'FlashService'];
     function run($rootScope, $location, $cookies, $http) {
 
-        //init main map
-        $rootScope.weatherEntrance = 0;
+
 
 
         // keep user logged in after page refresh
@@ -97,6 +96,8 @@
         if ($rootScope.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
         }
+
+
 
 
 
@@ -116,47 +117,56 @@
             var nav_myMap = angular.element(document.querySelector('#nav_myMap'));
             var nav_adventureFinder = angular.element(document.querySelector('#nav_adventureFinder'));
             var nav_about = angular.element(document.querySelector('#nav_about'));
-            // if($location.url() == "/"){
-            //     nav_home.addClass('active');
-            //     nav_map.removeClass('active');
-            //     nav_weatherMap.removeClass('active');
-            //     nav_myMap.removeClass('active');
-            //     nav_adventureFinder.removeClass('active');
-            // }
-            // if($location.url() == "/map"){
-            //     nav_map.addClass('active');
-            //     nav_home.removeClass('active');
-            //     nav_weatherMap.removeClass('active');
-            //     nav_myMap.removeClass('active');
-            //     nav_adventureFinder.removeClass('active');
-            //
-            // }
-            // if($location.url() == "/weather_map"){
-            //     nav_weatherMap.addClass('active');
-            //     nav_map.removeClass('active');
-            //     nav_home.removeClass('active');
-            //     nav_myMap.removeClass('active');
-            //     nav_adventureFinder.removeClass('active');
-            //
-            // }
+            if($location.url() == "/"){
+                nav_home.addClass('active');
+                nav_map.removeClass('active');
+                nav_weatherMap.removeClass('active');
+                nav_myMap.removeClass('active');
+                nav_adventureFinder.removeClass('active');
+            }
+            if($location.url() == "/map"){
+                nav_map.addClass('active');
+                nav_home.removeClass('active');
+                nav_weatherMap.removeClass('active');
+                nav_myMap.removeClass('active');
+                nav_adventureFinder.removeClass('active');
+
+            }
+            if($location.url() == "/weather_map"){
+                nav_weatherMap.addClass('active');
+                nav_map.removeClass('active');
+                nav_home.removeClass('active');
+                nav_myMap.removeClass('active');
+                nav_adventureFinder.removeClass('active');
+
+            }
             if($location.url() == "/my_map"){
-                // nav_myMap.addClass('active');
                 if(!loggedIn) {
                     nav_myMap.blur();
+                    nav_adventureFinder.removeClass('active');
+                    nav_myMap.removeClass('active');
+                    nav_weatherMap.removeClass('active');
+                    nav_map.removeClass('active');
+                    nav_home.removeClass('active');
                     $location.path('/login');
                 }
-                // nav_map.removeClass('active');
-                // nav_home.removeClass('active');
-                // nav_adventureFinder.removeClass('active');
+                if(loggedIn){
+                    nav_adventureFinder.removeClass('active');
+                    nav_myMap.addClass('active');
+                    nav_weatherMap.removeClass('active');
+                    nav_map.removeClass('active');
+                    nav_home.removeClass('active');
+                }
+
             }
-            // if($location.url() == "/adventure-finder"){
-            //     nav_adventureFinder.addClass('active');
-            //     nav_myMap.removeClass('active');
-            //     nav_weatherMap.removeClass('active');
-            //     nav_map.removeClass('active');
-            //     nav_home.removeClass('active');
-            //
-            // }
+            if($location.url() == "/adventure-finder"){
+                nav_adventureFinder.addClass('active');
+                nav_myMap.removeClass('active');
+                nav_weatherMap.removeClass('active');
+                nav_map.removeClass('active');
+                nav_home.removeClass('active');
+
+            }
 
 
         });
