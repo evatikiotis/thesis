@@ -15,6 +15,7 @@ html, body{
 }
 main{
     background-color: whitesmoke;
+    height: 100%;
 }
 #ng-view-container{
     background-color: whitesmoke;

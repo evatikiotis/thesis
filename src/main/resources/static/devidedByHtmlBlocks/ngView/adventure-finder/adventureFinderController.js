@@ -52,6 +52,8 @@ app.controller('adventureFinderController', function($scope, handleRequest, $roo
         }
     };
 
+    ratingsPosition = 'right';
+
     if($rootScope.globals.currentUser){
         handleRequest.getUserInfo($rootScope.globals.currentUser.username).then(navigateFinder,onError);
     }

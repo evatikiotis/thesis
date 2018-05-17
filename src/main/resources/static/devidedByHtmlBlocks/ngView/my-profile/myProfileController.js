@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope, $state, $window, FlashService, $timeout) {
+module.controller('myProfileController', function($rootScope, handleRequest, UserService, $scope, $state, FlashService, $timeout) {
     vm = this;
     $scope.types = "['address']";
     vm.attention = false;
@@ -118,7 +118,7 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
                     // uc.message =  "Profile image updated successfully";
                     FlashService.Success('Profile info updated successfully', false);
                     $timeout(function() { $scope.displayErrorMsg = false;}, 3000);
-                    $window.location.reload();
+
                 } else {
                     FlashService.Error("Oops, something unexpected happened. Please try again", false);
                 }
@@ -127,6 +127,10 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
         // $state.go('myProfile');
         // $window.location.reload();
 
+    };
+
+    $scope.closedModal = function(){
+        $state.reload();
     };
 
 
@@ -138,7 +142,5 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
 
     handleRequest.getUserInfo($rootScope.globals.currentUser.username).then(placeUserinfo, onError);
     // handleRequest.getUserInterests($rootScope.globals.currentUser.username).then(placeUserInterests, onError);
-    $scope.reload = function(){
-        $state.go('myProfile');
-    };
+
 });

@@ -1,7 +1,7 @@
 //inject angular file upload directives and services.
 var app = angular.module('myApp');
 
-app.controller('uploadController',function ($scope, Upload, $timeout,$rootScope, FlashService, $window) {
+app.controller('uploadController',function ($scope, Upload, $timeout,$rootScope, FlashService) {
     uc = this;
     $scope.uploadPic = function(file) {
         file.upload = Upload.upload({
@@ -13,7 +13,7 @@ app.controller('uploadController',function ($scope, Upload, $timeout,$rootScope,
             if (response.data == "OK") {
                 // uc.message =  "Profile image updated successfully";
                 FlashService.Success('Profile image updated successfully', false);
-                $window.location.reload();
+
             } else {
                 FlashService.Error("Oops, something unexpected happened. Please try again", false);
             }
