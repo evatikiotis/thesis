@@ -114,43 +114,60 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                                     "<th>type:</th>"+
                                     "<td>kitesurfing spot</td>"+
                                 "</tr>"+
-                            "</table>"+
+                            "</table>" +
+                            "<br>"+
+                            "<rating-stars\n" +
+                                "ratings='"+spot.numberOfRatings+"' " +
+                                "average-rating='"+spot.averageRating+"' " +
+                                "ratings-position='right'>" +
+                            "</rating-stars>"+
 
                             "<hr>"+
-                            "<a class='btn btn-link' href='#!/map/kiteSpotDetails/"+spot.id+"'>details</a>";
+                            "<div class='row details_my-map-info'>"+
+                                "<a class='btn btn-link' href='#!/map/kiteSpotDetails/"+spot.id+"'>details</a>";
                     if(mmc.disabled){
 
                         contentString = contentString +
-                            "<button " +
-                                "data-toggle='modal' " +
-                                "data-target='#add-to-personalmap-modal' " +
-                                "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
-                                "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
-                                "ng-click='clickTest()'" +
-                                "title='Login first'"+
-                                "disabled>Add to personal map "+
+                                "<div class='my-map-info'>"+
+                                    "<p >my map</p>"+
+                                    "<button " +
+                                        "data-toggle='modal' " +
+                                        "data-target='#add-to-personalmap-modal' " +
+                                        "onclick=\"localStorage.setItem('spot_id','"+spot.id+"' );" +
+                                        "localStorage.setItem('spot_name','"+spot.name+"' );\"  " +
+                                        "ng-click='clickTest()'" +
+                                        "title='Login first'"+
+                                        "disabled>Add"+
 
-                            "</button>" +
+                                    "</button>" +
+                                "</div>"+
+                            "</div>"+
                             "</div>";
 
 
                     }else{
                         if(!mmc.existsInPersonalMap) {
                             contentString = contentString +
-                                "<button " +
-                                    "data-toggle='modal' " +
-                                    "data-target='#add-to-personalmap-modal' " +
-                                    "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
-                                    "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
-                                    "ng-click='clickTest()'" +
-                                    ">Add to personal map "+
+                                "<div class='my-map-info'>"+
+                                    "<p >my map</p>"+
+                                    "<button " +
+                                        "data-toggle='modal' " +
+                                        "data-target='#add-to-personalmap-modal' " +
+                                        "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
+                                        "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
+                                        "ng-click='clickTest()'" +
+                                        ">Add "+
 
-                                "</button>" +
+                                    "</button>" +
+                                    "</div>"+
+                                "</div>"+
                                 "</div>";
                         }
                         else{
                             contentString = contentString +
-                                "<img src='images/favourite.svg' class='favourite_spot' height='25' width='25' title='favourite'>"
+                                "<div class='my-map-info'>"+
+                                    "<p>my map</p>"+
+                                    "<img src='images/favourite.svg' class='favourite_spot' height='25' width='25' title='favourite'>"
                                 "</div>";
                         }
                     }
@@ -204,20 +221,31 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "<td>scuba-diving school</td>"+
                         "</tr>"+
                         "</table>"+
+                        "<br>"+
+                        "<rating-stars\n" +
+                            "ratings='"+spot.numberOfRatings+"' " +
+                            "average-rating='"+spot.averageRating+"' " +
+                            "ratings-position='right'>" +
+                        "</rating-stars>"+
 
                         "<hr>"+
-                        "<a class='btn btn-link' href='#!/map/scubadiving/school/"+spot.id+"'>details</a>";
+                        "<div class='row details_my-map-info'>"+
+                            "<a class='btn btn-link' href='#!/map/scubadiving/school/"+spot.id+"'>details</a>";
                     if(mmc.disabled) {
                         contentString = contentString +
-                        "<button " +
-                            "data-toggle='modal' " +
-                            "data-target='#add-to-personalmap-modal' " +
-                            "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
-                            "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
-                            "ng-click='clickTest()'" +
-                            "title='Login and save your favourite Spots'"+
-                            "disabled>Add to personal map " +
-                        "</button>" +
+                            "<div class='my-map-info'>"+
+                                "<p >my map</p>"+
+                                "<button " +
+                                    "data-toggle='modal' " +
+                                    "data-target='#add-to-personalmap-modal' " +
+                                    "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
+                                    "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
+                                    "ng-click='clickTest()'" +
+                                    "title='Login and save your favourite Spots'"+
+                                    "disabled>Add " +
+                                "</button>" +
+                            "</div>"+
+                            "</div>"
                         "</div>";
                     }else{
                         if(!mmc.existsInPersonalMap) {
@@ -228,7 +256,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                                 "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
                                 "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
                                 "ng-click='clickTest()'" +
-                                ">Add to personal map "+
+                                ">Add to my map "+
 
                                 "</button>" +
                                 "</div>";
@@ -285,6 +313,12 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                         "<td>scuba-diving spot</td>"+
                         "</tr>"+
                         "</table>"+
+                        "<br>"+
+                        "<rating-stars\n" +
+                            "ratings='"+spot.numberOfRatings+"' " +
+                            "average-rating='"+spot.averageRating+"' " +
+                            "ratings-position='right'>" +
+                        "</rating-stars>"+
 
                         "<hr>"+
                         "<a class='btn btn-link' href='#!/map/scubaSpotDetails/"+spot.id+"'>details</a>";
@@ -297,7 +331,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                             "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
                             "ng-click='clickTest()'" +
                             "title='Login and save your favourite Spots'"+
-                            "disabled>Add to personal map " +
+                            "disabled>Add to my map " +
                         "</button>" +
                         "</div>";
                     }else{
@@ -309,7 +343,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                                 "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
                                 "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
                                 "ng-click='clickTest()'" +
-                                ">Add to personal map "+
+                                ">Add to my map "+
 
                                 "</button>" +
                                 "</div>";

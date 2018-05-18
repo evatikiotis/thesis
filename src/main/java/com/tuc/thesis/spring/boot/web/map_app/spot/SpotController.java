@@ -10,10 +10,10 @@ public class SpotController {
     @Autowired
     private SpotService spotService;
 
-    @RequestMapping("/spots")
-    public List<Spot> getAllSpots(){
-        return spotService.getAllSpots();
-    }
+//    @RequestMapping("/spots")
+//    public List<Spot> getAllSpots(){
+//        return spotService.getAllSpots();
+//    }
 
     @RequestMapping("/spots/kitesurfing")
     public List<Spot> getKiteSpots(){return spotService.getKiteSpots();}
@@ -32,6 +32,13 @@ public class SpotController {
     public List <String> getAllSpotNames(){
         return spotService.geAllSpotNames();
     }
+
+//    @RequestMapping("/get-spot-ratings-dto")
+    @RequestMapping("/spots")
+    public List<Spot_RatingsDTO> getSpot_RatingsDTO(){
+        return spotService.getSpot_RatingsDTO();
+    }
+
 
 
 }

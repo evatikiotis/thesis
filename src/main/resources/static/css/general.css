@@ -163,16 +163,34 @@ input.ng-valid.ng-touched {
     margin-top: 5px;
 }
 .infoWindow{
-    max-height: 110px;
+    max-height: 160px;
     overflow-y: scroll;
-    width: 215px;
+    width: 255px;
+    overflow-x: hidden ;
 }
+
+.infoWindow .my-map-info p{
+    margin:0;
+    font-size: x-small;
+}
+.infoWindow .my-map-info img{
+    margin-right: 10px;
+}
+
+.infoWindow .my-map-info{
+    margin-left: 40px;
+}
+
+.details_my-map-info{
+    padding-left: 30px;
+}
+
 .favourite_spot{
     float: right;
 }
 .infoWindow button{
     height: 25px;
-    margin: 3px;
+
     background-color: rgba(128, 159, 57, 0.97);
     font-size: medium;
 }

@@ -25,21 +25,6 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
     @Query(value="SELECT * FROM spot", nativeQuery = true)
     public List<Spot> getAllSpots();
 
-//    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolRatingsDTO" +
-//            "( s.id ,  s.name, s.type, COALESCE(usr.rating,0) )" +
-////            "COALESCE(AVG(usr.rating),0), COUNT(usr.rating)) " +
-//            " from Spot as s  " +
-//            "   left outer join  s.user_spot_ratings as usr " +
-//            " inner join s.user_spot_ratings as usr2 " +
-//
-////            "   join s.user_spot_favourites fav"+
-//            " where (usr.user_spot_ratingKey.spot_id = s.id)" +
-////            "OR usr.user_spot_ratingKey.spot_id IS null )" +
-////            "   AND(fav.user_spot_favouriteCompositeKey.spot_id = s.id or fav.user_spot_favouriteCompositeKey.spot_id IS NULL) " +
-//            " AND (s.type='scuba-diving_school')"+
-//
-//            " group by s.id,usr.rating")
-//    public List<ScubaDivingSchoolRatingsDTO> getScubaDivingSchoolRatingsDTOS();
 
     @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolSearchDTO" +
             "( s.id ,  s.name, s.type, COALESCE(avg(usr.rating),0), count(usr.rating))" +
@@ -67,4 +52,14 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
             "and  (s.type='scuba-diving_spot')"+
             " group by s.id")
     public List<ScubaDivingSchoolSearchDTO> getScubaSpotsSearchDTOS();
+
+    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot.Spot_RatingsDTO" +
+            "( s.id ,  s.name, s.latitude, s.longitude, s.type, COALESCE(avg(usr.rating),0), count(usr.rating))" +
+            " from Spot as s  " +
+            "  left join  s.user_spot_ratings as usr " +
+            " where (s.id = usr.user_spot_ratingKey.spot_id or usr.user_spot_ratingKey.spot_id is null) " +
+            " group by s.id")
+    public List<Spot_RatingsDTO> getSpot_RatingsDTO();
+
+
 }

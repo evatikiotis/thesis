@@ -33,4 +33,8 @@ public class SpotService {
     public List<String> geAllSpotNames(){
         return spotRepository.getAllSpotNames();
     }
+
+    public List<Spot_RatingsDTO> getSpot_RatingsDTO(){
+        return spotRepository.getSpot_RatingsDTO();
+    }
 }
