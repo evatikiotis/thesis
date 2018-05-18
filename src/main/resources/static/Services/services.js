@@ -186,7 +186,12 @@
                     return response.data;
                 });
         };
-
+        var getIfSpotExistsOnPersonalMap = function(spot_id, username){
+            return $http.get("/if-spot-exists-on-personal-map/"+spot_id+"/"+username)
+                .then(function(response){
+                    return response.data;
+                });
+        };
 
 
         
@@ -218,7 +223,8 @@
             getScubaDivingSearchDTOs: getScubaDivingSearchDTOs,
             getKitesurfingSearchDTOs: getKitesurfingSearchDTOs,
             getScubaDivingSpotsSearchDTOs: getScubaDivingSpotsSearchDTOs,
-            addSpotPersonalMapWithoutNotes: addSpotPersonalMapWithoutNotes
+            addSpotPersonalMapWithoutNotes: addSpotPersonalMapWithoutNotes,
+            getIfSpotExistsOnPersonalMap: getIfSpotExistsOnPersonalMap
 
         };
 

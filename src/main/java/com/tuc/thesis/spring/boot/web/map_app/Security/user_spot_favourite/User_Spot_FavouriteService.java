@@ -41,4 +41,7 @@ public class User_Spot_FavouriteService {
     public void removeFromPersonalMap(int spot_id, String username){
         user_spot_favouriteRepository.removeFromPersonalMap(spot_id, username);
     }
+    public boolean getIfSpotExistsOnPersonalMap(int spot_id, String username){
+        return user_spot_favouriteRepository.getIfSpotExistsOnPersonalMap(spot_id,username);
+    }
 }

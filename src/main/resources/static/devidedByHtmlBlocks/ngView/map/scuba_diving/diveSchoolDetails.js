@@ -1,7 +1,7 @@
 var module = angular.module('myApp');
-module.controller('diveSchoolDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, FlashService) {
+module.controller('diveSchoolDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, FlashService, $state) {
 
-
+    $scope.existsOnPersonalMap = false;
 
     var placeSpotDetails = function(data){
         $scope.spot = data;
@@ -58,9 +58,18 @@ module.controller('diveSchoolDetailsController', function($scope, $rootScope, ha
     $scope.closedModalPM = function(){
         $scope.notes = "";
         FlashService.clearFlashMessage();
+        $state.reload();
 
 
 
     };
+    var placeFavourites = function (reponse) {
+        $scope.existsOnPersonalMap = reponse;
+    };
+
+    if($rootScope.globals.currentUser) {
+        handleRequest.getIfSpotExistsOnPersonalMap($stateParams.id, $rootScope.globals.currentUser.username)
+            .then(placeFavourites, onError);
+    }
 
 });

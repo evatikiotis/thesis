@@ -57,4 +57,8 @@ public class User_Spot_FavouriteController {
 
 
     }
+    @RequestMapping("/if-spot-exists-on-personal-map/{spot_id}/{username}")
+    public boolean getIfSpotExistsOnPersonalMap(@PathVariable int spot_id, @PathVariable String username){
+        return user_spot_favouriteService.getIfSpotExistsOnPersonalMap(spot_id,username);
+    }
 }

@@ -27,4 +27,8 @@ public interface User_Spot_FavouriteRepository extends JpaRepository<User_Spot_F
     @Query(value = "DELETE FROM app_user_spot_favourite WHERE user_username = :username AND spot_id = :spot_id", nativeQuery = true)
     public void removeFromPersonalMap(@Param("spot_id") int spot_id, @Param("username") String username);
 
+    @Query(value = "SELECT\n" +
+            "  CASE WHEN EXISTS (SELECT * FROM app_user_spot_favourite WHERE spot_id = :spot_id AND user_username= :username ) THEN TRUE\n" +
+            "  WHEN NOT EXISTS (SELECT * FROM app_user_spot_favourite WHERE spot_id = :spot_id AND user_username=:username) THEN FALSE END",nativeQuery = true)
+    public boolean getIfSpotExistsOnPersonalMap(@Param("spot_id") int spot_id, @Param("username") String username);
 }

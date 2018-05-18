@@ -1,5 +1,6 @@
 <div ng-include="'devidedByHtmlBlocks/ngView/map/details-add-to-personal-map-modal.html'"></div>
-<button ng-if="globals.currentUser" class="details-add-to-personalmap-button"
+<img ng-if="existsOnPersonalMap"  src="images/favourite.svg" style="float: right" width="40" height="40">
+<button ng-if="globals.currentUser && !existsOnPersonalMap" class="details-add-to-personalmap-button"
         type="button"
         data-toggle="modal"
         data-target="#details-add-to-personalmap-modal">

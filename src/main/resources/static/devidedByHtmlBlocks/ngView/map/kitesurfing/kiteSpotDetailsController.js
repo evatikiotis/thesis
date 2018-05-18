@@ -1,7 +1,8 @@
 var module = angular.module('myApp');
-module.controller('kiteSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, FlashService) {
+module.controller('kiteSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, FlashService, $state) {
     // $rootScope.id = $stateParams.id;
     // var url = $location.absUrl().split('?')[0];
+    $scope.existsOnPersonalMap = false;
     var placeSpotDetails = function (data) {
         $scope.spot = data;
     };
@@ -60,10 +61,17 @@ module.controller('kiteSpotDetailsController', function($scope, $rootScope, hand
     $scope.closedModalPM = function(){
         $scope.notes = "";
         FlashService.clearFlashMessage();
-
-
-
+        $state.reload();
     };
+    var placeFavourites = function (reponse) {
+        $scope.existsOnPersonalMap = reponse;
+    };
+
+    if($rootScope.globals.currentUser) {
+        handleRequest.getIfSpotExistsOnPersonalMap($stateParams.id, $rootScope.globals.currentUser.username)
+            .then(placeFavourites, onError);
+    }
+
 
 
 
