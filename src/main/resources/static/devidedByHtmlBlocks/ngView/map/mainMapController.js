@@ -356,7 +356,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
                                     "onclick=\"localStorage.setItem('spot_id','" + spot.id + "' );" +
                                     "localStorage.setItem('spot_name','" + spot.name + "' );\"  " +
                                     "ng-click='clickTest()'" +
-                                    ">Add to my map "+
+                                    ">Add"+
 
                                     "</button>" +
                                 "</div>"+
