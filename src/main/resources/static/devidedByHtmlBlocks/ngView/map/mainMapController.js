@@ -6,6 +6,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
     mmc.favouriteSpots = [];
     mmc.disabled = true;
     mmc.existsInPersonalMap = false;
+    mmc.needToreload = false;
 
     var placeFavouritesOnMainMap = function(response){
 
@@ -25,11 +26,14 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
         // alert($scope.sidpm);
     };
     $scope.addSpotToPersonal = function(){
+        mmc.needToreload = true;
         if($scope.notes) {
             handleRequest.addSpotPersonalMap($scope.spot_to_add_id, $scope.notes, $rootScope.globals.currentUser.username)
                 .then(function (response) {
                     if (response == "OK") {
+
                         FlashService.Success('Spot added to personal map successfully', false);
+
                         // $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
@@ -445,17 +449,19 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
     };
 
     $scope.closedModalPM = function(){
-        kiteSpotMarkers = [];
-        scubaSchoolsMarkers = [];
-        scubaSiteMarkers = [];
-        markerCluster.clearMarkers();
-        markerCluster = null;
-        $scope.notes = "";
-        FlashService.clearFlashMessage();
-        if(angular.isDefined($rootScope.globals.currentUser)) {
-            handleRequest.getFavouriteSpots($rootScope.globals.currentUser.username).then(placeFavouritesOnMainMap, onError)
+        if(mmc.needToreload) {
+            kiteSpotMarkers = [];
+            scubaSchoolsMarkers = [];
+            scubaSiteMarkers = [];
+            markerCluster.clearMarkers();
+            markerCluster = null;
+            $scope.notes = "";
+            FlashService.clearFlashMessage();
+            if (angular.isDefined($rootScope.globals.currentUser)) {
+                handleRequest.getFavouriteSpots($rootScope.globals.currentUser.username).then(placeFavouritesOnMainMap, onError)
+            }
+            handleRequest.getSpots().then(buildMarkers, onError).then($rootScope.placeMarkers);
         }
-        handleRequest.getSpots().then(buildMarkers, onError).then($rootScope.placeMarkers);
 
     };
 

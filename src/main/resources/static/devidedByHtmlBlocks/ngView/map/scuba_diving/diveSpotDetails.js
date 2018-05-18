@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-module.controller('diveSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams) {
+module.controller('diveSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, FlashService) {
 
 
     var placeSpotDetails = function(data){
@@ -26,6 +26,42 @@ module.controller('diveSpotDetailsController', function($scope, $rootScope, hand
 
     }
 
+    $scope.addSpotToPersonal = function(){
+
+        if($scope.notes) {
+            handleRequest.addSpotPersonalMap($stateParams.id, $scope.notes, $rootScope.globals.currentUser.username)
+                .then(function (response) {
+                    if (response == "OK") {
+
+                        FlashService.Success('Spot added to personal map successfully', false);
+
+                        // $window.location.reload();
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }else{
+            handleRequest.addSpotPersonalMapWithoutNotes($stateParams.id, $rootScope.globals.currentUser.username)
+                .then(function (response) {
+                    if (response == "OK") {
+                        FlashService.Success('Spot added to personal map successfully', false);
+                        // $window.location.reload();
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }
+    };
+
+    $scope.closedModalPM = function(){
+        $scope.notes = "";
+        FlashService.clearFlashMessage();
+
+
+
+    };
 
 
 });

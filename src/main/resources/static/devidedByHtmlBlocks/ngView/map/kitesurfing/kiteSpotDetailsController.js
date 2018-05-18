@@ -1,5 +1,5 @@
 var module = angular.module('myApp');
-module.controller('kiteSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, $state) {
+module.controller('kiteSpotDetailsController', function($scope, $rootScope, handleRequest, NgMap, $cookies, $stateParams, FlashService) {
     // $rootScope.id = $stateParams.id;
     // var url = $location.absUrl().split('?')[0];
     var placeSpotDetails = function (data) {
@@ -28,6 +28,43 @@ module.controller('kiteSpotDetailsController', function($scope, $rootScope, hand
         handleRequest.getKiteSpotImages($stateParams.id).then(placeKiteSpotImages, onError);
 
     }
+    $scope.addSpotToPersonal = function(){
+
+        if($scope.notes) {
+            handleRequest.addSpotPersonalMap($stateParams.id, $scope.notes, $rootScope.globals.currentUser.username)
+                .then(function (response) {
+                    if (response == "OK") {
+
+                        FlashService.Success('Spot added to personal map successfully', false);
+
+                        // $window.location.reload();
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }else{
+            handleRequest.addSpotPersonalMapWithoutNotes($stateParams.id, $rootScope.globals.currentUser.username)
+                .then(function (response) {
+                    if (response == "OK") {
+                        FlashService.Success('Spot added to personal map successfully', false);
+                        // $window.location.reload();
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }
+    };
+
+    $scope.closedModalPM = function(){
+        $scope.notes = "";
+        FlashService.clearFlashMessage();
+
+
+
+    };
+
 
 
     // rating

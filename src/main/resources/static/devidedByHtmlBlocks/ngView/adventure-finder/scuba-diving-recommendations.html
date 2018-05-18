@@ -22,26 +22,21 @@
             <td ng-if="search_dto.type==='scuba-diving_spot'"><a class="" href="#!/map/scubaSpotDetails/{{search_dto.id}}">{{search_dto.name}}</a></td>
             <td ng-if="search_dto.type==='kiteSpot'"><a class="" href="#!/map/kiteSpotDetails/{{search_dto.id}}">{{search_dto.name}}</a></td>
 
-            <td ng-show="search_dto.numberOfRatings === 1 ">
+            <td >
                 <div class="rating-div text-center" >
 
                     <rating-stars
                                   ratings="search_dto.numberOfRatings"
                                   average-rating="search_dto.numberOfRatings"
-                                  ratings-position="search_dto.averageRating">
+                                  ratings-position="right">
                     </rating-stars>
-                    <p>{{search_dto.averageRating}}/5 ({{search_dto.numberOfRatings}} ratings)</p>
+                </div>
+            </td>
 
 
 
-            <td ng-show="!(search_dto.numberOfRatings === 1)">
-                <rating-stars
-                    ratings="search_dto.numberOfRatings"
-                    average-rating="search_dto.averageRating"
-                    ratings-position="ratingsPosition">
-                </rating-stars>
-                <p>{{search_dto.averageRating}}/5 ({{search_dto.numberOfRatings}} rating)</p></td>
-            <!--<td>{{search_dto.timesInFavourites}}</td>-->
+
+
         </tr>
         </tbody>
     </table>

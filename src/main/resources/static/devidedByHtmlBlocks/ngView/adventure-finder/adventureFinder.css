@@ -132,7 +132,7 @@ table a:hover {
 }
 
 .search-sortby-div{
-    max-height: 800px;
+    max-height: 600px;
     overflow-y: scroll;
     min-height: 500px;
 }

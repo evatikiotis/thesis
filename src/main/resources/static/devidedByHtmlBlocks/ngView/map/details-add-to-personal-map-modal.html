@@ -1,0 +1,33 @@
+<div class="modal fade" data-backdrop="static" id="details-add-to-personalmap-modal"  >
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title container-fluid">Add {{spot.name}}<br> to my personal Map</h4>
+                <button type="button" class="close" ng-click="closedModalPM()" data-dismiss="modal">x</button>
+
+            </div>
+            <div class="modal-body">
+                <form ng-submit="addSpotToPersonal()">
+                    <h5>My notes on {{spot.name}}</h5>
+                    <textarea type="textarea" placeholder="Enter notes" ng-model="notes"></textarea>
+                    <br>
+                    <button type="submit">Add</button>
+                </form>
+                <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }"
+                     ng-if="flash" ng-bind="flash.message"></div>
+            </div>
+
+            <!-- Modal body -->
+
+
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" ng-click="closedModalPM()" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
