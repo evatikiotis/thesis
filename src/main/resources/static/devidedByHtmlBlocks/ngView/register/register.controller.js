@@ -18,19 +18,7 @@
 
         };
 
-        var AuthenticateNewUser = function(){
-            vm.dataLoading = true;
-            AuthenticationService.Login(vm.user.username, vm.user.password, function (response) {
-                if (response.success) {
-                    AuthenticationService.SetCredentials(vm.user.username, vm.user.password);
-                    $location.path('/');
-                } else {
-                    vm.dataLoading = false;
-                    FlashService.Error(response.message);
 
-                }
-            });
-        };
 
 
         function register() {
@@ -44,7 +32,8 @@
                 .then(function (response) {
                     if (response == "OK") {
                         FlashService.Success('Registration successful', true);
-                        AuthenticateNewUser();
+                        AuthenticationService.SetCredentials(user_temp.username, Base64.decode(user_temp.password));
+                        $location.path('/');
                         // $rootScope.globals.currentUser.username = vm.user.username;
 
                     } else {
