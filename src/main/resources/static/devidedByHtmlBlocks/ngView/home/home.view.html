@@ -1,14 +1,51 @@
-﻿
-<div ng-if="globals.currentUser">
-    <h1>Hi {{globals.currentUser.username}}!</h1>
-    <p>You're logged in!!</p>
-    <h3>All registered users:</h3>
-    <ul>
-        <li ng-repeat="user in vm.allUsers">
-            {{user.username}} ({{user.firstName}} {{user.lastName}})
-            - <a ng-click="vm.deleteUser(user.id)">Delete</a>
-        </li>
-    </ul>
-    <p>&nbsp;</p>
-    <p><a href="#!/login" class="btn btn-primary">Logout</a></p>
+﻿<div id="fixed">
+    My fixed bar
+</div>
+
+<div id="targets container-fluid">
+    <div id="target-1" class="section">
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" ng-model="all"
+                       ng-click="toggleAll()" ng-checked="scuba_diving_schools && scuba_diving_spots && kitesurfing"><span>All categories</span>
+            </label>
+        </div>
+
+        <div class="form-check ">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" ng-model="kitesurfing"
+                       ng-click="toggleKiteSurfing()" ><span><img src="images/kitesurfing.svg" height="20px" width="18">kitesurfing</span>
+            </label>
+        </div>
+
+        <div class="form-check ">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" ng-model="scuba_diving"
+                       ng-click="toggleScubaDiving()" ng-checked="scuba_diving_schools || scuba_diving_spots"><img src="images/scuba-diving.svg" height="20px" width="18">scuba-diving
+            </label>
+        </div>
+    </div>
+    <div id="target-2" class="section">
+        <a href="#target-5" class="section">Jump to target 5</a>
+    </div>
+    <div id="target-3" class="section row" >
+        <div class="col-sm-6 text-center home-imagesContainer">
+            <h3>Spots for scuba-diving</h3>
+            <img  src="images/mainmap-kitesurfing.png">
+
+        </div>
+        <div class="col-sm-6 text-center">
+            <h3>Spots for kitesurfing</h3>
+            <img src="images/mainmap-kitesurfing.png">
+        </div>
+
+
+    </div>
+    <div id="target-4" class="section">
+        <img src="images/mainmap.png">
+    </div>
+
+    <div id="target-5">
+        <a href="#target-1" class="section">Jump to target 1</a>
+    </div>
 </div>

@@ -251,3 +251,16 @@ input.ng-valid.ng-touched {
     float: right;
 }
 
+.breadcrumb{
+    /*background-color: #7c7c7c !important;*/
+    height: 23px !important;
+    padding: 0 !important;
+    padding-left: 15px !important;
+}
+.breadcrumb span{
+    color: black !important;
+}
+.breadcrumb a{
+    color: blue !important;
+    margin-right: 5px;
+}

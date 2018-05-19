@@ -11,25 +11,25 @@
             templateUrl:'devidedByHtmlBlocks/ngView/home/home.view.html',
             controller: 'HomeController',
             controllerAs: 'vm',
-            ncyBreadcrumb:{ label: 'Home page'}};
+            ncyBreadcrumb:{ label: 'Home'}};
 
         var login = {name: 'login', url:'/login',
             templateUrl:'devidedByHtmlBlocks/ngView/login/login.view.html',
             controller: 'LoginController',
             controllerAs: 'vm',
-            ncyBreadcrumb:{ label: 'Login page'}};
+            ncyBreadcrumb:{ label: 'Login'}};
 
         var register = {name: 'register', url:'/register',
             templateUrl:'devidedByHtmlBlocks/ngView/register/register.view.html',
             controller: 'RegisterController',
             controllerAs: 'vm',
-            ncyBreadcrumb:{ label: 'Register page'}};
+            ncyBreadcrumb:{ label: 'Register'}};
 
         var myProfile = {name: 'myProfile', url:'/my-profile',
             templateUrl:'devidedByHtmlBlocks/ngView/my-profile/my-profile.html',
             controller: 'myProfileController',
             controllerAs: 'vm',
-            ncyBreadcrumb:{ label: 'my prfile page'}};
+            ncyBreadcrumb:{ label: 'My Profile'}};
 
         // var home = {name: 'home', url:'/home', templateUrl:'devidedByHtmlBlocks/ngView/home/home.html',
         //     ncyBreadcrumb:{ label: 'Home page'}};
@@ -40,7 +40,7 @@
             controller: 'mainMapController',
             controllerAs: 'mmc',
             ncyBreadcrumb:{
-                label: 'spots'}
+                label: 'Spots'}
         };
 
         var kiteSpotDetails = {name: 'kiteSpotDetails',url: '/map/kiteSpotDetails/:id',
@@ -48,30 +48,36 @@
             controller: 'kiteSpotDetailsController',
             controllerAs: 'vm',
             ncyBreadcrumb:{
-                parent: function($scope) {
-                    if($scope.from_breadcrumb == "map"){return 'map'}
-                    if($scope.from_breadcrumb == "myMap"){return 'myMap'}
+                parent: function($rootScope) {
+                    if($rootScope.from_breadcrumb == "map"){return 'map'}
+                    if($rootScope.from_breadcrumb == "myMap"){return 'myMap'}
 
                     },
-                label: ' / {{spot.name}}'}};
+                label: '> {{spot.name}}'}};
 
         var scubaSpotDetails = {
             name: 'scubaSpotDetails',url: '/map/scubaSpotDetails/:id',
             templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSpotDetails.html',
             controller: 'diveSpotDetailsController',
             ncyBreadcrumb:{
-                parent:'map',
-                label: '/ scuba-spot'
-            }
+                parent: function($rootScope) {
+                    if($rootScope.from_breadcrumb == "map"){return 'map'}
+                    if($rootScope.from_breadcrumb == "myMap"){return 'myMap'}
+
+                },
+                label: '> {{spot.name}}'}
         };
 
         var scubaSchoolDetails = {name: 'scubaSchoolDetails',url: '/map/scubadiving/school/:id',
             templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSchoolDetails.html',
             controller: 'diveSchoolDetailsController',
             ncyBreadcrumb:{
-                parent:'map',
-                label: '/ scuba-school'
-            }
+                parent: function($rootScope) {
+                    if($rootScope.from_breadcrumb == "map"){return 'map'}
+                    if($rootScope.from_breadcrumb == "myMap"){return 'myMap'}
+
+                },
+                label: '> {{spot.name}}'}
         };
 
         var weatherMap={name: 'weatherMap',url: '/weather_map',
@@ -82,7 +88,7 @@
             controller: 'myMapController',
             ncyBreadcrumb:{
 
-                label: 'my map'
+                label: 'My Map'
             }
         };
 
