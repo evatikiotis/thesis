@@ -1,5 +1,6 @@
 var module = angular.module('myApp');
 module.controller('myMapController', function($scope, handleRequest, $rootScope, $compile, $window, FlashService, $state){
+    $rootScope.from_breadcrumb = 'myMap';
     $scope.clickTest = function() {
         // spot id to add to personal map
         $scope.spot_id_personalMap = $window.localStorage.getItem("spot_id_personalMap");

@@ -7,6 +7,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
     mmc.disabled = true;
     mmc.existsInPersonalMap = false;
     mmc.needToreload = false;
+    $rootScope.from_breadcrumb = 'map';
 
     var placeFavouritesOnMainMap = function(response){
 

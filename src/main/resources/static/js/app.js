@@ -38,28 +38,52 @@
             url:'/map',
             templateUrl:'devidedByHtmlBlocks/ngView/map/map.html',
             controller: 'mainMapController',
-            controllerAs: 'mmc', ncyBreadcrumb:{ label: 'spots'}};
+            controllerAs: 'mmc',
+            ncyBreadcrumb:{
+                label: 'spots'}
+        };
 
         var kiteSpotDetails = {name: 'kiteSpotDetails',url: '/map/kiteSpotDetails/:id',
             templateUrl: 'devidedByHtmlBlocks/ngView/map/kitesurfing/kitespotDetails.html',
             controller: 'kiteSpotDetailsController',
             controllerAs: 'vm',
-            ncyBreadcrumb:{ label: 'kitesurfing spot'}};
+            ncyBreadcrumb:{
+                parent: function($scope) {
+                    if($scope.from_breadcrumb == "map"){return 'map'}
+                    if($scope.from_breadcrumb == "myMap"){return 'myMap'}
 
-        var scubaSpotDetails = {name: 'scubaSpotDetails',url: '/map/scubaSpotDetails/:id',
+                    },
+                label: ' / {{spot.name}}'}};
+
+        var scubaSpotDetails = {
+            name: 'scubaSpotDetails',url: '/map/scubaSpotDetails/:id',
             templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSpotDetails.html',
-            controller: 'diveSpotDetailsController'};
+            controller: 'diveSpotDetailsController',
+            ncyBreadcrumb:{
+                parent:'map',
+                label: '/ scuba-spot'
+            }
+        };
 
         var scubaSchoolDetails = {name: 'scubaSchoolDetails',url: '/map/scubadiving/school/:id',
             templateUrl: 'devidedByHtmlBlocks/ngView/map/scuba_diving/diveSchoolDetails.html',
-            controller: 'diveSchoolDetailsController'};
+            controller: 'diveSchoolDetailsController',
+            ncyBreadcrumb:{
+                parent:'map',
+                label: '/ scuba-school'
+            }
+        };
 
         var weatherMap={name: 'weatherMap',url: '/weather_map',
             templateUrl: 'devidedByHtmlBlocks/ngView/weatherMap/weather_map.html'};
 
         var myMap = {name: 'myMap',url: '/my_map',
             templateUrl: 'devidedByHtmlBlocks/ngView/my-map/myMap.html',
-            controller: 'myMapController'
+            controller: 'myMapController',
+            ncyBreadcrumb:{
+
+                label: 'my map'
+            }
         };
 
         var adventureFinder = {name: 'adventureFinder',url: '/adventure-finder',
