@@ -1,4 +1,4 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security.user_interest;
+package com.tuc.thesis.spring.boot.web.map_app.user_functionality.user_interest;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

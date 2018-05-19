@@ -1,7 +1,7 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot;
 
-import com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_favourite.User_Spot_Favourite;
-import com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_rating.User_Spot_Rating;
+import com.tuc.thesis.spring.boot.web.map_app.user_functionality.user_spot_favourite.User_Spot_Favourite;
+import com.tuc.thesis.spring.boot.web.map_app.user_functionality.user_spot_rating.User_Spot_Rating;
 import com.tuc.thesis.spring.boot.web.map_app.spot.kitesurfing.kiteSpot.KiteSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpot;
 

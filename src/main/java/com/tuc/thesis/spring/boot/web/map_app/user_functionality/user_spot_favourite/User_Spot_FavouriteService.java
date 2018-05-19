@@ -1,10 +1,8 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_favourite;
+package com.tuc.thesis.spring.boot.web.map_app.user_functionality.user_spot_favourite;
 
-import com.tuc.thesis.spring.boot.web.map_app.spot.Spot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.SpotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

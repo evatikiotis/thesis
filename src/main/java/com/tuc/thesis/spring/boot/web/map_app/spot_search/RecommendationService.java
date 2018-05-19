@@ -1,7 +1,6 @@
-package com.tuc.thesis.spring.boot.web.map_app.recommendations;
+package com.tuc.thesis.spring.boot.web.map_app.spot_search;
 
 import com.tuc.thesis.spring.boot.web.map_app.spot.SpotRepository;
-import com.tuc.thesis.spring.boot.web.map_app.spot.kitesurfing.kiteSpot.KiteSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpotRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,7 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_rating;
+package com.tuc.thesis.spring.boot.web.map_app.user_functionality.user_spot_rating;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.lang.reflect.InvocationTargetException;
 
 @Service
 public class User_Spot_RatingService {

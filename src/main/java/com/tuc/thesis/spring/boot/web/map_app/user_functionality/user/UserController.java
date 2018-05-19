@@ -1,25 +1,15 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security.user;
+package com.tuc.thesis.spring.boot.web.map_app.user_functionality.user;
 
 import com.sun.net.httpserver.Authenticator;
-import com.tuc.thesis.spring.boot.web.map_app.Security.user_interest.User_Interest;
-import com.tuc.thesis.spring.boot.web.map_app.Security.user_interest.User_Interest_Service;
-import com.tuc.thesis.spring.boot.web.map_app.Security.user_interest.User_interest_Repository;
+import com.tuc.thesis.spring.boot.web.map_app.user_functionality.user_interest.User_Interest;
+import com.tuc.thesis.spring.boot.web.map_app.user_functionality.user_interest.User_Interest_Service;
 import com.tuc.thesis.spring.boot.web.map_app.image.AppImage;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.print.attribute.standard.Media;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 

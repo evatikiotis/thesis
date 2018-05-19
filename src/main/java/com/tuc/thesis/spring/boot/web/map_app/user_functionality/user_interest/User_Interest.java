@@ -1,11 +1,10 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security.user_interest;
+package com.tuc.thesis.spring.boot.web.map_app.user_functionality.user_interest;
 
 
 
-import com.tuc.thesis.spring.boot.web.map_app.Security.user.User;
+import com.tuc.thesis.spring.boot.web.map_app.user_functionality.user.User;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 
 @Entity(name = "app_user_interest")

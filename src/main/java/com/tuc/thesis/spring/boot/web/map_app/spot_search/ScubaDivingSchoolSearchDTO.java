@@ -1,4 +1,4 @@
-package com.tuc.thesis.spring.boot.web.map_app.recommendations;
+package com.tuc.thesis.spring.boot.web.map_app.spot_search;
 
 public class ScubaDivingSchoolSearchDTO {
     private int id;

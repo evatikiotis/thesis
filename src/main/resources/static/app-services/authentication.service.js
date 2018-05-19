@@ -18,7 +18,7 @@
         function Login(username, password, callback) {
 
 
-            $http.post('/api/authenticate', { username: username, password: password })
+            $http.post('/api/authenticate', { username: username, password: Base64.encode(password) })
                .then(function (response) {
                    if (response.status == 200) {
                        response = {success: true};

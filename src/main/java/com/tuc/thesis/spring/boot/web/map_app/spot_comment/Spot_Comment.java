@@ -1,6 +1,6 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot_comment;
 
-import com.tuc.thesis.spring.boot.web.map_app.Security.user.User;
+import com.tuc.thesis.spring.boot.web.map_app.user_functionality.user.User;
 
 import javax.persistence.*;
 import java.sql.Date;

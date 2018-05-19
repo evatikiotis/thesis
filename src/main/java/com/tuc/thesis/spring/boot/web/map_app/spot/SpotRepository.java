@@ -1,7 +1,6 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot;
 
-import com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolSearchDTO;
-import com.tuc.thesis.spring.boot.web.map_app.spot.kitesurfing.kiteSpot.KiteSpot;
+import com.tuc.thesis.spring.boot.web.map_app.spot_search.ScubaDivingSchoolSearchDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -26,7 +25,7 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
     public List<Spot> getAllSpots();
 
 
-    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolSearchDTO" +
+    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot_search.ScubaDivingSchoolSearchDTO" +
             "( s.id ,  s.name, s.type, COALESCE(avg(usr.rating),0), count(usr.rating))" +
             " from Spot as s  " +
             "  left join  s.user_spot_ratings as usr " +
@@ -35,7 +34,7 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
             " group by s.id")
     public List<ScubaDivingSchoolSearchDTO> getScubaDivingSchoolRatingsDTOS();
 
-    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolSearchDTO" +
+    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot_search.ScubaDivingSchoolSearchDTO" +
             "( s.id ,  s.name, s.type, COALESCE(avg(usr.rating),0), count(usr.rating))" +
             " from Spot as s  " +
             "  left join  s.user_spot_ratings as usr " +
@@ -44,7 +43,7 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
             " group by s.id")
     public List<ScubaDivingSchoolSearchDTO> getKitesurfingSearchDTOS();
 
-    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.recommendations.ScubaDivingSchoolSearchDTO" +
+    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot_search.ScubaDivingSchoolSearchDTO" +
             "( s.id ,  s.name, s.type, COALESCE(avg(usr.rating),0), count(usr.rating))" +
             " from Spot as s  " +
             "  left join  s.user_spot_ratings as usr " +

@@ -1,12 +1,10 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security.user;
+package com.tuc.thesis.spring.boot.web.map_app.user_functionality.user;
 
 import com.tuc.thesis.spring.boot.web.map_app.image.AppImage;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 

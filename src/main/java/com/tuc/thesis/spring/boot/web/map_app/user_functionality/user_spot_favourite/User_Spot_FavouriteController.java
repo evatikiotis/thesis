@@ -1,6 +1,5 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security.user_spot_favourite;
+package com.tuc.thesis.spring.boot.web.map_app.user_functionality.user_spot_favourite;
 
-import com.tuc.thesis.spring.boot.web.map_app.spot.Spot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

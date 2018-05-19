@@ -1,19 +1,11 @@
-package com.tuc.thesis.spring.boot.web.map_app.Security.user;
+package com.tuc.thesis.spring.boot.web.map_app.user_functionality.user;
 
-import ch.qos.logback.core.db.dialect.SQLDialect;
-import com.tuc.thesis.spring.boot.web.map_app.Security.user.User;
 import com.tuc.thesis.spring.boot.web.map_app.image.AppImage;
-import org.hibernate.jpa.event.internal.core.JpaPostInsertEventListener;
-import org.hibernate.jpa.event.internal.core.JpaSaveOrUpdateEventListener;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.sql.SQLOutput;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
