@@ -51,6 +51,7 @@
                 parent: function($rootScope) {
                     if($rootScope.from_breadcrumb == "map"){return 'map'}
                     if($rootScope.from_breadcrumb == "myMap"){return 'myMap'}
+                    if($rootScope.from_breadcrumb == "spot-finder"){return 'spotFinder'}
 
                     },
                 label: '> {{spot.name}}'}};
@@ -63,6 +64,7 @@
                 parent: function($rootScope) {
                     if($rootScope.from_breadcrumb == "map"){return 'map'}
                     if($rootScope.from_breadcrumb == "myMap"){return 'myMap'}
+                    if($rootScope.from_breadcrumb == "spot-finder"){return 'spotFinder'}
 
                 },
                 label: '> {{spot.name}}'}
@@ -75,6 +77,7 @@
                 parent: function($rootScope) {
                     if($rootScope.from_breadcrumb == "map"){return 'map'}
                     if($rootScope.from_breadcrumb == "myMap"){return 'myMap'}
+                    if($rootScope.from_breadcrumb == "spot-finder"){return 'spotFinder'}
 
                 },
                 label: '> {{spot.name}}'}
@@ -92,9 +95,13 @@
             }
         };
 
-        var adventureFinder = {name: 'adventureFinder',url: '/adventure-finder',
+        var adventureFinder = {name: 'spotFinder',url: '/adventure-finder',
             templateUrl: 'devidedByHtmlBlocks/ngView/adventure-finder/adventure_finder.html',
-            controller: 'adventureFinderController'
+            controller: 'adventureFinderController',
+            ncyBreadcrumb:{
+
+                label: 'Spot Finder'
+            }
         };
 
         // var login = {name: 'login',url: '/login', templateUrl: 'devidedByHtmlBlocks/ngView/login/login.html'};

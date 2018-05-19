@@ -1,7 +1,7 @@
 var module = angular.module('myApp');
 app.controller('adventureFinderController', function($scope, handleRequest, $rootScope) {
 
-
+    $rootScope.from_breadcrumb = "spot-finder";
     var placeScubaDivingSearchDTO = function(response){
         $scope.search_dtos = response;
     };

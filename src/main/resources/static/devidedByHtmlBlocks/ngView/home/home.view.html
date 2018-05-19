@@ -1,6 +1,5 @@
-﻿<div id="fixed">
-    My fixed bar
-</div>
+﻿<p href="#/" class="breadcrumb" ncy-breadcrumb ></p>
+
 
 <div id="targets container-fluid">
     <div id="target-1" class="section">
@@ -26,17 +25,29 @@
         </div>
     </div>
     <div id="target-2" class="section">
-        <a href="#target-5" class="section">Jump to target 5</a>
+        <input places-auto-complete id="home_place" style="height: 30px; text-align: center"
+               ng-model="search_near_place"
+               component-restrictions="{country:'GR'}"
+               types="{{types}}"
+               placeholder="Enter location"
+               on-place-changed="placeChanged()"
+               ng-show=true
+
+
+        />
     </div>
     <div id="target-3" class="section row" >
-        <div class="col-sm-6 text-center home-imagesContainer">
-            <h3>Spots for scuba-diving</h3>
-            <img  src="images/mainmap-kitesurfing.png">
-
+        <div class="col-sm-4 text-center home-imagesContainer">
+            <h3>kitesurfing spots</h3>
+            <a href="#!/map" ng-click="home_image_kite_clicked()"><img  src="images/mainmap-kitesurfing.png"></a>
         </div>
-        <div class="col-sm-6 text-center">
-            <h3>Spots for kitesurfing</h3>
-            <img src="images/mainmap-kitesurfing.png">
+        <div class="col-sm-4 text-center home-imagesContainer">
+            <h3>scuba-diving spots</h3>
+            <a href="#!/map" ng-click="home_image_scuba_clicked()"><img src="images/mainmap-scuba-schools.png"></a>
+        </div>
+        <div class="col-sm-4 text-center home-imagesContainer">
+            <h3>All spots</h3>
+            <a href="#!/map" ng-click="home_image_all_clicked()"><img src="images/mainmap.png"></a>
         </div>
 
 

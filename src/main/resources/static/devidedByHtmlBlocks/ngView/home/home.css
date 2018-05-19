@@ -31,7 +31,12 @@
     box-shadow: lightgrey 4px 5px;
     border: solid 4px;
     border-color: lightgrey;
-    height:300px;
+    height:120px;
+
+}
+.home-imagesContainer{
+    background-color: #1e7e34;
+    height: 200px;
 
 }
 
