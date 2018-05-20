@@ -18,7 +18,24 @@
 
         };
 
+        var Registration = function (response) {
+            if (response == "OK") {
+                FlashService.Success('Registration successful', true);
+                AuthenticationService.SetCredentials(vm.user.username, vm.user.password);
+                $location.path('/');
+                $rootScope.kitesurfing = false;
+                $rootScope.scuba_diving_spots = false;
+                $rootScope.scuba_diving_schools = false;
+                // $rootScope.globals.currentUser.username = vm.user.username;
 
+            } else {
+                FlashService.Error(response.message);
+                vm.dataLoading = false;
+            }
+        };
+        var onError = function (reason) {
+            console.log(reason);
+        };
 
 
         function register() {
@@ -29,18 +46,7 @@
 
             user_temp.password = Base64.encode(user_temp.password);
             UserService.Create(user_temp)
-                .then(function (response) {
-                    if (response == "OK") {
-                        FlashService.Success('Registration successful', true);
-                        AuthenticationService.SetCredentials(user_temp.username, Base64.decode(user_temp.password));
-                        $location.path('/');
-                        // $rootScope.globals.currentUser.username = vm.user.username;
-
-                    } else {
-                        FlashService.Error(response.message);
-                        vm.dataLoading = false;
-                    }
-                });
+                .then(Registration,onError);
 
 
         }
@@ -65,6 +71,7 @@
                     }
                 })
         };
+
 
 
     }

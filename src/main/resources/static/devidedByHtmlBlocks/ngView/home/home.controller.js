@@ -13,6 +13,7 @@
         vm.allUsers = [];
         vm.deleteUser = deleteUser;
 
+
         initController();
         $scope.placeChanged = function(){
             alert($scope.search_near_place);
