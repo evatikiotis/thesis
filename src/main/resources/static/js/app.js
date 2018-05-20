@@ -126,7 +126,10 @@
     function run($rootScope, $location, $cookies, $http) {
 
 
-
+        $rootScope.scuba_diving = true;
+        $rootScope.scuba_diving_schools = true;
+        $rootScope.scuba_diving_spots = true;
+        $rootScope.kitesurfing = true;
 
         // keep user logged in after page refresh
         $rootScope.globals = $cookies.getObject('globals') || {};

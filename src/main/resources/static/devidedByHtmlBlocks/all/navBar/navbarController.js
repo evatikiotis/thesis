@@ -82,14 +82,14 @@ module.controller('navbarController', function($scope, $state, $rootScope, handl
         console.log(reason);
     };
 
-    if($rootScope.globals.currentUser){
-        handleRequest.getUserInfo($rootScope.globals.currentUser.username).then(placeSpotCategories,onError);
-    }else{
-        $rootScope.scuba_diving = true;
-        $rootScope.scuba_diving_schools = true;
-        $rootScope.scuba_diving_spots = true;
-        $rootScope.kitesurfing = true;
-    }
+    // if($rootScope.globals.currentUser){
+    //     handleRequest.getUserInfo($rootScope.globals.currentUser.username).then(placeSpotCategories,onError);
+    // }else{
+    //     $rootScope.scuba_diving = true;
+    //     $rootScope.scuba_diving_schools = true;
+    //     $rootScope.scuba_diving_spots = true;
+    //     $rootScope.kitesurfing = true;
+    // }
 
 
 

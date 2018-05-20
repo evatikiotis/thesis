@@ -20,33 +20,34 @@
         service.checkUsernameAvailability = checkUsernameAvailability;
         service.checkOldPassword = checkOldPassword;
         service.changePassword = changePassword;
+        service.server = '';
+        // service.server = '/adventurer';
 
         return service;
-        // var server = '/adventurer';
-        var server = '';
+
 
         function GetAll() {
-            return $http.get(server+'/users').then(handleSuccess, handleError('Error getting all users'));
+            return $http.get(service.server+'/users').then(handleSuccess, handleError('Error getting all users'));
         }
 
         function GetById(id) {
-            return $http.get(server+'/api/users/' + id).then(handleSuccess, handleError('Error getting user by id'));
+            return $http.get(service.server+'/api/users/' + id).then(handleSuccess, handleError('Error getting user by id'));
         }
 
         function GetByUsername(username) {
-            return $http.get(server+'/user/' + username).then(handleSuccess, handleError('Error getting user by username'));
+            return $http.get(service.server+'/user/' + username).then(handleSuccess, handleError('Error getting user by username'));
         }
 
         function Create(user) {
-            return $http.post(server+'/users/add', user ).then(handleSuccess, handleError('Error creating user'));
+            return $http.post(service.server+'/users/add', user ).then(handleSuccess, handleError('Error creating user'));
         }
 
         function Update(user) {
-            return $http.put(server+'/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
+            return $http.put(service.server+'/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
         }
 
         function Delete(id) {
-            return $http.delete(server+'/api/users/' + id).then(handleSuccess, handleError('Error deleting user'));
+            return $http.delete(service.server+'/api/users/' + id).then(handleSuccess, handleError('Error deleting user'));
         }
 
         // private functions
@@ -62,20 +63,20 @@
         }
         //vv
         function uploadProfileImage(username, image){
-            return $http.post(server+'/user/upload-profile-image/'+username, image ).then(handleSuccess, handleError('Error creating user'));
+            return $http.post(service.server+'/user/upload-profile-image/'+username, image ).then(handleSuccess, handleError('Error creating user'));
         }
 
         function checkUsernameAvailability(possible_username){
-            return $http.get(server+'/check-username-availability/'+possible_username);
+            return $http.get(service.server+'/check-username-availability/'+possible_username);
         }
 
         function checkOldPassword(username, oldPassword){
-            return $http.get(server+'/check-old-password/'+username + '/'+ oldPassword);
+            return $http.get(service.server+'/check-old-password/'+username + '/'+ oldPassword);
 
         }
 
         function changePassword(username, password){
-            return $http.post(server+'/change-password/'+username, password);
+            return $http.post(service.server+'/change-password/'+username, password);
         }
     }
 
