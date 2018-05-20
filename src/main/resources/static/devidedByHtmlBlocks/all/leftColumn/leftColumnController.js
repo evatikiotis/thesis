@@ -81,6 +81,10 @@ module.controller('leftColumnController', function($scope, $rootScope, handleReq
     };
 
     if($rootScope.globals.currentUser){
+        $rootScope.scuba_diving = false;
+        $rootScope.scuba_diving_schools = false;
+        $rootScope.scuba_diving_spots = false;
+        $rootScope.kitesurfing = false;
         handleRequest.getUserInfo($rootScope.globals.currentUser.username).then(placeSpotCategories,onError);
     }else{
         $rootScope.scuba_diving = true;
