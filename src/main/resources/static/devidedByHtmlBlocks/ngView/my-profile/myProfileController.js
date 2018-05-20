@@ -7,13 +7,19 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
 
     var placeUserinfo = function(data){
         vm.user = data;
+        $rootScope.kitesurfing = false;
+        $rootScope.scuba_diving_spots = false;
+        $rootScope.scuba_diving_schools = false;
         for(var i=0; i<vm.user.user_interests.length; i++){
             if(vm.user.user_interests[i].user_interest_key.interest === "scuba-diving"){
+                $rootScope.scuba_diving_spots = true;
+                $rootScope.scuba_diving_schools = true;
                 vm.scubadiving = "scuba-diving";
                 vm.scubadiving_level = vm.user.user_interests[i].level;
                 vm.user.user_interests[i].user_interest_key.user_username = $rootScope.globals.currentUser.username;
             }
             if(vm.user.user_interests[i].user_interest_key.interest === "kitesurfing") {
+                $rootScope.kitesurfing = true;
                 vm.kitesurfing = "kitesurfing";
                 vm.kitesurfing_level = vm.user.user_interests[i].level;
                 vm.user.user_interests[i].user_interest_key.user_username = $rootScope.globals.currentUser.username;
@@ -130,7 +136,9 @@ module.controller('myProfileController', function($rootScope, handleRequest, Use
     };
 
     $scope.closedModal = function(){
+        FlashService.clearFlashMessage();
         $state.reload();
+
     };
 
 
