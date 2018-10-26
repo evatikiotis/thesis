@@ -49,15 +49,18 @@ public class Spot implements Serializable{
     private double longitude;
     @Column(name = "type")
     private String type;
+    @Column(name = "address")
+    private String address;
 
 
-    public Spot(int id, String name, double latitude, double longitude, String type) {
+    public Spot(int id, String name, double latitude, double longitude, String type, String address) {
         super();
         this.id = id;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
         this.type = type;
+        this.address = address;
     }
 
 
@@ -104,7 +107,15 @@ public class Spot implements Serializable{
         this.type = type;
     }
 
-//    public DiveSchoolSpot getDiveSchoolSpot() {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    //    public DiveSchoolSpot getDiveSchoolSpot() {
 //        return diveSchoolSpot;
 //    }
 //

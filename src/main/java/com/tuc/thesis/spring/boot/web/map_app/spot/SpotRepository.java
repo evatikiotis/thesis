@@ -4,6 +4,7 @@ import com.tuc.thesis.spring.boot.web.map_app.spot_search.ScubaDivingSchoolSearc
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -59,6 +60,12 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
             " where (s.id = usr.user_spot_ratingKey.spot_id or usr.user_spot_ratingKey.spot_id is null) " +
             " group by s.id")
     public List<Spot_RatingsDTO> getSpot_RatingsDTO();
+
+    @Query(value = "SELECT * FROM spot " +
+            "WHERE (LOWER(spot.name) LIKE LOWER(CONCAT('%',:searchTerm,'%')) OR " +
+            "LOWER(spot.address) LIKE LOWER(CONCAT('%',:searchTerm,'%'))) " +
+            "AND spot.type LIKE :spotType", nativeQuery = true)
+    public List<Spot> getSearchResults(@Param("searchTerm") String searchTerm, @Param("spotType") String spotType);
 
 
 }

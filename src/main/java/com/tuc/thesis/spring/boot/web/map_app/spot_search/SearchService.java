@@ -1,5 +1,6 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot_search;
 
+import com.tuc.thesis.spring.boot.web.map_app.spot.Spot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.SpotRepository;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpotRepository;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RecommendationService {
+public class SearchService {
     @Autowired
     DiveSchoolSpotRepository diveSchoolSpotRepository;
     @Autowired
@@ -33,4 +34,7 @@ public class RecommendationService {
     //        return diveSchoolSpotRepository.getScubaDivingSchoolRatingsDTOS();
         }
 
+    public List<Spot> getSearchResults(String type, String searchTerm) {
+        return spotRepository.getSearchResults(searchTerm, type);
+    }
 }
