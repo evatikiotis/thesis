@@ -18,6 +18,8 @@ public class Spot implements Serializable{
 //            mappedBy = "spot")
 //    private User_Spot_Favourite user_spot_favourite;
 
+
+
     @OneToOne(fetch = FetchType.LAZY,
             mappedBy = "spot", optional = false)
     private DiveSchoolSpot diveSchoolSpot;
@@ -63,7 +65,12 @@ public class Spot implements Serializable{
         this.address = address;
     }
 
-
+    public Spot(int id, String name, String type, String address) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.address = address;
+    }
 
     public Spot() {}
 

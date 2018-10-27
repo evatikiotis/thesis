@@ -97,7 +97,8 @@
 
         var adventureFinder = {name: 'spotFinder',url: '/adventure-finder',
             templateUrl: 'devidedByHtmlBlocks/ngView/adventure-finder/adventure_finder.html',
-            controller: 'adventureFinderController',
+            controller: 'ExampleController',
+            controllerAs: 'vm',
             ncyBreadcrumb:{
 
                 label: 'Spot Finder'

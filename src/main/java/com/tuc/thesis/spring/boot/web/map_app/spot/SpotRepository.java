@@ -1,14 +1,17 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot;
 
 import com.tuc.thesis.spring.boot.web.map_app.spot_search.ScubaDivingSchoolSearchDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-public interface SpotRepository extends JpaRepository<Spot, Integer> {
+public interface SpotRepository extends JpaRepository<Spot, Integer>, PagingAndSortingRepository<Spot, Integer> {
 
     @Query(value = "SELECT * FROM spot WHERE type='kiteSpot'",nativeQuery = true)
     public List<Spot> selectKiteSpots();
@@ -61,11 +64,17 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
             " group by s.id")
     public List<Spot_RatingsDTO> getSpot_RatingsDTO();
 
-    @Query(value = "SELECT * FROM spot " +
-            "WHERE (LOWER(spot.name) LIKE LOWER(CONCAT('%',:searchTerm,'%')) OR " +
-            "LOWER(spot.address) LIKE LOWER(CONCAT('%',:searchTerm,'%'))) " +
-            "AND spot.type LIKE :spotType", nativeQuery = true)
-    public List<Spot> getSearchResults(@Param("searchTerm") String searchTerm, @Param("spotType") String spotType);
+//    @Query(value = "SELECT * FROM spot " +
+//            "WHERE (LOWER(spot.name) LIKE LOWER(CONCAT('%',:searchTerm,'%')) OR " +
+//            "LOWER(spot.address) LIKE LOWER(CONCAT('%',:searchTerm,'%'))) " +
+//            "AND spot.type LIKE :spotType", nativeQuery = true)
+//    public Page<Spot> getSearchResults(@Param("searchTerm") String searchTerm, @Param("spotType") String spotTypen, Pageable pageRequest);
+
+    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot.Spot (s.id, s.name, s.type, s.address) FROM Spot as s " +
+            "WHERE (LOWER(s.name) LIKE LOWER(CONCAT('%',:searchTerm,'%')) OR " +
+            "LOWER(s.address) LIKE LOWER(CONCAT('%',:searchTerm,'%'))) " +
+            "AND s.type LIKE :spotType")
+    public Page<Spot> getSearchResults(@Param("searchTerm") String searchTerm, @Param("spotType") String spotType, Pageable pageRequest);
 
 
 }

@@ -1,38 +1,64 @@
 <p href="#/" class="breadcrumb" ncy-breadcrumb ></p>
 <h3 class="ml-sm-5">Find what you need</h3>
-<div ng-cloak="" class="tabsdemoDynamicHeight">
-    <md-content class="modified-table">
+<!--<div ng-cloak="" class="tabsdemoDynamicHeight">-->
+    <!--<md-content class="modified-table">-->
 
-        <md-tabs md-dynamic-height="" md-border-bottom="">
-            <md-tab label="spots for kitesurfing" md-on-select="getKitesurfingSearchDTOs()" >
-                <md-content class="md-padding">
-                    <div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
-                </md-content>
-            </md-tab>
+        <!--<md-tabs md-dynamic-height="" md-border-bottom="">-->
+            <!--<md-tab label="spots for kitesurfing" md-on-select="getKitesurfingSearchDTOs()" >-->
+                <!--<md-content class="md-padding">-->
+                    <!--<div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>-->
+                <!--</md-content>-->
+            <!--</md-tab>-->
 
-            <md-tab label="scuba-diving schools" md-on-select="getScubaSchoolSearchDTOs()" md-active="only_interest_scuba">
-                <md-content class="md-padding">
-                    <div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
-                </md-content>
-            </md-tab>
+            <!--<md-tab label="scuba-diving schools" md-on-select="getScubaSchoolSearchDTOs()" md-active="only_interest_scuba">-->
+                <!--<md-content class="md-padding">-->
+                    <!--<div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>-->
+                <!--</md-content>-->
+            <!--</md-tab>-->
 
-            <md-tab label="spots for scuba-diving" md-on-select="getScubaSpotSearchDTOs()">
+            <!--<md-tab label="spots for scuba-diving" md-on-select="getScubaSpotSearchDTOs()">-->
 
-                <md-content class="md-padding">
-                    <div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>
+                <!--<md-content class="md-padding">-->
+                    <!--<div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>-->
 
-                </md-content>
-            </md-tab>
+                <!--</md-content>-->
+            <!--</md-tab>-->
 
-        </md-tabs>
+        <!--</md-tabs>-->
 
-    </md-content>
-</div>
+    <!--</md-content>-->
+<!--</div>-->
 
 <!--asd
 Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at https://material.angularjs.org/license.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at https://material.angularjs.org/license.-->
+<div class="container">
+    <div class="text-center">
 
+        <!-- items being paged -->
+        <div ng-repeat="item in vm.items">Item {{item}}</div>
+
+        <!-- pager -->
+        <ul ng-if="vm.pager.pages.length" class="pagination">
+            <li ng-class="{disabled:vm.pager.currentPage === 1}">
+                <a ng-click="vm.setPage(1)">First</a>
+            </li>
+            <li ng-class="{disabled:vm.pager.currentPage === 1}">
+                <a ng-click="vm.setPage(vm.pager.currentPage - 1)">Previous</a>
+            </li>
+            <li ng-repeat="page in vm.pager.pages" ng-class="{active:vm.pager.currentPage === page}">
+                <a ng-click="vm.setPage(page)">{{page}}</a>
+            </li>
+            <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+                <a ng-click="vm.setPage(vm.pager.currentPage + 1)">Next</a>
+            </li>
+            <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+                <a ng-click="vm.setPage(vm.pager.totalPages)">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<hr />
 
 
 

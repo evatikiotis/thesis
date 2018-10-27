@@ -5,6 +5,8 @@ import com.tuc.thesis.spring.boot.web.map_app.spot.SpotRepository;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,7 +36,7 @@ public class SearchService {
     //        return diveSchoolSpotRepository.getScubaDivingSchoolRatingsDTOS();
         }
 
-    public List<Spot> getSearchResults(String type, String searchTerm) {
-        return spotRepository.getSearchResults(searchTerm, type);
+    public Iterable<Spot> getSearchResults(String type, String searchTerm, int page) {
+        return spotRepository.getSearchResults(searchTerm, type, new PageRequest(page,10, Sort.Direction.ASC, "name"));
     }
 }
