@@ -195,8 +195,11 @@
                     return response.data;
                 });
         };
-        var searchForSpots = function () {
-            return $http.get(server+"/search?searchTerm=Agios&spotType=%25&page=3")
+        var searchForSpots = function (searchTerm, page) {
+            return $http.get(server+"/search?searchTerm="+
+                searchTerm +
+                "&spotType=%25&page="+
+                page)
                 .then(function (response) {
                     return response.data;
 

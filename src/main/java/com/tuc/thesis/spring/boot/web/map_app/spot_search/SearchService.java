@@ -37,6 +37,6 @@ public class SearchService {
         }
 
     public Iterable<Spot> getSearchResults(String type, String searchTerm, int page) {
-        return spotRepository.getSearchResults(searchTerm, type, new PageRequest(page,10, Sort.Direction.ASC, "name"));
+        return spotRepository.getSearchResults(searchTerm, type, new PageRequest(page,60, Sort.Direction.ASC, "name"));
     }
 }

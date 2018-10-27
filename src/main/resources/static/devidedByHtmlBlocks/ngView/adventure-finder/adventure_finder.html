@@ -1,59 +1,86 @@
 <p href="#/" class="breadcrumb" ncy-breadcrumb ></p>
-<h3 class="ml-sm-5">Find what you need</h3>
 <!--<div ng-cloak="" class="tabsdemoDynamicHeight">-->
-    <!--<md-content class="modified-table">-->
+<!--<md-content class="modified-table">-->
 
-        <!--<md-tabs md-dynamic-height="" md-border-bottom="">-->
-            <!--<md-tab label="spots for kitesurfing" md-on-select="getKitesurfingSearchDTOs()" >-->
-                <!--<md-content class="md-padding">-->
-                    <!--<div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>-->
-                <!--</md-content>-->
-            <!--</md-tab>-->
+<!--<md-tabs md-dynamic-height="" md-border-bottom="">-->
+<!--<md-tab label="spots for kitesurfing" md-on-select="getKitesurfingSearchDTOs()" >-->
+<!--<md-content class="md-padding">-->
+<!--<div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>-->
+<!--</md-content>-->
+<!--</md-tab>-->
 
-            <!--<md-tab label="scuba-diving schools" md-on-select="getScubaSchoolSearchDTOs()" md-active="only_interest_scuba">-->
-                <!--<md-content class="md-padding">-->
-                    <!--<div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>-->
-                <!--</md-content>-->
-            <!--</md-tab>-->
+<!--<md-tab label="scuba-diving schools" md-on-select="getScubaSchoolSearchDTOs()" md-active="only_interest_scuba">-->
+<!--<md-content class="md-padding">-->
+<!--<div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>-->
+<!--</md-content>-->
+<!--</md-tab>-->
 
-            <!--<md-tab label="spots for scuba-diving" md-on-select="getScubaSpotSearchDTOs()">-->
+<!--<md-tab label="spots for scuba-diving" md-on-select="getScubaSpotSearchDTOs()">-->
 
-                <!--<md-content class="md-padding">-->
-                    <!--<div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>-->
+<!--<md-content class="md-padding">-->
+<!--<div ng-include="'devidedByHtmlBlocks/ngView/adventure-finder/scuba-diving-recommendations.html'"></div>-->
 
-                <!--</md-content>-->
-            <!--</md-tab>-->
+<!--</md-content>-->
+<!--</md-tab>-->
 
-        <!--</md-tabs>-->
+<!--</md-tabs>-->
 
-    <!--</md-content>-->
+<!--</md-content>-->
 <!--</div>-->
 
 <!--asd
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at https://material.angularjs.org/license.-->
 <div class="container">
-    <div class="text-center">
+    <div class="">
+        <div class="row">
+            <div class="col-sm-3">
+                <input placeholder="search" ng-model="vm.searchTerm" ng-change="vm.search()">
+            </div>
+            <div class="col-sm-3 offset-sm-2">
+                <span class="sorter-selection" ng-model="vm.sortBy">sorting by</span>
+                <select >
+                    <option value="name">name</option>
+                    <option value="rating">rating</option>
+                    <option value="type">spot type</option>
+                </select>
+            </div>
+        </div>
 
         <!-- items being paged -->
-        <div ng-repeat="item in vm.items">Item {{item}}</div>
+        <a ng-if="item.type==='scuba-diving_school'" href="#!/map/scubadiving/school/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
+            <div class="col-sm-4">{{item.name}}</div>
+            <div class="col-sm-5">{{item.address}}</div>
+            <div class="col-sm-3">scuba-diving school</div>
+        </a>
+        <a ng-if="item.type==='scuba-diving_spot'" href="#!/map/scubaSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
+            <div class="col-sm-4">{{item.name}}</div>
+            <div class="col-sm-5">{{item.address}}</div>
+            <div class="col-sm-3">scuba-diving spot</div>
+        </a>
+        <a ng-if="item.type==='kiteSpot'" href="#!/map/kiteSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
+            <div class="col-sm-4">{{item.name}}</div>
+            <div class="col-sm-5">{{item.address}}</div>
+            <div class="col-sm-3">kitesurfing spot</div>
+        </a>
+
 
         <!-- pager -->
         <ul ng-if="vm.pager.pages.length" class="pagination">
             <li ng-class="{disabled:vm.pager.currentPage === 1}">
-                <a ng-click="vm.setPage(1)">First</a>
+                <a ng-click="vm.setPage(1, true)">First</a>
             </li>
             <li ng-class="{disabled:vm.pager.currentPage === 1}">
-                <a ng-click="vm.setPage(vm.pager.currentPage - 1)">Previous</a>
+                <a ng-click="vm.setPage(vm.pager.currentPage - 1, true)">Previous</a>
             </li>
             <li ng-repeat="page in vm.pager.pages" ng-class="{active:vm.pager.currentPage === page}">
-                <a ng-click="vm.setPage(page)">{{page}}</a>
+                <a ng-click="vm.setPage(page, true)">{{page}}</a>
             </li>
             <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
-                <a ng-click="vm.setPage(vm.pager.currentPage + 1)">Next</a>
+                <a ng-click="vm.setPage(vm.pager.currentPage + 1, true)">Next</a>
             </li>
             <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
-                <a ng-click="vm.setPage(vm.pager.totalPages)">Last</a>
+                <a ng-click="vm.setPage(vm.pager.totalPages, true)">Last</a>
             </li>
         </ul>
     </div>

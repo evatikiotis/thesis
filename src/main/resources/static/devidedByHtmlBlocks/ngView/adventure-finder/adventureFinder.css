@@ -1,6 +1,26 @@
 a {
     cursor: pointer;
 }
+.spot-box{
+    position: relative;
+    display: flex;
+    padding: calc(1.8vw + 10px);
+    box-shadow: 0 2px 7px rgba(0,0,0,.15);
+    margin: calc(.6vw + 10px) 0;
+    transition: all .3s cubic-bezier(0,0,.2,1);
+    cursor: pointer;
+}
+.spot-box a{
+    text-decoration: none;
+    color: black;
+}
+.spot-box a:first-child {
+    text-decoration: underline;
+    color: blue;
+}
+.sorter-selection{
+    font-weight: 700;
+}
 .pagination>li>a, .pagination>li>span {
     position: relative;
     float: left;
