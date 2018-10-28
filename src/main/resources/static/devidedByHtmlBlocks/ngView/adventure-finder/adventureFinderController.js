@@ -67,7 +67,7 @@
 // });
 
 var module = angular.module('myApp');
-module.controller('ExampleController', function(PagerService, handleRequest, $rootScope) {
+module.controller('ExampleController', function(PagerService, handleRequest, $rootScope, $timeout) {
 
     var vm = this;
     $rootScope.from_breadcrumb = "spot-finder";
@@ -76,9 +76,17 @@ module.controller('ExampleController', function(PagerService, handleRequest, $ro
     vm.setPage = setPage;
     vm.sortBy = 'name';
     vm.showType = '%25';
+    var _timeout;
 
     vm.search = function(){
-        handleRequest.searchForSpots(vm.searchTerm, 0, vm.sortBy, vm.showType).then(handleSearchResponse, onError);
+        if(_timeout){ //if there is already a timeout in process cancel it
+            $timeout.cancel(_timeout);
+        }
+        _timeout = $timeout(function(){
+            handleRequest.searchForSpots(vm.searchTerm, 0, vm.sortBy, vm.showType).then(handleSearchResponse, onError);
+            _timeout = null;
+        },650);
+
     };
 
     function initController() {
