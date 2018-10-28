@@ -45,7 +45,7 @@
                                 <p ng-if="interestObj.user_interest_key.interest != 'empty' &&
                                         interestObj.user_interest_key.interest != 'kitesurfing_remove' &&
                                         interestObj.user_interest_key.interest != 'scuba-dving_remove' ">
-                                    {{interestObj.user_interest_key.interest}}, <i>{{interestObj.level}}</i>
+                                    {{interestObj.user_interest_key.interest}}<i>{{interestObj.level ? ", " + interestObj.level:""}}</i>
                                 </p>
 
                             </div>
@@ -218,7 +218,7 @@
                                 <label>level:</label>
                                 <select ng-model="vm.kitesurfing_level"  name="level">
                                     <option value="beginner" ng-selected="vm.kitesurfing_level=='beginner'">Beginner</option>
-                                    <option value="itermediate" ng-selected="vm.kitesurfing_level=='intermediate'">Intermediate</option>
+                                    <option value="intermediate" ng-selected="vm.kitesurfing_level=='intermediate'">Intermediate</option>
                                     <option value="expert" ng-selected="vm.kitesurfing_level=='expert'">Expert</option>
                                 </select>
                             </span>
