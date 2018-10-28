@@ -35,8 +35,8 @@ public class SearchController {
     }
 
     @RequestMapping("/search")
-    public ResponseEntity<?> searchForSpots(@RequestParam("searchTerm") String searchTerm, @RequestParam("spotType") String spotType, @RequestParam("page") int page) {
-        return new ResponseEntity<>(searchService.getSearchResults(spotType, searchTerm, page), HttpStatus.OK);
+    public ResponseEntity<?> searchForSpots(@RequestParam("searchTerm") String searchTerm, @RequestParam("spotType") String spotType, @RequestParam("page") int page, @RequestParam("sortBy") String sortBy) {
+        return new ResponseEntity<>(searchService.getSearchResults(spotType, searchTerm, page, sortBy), HttpStatus.OK);
     }
 
 

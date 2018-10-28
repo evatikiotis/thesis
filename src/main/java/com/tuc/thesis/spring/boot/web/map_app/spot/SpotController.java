@@ -35,7 +35,7 @@ public class SpotController {
 
 //    @RequestMapping("/get-spot-ratings-dto")
     @RequestMapping("/spots")
-    public List<Spot_RatingsDTO> getSpot_RatingsDTO(){
+    public List<SpotDto> getSpot_RatingsDTO(){
         return spotService.getSpot_RatingsDTO();
     }
 

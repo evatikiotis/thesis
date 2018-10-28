@@ -195,11 +195,16 @@
                     return response.data;
                 });
         };
-        var searchForSpots = function (searchTerm, page) {
+        var searchForSpots = function (searchTerm, page, sortBy, showType) {
             return $http.get(server+"/search?searchTerm="+
                 searchTerm +
-                "&spotType=%25&page="+
-                page)
+                "&spotType="+
+                showType +
+                "&page="+
+                page +
+                "&sortBy=" +
+                sortBy
+            )
                 .then(function (response) {
                     return response.data;
 
@@ -262,7 +267,7 @@
             currentPage = currentPage || 1;
 
             // default page size is 10
-            pageSize = pageSize || 60;
+            pageSize = pageSize || 20;
 
             // calculate total pages
             var totalPages = Math.ceil(totalItems / pageSize);

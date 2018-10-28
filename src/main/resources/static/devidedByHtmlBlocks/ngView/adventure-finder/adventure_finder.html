@@ -37,9 +37,17 @@ Use of this source code is governed by an MIT-style license that can be in found
             <div class="col-sm-3">
                 <input placeholder="search" ng-model="vm.searchTerm" ng-change="vm.search()">
             </div>
-            <div class="col-sm-3 offset-sm-2">
-                <span class="sorter-selection" ng-model="vm.sortBy">sorting by</span>
-                <select >
+            <div class="col-sm-3">
+                <select ng-change="vm.typeChanged()" ng-model="vm.showType">
+                    <option value="%25">All spot types</option>
+                    <option value="kiteSpot">kitesurfing spots</option>
+                    <option value="scuba-diving_school">scuba-diving schools</option>
+                    <option value="scuba-diving_spot">scuba-diving spots</option>
+                </select>
+            </div>
+            <div class="col-sm-3 offset-sm-3">
+                <span class="sorter-selection" >sorting by</span>
+                <select ng-change="vm.sortingChanged()" ng-model="vm.sortBy">
                     <option value="name">name</option>
                     <option value="rating">rating</option>
                     <option value="type">spot type</option>
@@ -52,16 +60,37 @@ Use of this source code is governed by an MIT-style license that can be in found
             <div class="col-sm-4">{{item.name}}</div>
             <div class="col-sm-5">{{item.address}}</div>
             <div class="col-sm-3">scuba-diving school</div>
+            <div class="col-sm-3 offset-sm-9">
+                <rating-stars
+                        ratings="item.numberOfRatings"
+                        average-rating="item.averageRating"
+                        ratings-position="right">
+                </rating-stars>
+            </div>
         </a>
         <a ng-if="item.type==='scuba-diving_spot'" href="#!/map/scubaSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
             <div class="col-sm-4">{{item.name}}</div>
             <div class="col-sm-5">{{item.address}}</div>
             <div class="col-sm-3">scuba-diving spot</div>
+            <div class="col-sm-3 offset-sm-9">
+                <rating-stars
+                        ratings="item.numberOfRatings"
+                        average-rating="item.averageRating"
+                        ratings-position="right">
+                </rating-stars>
+            </div>
         </a>
         <a ng-if="item.type==='kiteSpot'" href="#!/map/kiteSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
             <div class="col-sm-4">{{item.name}}</div>
             <div class="col-sm-5">{{item.address}}</div>
             <div class="col-sm-3">kitesurfing spot</div>
+            <div class="col-sm-3 offset-sm-9">
+                <rating-stars
+                        ratings="item.numberOfRatings"
+                        average-rating="item.averageRating"
+                        ratings-position="right">
+                </rating-stars>
+            </div>
         </a>
 
 

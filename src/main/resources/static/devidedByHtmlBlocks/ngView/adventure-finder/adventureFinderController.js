@@ -75,29 +75,40 @@ module.controller('ExampleController', function(PagerService, handleRequest, $ro
     vm.pager = {};
     vm.setPage = setPage;
     vm.sortBy = 'name';
+    vm.showType = '%25';
 
     vm.search = function(){
-        handleRequest.searchForSpots(vm.searchTerm, 0).then(handleSearchResponse, onError);
+        handleRequest.searchForSpots(vm.searchTerm, 0, vm.sortBy, vm.showType).then(handleSearchResponse, onError);
     };
 
     function initController() {
         // initialize to page 1
         // vm.setPage(1);
-        handleRequest.searchForSpots("", 0).then(handleSearchResponse, onError);
+        handleRequest.searchForSpots("", 0, vm.sortBy, vm.showType).then(handleSearchResponse, onError);
         // console.log(spots[1]);
     }
+
+    vm.sortingChanged = function() {
+        var searchTerm = vm.searchTerm ? vm.searchTerm : ""
+        handleRequest.searchForSpots(searchTerm, vm.pager.currentPage - 1, vm.sortBy, vm.showType).then(handlePageChange, onError);
+
+    };
+
+    vm.typeChanged = function () {
+        var searchTerm = vm.searchTerm ? vm.searchTerm : ""
+        handleRequest.searchForSpots(searchTerm, 0, vm.sortBy, vm.showType).then(handleSearchResponse, onError);
+    };
 
     function setPage(page, pageChanged) {
         if (page < 1 || page > vm.pager.totalPages) {
             return;
         }
-        console.log(page);
 
         // get pager object from service
         vm.pager = PagerService.GetPager(vm.dummyItems.length, page);
         if(pageChanged) {
-            var search = vm.searchTerm ? vm.searchTerm : ""
-            handleRequest.searchForSpots(search, page - 1).then(handlePageChange, onError);
+            var searchTerm = vm.searchTerm ? vm.searchTerm : ""
+            handleRequest.searchForSpots(searchTerm, page - 1, vm.sortBy, vm.showType).then(handlePageChange, onError);
         }
         // get current page of items
         // vm.items = vm.dummyItems.slice(vm.pager.startIndex, vm.pager.endIndex + 1);
@@ -107,13 +118,11 @@ module.controller('ExampleController', function(PagerService, handleRequest, $ro
         vm.dummyItems = _.range(1, response.totalElements);
         vm.items = response.content;
         vm.setPage(response.number+ 1, false);
-        console.log("apedo");
 
     };
     var handlePageChange = function(response) {
         vm.dummyItems = _.range(1, response.totalElements);
         vm.items = response.content;
-        console.log("apedo");
 
     };
 

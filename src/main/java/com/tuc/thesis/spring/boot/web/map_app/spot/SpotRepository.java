@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -56,13 +55,13 @@ public interface SpotRepository extends JpaRepository<Spot, Integer>, PagingAndS
             " group by s.id")
     public List<ScubaDivingSchoolSearchDTO> getScubaSpotsSearchDTOS();
 
-    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot.Spot_RatingsDTO" +
+    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot.SpotDto" +
             "( s.id ,  s.name, s.latitude, s.longitude, s.type, COALESCE(avg(usr.rating),0), count(usr.rating))" +
             " from Spot as s  " +
             "  left join  s.user_spot_ratings as usr " +
             " where (s.id = usr.user_spot_ratingKey.spot_id or usr.user_spot_ratingKey.spot_id is null) " +
             " group by s.id")
-    public List<Spot_RatingsDTO> getSpot_RatingsDTO();
+    public List<SpotDto> getSpot_RatingsDTO();
 
 //    @Query(value = "SELECT * FROM spot " +
 //            "WHERE (LOWER(spot.name) LIKE LOWER(CONCAT('%',:searchTerm,'%')) OR " +
@@ -70,11 +69,25 @@ public interface SpotRepository extends JpaRepository<Spot, Integer>, PagingAndS
 //            "AND spot.type LIKE :spotType", nativeQuery = true)
 //    public Page<Spot> getSearchResults(@Param("searchTerm") String searchTerm, @Param("spotType") String spotTypen, Pageable pageRequest);
 
-    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot.Spot (s.id, s.name, s.type, s.address) FROM Spot as s " +
-            "WHERE (LOWER(s.name) LIKE LOWER(CONCAT('%',:searchTerm,'%')) OR " +
+//    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot.Spot (s.id, s.name, s.type, s.address) FROM Spot as s " +
+//
+//            "WHERE (LOWER(s.name) LIKE LOWER(CONCAT('%',:searchTerm,'%')) OR " +
+//            "LOWER(s.address) LIKE LOWER(CONCAT('%',:searchTerm,'%'))) " +
+//            "AND s.type LIKE :spotType")
+//    public Page<Spot> getSearchResults(@Param("searchTerm") String searchTerm, @Param("spotType") String spotType, Pageable pageRequest);
+
+    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot.SpotDto" +
+            "( s.id ,  s.name, s.latitude, s.longitude, s.type, COALESCE(avg(usr.rating),0), count(usr.rating), s.address)" +
+            " from Spot as s  " +
+            "  left join  s.user_spot_ratings as usr " +
+            " where (s.id = usr.user_spot_ratingKey.spot_id or usr.user_spot_ratingKey.spot_id is null) AND (" +
+            "(LOWER(s.name) LIKE LOWER(CONCAT('%',:searchTerm,'%')) OR " +
             "LOWER(s.address) LIKE LOWER(CONCAT('%',:searchTerm,'%'))) " +
-            "AND s.type LIKE :spotType")
+            "AND s.type LIKE :spotType"+
+            ") " +
+            " group by s.id")
     public Page<Spot> getSearchResults(@Param("searchTerm") String searchTerm, @Param("spotType") String spotType, Pageable pageRequest);
+
 
 
 }

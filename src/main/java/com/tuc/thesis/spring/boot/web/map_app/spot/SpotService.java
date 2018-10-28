@@ -34,7 +34,7 @@ public class SpotService {
         return spotRepository.getAllSpotNames();
     }
 
-    public List<Spot_RatingsDTO> getSpot_RatingsDTO(){
+    public List<SpotDto> getSpot_RatingsDTO(){
         return spotRepository.getSpot_RatingsDTO();
     }
 }

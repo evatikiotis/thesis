@@ -36,7 +36,7 @@ public class SearchService {
     //        return diveSchoolSpotRepository.getScubaDivingSchoolRatingsDTOS();
         }
 
-    public Iterable<Spot> getSearchResults(String type, String searchTerm, int page) {
-        return spotRepository.getSearchResults(searchTerm, type, new PageRequest(page,60, Sort.Direction.ASC, "name"));
+    public Iterable<Spot> getSearchResults(String type, String searchTerm, int page, String sortBy) {
+        return spotRepository.getSearchResults(searchTerm, type, new PageRequest(page,20, Sort.Direction.ASC, sortBy));
     }
 }

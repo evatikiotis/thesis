@@ -1,6 +1,6 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot;
 
-public class Spot_RatingsDTO {
+public class SpotDto {
     private int id;
     private String name;
     private double latitude;
@@ -8,9 +8,10 @@ public class Spot_RatingsDTO {
     private String type;
     private double averageRating;
     private long numberOfRatings;
+    private String address;
 
 
-    public Spot_RatingsDTO(int id, String name, double latitude, double longitude, String type, double averageRating, long numberOfRatings) {
+    public SpotDto(int id, String name, double latitude, double longitude, String type, double averageRating, long numberOfRatings) {
         this.id = id;
         this.name = name;
         this.latitude = latitude;
@@ -18,6 +19,18 @@ public class Spot_RatingsDTO {
         this.type = type;
         this.averageRating = averageRating;
         this.numberOfRatings = numberOfRatings;
+    }
+
+
+    public SpotDto(int id, String name, double latitude, double longitude, String type, double averageRating, long numberOfRatings, String address) {
+        this.id = id;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.type = type;
+        this.averageRating = averageRating;
+        this.numberOfRatings = numberOfRatings;
+        this.address = address;
     }
 
     public int getId() {
@@ -74,6 +87,14 @@ public class Spot_RatingsDTO {
 
     public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
 
