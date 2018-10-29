@@ -85,8 +85,22 @@ public interface SpotRepository extends JpaRepository<Spot, Integer>, PagingAndS
             "LOWER(s.address) LIKE LOWER(CONCAT('%',:searchTerm,'%'))) " +
             "AND s.type LIKE :spotType"+
             ") " +
-            " group by s.id")
-    public Page<Spot> getSearchResults(@Param("searchTerm") String searchTerm, @Param("spotType") String spotType, Pageable pageRequest);
+            " group by s.id "+
+            "order by " +
+            "COALESCE(avg(usr.rating),0) DESC")
+    public Page<SpotDto> getSearchResultsCustomSort(@Param("searchTerm") String searchTerm, @Param("spotType") String spotType, Pageable pageRequest);
+
+    @Query("SELECT new com.tuc.thesis.spring.boot.web.map_app.spot.SpotDto" +
+            "( s.id ,  s.name, s.latitude, s.longitude, s.type, COALESCE(avg(usr.rating),0), count(usr.rating), s.address)" +
+            " from Spot as s  " +
+            "  left join  s.user_spot_ratings as usr " +
+            " where (s.id = usr.user_spot_ratingKey.spot_id or usr.user_spot_ratingKey.spot_id is null) AND (" +
+            "(LOWER(s.name) LIKE LOWER(CONCAT('%',:searchTerm,'%')) OR " +
+            "LOWER(s.address) LIKE LOWER(CONCAT('%',:searchTerm,'%'))) " +
+            "AND s.type LIKE :spotType"+
+            ") " +
+            " group by s.id ")
+    public Page<SpotDto> getSearchResults(@Param("searchTerm") String searchTerm, @Param("spotType") String spotType, Pageable pageRequest);
 
 
 

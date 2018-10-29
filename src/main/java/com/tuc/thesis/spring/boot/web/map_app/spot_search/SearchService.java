@@ -1,6 +1,7 @@
 package com.tuc.thesis.spring.boot.web.map_app.spot_search;
 
 import com.tuc.thesis.spring.boot.web.map_app.spot.Spot;
+import com.tuc.thesis.spring.boot.web.map_app.spot.SpotDto;
 import com.tuc.thesis.spring.boot.web.map_app.spot.SpotRepository;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpotRepository;
@@ -36,7 +37,10 @@ public class SearchService {
     //        return diveSchoolSpotRepository.getScubaDivingSchoolRatingsDTOS();
         }
 
-    public Iterable<Spot> getSearchResults(String type, String searchTerm, int page, String sortBy) {
+    public Iterable<SpotDto> getSearchResults(String type, String searchTerm, int page, String sortBy) {
+        if(sortBy.equals("averageRating")) {
+            return spotRepository.getSearchResultsCustomSort(searchTerm, type, new PageRequest(page, 20));
+        }
         return spotRepository.getSearchResults(searchTerm, type, new PageRequest(page,20, Sort.Direction.ASC, sortBy));
     }
 }

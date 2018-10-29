@@ -109,6 +109,11 @@ nav ul {
 #user-functionality-navbar a:hover{
     color: #C0CC56;
 }
+#global-search {
+    position: absolute;
+    right: 0;
+    width: 100px;
+}
 /*#nav-links{*/
     /*margin-top: -20px;*/
 /*}*/
