@@ -61,6 +61,7 @@ module.controller('navbarController', function($scope, $state, $rootScope, handl
     //     nav_adventureFinder.removeClass('active');
     //     nav_about.addClass('active');
     // };
+    var loggedIn = $rootScope.globals.currentUser;
     var nav_home = angular.element(document.querySelector('#nav_home'));
     var nav_map = angular.element(document.querySelector('#nav_map'));
     var nav_myMap = angular.element(document.querySelector('#nav_myMap'));
@@ -71,6 +72,37 @@ module.controller('navbarController', function($scope, $state, $rootScope, handl
         nav_map.removeClass('active');
         nav_myMap.removeClass('active');
         nav_adventureFinder.removeClass('active');
+    }
+    if($location.url() == "/map"){
+        nav_map.addClass('active');
+        nav_home.removeClass('active');
+        nav_myMap.removeClass('active');
+        nav_adventureFinder.removeClass('active');
+
+    }
+    if($location.url() == "/my_map"){
+        if(!loggedIn) {
+            nav_myMap.blur();
+            nav_adventureFinder.removeClass('active');
+            nav_myMap.removeClass('active');
+            nav_map.removeClass('active');
+            nav_home.removeClass('active');
+            $location.path('/login');
+        }
+        if(loggedIn){
+            nav_adventureFinder.removeClass('active');
+            nav_myMap.addClass('active');
+            nav_map.removeClass('active');
+            nav_home.removeClass('active');
+        }
+
+    }
+    if($location.url() == "/adventure-finder"){
+        nav_adventureFinder.addClass('active');
+        nav_myMap.removeClass('active');
+        nav_map.removeClass('active');
+        nav_home.removeClass('active');
+
     }
 
 
