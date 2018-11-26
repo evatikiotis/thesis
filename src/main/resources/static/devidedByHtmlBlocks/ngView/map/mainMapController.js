@@ -68,7 +68,7 @@ module.controller('mainMapController', function( $scope, $rootScope, NgMap, hand
         'id': 'mainMap',
         'zoom': 6,
         'center': latlng,
-        'mapTypeId': google.maps.MapTypeId.HYBRID,
+        'mapTypeId': google.maps.MapTypeId.TERRAIN,
         'gestureHandling': 'greedy'
     };
 

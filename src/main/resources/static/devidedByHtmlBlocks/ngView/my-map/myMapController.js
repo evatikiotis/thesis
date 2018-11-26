@@ -51,7 +51,7 @@ module.controller('myMapController', function($scope, handleRequest, $rootScope,
         'id': 'myMap',
         'zoom': 6,
         'center': latlng,
-        'mapTypeId': google.maps.MapTypeId.HYBRID,
+        'mapTypeId': google.maps.MapTypeId.TERRAIN,
         'gestureHandling': 'greedy'
     };
     mm.myMap = new google.maps.Map(document.getElementById('myMap'), options);

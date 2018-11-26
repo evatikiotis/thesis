@@ -1,62 +1,7 @@
 ﻿<p href="#/" class="breadcrumb" ncy-breadcrumb ></p>
 
 
-<div id="targets container-fluid">
-    <!--<div id="target-1" class="section">-->
-        <!--<div class="form-check">-->
-            <!--<label class="form-check-label">-->
-                <!--<input type="checkbox" class="form-check-input" ng-model="all"-->
-                      <!--<span>All categories</span>-->
-            <!--</label>-->
-        <!--</div>-->
-
-        <!--<div class="form-check ">-->
-            <!--<label class="form-check-label">-->
-                <!--<input type="checkbox" class="form-check-input" ng-model="kitesurfing"-->
-                       <!--ng-click="toggleKiteSurfing()" ><span><img src="images/kitesurfing.svg" height="20px" width="18">kitesurfing</span>-->
-            <!--</label>-->
-        <!--</div>-->
-
-        <!--<div class="form-check ">-->
-            <!--<label class="form-check-label">-->
-                <!--<input type="checkbox" class="form-check-input" ng-model="scuba_diving"-->
-                       <!--ng-click="toggleScubaDiving()" ng-checked="scuba_diving_schools || scuba_diving_spots"><img src="images/scuba-diving.svg" height="20px" width="18">scuba-diving-->
-            <!--</label>-->
-        <!--</div>-->
-    <!--</div>-->
-    <div id="target-2" class="section">
-        <input places-auto-complete id="home_place" style="height: 30px; text-align: center"
-               ng-model="search_near_place"
-               component-restrictions="{country:'GR'}"
-               types="{{types}}"
-               placeholder="Enter location"
-               on-place-changed="placeChanged()"
-               ng-show=true
-
-
-        />
-    </div>
-    <div id="target-3" class="section row" >
-        <div class="col-sm-4 text-center home-imagesContainer">
-            <h3>kitesurfing spots</h3>
-            <a href="#!/map" ng-click="home_image_kite_clicked()"><img  src="images/mainmap-kitesurfing.png"></a>
-        </div>
-        <div class="col-sm-4 text-center home-imagesContainer">
-            <h3>scuba-diving spots</h3>
-            <a href="#!/map" ng-click="home_image_scuba_clicked()"><img src="images/mainmap-scuba-schools.png"></a>
-        </div>
-        <div class="col-sm-4 text-center home-imagesContainer">
-            <h3>All spots</h3>
-            <a href="#!/map" ng-click="home_image_all_clicked()"><img src="images/mainmap.png"></a>
-        </div>
-
-
-    </div>
-    <div id="target-4" class="section">
-        <img src="images/mainmap.png">
-    </div>
-
-    <div id="target-5">
-        <a href="#target-1" class="section">Jump to target 1</a>
-    </div>
+<div class="container">
+    <h3>Collection, Unification and Presentation of Alternative Tourism Data</h3>
+    <img src="images/mainmap.png">
 </div>

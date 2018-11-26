@@ -1,7 +1,7 @@
 //$rootScope.spot: apo markersController showInfo!!
 
 var module = angular.module('myApp');
-module.controller('navbarController', function($scope, $state, $rootScope, handleRequest) {
+module.controller('navbarController', function($scope, $state, $rootScope, handleRequest, $location) {
     // var nav_home = angular.element(document.querySelector('#nav_home'));
     // var nav_map = angular.element(document.querySelector('#nav_map'));
     // var nav_weatherMap = angular.element(document.querySelector('#nav_weatherMap'));
@@ -61,6 +61,17 @@ module.controller('navbarController', function($scope, $state, $rootScope, handl
     //     nav_adventureFinder.removeClass('active');
     //     nav_about.addClass('active');
     // };
+    var nav_home = angular.element(document.querySelector('#nav_home'));
+    var nav_map = angular.element(document.querySelector('#nav_map'));
+    var nav_myMap = angular.element(document.querySelector('#nav_myMap'));
+    var nav_adventureFinder = angular.element(document.querySelector('#nav_adventureFinder'));
+    var nav_about = angular.element(document.querySelector('#nav_about'));
+    if($location.url() == "/"){
+        nav_home.addClass('active');
+        nav_map.removeClass('active');
+        nav_myMap.removeClass('active');
+        nav_adventureFinder.removeClass('active');
+    }
 
 
     $scope.reload = function(){
