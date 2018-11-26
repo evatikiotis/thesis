@@ -14,12 +14,10 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
-public class GetLocation implements CommandLineRunner {
-    @Override
-    public void run(String... strings) throws Exception {
+//@Component
+public class GetLocation {
+//        implements CommandLineRunner {
 
-    }
 //    @Autowired
 //    SpotService spotService;
 //    @Autowired

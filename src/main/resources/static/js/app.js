@@ -6,7 +6,8 @@
         myApp.run(run);
 
 
-    function config($stateProvider, $locationProvider) {
+    function config($stateProvider, $locationProvider, $urlRouterProvider) {
+
         var home = {name: 'home', url:'/',
             templateUrl:'devidedByHtmlBlocks/ngView/home/home.view.html',
             controller: 'HomeController',
@@ -117,12 +118,12 @@
         $stateProvider.state(myMap);
         $stateProvider.state(adventureFinder);
         $stateProvider.state(myProfile);
+        $urlRouterProvider.otherwise('/');
 
     }
 
     run.$inject = ['$rootScope', '$location', '$cookies', '$http', 'FlashService'];
     function run($rootScope, $location, $cookies, $http) {
-
 
         $rootScope.scuba_diving = true;
         $rootScope.scuba_diving_schools = true;
