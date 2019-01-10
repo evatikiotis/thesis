@@ -67,6 +67,15 @@ module.controller('navbarController', function($scope, $state, $rootScope, handl
     var nav_myMap = angular.element(document.querySelector('#nav_myMap'));
     var nav_adventureFinder = angular.element(document.querySelector('#nav_adventureFinder'));
     var nav_about = angular.element(document.querySelector('#nav_about'));
+    // console.log("nav");
+
+    if($location.url() == "/"){
+        nav_home.addClass('active');
+        nav_map.removeClass('active');
+        nav_myMap.removeClass('active');
+        nav_adventureFinder.removeClass('active');
+    }
+
     if($location.url() == "/"){
         nav_home.addClass('active');
         nav_map.removeClass('active');
@@ -104,7 +113,6 @@ module.controller('navbarController', function($scope, $state, $rootScope, handl
         nav_home.removeClass('active');
 
     }
-
 
     $scope.reload = function(){
         $state.reload();
