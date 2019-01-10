@@ -6,7 +6,18 @@
     backgroun-color: #C0CC56 buttons
     backgroun-color: #8A9903 buttons  hover*/
 
+.home-div{
+    height: 700px;
+    position: relative;
+    margin-top: 40px;
+}
+#home-image{
+    margin-top: 20px;
+    padding: 25px;
+    position: absolute;
+    top: 35%;
 
+}
 html, body{
     font-family: 'Ubuntu', sans-serif;
     height: 100%;
