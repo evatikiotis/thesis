@@ -1,7 +1,7 @@
 (function () {
 
-    // var server = "/adventurer";
-    var server = "";
+    var server = "/adventurer";
+    // var server = "";
 
 
     var module = angular.module('myApp');

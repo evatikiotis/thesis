@@ -17,8 +17,8 @@
 
 
         function Login(username, password, callback) {
-            // var server = '/adventurer';
-            var server = '';
+            var server = '/adventurer';
+            // var server = '';
 
 
             $http.post(server+'/api/authenticate', { username: username, password: Base64.encode(password) })

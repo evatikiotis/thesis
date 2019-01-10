@@ -20,8 +20,8 @@
         service.checkUsernameAvailability = checkUsernameAvailability;
         service.checkOldPassword = checkOldPassword;
         service.changePassword = changePassword;
-        service.server = '';
-        // service.server = '/adventurer';
+        // service.server = '';
+        service.server = '/adventurer';
 
         return service;
 
