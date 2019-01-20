@@ -53,6 +53,10 @@ public class Spot implements Serializable{
     private String type;
     @Column(name = "address")
     private String address;
+    @Column(name = "average_rating")
+    private Double averageRating;
+    @Column(name = "number_of_ratings")
+    private Long numberOfRatings;
 
 
     public Spot(int id, String name, double latitude, double longitude, String type, String address) {
@@ -120,6 +124,22 @@ public class Spot implements Serializable{
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(Double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public Long getNumberOfRatings() {
+        return numberOfRatings;
+    }
+
+    public void setNumberOfRatings(Long numberOfRatings) {
+        this.numberOfRatings = numberOfRatings;
     }
 
     //    public DiveSchoolSpot getDiveSchoolSpot() {

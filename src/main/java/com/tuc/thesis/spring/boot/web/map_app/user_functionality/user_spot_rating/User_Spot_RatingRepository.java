@@ -18,4 +18,11 @@ public interface User_Spot_RatingRepository extends JpaRepository<User_Spot_Rati
             "    WHERE spot_id = :spot_id AND user_username= :username", nativeQuery = true)
     public int selectUserRating(@Param("username") String username, @Param("spot_id") int spot_id);
 
+
+    @Query(value = "SELECT AVG(rating) FROM app_user_spot_rating WHERE app_user_spot_rating.spot_id = :spot_id", nativeQuery = true)
+    public Double getAverageRating(@Param("spot_id") int spot_id);
+
+    @Query(value = "SELECT COUNT(rating) FROM app_user_spot_rating WHERE app_user_spot_rating.spot_id = :spot_id", nativeQuery = true)
+    public Long getNumberOfRatings(@Param("spot_id") int spot_id);
+
 }

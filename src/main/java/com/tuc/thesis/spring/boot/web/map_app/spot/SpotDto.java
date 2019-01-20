@@ -7,11 +7,11 @@ public class SpotDto {
     private double longitude;
     private String type;
     private double averageRating;
-    private long numberOfRatings;
+    private Long numberOfRatings;
     private String address;
 
 
-    public SpotDto(int id, String name, double latitude, double longitude, String type, double averageRating, long numberOfRatings) {
+    public SpotDto(int id, String name, double latitude, double longitude, String type, double averageRating, Long numberOfRatings) {
         this.id = id;
         this.name = name;
         this.latitude = latitude;
@@ -22,7 +22,7 @@ public class SpotDto {
     }
 
 
-    public SpotDto(int id, String name, double latitude, double longitude, String type, double averageRating, long numberOfRatings, String address) {
+    public SpotDto(int id, String name, double latitude, double longitude, String type, double averageRating, Long numberOfRatings, String address) {
         this.id = id;
         this.name = name;
         this.latitude = latitude;
@@ -73,11 +73,11 @@ public class SpotDto {
         this.type = type;
     }
 
-    public long getNumberOfRatings() {
+    public Long getNumberOfRatings() {
         return numberOfRatings;
     }
 
-    public void setNumberOfRatings(long numberOfRatings) {
+    public void setNumberOfRatings(Long numberOfRatings) {
         this.numberOfRatings = numberOfRatings;
     }
 

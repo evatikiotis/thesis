@@ -56,10 +56,10 @@ Use of this source code is governed by an MIT-style license that can be in found
         </div>
 
         <!-- items being paged -->
-        <a ng-if="item.type==='scuba-diving_school'" href="#!/map/scubadiving/school/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
+        <a href="#!/map/scubadiving/school/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
             <div class="col-sm-4">{{item.name}}</div>
             <div class="col-sm-5">{{item.address}}</div>
-            <div class="col-sm-3">scuba-diving school</div>
+            <div class="col-sm-3"></div>
             <div class="col-sm-3 offset-sm-9">
                 <rating-stars
                         ratings="item.numberOfRatings"
@@ -68,30 +68,30 @@ Use of this source code is governed by an MIT-style license that can be in found
                 </rating-stars>
             </div>
         </a>
-        <a ng-if="item.type==='scuba-diving_spot'" href="#!/map/scubaSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
-            <div class="col-sm-4">{{item.name}}</div>
-            <div class="col-sm-5">{{item.address}}</div>
-            <div class="col-sm-3">scuba-diving spot</div>
-            <div class="col-sm-3 offset-sm-9">
-                <rating-stars
-                        ratings="item.numberOfRatings"
-                        average-rating="item.averageRating"
-                        ratings-position="right">
-                </rating-stars>
-            </div>
-        </a>
-        <a ng-if="item.type==='kiteSpot'" href="#!/map/kiteSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
-            <div class="col-sm-4">{{item.name}}</div>
-            <div class="col-sm-5">{{item.address}}</div>
-            <div class="col-sm-3">kitesurfing spot</div>
-            <div class="col-sm-3 offset-sm-9">
-                <rating-stars
-                        ratings="item.numberOfRatings"
-                        average-rating="item.averageRating"
-                        ratings-position="right">
-                </rating-stars>
-            </div>
-        </a>
+        <!--<a ng-if="item.type==='scuba-diving_spot'" href="#!/map/scubaSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">-->
+            <!--<div class="col-sm-4">{{item.name}}</div>-->
+            <!--<div class="col-sm-5">{{item.address}}</div>-->
+            <!--<div class="col-sm-3">scuba-diving spot</div>-->
+            <!--<div class="col-sm-3 offset-sm-9">-->
+                <!--<rating-stars-->
+                        <!--ratings="item.numberOfRatings"-->
+                        <!--average-rating="item.averageRating"-->
+                        <!--ratings-position="right">-->
+                <!--</rating-stars>-->
+            <!--</div>-->
+        <!--</a>-->
+        <!--<a ng-if="item.type==='kiteSpot'" href="#!/map/kiteSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">-->
+            <!--<div class="col-sm-4">{{item.name}}</div>-->
+            <!--<div class="col-sm-5">{{item.address}}</div>-->
+            <!--<div class="col-sm-3">kitesurfing spot</div>-->
+            <!--<div class="col-sm-3 offset-sm-9">-->
+                <!--<rating-stars-->
+                        <!--ratings="item.numberOfRatings"-->
+                        <!--average-rating="item.averageRating"-->
+                        <!--ratings-position="right">-->
+                <!--</rating-stars>-->
+            <!--</div>-->
+        <!--</a>-->
 
 
         <!-- pager -->

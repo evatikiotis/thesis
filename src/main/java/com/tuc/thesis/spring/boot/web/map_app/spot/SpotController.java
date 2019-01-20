@@ -20,7 +20,7 @@ public class SpotController {
 
     @RequestMapping(value = "/spots/add", method = RequestMethod.POST)
     public void addSpot(@RequestBody Spot spot){
-        spotService.addSpot(spot);
+        spotService.saveSpot(spot);
     }
 
     @RequestMapping("/spots/{id}")

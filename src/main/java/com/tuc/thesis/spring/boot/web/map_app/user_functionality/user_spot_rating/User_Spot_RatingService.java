@@ -39,4 +39,11 @@ public class User_Spot_RatingService {
         User_Spot_Rating user_spot_rating = new User_Spot_Rating(user_spot_ratingKey, rating);
         user_spot_ratingRepository.save(user_spot_rating);
     }
+
+    public Double getAverageRating(int spot_id) {
+        return user_spot_ratingRepository.getAverageRating(spot_id);
+    }
+    public Long getNumberOfRatings(int spot_id) {
+        return user_spot_ratingRepository.getNumberOfRatings(spot_id);
+    }
 }

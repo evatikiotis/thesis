@@ -22,7 +22,7 @@ public class SpotService {
         return spots;
     }
 
-    public void addSpot(Spot spot) {
+    public void saveSpot(Spot spot) {
         spotRepository.save(spot);
     }
 

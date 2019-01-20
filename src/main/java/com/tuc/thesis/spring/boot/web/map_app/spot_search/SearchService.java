@@ -6,7 +6,9 @@ import com.tuc.thesis.spring.boot.web.map_app.spot.SpotRepository;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpot;
 import com.tuc.thesis.spring.boot.web.map_app.spot.scuba_diving.diveSchoolSpot.DiveSchoolSpotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -37,10 +39,12 @@ public class SearchService {
     //        return diveSchoolSpotRepository.getScubaDivingSchoolRatingsDTOS();
         }
 
-    public Iterable<SpotDto> getSearchResults(String type, String searchTerm, int page, String sortBy) {
+    public Page<Spot> getSearchResults(String type, String searchTerm, int page, String sortBy) {
         if(sortBy.equals("averageRating")) {
-            return spotRepository.getSearchResultsCustomSort(searchTerm, type, new PageRequest(page, 20));
+            return spotRepository.findAll(new PageRequest(page,20, Sort.Direction.DESC, "averageRating"));
+//            return spotRepository.getSearchResults(searchTerm, type, new PageRequest(page,20, Sort.Direction.DESC, sortBy));
         }
-        return spotRepository.getSearchResults(searchTerm, type, new PageRequest(page,20, Sort.Direction.ASC, sortBy));
+        return spotRepository.findAll(new PageRequest(page,20, Sort.Direction.ASC, sortBy));
+//        return spotRepository.getSearchResults(searchTerm, type, new PageRequest(page,20, Sort.Direction.ASC, sortBy));
     }
 }
