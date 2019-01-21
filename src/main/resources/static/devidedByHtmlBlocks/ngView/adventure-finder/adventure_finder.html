@@ -35,7 +35,7 @@ Use of this source code is governed by an MIT-style license that can be in found
     <div class="">
         <div class="row">
             <div class="col-sm-3">
-                <input placeholder="search" ng-model="vm.searchTerm" ng-change="vm.search()">
+                <input placeholder="search via name or address" ng-model="vm.searchTerm" ng-change="vm.search()">
             </div>
             <div class="col-sm-3">
                 <select ng-change="vm.typeChanged()" ng-model="vm.showType">
@@ -54,67 +54,103 @@ Use of this source code is governed by an MIT-style license that can be in found
                 </select>
             </div>
         </div>
-
-        <!-- items being paged -->
-        <a ng-if="item.type==='scuba-diving_school'" href="#!/map/scubadiving/school/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
-            <div class="col-sm-4">{{item.name}}</div>
-            <div class="col-sm-5">{{item.address}}</div>
-            <div class="col-sm-3">scuba-diving school</div>
-            <div class="col-sm-3 offset-sm-9">
-                <rating-stars
-                        ratings="item.numberOfRatings"
-                        average-rating="item.averageRating"
-                        ratings-position="right">
-                </rating-stars>
-            </div>
-        </a>
-        <a ng-if="item.type==='scuba-diving_spot'" href="#!/map/scubaSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
-            <div class="col-sm-4">{{item.name}}</div>
-            <div class="col-sm-5">{{item.address}}</div>
-            <div class="col-sm-3">scuba-diving spot</div>
-            <div class="col-sm-3 offset-sm-9">
-                <rating-stars
-                        ratings="item.numberOfRatings"
-                        average-rating="item.averageRating"
-                        ratings-position="right">
-                </rating-stars>
-            </div>
-        </a>
-        <a ng-if="item.type==='kiteSpot'" href="#!/map/kiteSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">
-            <div class="col-sm-4">{{item.name}}</div>
-            <div class="col-sm-5">{{item.address}}</div>
-            <div class="col-sm-3">kitesurfing spot</div>
-            <div class="col-sm-3 offset-sm-9">
-                <rating-stars
-                        ratings="item.numberOfRatings"
-                        average-rating="item.averageRating"
-                        ratings-position="right">
-                </rating-stars>
-            </div>
-        </a>
-
-
-        <!-- pager -->
-        <ul ng-if="vm.pager.pages.length" class="pagination">
-            <li ng-class="{disabled:vm.pager.currentPage === 1}">
-                <a ng-click="vm.setPage(1, true)">First</a>
-            </li>
-            <li ng-class="{disabled:vm.pager.currentPage === 1}">
-                <a ng-click="vm.setPage(vm.pager.currentPage - 1, true)">Previous</a>
-            </li>
-            <li ng-repeat="page in vm.pager.pages" ng-class="{active:vm.pager.currentPage === page}">
-                <a ng-click="vm.setPage(page, true)">{{page}}</a>
-            </li>
-            <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
-                <a ng-click="vm.setPage(vm.pager.currentPage + 1, true)">Next</a>
-            </li>
-            <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
-                <a ng-click="vm.setPage(vm.pager.totalPages, true)">Last</a>
-            </li>
-        </ul>
     </div>
 </div>
-<hr />
+
+<!-- items being paged -->
+<!--<a ng-if="item.type==='scuba-diving_school'" href="#!/map/scubadiving/school/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">-->
+<!--<div class="col-sm-4">{{item.name}}</div>-->
+<!--<div class="col-sm-5">{{item.address}}</div>-->
+<!--<div class="col-sm-3">scuba-diving school</div>-->
+<!--<div class="col-sm-3 offset-sm-9">-->
+<!--<rating-stars-->
+<!--ratings="item.numberOfRatings"-->
+<!--average-rating="item.averageRating"-->
+<!--ratings-position="right">-->
+<!--</rating-stars>-->
+<!--</div>-->
+<!--</a>-->
+<!--<a ng-if="item.type==='scuba-diving_spot'" href="#!/map/scubaSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">-->
+<!--<div class="col-sm-4">{{item.name}}</div>-->
+<!--<div class="col-sm-5">{{item.address}}</div>-->
+<!--<div class="col-sm-3">scuba-diving spot</div>-->
+<!--<div class="col-sm-3 offset-sm-9">-->
+<!--<rating-stars-->
+<!--ratings="item.numberOfRatings"-->
+<!--average-rating="item.averageRating"-->
+<!--ratings-position="right">-->
+<!--</rating-stars>-->
+<!--</div>-->
+<!--</a>-->
+<!--<a ng-if="item.type==='kiteSpot'" href="#!/map/kiteSpotDetails/{{item.id}}" ng-repeat="item in vm.items" class="spot-box row">-->
+<!--<div class="col-sm-4">{{item.name}}</div>-->
+<!--<div class="col-sm-5">{{item.address}}</div>-->
+<!--<div class="col-sm-3">kitesurfing spot</div>-->
+<!--<div class="col-sm-3 offset-sm-9">-->
+<!--<rating-stars-->
+<!--ratings="item.numberOfRatings"-->
+<!--average-rating="item.averageRating"-->
+<!--ratings-position="right">-->
+<!--</rating-stars>-->
+<!--</div>-->
+<!--</a>-->
+<div class="container-fluid">
+    <table class="table table-striped">
+        <thead>
+        <tr >
+            <th>Name</th>
+            <th>Address</th>
+            <th>Type</th>
+            <th>Stars</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr class="poi-info" ng-click="vm.redirect(item)" ng-repeat="item in vm.items">
+                <td>{{item.name}}</td>
+                <td>{{item.address}}</td>
+                <td ng-if="item.type === 'scuba-diving_spot'">
+                    scuba-diving spot
+                </td>
+                <td ng-if="item.type === 'kiteSpot'">
+                    kitesurfing spot
+                </td>
+                <td ng-if="item.type === 'scuba-diving_school'">
+                    scuba-diving school
+                </td>
+                <td>
+                    <rating-stars
+                            ratings="item.numberOfRatings"
+                            average-rating="item.averageRating"
+                            ratings-position="right">
+                    </rating-stars>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <!-- pager -->
+    <ul ng-if="vm.pager.pages.length" class="pagination">
+        <li ng-class="{disabled:vm.pager.currentPage === 1}">
+            <a ng-click="vm.setPage(1, true)">First</a>
+        </li>
+        <li ng-class="{disabled:vm.pager.currentPage === 1}">
+            <a ng-click="vm.setPage(vm.pager.currentPage - 1, true)">Previous</a>
+        </li>
+        <li ng-repeat="page in vm.pager.pages" ng-class="{active:vm.pager.currentPage === page}">
+            <a ng-click="vm.setPage(page, true)">{{page}}</a>
+        </li>
+        <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+            <a ng-click="vm.setPage(vm.pager.currentPage + 1, true)">Next</a>
+        </li>
+        <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+            <a ng-click="vm.setPage(vm.pager.totalPages, true)">Last</a>
+        </li>
+    </ul>
+</div>
+
 
 
 

@@ -99,7 +99,6 @@
             controller: 'ExampleController',
             controllerAs: 'vm',
             ncyBreadcrumb:{
-
                 label: 'Spot Finder'
             }
         };
@@ -119,7 +118,6 @@
         $stateProvider.state(adventureFinder);
         $stateProvider.state(myProfile);
         $urlRouterProvider.otherwise('/');
-
     }
 
     run.$inject = ['$rootScope', '$location', '$cookies', '$http', 'FlashService'];

@@ -19,6 +19,14 @@ a {
     color: blue;
 }
 
+.poi-info:hover{
+    cursor: pointer;
+}
+.poi-info:hover > td:first-of-type{
+    text-decoration: underline;
+    color: blue;
+}
+
 .sorter-selection{
     font-weight: 700;
 }
