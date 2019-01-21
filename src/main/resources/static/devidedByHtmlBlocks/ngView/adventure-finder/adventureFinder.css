@@ -26,6 +26,12 @@ a {
     text-decoration: underline;
     color: blue;
 }
+.finder-dropdown{
+    margin-left: 60px;
+}
+#finder-search{
+    width: 300px;
+}
 
 .sorter-selection{
     font-weight: 700;

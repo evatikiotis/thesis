@@ -31,13 +31,12 @@
 <!--asd
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at https://material.angularjs.org/license.-->
-<div class="container">
+<div class="container-fluid">
+
     <div class="">
-        <div class="row">
-            <div class="col-sm-3">
-                <input placeholder="search via name or address" ng-model="vm.searchTerm" ng-change="vm.search()">
-            </div>
-            <div class="col-sm-3">
+        <div class="row pull-right">
+            <input id="finder-search" placeholder="search via name or address" ng-model="vm.searchTerm" ng-change="vm.search()">
+            <div class="finder-dropdown">
                 <select ng-change="vm.typeChanged()" ng-model="vm.showType">
                     <option value="%25">All spot types</option>
                     <option value="kiteSpot">kitesurfing spots</option>
@@ -45,7 +44,7 @@ Use of this source code is governed by an MIT-style license that can be in found
                     <option value="scuba-diving_spot">scuba-diving spots</option>
                 </select>
             </div>
-            <div class="col-sm-3 offset-sm-3">
+            <div class="finder-dropdown">
                 <span class="sorter-selection" >sorting by</span>
                 <select ng-change="vm.sortingChanged()" ng-model="vm.sortBy">
                     <option value="name">name</option>
@@ -94,6 +93,8 @@ Use of this source code is governed by an MIT-style license that can be in found
 <!--</rating-stars>-->
 <!--</div>-->
 <!--</a>-->
+<br>
+<br>
 <div class="container-fluid">
     <table class="table table-striped">
         <thead>
@@ -106,8 +107,8 @@ Use of this source code is governed by an MIT-style license that can be in found
         </thead>
         <tbody>
             <tr class="poi-info" ng-click="vm.redirect(item)" ng-repeat="item in vm.items">
-                <td>{{item.name}}</td>
-                <td>{{item.address}}</td>
+                <td style="width: 290px">{{item.name}}</td>
+                <td style="width: 500px">{{item.address}}</td>
                 <td ng-if="item.type === 'scuba-diving_spot'">
                     scuba-diving spot
                 </td>
