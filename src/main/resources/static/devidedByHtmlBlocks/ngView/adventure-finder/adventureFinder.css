@@ -19,6 +19,23 @@ a {
     color: blue;
 }
 
+.poi-info:hover{
+    cursor: pointer;
+}
+.poi-info:hover > td:first-of-type{
+    text-decoration: underline;
+    color: blue;
+}
+.finder-dropdown{
+    margin-left: 60px;
+}
+#finder-search{
+    width: 300px;
+}
+.our-nav{
+    width: 1000px;
+}
+
 .sorter-selection{
     font-weight: 700;
 }

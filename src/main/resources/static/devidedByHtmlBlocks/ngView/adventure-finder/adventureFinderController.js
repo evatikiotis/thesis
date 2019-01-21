@@ -67,7 +67,7 @@
 // });
 
 var module = angular.module('myApp');
-module.controller('ExampleController', function(PagerService, handleRequest, $rootScope, $timeout) {
+module.controller('ExampleController', function(PagerService, handleRequest, $rootScope, $timeout, $location) {
 
     var vm = this;
     $rootScope.from_breadcrumb = "spot-finder";
@@ -131,6 +131,16 @@ module.controller('ExampleController', function(PagerService, handleRequest, $ro
     var handlePageChange = function(response) {
         vm.dummyItems = _.range(1, response.totalElements);
         vm.items = response.content;
+
+    };
+
+    vm.redirect = function (item) {
+        if ( item.type === 'scuba-diving_spot' )
+            $location.path('/map/scubaSpotDetails/' + item.id);
+        if ( item.type === 'kiteSpot' )
+            $location.path('/map/kiteSpotDetails/' + item.id);
+        if ( item.type === 'scuba-diving_school' )
+            $location.path('/map/scubadiving/school/' + item.id);
 
     };
 

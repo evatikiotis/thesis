@@ -74,6 +74,8 @@ module.controller('navbarController', function($scope, $state, $rootScope, handl
         nav_map.removeClass('active');
         nav_myMap.removeClass('active');
         nav_adventureFinder.removeClass('active');
+        //TODO: redirect to map page from home page
+        $location.path("/map");
     }
 
     if($location.url() == "/"){
