@@ -41,6 +41,9 @@ public class SearchService {
         if(sortBy.equals("averageRating")) {
             return spotRepository.getSearchResultsCustomSort(searchTerm, type, new PageRequest(page, 20));
         }
+        if(sortBy.equals("numberOfRatings")) {
+            return spotRepository.getSearchResultsCustomSortByNumberOfRatings(searchTerm, type, new PageRequest(page, 20));
+        }
         return spotRepository.getSearchResults(searchTerm, type, new PageRequest(page,20, Sort.Direction.ASC, sortBy));
     }
 }
