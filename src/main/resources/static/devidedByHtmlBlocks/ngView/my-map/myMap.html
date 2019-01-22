@@ -20,7 +20,7 @@
                     <h5>My notes on {{spot_name_personalMap}}</h5>
                     <textarea type="textarea" ng-model="spot_notes_personalMap" placeholder="Enter notes" ng-model="notes" required></textarea>
                     <br>
-                    <button type="submit">Edit</button>
+                    <button type="submit">Save</button>
                 </form>
                 <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }"
                      ng-if="flash" ng-bind="flash.message"></div>
