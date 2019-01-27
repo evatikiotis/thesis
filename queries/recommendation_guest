@@ -1,0 +1,12 @@
+SELECT name, id, latitude, longitude, type, address FROM
+(SELECT COALESCE(app_user_spot_favourite.spot_id, average_rating.spot_id) as spot_id, floor(random() * 10 + 1)::int as rand FROM
+    app_user_spot_favourite
+FULL JOIN
+    (SELECT AVG(spot_id), spot_id FROM app_user_spot_rating GROUP BY spot_id) as average_rating
+ON average_rating.spot_id = app_user_spot_favourite.spot_id
+WHERE average_rating.avg >= 4 ORDER BY rand DESC) as random
+JOIN
+spot
+ON spot.id = random.spot_id
+order by random.rand
+;
