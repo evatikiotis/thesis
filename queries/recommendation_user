@@ -1,0 +1,86 @@
+SELECT name, id, latitude, longitude, type, address FROM (
+SELECT DISTINCT * FROM
+  (
+  SELECT user_similarity, user1, user2, spot_id FROM
+      (
+        SELECT
+            similarity_query.favourite_similarity * 0.6 + similarity_query.rating_similarity * 0.4 as user_similarity,
+            user1,
+            user2
+        FROM (
+               SELECT COALESCE(rating_similarity, 0)                      as rating_similarity,
+                      COALESCE(favourite_similarity, 0)                   as favourite_similarity,
+                      COALESCE(rating_query.user1, favourite_query.user1) as user1,
+                      COALESCE(rating_query.user2, favourite_query.user2) as user2
+               FROM (
+                      SELECT rating_intersection::float / count(rating) as rating_similarity,
+                             count(rating)                              as rating_union,
+                             user1,
+                             user2,
+                             rating_intersection
+                      FROM app_user_spot_rating
+                             JOIN
+                           (
+                             SELECT DISTINCT rat1.user_username  as user1,
+                                             rat2.user_username  as user2,
+                                             COUNT(rat1.spot_id) as rating_intersection
+                             FROM app_user_spot_rating as rat1
+                                    JOIN
+                                  app_user_spot_rating as rat2
+                                  ON rat1.spot_id = rat2.spot_id AND rat2.user_username != rat1.user_username
+                             WHERE
+                               --       rat2.user_username = 'user2' AND
+                               @(rat1.rating - rat2.rating) < 2
+                             GROUP BY user1, user2
+                             ORDER BY rating_intersection DESC
+                           ) as rating_commons
+                           ON user_username = rating_commons.user1 OR user_username = rating_commons.user2
+                      GROUP BY user1,user2, rating_intersection
+                      ORDER BY rating_similarity DESC
+                    ) as rating_query
+                      FULL JOIN
+                    (
+                      SELECT favourite_intersection::float / count(spot_id) as favourite_similarity,
+                             count(spot_id)                                 as favourite_union,
+                             user1,
+                             user2,
+                             favourite_intersection
+                      FROM app_user_spot_favourite
+                             JOIN
+                           (
+                             SELECT DISTINCT fav1.user_username  as user1,
+                                             fav2.user_username  as user2,
+                                             COUNT(fav1.spot_id) as favourite_intersection
+                             FROM app_user_spot_favourite as fav1
+                                    JOIN
+                                  app_user_spot_favourite as fav2
+                                  ON fav1.spot_id = fav2.spot_id AND fav2.user_username != fav1.user_username
+                                  -- WHERE fav2.user_username = 'user2' AND
+                             GROUP BY user1, user2
+                             ORDER BY favourite_intersection DESC
+                           ) as favourite_commons
+                           ON user_username = favourite_commons.user1 OR user_username = favourite_commons.user2
+                      GROUP BY user1,user2, favourite_intersection
+                      ORDER BY favourite_similarity DESC
+                    ) as favourite_query
+                    ON rating_query.user1 = favourite_query.user1 AND rating_query.user2 = favourite_query.user2
+             ) as similarity_query
+        WHERE user2 = 'user2'
+        ORDER BY user_similarity DESC
+      )as user_similarity_query
+  JOIN
+      (
+        SELECT COALESCE(app_user_spot_rating.user_username, app_user_spot_favourite.user_username) as username
+        , COALESCE(app_user_spot_rating.spot_id, app_user_spot_favourite.spot_id) as spot_id
+        FROM app_user_spot_rating
+               FULL JOIN
+             app_user_spot_favourite
+             ON app_user_spot_favourite.spot_id = app_user_spot_rating.spot_id
+        WHERE app_user_spot_rating.rating >= 3
+      ) as user_actions
+  ON user_similarity_query.user1 = user_actions.username) as almost
+  JOIN
+    spot
+ON almost.spot_id = spot.id
+ORDER BY user_similarity DESC) as get_the_spots
+;
