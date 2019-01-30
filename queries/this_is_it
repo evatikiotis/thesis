@@ -10,3 +10,23 @@ JOIN (
   SELECT user_username, interest FROM app_user_interest) q2
 ON q1.user1 = q2.user_username OR q1.user2 = q2.user_username
 GROUP BY user1, user2, intersection
+
+
+
+------------------------v2----------------------------------
+SELECT
+       user1,
+       user2,
+       interst_intersection,
+       (COUNT(q2.interest) - interst_intersection) as interest_union FROM (
+          SELECT  interest1.user_username as user1, interest2.user_username as user2, COALESCE(COUNT(interest1.interest), 0) as interst_intersection  FROM
+            app_user_interest as interest1
+              JOIN
+            app_user_interest as interest2
+            ON  interest1.interest = interest2.interest
+          where interest1.user_username = 'user' AND interest1.user_username != interest2.user_username
+          GROUP BY user2, user1) q1
+      JOIN (
+        SELECT user_username, interest FROM app_user_interest) q2
+ON q1.user1 = q2.user_username OR q1.user2 = q2.user_username
+GROUP BY user1, user2, interst_intersection
