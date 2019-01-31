@@ -1,89 +1,98 @@
-SELECT COALESCE(favourite_interests_query.user1,rating_query.user1) as user1,
-       COALESCE(favourite_interests_query.user2, rating_query.user2) as user2,
-       COALESCE(interest_intersection, 0) as interest_intersection,
-       COALESCE(interest_union, 0) as interest_union,
-       COALESCE(favourite_intersection,0) as favourite_intersection,
-       COALESCE(favourite_union, 0) as favourite_union,
-       COALESCE(rating_intersection, 0) as rating_intersection,
-       COALESCE(rating_union, 0) as rating_union
+
+SELECT user1, user2,
+       CASE WHEN interest_union = 0 THEN 0 ELSE interest_intersection::float / interest_union END as interest_similarity,
+       CASE WHEN favourite_union =0 THEN 0 ELSE favourite_intersection::float / favourite_union END as favourite_similarity,
+       CASE WHEN rating_union = 0 THEN 0 ELSE rating_intersection::float / rating_union END as rating_similarity
+
 FROM (
-                SELECT COALESCE(interests_query.user1,favourite_query.user1) as user1,
-                       COALESCE(interests_query.user2, favourite_query.user2) as user2,
-                       interest_intersection, interest_union, favourite_intersection, favourite_union
+                SELECT COALESCE(favourite_interests_query.user1, rating_query.user1) as user1,
+                       COALESCE(favourite_interests_query.user2, rating_query.user2) as user2,
+                       COALESCE(interest_intersection, 0)                            as interest_intersection,
+                       COALESCE(interest_union, 0)                                   as interest_union,
+                       COALESCE(favourite_intersection, 0)                           as favourite_intersection,
+                       COALESCE(favourite_union, 0)                                  as favourite_union,
+                       COALESCE(rating_intersection, 0)                              as rating_intersection,
+                       COALESCE(rating_union, 0)                                     as rating_union
                 FROM (
-                       --interests ----------------------------------------------------
-                       SELECT user1,
-                              user2,
+                       SELECT COALESCE(interests_query.user1, favourite_query.user1) as user1,
+                              COALESCE(interests_query.user2, favourite_query.user2) as user2,
                               interest_intersection,
-                              (COUNT(q2.*) - interest_intersection) as interest_union
+                              interest_union,
+                              favourite_intersection,
+                              favourite_union
                        FROM (
-                              SELECT interest1.user_username         as user1,
-                                     interest2.user_username         as user2,
-                                     COALESCE(COUNT(interest1.*), 0) as interest_intersection
-                              FROM app_user_interest as interest1
-                                     JOIN
-                                   app_user_interest as interest2
-                                   ON interest1.interest = interest2.interest
-                              where interest1.user_username = 'user'
-                                AND interest1.user_username != interest2.user_username
-                              GROUP BY user2, user1) q1
-                              JOIN (
-                         SELECT user_username, interest
-                         FROM app_user_interest) q2
-                                   ON q1.user1 = q2.user_username OR q1.user2 = q2.user_username
-                       GROUP BY user1, user2, interest_intersection
-                     ) interests_query
+                              --interests ----------------------------------------------------
+                              SELECT user1,
+                                     user2,
+                                     interest_intersection,
+                                     (COUNT(q2.*) - interest_intersection) as interest_union
+                              FROM (
+                                     SELECT interest1.user_username         as user1,
+                                            interest2.user_username         as user2,
+                                            COALESCE(COUNT(interest1.*), 0) as interest_intersection
+                                     FROM app_user_interest as interest1
+                                            JOIN
+                                          app_user_interest as interest2
+                                          ON interest1.interest = interest2.interest
+                                     where interest1.user_username = 'user'
+                                       AND interest1.user_username != interest2.user_username
+                                     GROUP BY user2, user1) q1
+                                     JOIN (
+                                SELECT user_username, interest
+                                FROM app_user_interest) q2
+                                          ON q1.user1 = q2.user_username OR q1.user2 = q2.user_username
+                              GROUP BY user1, user2, interest_intersection
+                            ) interests_query
+                              FULL JOIN
+                            (
+                              -- favourite --------------------
+                              SELECT user1,
+                                     user2,
+                                     favourite_intersection,
+                                     (COUNT(q2.*) - favourite_intersection) as favourite_union
+                              FROM (
+                                     SELECT fav1.user_username         as user1,
+                                            fav2.user_username         as user2,
+                                            COALESCE(COUNT(fav1.*), 0) as favourite_intersection
+                                     FROM app_user_spot_favourite as fav1
+                                            JOIN
+                                          app_user_spot_favourite as fav2
+                                          ON fav1.spot_id = fav2.spot_id
+                                     where fav1.user_username = 'user'
+                                       AND fav1.user_username != fav2.user_username
+                                     GROUP BY user2, user1) q1
+                                     JOIN (
+                                SELECT user_username, spot_id, notes
+                                FROM app_user_spot_favourite) q2
+                                          ON q1.user1 = q2.user_username OR q1.user2 = q2.user_username
+                              GROUP BY user1, user2, favourite_intersection
+                            ) favourite_query
+                            ON favourite_query.user1 = interests_query.user1 AND
+                               favourite_query.user2 = interests_query.user2
+                     ) favourite_interests_query
                        FULL JOIN
                      (
-                       -- favourite --------------------
-                       SELECT user1,
-                              user2,
-                              favourite_intersection,
-                              (COUNT(q2.*) - favourite_intersection) as favourite_union
+                       -- rating-----------------------
+                       SELECT user1, user2, rating_intersection, (COUNT(q2.*) - rating_intersection) as rating_union
                        FROM (
-                              SELECT fav1.user_username         as user1,
-                                     fav2.user_username         as user2,
-                                     COALESCE(COUNT(fav1.*), 0) as favourite_intersection
-                              FROM app_user_spot_favourite as fav1
+                              SELECT rat1.user_username         as user1,
+                                     rat2.user_username         as user2,
+                                     COALESCE(COUNT(rat1.*), 0) as rating_intersection
+                              FROM app_user_spot_rating as rat1
                                      JOIN
-                                   app_user_spot_favourite as fav2
-                                   ON fav1.spot_id = fav2.spot_id
-                              where fav1.user_username = 'user'
-                                AND fav1.user_username != fav2.user_username
+                                   app_user_spot_rating as rat2
+                                   ON rat1.spot_id = rat2.spot_id
+                              where rat1.user_username = 'user'
+                                AND rat1.user_username != rat2.user_username
+                                AND @(rat1.rating - rat2.rating) < 2
                               GROUP BY user2, user1) q1
                               JOIN (
-                         SELECT user_username, spot_id, notes
-                         FROM app_user_spot_favourite) q2
+                         SELECT user_username, spot_id, rating
+                         FROM app_user_spot_rating) q2
                                    ON q1.user1 = q2.user_username OR q1.user2 = q2.user_username
-                       GROUP BY user1, user2, favourite_intersection
-                     ) favourite_query
-                     ON favourite_query.user1 = interests_query.user1 AND favourite_query.user2 = interests_query.user2
-              ) favourite_interests_query
-FULL JOIN
-              (
-                -- rating-----------------------
-                SELECT user1, user2, rating_intersection, (COUNT(q2.*) - rating_intersection) as rating_union
-                FROM (
-                       SELECT rat1.user_username         as user1,
-                              rat2.user_username         as user2,
-                              COALESCE(COUNT(rat1.*), 0) as rating_intersection
-                       FROM app_user_spot_rating as rat1
-                              JOIN
-                            app_user_spot_rating as rat2
-                            ON rat1.spot_id = rat2.spot_id
-                       where rat1.user_username = 'user'
-                         AND rat1.user_username != rat2.user_username
-                         AND @(rat1.rating - rat2.rating) < 2
-                       GROUP BY user2, user1) q1
-                       JOIN (
-                  SELECT user_username, spot_id, rating
-                  FROM app_user_spot_rating) q2
-                            ON q1.user1 = q2.user_username OR q1.user2 = q2.user_username
-                GROUP BY user1, user2, rating_intersection
-              ) rating_query
-
-ON
-     (favourite_interests_query.user1 = rating_query.user1
-AND favourite_interests_query.user2 = rating_query.user2)
-
-
+                       GROUP BY user1, user2, rating_intersection
+                     ) rating_query
+                     ON
+                       (favourite_interests_query.user1 = rating_query.user1
+                         AND favourite_interests_query.user2 = rating_query.user2)
+              ) almost
