@@ -1,0 +1,13 @@
+SELECT user1, user2, favourite_intersection, (COUNT(q2.*) - favourite_intersection) as favourite_union
+FROM (
+  SELECT  fav1.user_username as user1, fav2.user_username as user2, COALESCE(COUNT(fav1.*), 0) as favourite_intersection  FROM
+    app_user_spot_favourite as fav1
+      JOIN
+    app_user_spot_favourite as fav2
+    ON  fav1.spot_id = fav2.spot_id
+  where fav1.user_username = 'user' AND fav1.user_username != fav2.user_username
+  GROUP BY user2, user1) q1
+JOIN (
+  SELECT user_username, spot_id, notes FROM app_user_spot_favourite) q2
+ON q1.user1 = q2.user_username OR q1.user2 = q2.user_username
+GROUP BY user1, user2, favourite_intersection
