@@ -1,0 +1,13 @@
+SELECT user1, user2, rating_intersection, (COUNT(q2.*) - rating_intersection) as rating_union
+FROM (
+       SELECT rat1.user_username as user1, rat2.user_username as user2, COALESCE(COUNT(rat1.*), 0) as rating_intersection FROM
+         app_user_spot_rating as rat1
+           JOIN
+         app_user_spot_rating as rat2
+         ON  rat1.spot_id = rat2.spot_id
+       where rat1.user_username = 'user' AND rat1.user_username != rat2.user_username AND @(rat1.rating - rat2.rating) < 2
+       GROUP BY user2, user1) q1
+       JOIN (
+  SELECT user_username, spot_id, rating FROM app_user_spot_rating) q2
+            ON q1.user1 = q2.user_username OR q1.user2 = q2.user_username
+GROUP BY user1, user2, rating_intersection
